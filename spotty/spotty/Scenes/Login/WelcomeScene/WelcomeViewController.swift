@@ -14,12 +14,11 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // logInButton.setCustomStyle(.logInButton)
-        logInButton.clipsToBounds = true
-        logInButton.layer.cornerRadius = 10
+        logInButton.setCustomStyle(.logIn)
     }
     
     @IBAction private func didTapLogInButton() {
+        logInButton.bounce()
         let authVC = AuthViewController()
         authVC.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(authVC, animated: true)

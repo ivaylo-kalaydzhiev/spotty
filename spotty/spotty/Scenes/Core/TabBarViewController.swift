@@ -8,11 +8,43 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        let musicVC = MusicViewController()
+        let showsVC = ShowsViewController()
+        let playlistVC = PlaylistViewController()
+        
+        musicVC.title = "Music"
+        showsVC.title = "Podcasts"
+        playlistVC.title = "Playlists"
+        
+        musicVC.navigationItem.largeTitleDisplayMode = .always
+        showsVC.navigationItem.largeTitleDisplayMode = .always
+        playlistVC.navigationItem.largeTitleDisplayMode = .always
+        
+        let musicNavigation = UINavigationController(rootViewController: musicVC)
+        let showsNavigation = UINavigationController(rootViewController: showsVC)
+        let playlistNavigation = UINavigationController(rootViewController: playlistVC)
+        
+        musicNavigation.tabBarItem = UITabBarItem(
+            title: "Music",
+            image: UIImage(systemName: "music.note"),
+            tag: 1)
+        showsNavigation.tabBarItem = UITabBarItem(
+            title: "Podcasts",
+            image: UIImage(systemName: "headphones"),
+            tag: 1)
+        playlistNavigation.tabBarItem = UITabBarItem(
+            title: "Playlists",
+            image: UIImage(systemName: "music.note.list"),
+            tag: 1)
+        
+        musicNavigation.navigationBar.prefersLargeTitles = true
+        showsNavigation.navigationBar.prefersLargeTitles = true
+        playlistNavigation.navigationBar.prefersLargeTitles = true
+        
+        setViewControllers([musicNavigation, showsNavigation, playlistNavigation], animated: false)
     }
 }
-

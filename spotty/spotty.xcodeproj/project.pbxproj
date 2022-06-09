@@ -12,6 +12,9 @@
 		D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A08285223960079F91B /* TabBarViewController.swift */; };
 		D5EF5A0E285223980079F91B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5EF5A0D285223980079F91B /* Assets.xcassets */; };
 		D5EF5A11285223980079F91B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5EF5A0F285223980079F91B /* LaunchScreen.storyboard */; };
+		D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */; };
+		D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A2F28522BDA0079F91B /* ShowsViewController.swift */; };
+		D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A3128522BE40079F91B /* PlaylistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		D5EF5A0D285223980079F91B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5EF5A10285223980079F91B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5EF5A12285223980079F91B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		D5EF5A2F28522BDA0079F91B /* ShowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewController.swift; sourceTree = "<group>"; };
+		D5EF5A3128522BE40079F91B /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,7 @@
 		D5EF5A21285226BE0079F91B /* MusicScene */ = {
 			isa = PBXGroup;
 			children = (
+				D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */,
 			);
 			path = MusicScene;
 			sourceTree = "<group>";
@@ -134,6 +141,7 @@
 		D5EF5A22285226CC0079F91B /* ShowsScene */ = {
 			isa = PBXGroup;
 			children = (
+				D5EF5A2F28522BDA0079F91B /* ShowsViewController.swift */,
 			);
 			path = ShowsScene;
 			sourceTree = "<group>";
@@ -141,6 +149,7 @@
 		D5EF5A23285226DA0079F91B /* PlaylistScene */ = {
 			isa = PBXGroup;
 			children = (
+				D5EF5A3128522BE40079F91B /* PlaylistViewController.swift */,
 			);
 			path = PlaylistScene;
 			sourceTree = "<group>";
@@ -286,6 +295,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
+				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
+				D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */,
 				D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */,
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,

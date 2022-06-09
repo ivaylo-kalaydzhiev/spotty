@@ -15,6 +15,9 @@
 		D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */; };
 		D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A2F28522BDA0079F91B /* ShowsViewController.swift */; };
 		D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A3128522BE40079F91B /* PlaylistViewController.swift */; };
+		D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A39285230350079F91B /* WelcomeViewController.swift */; };
+		D5EF5A3C285230350079F91B /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5EF5A3A285230350079F91B /* WelcomeViewController.xib */; };
+		D5EF5A3E285233870079F91B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A3D285233870079F91B /* AuthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		D5EF5A2F28522BDA0079F91B /* ShowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewController.swift; sourceTree = "<group>"; };
 		D5EF5A3128522BE40079F91B /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		D5EF5A39285230350079F91B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		D5EF5A3A285230350079F91B /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		D5EF5A3D285233870079F91B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,8 @@
 		D5EF5A1F2852269A0079F91B /* WelcomeScene */ = {
 			isa = PBXGroup;
 			children = (
+				D5EF5A39285230350079F91B /* WelcomeViewController.swift */,
+				D5EF5A3A285230350079F91B /* WelcomeViewController.xib */,
 			);
 			path = WelcomeScene;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 		D5EF5A20285226AD0079F91B /* AuthScene */ = {
 			isa = PBXGroup;
 			children = (
+				D5EF5A3D285233870079F91B /* AuthViewController.swift */,
 			);
 			path = AuthScene;
 			sourceTree = "<group>";
@@ -285,6 +294,7 @@
 			files = (
 				D5EF5A11285223980079F91B /* LaunchScreen.storyboard in Resources */,
 				D5EF5A0E285223980079F91B /* Assets.xcassets in Resources */,
+				D5EF5A3C285230350079F91B /* WelcomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,8 +309,10 @@
 				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
 				D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */,
 				D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */,
+				D5EF5A3E285233870079F91B /* AuthViewController.swift in Sources */,
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
+				D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

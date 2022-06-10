@@ -17,10 +17,11 @@
 		D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A3128522BE40079F91B /* PlaylistViewController.swift */; };
 		D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A39285230350079F91B /* WelcomeViewController.swift */; };
 		D5EF5A3C285230350079F91B /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5EF5A3A285230350079F91B /* WelcomeViewController.xib */; };
-		D5EF5A3E285233870079F91B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A3D285233870079F91B /* AuthViewController.swift */; };
 		D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A48285235A50079F91B /* UIButton+setStyle.swift */; };
 		D5EF5A4B285235AF0079F91B /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A4A285235AF0079F91B /* ButtonStyle.swift */; };
 		D5EF5A4F285238A70079F91B /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A4E285238A70079F91B /* UIView+Animations.swift */; };
+		D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A50285239A70079F91B /* AuthViewController.swift */; };
+		D5EF5A53285239A70079F91B /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5EF5A51285239A70079F91B /* AuthViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +37,11 @@
 		D5EF5A3128522BE40079F91B /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		D5EF5A39285230350079F91B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D5EF5A3A285230350079F91B /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
-		D5EF5A3D285233870079F91B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		D5EF5A48285235A50079F91B /* UIButton+setStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+setStyle.swift"; sourceTree = "<group>"; };
 		D5EF5A4A285235AF0079F91B /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		D5EF5A4E285238A70079F91B /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		D5EF5A50285239A70079F91B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		D5EF5A51285239A70079F91B /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +144,8 @@
 		D5EF5A20285226AD0079F91B /* AuthScene */ = {
 			isa = PBXGroup;
 			children = (
-				D5EF5A3D285233870079F91B /* AuthViewController.swift */,
+				D5EF5A50285239A70079F91B /* AuthViewController.swift */,
+				D5EF5A51285239A70079F91B /* AuthViewController.xib */,
 			);
 			path = AuthScene;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5EF5A53285239A70079F91B /* AuthViewController.xib in Resources */,
 				D5EF5A11285223980079F91B /* LaunchScreen.storyboard in Resources */,
 				D5EF5A0E285223980079F91B /* Assets.xcassets in Resources */,
 				D5EF5A3C285230350079F91B /* WelcomeViewController.xib in Resources */,
@@ -330,12 +334,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */,
 				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
 				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
 				D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */,
 				D5EF5A4B285235AF0079F91B /* ButtonStyle.swift in Sources */,
 				D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */,
-				D5EF5A3E285233870079F91B /* AuthViewController.swift in Sources */,
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,

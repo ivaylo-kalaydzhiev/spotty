@@ -18,9 +18,7 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction private func didTapLogInButton() {
-        logInButton.bounce()
         let authVC = AuthViewController()
-        authVC.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(authVC, animated: true)
     }
 }

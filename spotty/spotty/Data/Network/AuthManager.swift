@@ -10,18 +10,20 @@ import Foundation
 // TODO: Store AccessToken, Refresh Token and Expiration Date in Keychain
 // TODO: Where should I store the ClientID and Client Secret?
 
-// OAuth Flow Manager
+
+/// Singleton Manager implementing the OAuth2 Code Flow with PKCE extension
 final class AuthManager {
     
-    // MARK: - Stored properties
+    /// Singleton instance used to interact with the Manager
     static let shared = AuthManager()
+    
+    // MARK: - Stored properties
     private var isRefreshingToken = false
     private var refreshBlockStore = [(String) -> Void]()
     
     private init() {}
     
     // MARK: - Computed properties
-    /// Used by SceneDelegate
     var isSignedIn: Bool {
         return accessToken != nil
     }
@@ -45,33 +47,34 @@ final class AuthManager {
         return UserDefaults.standard.object(forKey: "expirationDate") as? Date
     }
     
-    // MARK: - Internal methods
-    // bool in the completion block represents that there is now a valid access token
+    // MARK: - Exposed methods
+    /// Exchange the Code from the API for an Access Token and cache the response
+    /// - Parameters:
+    ///   - code: The Code return by the external API as part of the OAuth2 Code flow.
+    ///   - completion: Handle successfull or unsuccessfull exchange.
+    ///
+    ///  The API Response that needs to be cached is represented by an ``AuthResponse`` model in this application.
+    ///  It contains multiple properties including Access Token, Refresh Token and Expiration Date
     func exchangeCodeForAccessToken(code: String, completion: @escaping (Bool) -> Void) {
         guard let request = SpotifyAuth.createTokenExchangeRequest(with: code) else { return }
         
-        // Perform URL Request
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
-            guard let data = data, error == nil else {
-                completion(false)
-                return
-            }
-            
-            // Parse JSON
-            do {
-                let result = try JSONDecoder().decode(AuthResponse.self, from: data)
-                self?.cacheTokens(result: result)
+        Networking.performRequest(urlRequest: request) { [weak self] (result: Result<AuthResponse, Error>) in
+            switch result {
+            case .success(let response):
+                self?.cacheTokens(result: response)
                 completion(true)
-            } catch {
+            case .failure(let error):
                 print(error.localizedDescription)
                 completion(false)
             }
         }
-        
-        task.resume()
     }
     
-    // bool in the completion block represents that there is now a valid access token
+    /// Exchange the Refresh Token for an Access Token and cache the response.
+    /// - Parameter completion: Handle successfull or unsuccessfull exchange.
+    ///
+    /// The API Response that needs to be cached is represented by an ``AuthResponse`` model in this application.
+    /// It contains multiple properties including Access Token, Refresh Token and Expiration Date
     func refreshTokenIfNeeded(completion: @escaping (Bool) -> Void) {
         guard !isRefreshingToken else { return }
         guard let refreshToken = refreshToken else { return }
@@ -80,46 +83,39 @@ final class AuthManager {
             return
         }
         
-        
         guard let request = SpotifyAuth.createTokenRefreshRequest(with: refreshToken) else { return }
         isRefreshingToken = true
-        // Perform URL Request
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
-            // Stop refreshing Token
+        
+        Networking.performRequest(urlRequest: request) { [weak self] (result: Result<AuthResponse, Error>) in
             self?.isRefreshingToken = false
-            guard let data = data, error == nil else {
-                completion(false)
-                return
-            }
             
-            do {
-                let result = try JSONDecoder().decode(AuthResponse.self, from: data)
-                self?.refreshBlockStore.forEach { $0(result.access_token) }
+            switch result {
+            case .success(let response):
+                self?.refreshBlockStore.forEach { $0(response.access_token) }
                 self?.refreshBlockStore.removeAll()
-                self?.cacheTokens(result: result)
+                self?.cacheTokens(result: response)
                 completion(true)
-            } catch {
+            case .failure(let error):
                 print(error.localizedDescription)
                 completion(false)
             }
-            
         }
-        
-        task.resume()
     }
     
+    /// Perform any action with a valid Access Token exposed by the parameter of the completion handler.
+    /// - Parameter completion: The action you want to perform with a valid Access Token.
     func withValidToken(completion: @escaping (String) -> Void) {
         guard !isRefreshingToken else {
             refreshBlockStore.append(completion)
             return
         }
         
-        // Refresh token and pass it to the completion
+        // Refresh token and use it
         if shouldRefreshToken {
-            refreshTokenIfNeeded { [weak self] success in
-                if success, let token = self?.accessToken { completion(token) }
+            refreshTokenIfNeeded { [weak self] refreshSucceeded in
+                if refreshSucceeded, let token = self?.accessToken { completion(token) }
             }
-            // If the current token does not need to be refreshed just pass it to the comlpetion
+        // If the current token does not need to be refreshed just use it
         } else if let token = accessToken {
             completion(token)
         }
@@ -200,5 +196,43 @@ struct SpotifyAuth {
         request.httpBody = components.query?.data(using: .utf8)
         
         return request
+    }
+}
+
+struct Networking {
+    
+    /// This method performs a URL Request with the supplied `URLSession` and then parses the retrieved `Data`,
+    ///  presuming it is in JSON format into the type, specified by the  completion handler
+    /// - Parameters:
+    ///    - urlRequest: The ``URLRequest`` to be performed.
+    ///    - urlSession: A `URLSession` on which to perform the `URLRequest` formed by the urlString parameter
+    ///    - completion: A block of code that handles both successfull data retrieval and parsing and potential errors
+    static func performRequest<T: Decodable>(urlRequest: URLRequest,
+                                             urlSession: URLSession = URLSession.shared,
+                                             completion: @escaping (Result<T, Error>) -> Void) {
+        
+        urlSession.dataTask(with: urlRequest) { (data, response, error) in
+                if let data = data {
+                    data.parseJSON(completion: completion)
+                } else if let error = error {
+                    completion(.failure(error))
+                }
+            }
+            .resume()
+    }
+}
+
+extension Data {
+    
+    /// This is a generic JSON Parser extension that tries to decode the `Data` object on which it operates into the Data Type provided by the completion block
+    /// - Parameters:
+    ///    - completion: A completion block that handles both succesful data parsing and any potential parsing error.
+    func parseJSON<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
+        do {
+            let decodedData = try JSONDecoder().decode(T.self, from: self)
+            completion(.success(decodedData))
+        } catch {
+            completion(.failure(error))
+        }
     }
 }

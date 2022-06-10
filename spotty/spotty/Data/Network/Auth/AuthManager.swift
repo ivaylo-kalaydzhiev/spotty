@@ -7,9 +7,6 @@
 
 import Foundation
 
-// TODO: Store AccessToken, Refresh Token and Expiration Date in Keychain
-// TODO: Where should I store the ClientID and Client Secret?
-
 /// Singleton Manager suited for implementing the OAuth2 Code Flow.
 final class AuthManager {
     
@@ -38,15 +35,28 @@ final class AuthManager {
     }
     
     private var accessToken: String? {
-        return UserDefaults.standard.string(forKey: "access_token")
+        guard let data = KeychainManager.read(
+            service: KeychainManager.Services.accessToken,
+            account: KeychainManager.Accounts.spotify)
+        else { return nil }
+        return String(data: data, encoding: .utf8)!
     }
     
     private var refreshToken: String? {
-        return UserDefaults.standard.string(forKey: "refresh_token")
+        guard let data = KeychainManager.read(
+            service: KeychainManager.Services.refreshToken,
+            account: KeychainManager.Accounts.spotify)
+        else { return nil }
+        return String(data: data, encoding: .utf8)!
     }
     
     private var accessTokenExpirationDate: Date? {
-        return UserDefaults.standard.object(forKey: "expirationDate") as? Date
+        guard let data = KeychainManager.read(
+            service: KeychainManager.Services.expirationDate,
+            account: KeychainManager.Accounts.spotify)
+        else { return nil }
+        let retrievedTimestamp = data.withUnsafeBytes { $0.load(as: Double.self) }
+        return Date(timeIntervalSinceReferenceDate: retrievedTimestamp)
     }
     
     // MARK: - Exposed methods
@@ -121,12 +131,23 @@ final class AuthManager {
     
     // MARK: - Private methods
     private func cacheTokens(result: AuthResponse) {
-        UserDefaults.standard.setValue(result.accessToken, forKey: "access_token")
+        KeychainManager.save(
+            Data(result.accessToken.utf8),
+            service: KeychainManager.Services.accessToken,
+            account: KeychainManager.Accounts.spotify)
+        
         if let refreshToken = result.refreshToken {
-            UserDefaults.standard.setValue(refreshToken, forKey: "refresh_token")
+            KeychainManager.save(
+                Data(refreshToken.utf8),
+                service: KeychainManager.Services.refreshToken,
+                account: KeychainManager.Accounts.spotify)
         }
-        UserDefaults.standard.setValue(
-            Date().addingTimeInterval(TimeInterval(result.expiresIn)),
-            forKey: "expirationDate")
+        
+        let expirationDate = Date().addingTimeInterval(TimeInterval(result.expiresIn))
+        let timestamp = expirationDate.timeIntervalSinceReferenceDate
+        KeychainManager.save(
+            withUnsafeBytes(of: timestamp) { Data($0) },
+            service: KeychainManager.Services.expirationDate,
+            account: KeychainManager.Accounts.spotify)
     }
 }

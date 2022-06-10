@@ -19,27 +19,35 @@ class WelcomeViewController: UIViewController {
     
     @IBAction private func didTapLogInButton() {
         let authVC = AuthViewController()
-        authVC.completionHandler = { [weak self] logInSuccess in
-            DispatchQueue.main.async {
-                self?.handleLogIn(logInSuccess)
-            }
+        authVC.completeCodeForTokenExchange = { [weak self] exchangeSucceeded in
+            DispatchQueue.main.async { self?.handleLogIn(exchangeSucceeded) }
         }
-        authVC.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(authVC, animated: true)
     }
     
+    /// Handles the Login attmept result.
+    /// - Parameter logInSuccess: Indication whether the Login attempt was successfull.
+    ///
+    /// This method updates the UI and should only ever be called from the Main Thread.
     private func handleLogIn(_ logInSuccess: Bool) {
         guard logInSuccess else {
-            let alert = UIAlertController(title: "Error",
-                                          message: "Unsuccessfull log in attempt.",
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-            present(alert, animated: true)
+            displayUnsuccessfullLoginAlert()
             return
         }
         
         let mainAppTabBarVC = TabBarViewController()
         mainAppTabBarVC.modalPresentationStyle = .fullScreen
         present(mainAppTabBarVC, animated: true)
+    }
+    
+    /// Displayes an Alert indicating that the Login attempt was not successfull.
+    ///
+    /// This method updates the UI and should only ever be called from the Main Thread.
+    private func displayUnsuccessfullLoginAlert() {
+        let alert = UIAlertController(title: "Error",
+                                      message: "Unsuccessfull log in attempt.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(alert, animated: true)
     }
 }

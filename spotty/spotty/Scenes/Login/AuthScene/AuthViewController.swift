@@ -9,21 +9,18 @@ import UIKit
 import WebKit
 
 class AuthViewController: UIViewController {
-
+    
     @IBOutlet private weak var webView: WKWebView!
     
-    var completionHandler: ((Bool) -> Void)?
+    /// Called right after the Auth Manager has attempted to exchange Code for an Access Token.
+    ///
+    /// This property must be set in order to complete Code for Access Token exchange successfully.
+    var completeCodeForTokenExchange: ((Bool) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
         webView.navigationDelegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         guard let url = AuthManager.shared.signInURL else { return }
         webView.load(URLRequest(url: url))
     }
@@ -36,10 +33,8 @@ extension AuthViewController: WKNavigationDelegate {
         let component = URLComponents(string: url.absoluteString)
         guard let code = component?.queryItems?.first(where: {$0.name == "code"})?.value else { return }
         
-        AuthManager.shared.exchangeCodeForAccessToken(code: code) { [weak self] success in
-            DispatchQueue.main.async {
-                self?.completionHandler?(success)
-            }
+        AuthManager.shared.exchangeCodeForAccessToken(code: code) { [weak self] exchangeSucceeded in
+            self?.completeCodeForTokenExchange?(exchangeSucceeded)
         }
     }
 }

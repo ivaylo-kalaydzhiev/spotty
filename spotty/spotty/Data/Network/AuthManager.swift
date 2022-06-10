@@ -9,6 +9,8 @@ import Foundation
 
 // TODO: Store AccessToken, Refresh Token and Expiration Date in Keychain
 // TODO: Where should I store the ClientID and Client Secret?
+
+// OAuth Flow Manager
 final class AuthManager {
     
     // MARK: - Stored properties
@@ -16,26 +18,9 @@ final class AuthManager {
     private var isRefreshingToken = false
     private var refreshBlockStore = [(String) -> Void]()
     
-    // MARK: - Init
     private init() {}
     
     // MARK: - Computed properties
-    
-    /// Used by AuthVC
-    var signInURL: URL? {
-        guard let challange = PKCEFlowProvider.shared.codeChallange else { return nil }
-        let base = "https://accounts.spotify.com/authorize"
-        let urlString = "\(base)?response_type=code" +
-        "&client_id=\(SpotifyAPIConstants.clientID)" +
-        "&scope=\(SpotifyAPIConstants.scopes)" +
-        "&redirect_uri=\(SpotifyAPIConstants.redirectURI)" +
-        "&show_dialog=TRUE" +
-        "&code_challenge_method=S256" +
-        "&code_challenge=\(challange)"
-        
-        return URL(string: urlString)
-    }
-    
     /// Used by SceneDelegate
     var isSignedIn: Bool {
         return accessToken != nil
@@ -56,12 +41,6 @@ final class AuthManager {
         return UserDefaults.standard.string(forKey: "refresh_token")
     }
     
-    private var encryptedBasicToken: String? {
-        let basicToken = SpotifyAPIConstants.clientID + ":" + SpotifyAPIConstants.clientSecret
-        let data = basicToken.data(using: .utf8)
-        return data?.base64EncodedString()
-    }
-    
     private var accessTokenExpirationDate: Date? {
         return UserDefaults.standard.object(forKey: "expirationDate") as? Date
     }
@@ -69,26 +48,7 @@ final class AuthManager {
     // MARK: - Internal methods
     // bool in the completion block represents that there is now a valid access token
     func exchangeCodeForAccessToken(code: String, completion: @escaping (Bool) -> Void) {
-        // Create URL
-        guard let url = URL(string: SpotifyAPIConstants.Endpoints.token) else { return }
-        guard let encryptedBasicToken = encryptedBasicToken else { return }
-        
-        // Create URL Components
-        var components = URLComponents()
-        components.queryItems = [
-            URLQueryItem(name: "grant_type", value: "authorization_code"),
-            URLQueryItem(name: "code", value: code),
-            URLQueryItem(name: "redirect_uri", value: SpotifyAPIConstants.redirectURI),
-            URLQueryItem(name: "client_id", value: SpotifyAPIConstants.clientID),
-            URLQueryItem(name: "code_verifier", value: PKCEFlowProvider.shared.codeVerifier)
-        ]
-        
-        // Create URL Request
-        var request = URLRequest(url: url)
-        request.httpMethod = HTTPMethod.POST.rawValue
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("Basic \(encryptedBasicToken)", forHTTPHeaderField: "Authorization")
-        request.httpBody = components.query?.data(using: .utf8)
+        guard let request = SpotifyAuth.createTokenExchangeRequest(with: code) else { return }
         
         // Perform URL Request
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
@@ -114,34 +74,15 @@ final class AuthManager {
     // bool in the completion block represents that there is now a valid access token
     func refreshTokenIfNeeded(completion: @escaping (Bool) -> Void) {
         guard !isRefreshingToken else { return }
+        guard let refreshToken = refreshToken else { return }
         guard shouldRefreshToken else {
             completion(true)
             return
         }
-        guard let refreshToken = refreshToken else { return }
-        guard let encryptedBasicToken = encryptedBasicToken else { return }
         
-        // Create URL
-        guard let url = URL(string: SpotifyAPIConstants.Endpoints.token) else { return }
         
-        // Start refreshing Token
+        guard let request = SpotifyAuth.createTokenRefreshRequest(with: refreshToken) else { return }
         isRefreshingToken = true
-        
-        // Create URL Components
-        var components = URLComponents()
-        components.queryItems = [
-            URLQueryItem(name: "grant_type", value: "refresh_token"),
-            URLQueryItem(name: "refresh_token", value: refreshToken),
-            URLQueryItem(name: "client_id", value: SpotifyAPIConstants.clientID)
-        ]
-        
-        // Create URL Request
-        var request = URLRequest(url: url)
-        request.httpMethod = HTTPMethod.POST.rawValue
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("Basic \(encryptedBasicToken)", forHTTPHeaderField: "Authorization")
-        request.httpBody = components.query?.data(using: .utf8)
-        
         // Perform URL Request
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
             // Stop refreshing Token
@@ -178,7 +119,7 @@ final class AuthManager {
             refreshTokenIfNeeded { [weak self] success in
                 if success, let token = self?.accessToken { completion(token) }
             }
-        // If the current token does not need to be refreshed just pass it to the comlpetion
+            // If the current token does not need to be refreshed just pass it to the comlpetion
         } else if let token = accessToken {
             completion(token)
         }
@@ -191,5 +132,73 @@ final class AuthManager {
             UserDefaults.standard.setValue(refreshToken, forKey: "refresh_token")
         }
         UserDefaults.standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)), forKey: "expirationDate")
+    }
+}
+
+struct SpotifyAuth {
+    
+    static var signInURL: URL? {
+        guard let challange = PKCEFlowProvider.shared.codeChallange else { return nil }
+        let base = "https://accounts.spotify.com/authorize"
+        let urlString = "\(base)?response_type=code" +
+        "&client_id=\(SpotifyAPIConstants.clientID)" +
+        "&scope=\(SpotifyAPIConstants.scopes)" +
+        "&redirect_uri=\(SpotifyAPIConstants.redirectURI)" +
+        "&show_dialog=TRUE" +
+        "&code_challenge_method=S256" +
+        "&code_challenge=\(challange)"
+        
+        return URL(string: urlString)
+    }
+    
+    private static var encryptedBasicToken: String? {
+        let basicToken = SpotifyAPIConstants.clientID + ":" + SpotifyAPIConstants.clientSecret
+        let data = basicToken.data(using: .utf8)
+        return data?.base64EncodedString()
+    }
+    
+    static func createTokenExchangeRequest(with code: String) -> URLRequest? {
+        guard let encryptedBasicToken = encryptedBasicToken,
+              let url = URL(string: SpotifyAPIConstants.Endpoints.token)
+        else { return nil }
+        
+        // Create URL Components
+        var components = URLComponents()
+        components.queryItems = [
+            URLQueryItem(name: "grant_type", value: "authorization_code"),
+            URLQueryItem(name: "code", value: code),
+            URLQueryItem(name: "redirect_uri", value: SpotifyAPIConstants.redirectURI),
+            URLQueryItem(name: "client_id", value: SpotifyAPIConstants.clientID),
+            URLQueryItem(name: "code_verifier", value: PKCEFlowProvider.shared.codeVerifier)
+        ]
+        
+        // Create URL Request
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.POST.rawValue
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Basic \(encryptedBasicToken)", forHTTPHeaderField: "Authorization")
+        request.httpBody = components.query?.data(using: .utf8)
+        
+        return request
+    }
+    
+    static func createTokenRefreshRequest(with refreshToken: String) -> URLRequest? {
+        guard let url = URL(string: SpotifyAPIConstants.Endpoints.token) else { return nil }
+        
+        // Create URL Components
+        var components = URLComponents()
+        components.queryItems = [
+            URLQueryItem(name: "grant_type", value: "refresh_token"),
+            URLQueryItem(name: "refresh_token", value: refreshToken),
+            URLQueryItem(name: "client_id", value: SpotifyAPIConstants.clientID)
+        ]
+        
+        // Create URL Request
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.POST.rawValue
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpBody = components.query?.data(using: .utf8)
+        
+        return request
     }
 }

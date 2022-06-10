@@ -21,7 +21,7 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         
         webView.navigationDelegate = self
-        guard let url = AuthManager.shared.signInURL else { return }
+        guard let url = SpotifyAuth.signInURL else { return }
         webView.load(URLRequest(url: url))
     }
 }

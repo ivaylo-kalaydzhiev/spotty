@@ -6,24 +6,36 @@
 //
 
 import UIKit
+import WebKit
 
 class AuthViewController: UIViewController {
 
+    @IBOutlet private weak var webView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .red
+        webView.navigationDelegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let url = URL(string: "https://en.wikipedia.org/wiki/Bulgaria") else { return }
+        webView.load(URLRequest(url: url))
     }
-    */
+}
 
+extension AuthViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        guard let url = webView.url else { return }
+        let component = URLComponents(string: url.absoluteString)
+        guard let code = component?.queryItems?.first(where: {$0.name == "code"})?.value else { return }
+        
+        webView.isHidden = true
+        print("CODE!!! \(code)")
+        // Exchange code for Access Token
+    }
 }

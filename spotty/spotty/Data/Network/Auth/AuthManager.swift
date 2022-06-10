@@ -89,7 +89,7 @@ final class AuthManager {
             
             switch result {
             case .success(let response):
-                self?.refreshBlockStore.forEach { $0(response.access_token) }
+                self?.refreshBlockStore.forEach { $0(response.accessToken) }
                 self?.refreshBlockStore.removeAll()
                 self?.cacheTokens(result: response)
                 completion(true)
@@ -121,12 +121,12 @@ final class AuthManager {
     
     // MARK: - Private methods
     private func cacheTokens(result: AuthResponse) {
-        UserDefaults.standard.setValue(result.access_token, forKey: "access_token")
-        if let refreshToken = result.refresh_token {
+        UserDefaults.standard.setValue(result.accessToken, forKey: "access_token")
+        if let refreshToken = result.refreshToken {
             UserDefaults.standard.setValue(refreshToken, forKey: "refresh_token")
         }
         UserDefaults.standard.setValue(
-            Date().addingTimeInterval(TimeInterval(result.expires_in)),
+            Date().addingTimeInterval(TimeInterval(result.expiresIn)),
             forKey: "expirationDate")
     }
 }

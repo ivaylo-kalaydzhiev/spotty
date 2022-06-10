@@ -12,6 +12,8 @@ class AuthViewController: UIViewController {
 
     @IBOutlet private weak var webView: WKWebView!
     
+    var completionHandler: ((Bool) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +24,7 @@ class AuthViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let url = URL(string: "https://en.wikipedia.org/wiki/Bulgaria") else { return }
+        guard let url = AuthManager.shared.signInURL else { return }
         webView.load(URLRequest(url: url))
     }
 }
@@ -34,8 +36,10 @@ extension AuthViewController: WKNavigationDelegate {
         let component = URLComponents(string: url.absoluteString)
         guard let code = component?.queryItems?.first(where: {$0.name == "code"})?.value else { return }
         
-        webView.isHidden = true
-        print("CODE!!! \(code)")
-        // Exchange code for Access Token
+        AuthManager.shared.exchangeCodeForAccessToken(code: code) { [weak self] success in
+            DispatchQueue.main.async {
+                self?.completionHandler?(success)
+            }
+        }
     }
 }

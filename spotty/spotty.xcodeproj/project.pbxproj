@@ -250,6 +250,7 @@
 		D5EF5A2A285229390079F91B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D5EF5A5E28533E300079F91B /* AuthResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,7 +306,6 @@
 				D5EF5A54285335810079F91B /* AuthManager.swift */,
 				D5EF5A56285335FB0079F91B /* PKCEFlowProvider.swift */,
 				D5EF5A6A28536AB50079F91B /* OAuth2Supporting.swift */,
-				D5EF5A5E28533E300079F91B /* AuthResponse.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";

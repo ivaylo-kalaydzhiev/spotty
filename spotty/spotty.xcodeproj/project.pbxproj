@@ -34,7 +34,7 @@
 		D5EF5A5F28533E300079F91B /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A5E28533E300079F91B /* AuthResponse.swift */; };
 		D5EF5A6128535B5B0079F91B /* Data+parseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6028535B5B0079F91B /* Data+parseJSON.swift */; };
 		D5EF5A6428535B910079F91B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6328535B910079F91B /* Network.swift */; };
-		D5EF5A6628535C450079F91B /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6528535C450079F91B /* SpotifyAPI.swift */; };
+		D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6528535C450079F91B /* SpotifyAuthProvider.swift */; };
 		D5EF5A6B28536AB50079F91B /* OAuth2Supporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6A28536AB50079F91B /* OAuth2Supporting.swift */; };
 		D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6C285379DE0079F91B /* KeychainManager.swift */; };
 /* End PBXBuildFile section */
@@ -69,7 +69,7 @@
 		D5EF5A5E28533E300079F91B /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		D5EF5A6028535B5B0079F91B /* Data+parseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+parseJSON.swift"; sourceTree = "<group>"; };
 		D5EF5A6328535B910079F91B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		D5EF5A6528535C450079F91B /* SpotifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPI.swift; sourceTree = "<group>"; };
+		D5EF5A6528535C450079F91B /* SpotifyAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuthProvider.swift; sourceTree = "<group>"; };
 		D5EF5A6A28536AB50079F91B /* OAuth2Supporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Supporting.swift; sourceTree = "<group>"; };
 		D5EF5A6C285379DE0079F91B /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,7 +325,7 @@
 		D5EF5A68285362AD0079F91B /* SpotifyAPI */ = {
 			isa = PBXGroup;
 			children = (
-				D5EF5A6528535C450079F91B /* SpotifyAPI.swift */,
+				D5EF5A6528535C450079F91B /* SpotifyAuthProvider.swift */,
 				D5EF5A58285336110079F91B /* SpotifyEndpoint.swift */,
 			);
 			path = SpotifyAPI;
@@ -429,7 +429,7 @@
 				D5EF5A57285335FB0079F91B /* PKCEFlowProvider.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,
-				D5EF5A6628535C450079F91B /* SpotifyAPI.swift in Sources */,
+				D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */,
 				D5EF5A5D28533DFF0079F91B /* AppError.swift in Sources */,
 				D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */,
 				D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */,

@@ -19,10 +19,14 @@ struct Network {
                                              urlSession: URLSession = URLSession.shared,
                                              completion: @escaping (Result<T, Error>) -> Void) {
         
-        urlSession.dataTask(with: urlRequest) { data, _, error in
+        urlSession.dataTask(with: urlRequest) { data, response, error in
             if let data = data {
-                let str = String(decoding: data, as: UTF8.self)
-                print(str)
+                
+                // Delete those two lines
+                //let str = String(decoding: data, as: UTF8.self)
+                //print("DataString: \(str)")
+                //print(response)
+                
                 data.parseJSON(completion: completion)
             } else if let error = error {
                 completion(.failure(error))

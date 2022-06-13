@@ -13,4 +13,9 @@ struct WebRepository {
         let url = URL(string: SpotifyAPIConstants.Endpoints.currentUserProfile)
         Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
     }
+    
+    func getCurrentUserTopTracks(completion: @escaping (Result<TopTracksResponse, Error>) -> Void) {
+        let url = URL(string: SpotifyAPIConstants.Endpoints.currentUserTopTracks)
+        Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
+    }
 }

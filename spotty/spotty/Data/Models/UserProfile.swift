@@ -15,7 +15,7 @@ struct UserProfile: Codable {
     let externalURLs: [String: String]
     let id: String
     let product: String
-    let images: [UserImage]
+    let images: [SpotifyImage]
 
     private enum CodingKeys: String, CodingKey {
         case country = "country"
@@ -28,7 +28,7 @@ struct UserProfile: Codable {
     }
 }
 
-struct UserImage: Codable {
+struct SpotifyImage: Codable {
 
     let url: String
 }

@@ -151,3 +151,6 @@ final class AuthManager {
             account: KeychainManager.Accounts.spotify)
     }
 }
+
+// TODO: One Repository, that implements multiple protocols.
+// TODO: Create Splash Screen.

@@ -25,7 +25,14 @@ struct SpotifyAPIConstants {
     
     struct Endpoints {
         
-        static let authorize = "https://accounts.spotify.com/authorize"
-        static let token = "https://accounts.spotify.com/api/token"
+        // Authorization
+        private static let baseAuthURL = "https://accounts.spotify.com"
+        static let authorize = baseAuthURL + "/authorize"
+        static let token = baseAuthURL + "/api/token"
+        
+        // API Calls
+        private static let baseAPIURL = "https://api.spotify.com/v1"
+       
+        static let currentUserProfile = baseAPIURL + "/me"
     }
 }

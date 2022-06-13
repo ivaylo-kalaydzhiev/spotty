@@ -21,7 +21,8 @@ struct SpotifyAPIConstants {
     "%20user-follow-read" +
     "%20user-library-modify" +
     "%20user-library-read" +
-    "%20user-read-email"
+    "%20user-read-email" +
+    "%20user-top-read"
     
     struct Endpoints {
         
@@ -34,5 +35,7 @@ struct SpotifyAPIConstants {
         private static let baseAPIURL = "https://api.spotify.com/v1"
        
         static let currentUserProfile = baseAPIURL + "/me"
+        static let currentUserTopTracks = baseAPIURL + "/me/top/tracks?time_range=medium_term&limit=10&offset=0"
+        static let currentUserTopArtists = baseAPIURL + "/me/top/artists?time_range=medium_term&limit=10&offset=0"
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D082857300700EFA9FB /* WebRepository.swift */; };
 		D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D0A2857303300EFA9FB /* UserProfile.swift */; };
+		D5C92D0D28573A2F00EFA9FB /* TopTracksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D0C28573A2F00EFA9FB /* TopTracksResponse.swift */; };
 		D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A04285223950079F91B /* AppDelegate.swift */; };
 		D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A06285223960079F91B /* SceneDelegate.swift */; };
 		D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A08285223960079F91B /* TabBarViewController.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		D5C92D082857300700EFA9FB /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		D5C92D0A2857303300EFA9FB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		D5C92D0C28573A2F00EFA9FB /* TopTracksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksResponse.swift; sourceTree = "<group>"; };
 		D5EF5A01285223950079F91B /* spotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EF5A04285223950079F91B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5EF5A06285223960079F91B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				D5EF5A5E28533E300079F91B /* AuthResponse.swift */,
 				D5C92D0A2857303300EFA9FB /* UserProfile.swift */,
+				D5C92D0C28573A2F00EFA9FB /* TopTracksResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5EF5A6428535B910079F91B /* Network.swift in Sources */,
+				D5C92D0D28573A2F00EFA9FB /* TopTracksResponse.swift in Sources */,
 				D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */,
 				D5EF5A59285336110079F91B /* SpotifyAPIConstants.swift in Sources */,
 				D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */,

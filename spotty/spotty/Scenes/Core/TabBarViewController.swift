@@ -52,12 +52,12 @@ class TabBarViewController: UITabBarController {
         super.viewWillAppear(animated)
         
         let repo = WebRepository()
-        repo.getCurrentUserProfile { result in
+        repo.getCurrentUserTopTracks { result in
             switch result {
-            case .success(let userProfile):
-                print("Success!!!!!!! \(userProfile)")
+            case .success(let response):
+                print(response)
             case .failure(let error):
-                print("ERROR!!!!: \(error.localizedDescription)")
+                print("PROBLEM!!!!!!!!!! \(error.localizedDescription)")
             }
         }
     }

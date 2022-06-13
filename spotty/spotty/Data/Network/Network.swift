@@ -19,13 +19,29 @@ struct Network {
                                              urlSession: URLSession = URLSession.shared,
                                              completion: @escaping (Result<T, Error>) -> Void) {
         
-        urlSession.dataTask(with: urlRequest) { (data, response, error) in
+        urlSession.dataTask(with: urlRequest) { data, _, error in
             if let data = data {
+                let str = String(decoding: data, as: UTF8.self)
+                print(str)
                 data.parseJSON(completion: completion)
             } else if let error = error {
                 completion(.failure(error))
             }
         }
         .resume()
+    }
+    
+    static func performAuthorizedRequest<T: Decodable>(with url: URL?,
+                                                       httpMethod: HTTPMethod,
+                                                       completion: @escaping (Result<T, Error>) -> Void) {
+        
+        AuthManager.shared.withValidToken { token in
+            guard let url = url else { return }
+            var request = URLRequest(url: url)
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            request.httpMethod = httpMethod.rawValue
+            
+            performRequest(urlRequest: request, completion: completion)
+        }
     }
 }

@@ -47,4 +47,18 @@ class TabBarViewController: UITabBarController {
         
         setViewControllers([musicNavigation, showsNavigation, playlistNavigation], animated: false)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let repo = WebRepository()
+        repo.getCurrentUserProfile { result in
+            switch result {
+            case .success(let userProfile):
+                print("Success!!!!!!! \(userProfile)")
+            case .failure(let error):
+                print("ERROR!!!!: \(error.localizedDescription)")
+            }
+        }
+    }
 }

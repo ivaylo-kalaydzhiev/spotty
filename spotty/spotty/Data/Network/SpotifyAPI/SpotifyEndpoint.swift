@@ -27,7 +27,7 @@ enum SpotifyEndpoint {
     case getShowEpisodes(showId: String, limit: Int)
     case getPlaylist(playlistId: String)
     case getPlaylistTracks(playlistId: String, limit: Int)
-    case deleteSongsFromPlaylist(playlistId: String, tracks: [SpotifyRequestTrack], playlistSnapshotId: String)
+    case deleteSongsFromPlaylist(playlistId: String, tracks: [AudioTrackRequest], playlistSnapshotId: String)
     case getTrack(trackId: String)
     case getEpisode(episodeId: String)
     

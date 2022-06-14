@@ -15,12 +15,12 @@ struct WebRepository {
         Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
     }
     
-    func getCurrentUserTopTracks(completion: @escaping (Result<TopTracksResponse, Error>) -> Void) {
+    func getCurrentUserTopTracks(completion: @escaping (Result<TracksResponse, Error>) -> Void) {
         let url = SpotifyEndpoint.getCurrentUserTopTracks(limit: 49).url
         Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
     }
     
-    func getCurrentUserTopArtists(completion: @escaping (Result<TopArtistsResponse, Error>) -> Void) {
+    func getCurrentUserTopArtists(completion: @escaping (Result<ArtistsResponse, Error>) -> Void) {
         let url = SpotifyEndpoint.getCurrentUserTopArtists(limit: 49).url
         Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
     }

@@ -13,5 +13,5 @@ struct Album: Codable {
     let images: [ImageResponse]
     let name: String
     let uri: String
-    let tracks: TracksResponse
+    let tracks: ItemsResponse<AudioTrack>
 }

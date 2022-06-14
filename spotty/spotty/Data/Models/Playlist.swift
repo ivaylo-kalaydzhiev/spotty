@@ -14,7 +14,7 @@ struct Playlist: Codable {
     let images: [ImageResponse]
     let owner: UserProfile
     let snapshotId: String
-    let tracks: TracksResponse
+    let tracks: ItemsResponse<AudioTrack>
     let uri: String
     
     private enum CodingKeys: String, CodingKey {

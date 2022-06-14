@@ -19,7 +19,7 @@ struct AuthResponse: Codable {
         case accessToken = "access_token"
         case expiresIn = "expires_in"
         case refreshToken = "refresh_token"
-        case scope = "scope"
+        case scope
         case tokenType = "token_type"
     }
 }

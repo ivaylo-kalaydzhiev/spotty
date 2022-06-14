@@ -13,6 +13,7 @@ final class SpotifyAuthProvider {
     static let shared = SpotifyAuthProvider()
     
     // MARK: - Private properties
+    
     private let clientID = "c59a4896be7047bcb23abe70013fc4e6"
     private let clientSecret = "579cb39eac01484295a44177d8752af3"
     
@@ -24,6 +25,8 @@ final class SpotifyAuthProvider {
         let data = basicToken.data(using: .utf8)
         return data?.base64EncodedString()
     }
+    
+    // MARK: - Exposed properties
     
     /// URL to the Authorizaition Endpoint, containing query paramteres.
     var signInURL: URL? {
@@ -57,6 +60,7 @@ final class SpotifyAuthProvider {
     }
 }
 
+// MARK: - OAuth2Supporting
 extension SpotifyAuthProvider: OAuth2Supporting {
     
     func createTokenExchangeRequest(with code: String) -> URLRequest? {

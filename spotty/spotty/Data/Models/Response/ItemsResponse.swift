@@ -1,19 +1,18 @@
 //
-//  TracksResponse.swift
+//  ItemsResponse.swift
 //  spotty
 //
-//  Created by Ivaylo Kalaydzhiev on 13.06.22.
+//  Created by Ivaylo Kalaydzhiev on 14.06.22.
 //
 
 import Foundation
 
 /// Specific object returned by the Spotify API. Needed only for parsing API Responses.
-struct TracksResponse: Codable {
+struct ItemsResponse<T: Codable>: Codable {
     
-    let tracks: [AudioTrack]
+    let value: [T]
     
     private enum CodingKeys: String, CodingKey {
-        case tracks = "items"
+        case value = "items"
     }
 }
-

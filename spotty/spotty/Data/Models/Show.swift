@@ -13,5 +13,5 @@ struct Show: Codable {
     let id: String
     let images: [ImageResponse]
     let uri: String
-    let episodes: EpisodesResponse
+    let episodes: ItemsResponse<Episode>
 }

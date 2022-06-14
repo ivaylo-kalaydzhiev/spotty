@@ -9,13 +9,8 @@ import Foundation
 
 struct AudioTrack: Codable {
     
-    let album: AlbumJustForImages
+    let album: AlbumRequest
     let id: String
     let name: String
     let uri: String
-}
-
-struct AlbumJustForImages: Codable {
-    
-    let images: [ImageResponse]
 }

@@ -14,7 +14,7 @@ enum SpotifyEndpoint {
     case getCurrentUserProfile
     case getCurrentUserTopTracks(limit: Int)
     case getCurrentUserTopArtists(limit: Int)
-    case getCurrentUserPlaylist(limit: Int)
+    case getCurrentUserPlaylists(limit: Int)
     case getRecentlyPlayedTracks(limit: Int, since: Int)
     case getUserSavedEpisodes(limit: Int)
     case getUserSavedShows(limit: Int)
@@ -55,7 +55,7 @@ enum SpotifyEndpoint {
             return "/v1/me/top/tracks"
         case .getCurrentUserTopArtists:
             return "/v1/me/top/artists"
-        case .getCurrentUserPlaylist:
+        case .getCurrentUserPlaylists:
             return "/v1/me/playlists"
         case .getRecentlyPlayedTracks:
             return "/v1/me/player/recently-played"
@@ -105,7 +105,7 @@ enum SpotifyEndpoint {
                 URLQueryItem(name: "time_range", value: "long_term"),
                 URLQueryItem(name: "limit", value: String(limit))
             ]
-        case .getCurrentUserPlaylist(let limit),
+        case .getCurrentUserPlaylists(let limit),
                 .getUserSavedEpisodes(let limit),
                 .getUserSavedShows(let limit),
                 .getFeaturedPlaylists(let limit),

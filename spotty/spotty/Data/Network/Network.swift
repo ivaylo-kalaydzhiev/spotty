@@ -23,9 +23,9 @@ struct Network {
             if let data = data {
                 
                 // Delete those two lines
-//                let str = String(decoding: data, as: UTF8.self)
-//                print("DataString: \(str)")
-//                print(response)
+                let str = String(decoding: data, as: UTF8.self)
+                print("DataString: \(str)")
+                print(response)
                 
                 data.parseJSON(completion: completion)
             } else if let error = error {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D51D782B2858A1B700EED4F9 /* SpotifyRequestTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D782A2858A1B700EED4F9 /* SpotifyRequestTrack.swift */; };
 		D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D082857300700EFA9FB /* WebRepository.swift */; };
 		D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D0A2857303300EFA9FB /* UserProfile.swift */; };
 		D5C92D0D28573A2F00EFA9FB /* TopTracksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D0C28573A2F00EFA9FB /* TopTracksResponse.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D51D782A2858A1B700EED4F9 /* SpotifyRequestTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyRequestTrack.swift; sourceTree = "<group>"; };
 		D5C92D082857300700EFA9FB /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		D5C92D0A2857303300EFA9FB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		D5C92D0C28573A2F00EFA9FB /* TopTracksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksResponse.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				D5C92D0A2857303300EFA9FB /* UserProfile.swift */,
 				D5C92D0C28573A2F00EFA9FB /* TopTracksResponse.swift */,
 				D5C92D0E2857521300EFA9FB /* TopArtistsResponse.swift */,
+				D51D782A2858A1B700EED4F9 /* SpotifyRequestTrack.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */,
 				D5EF5A5D28533DFF0079F91B /* AppError.swift in Sources */,
 				D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */,
+				D51D782B2858A1B700EED4F9 /* SpotifyRequestTrack.swift in Sources */,
 				D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */,
 				D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */,
 				D5EF5A4F285238A70079F91B /* UIView+Animations.swift in Sources */,

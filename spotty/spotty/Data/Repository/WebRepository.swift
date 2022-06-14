@@ -7,7 +7,7 @@
 
 import Foundation
 
-// TODO: One Repository, that implements multiple protocols.
+// TODO: One Repository, that implements multiple protocols. Maybe name them like Spotify names them in it Docs.
 struct WebRepository {
     
     func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
@@ -16,12 +16,12 @@ struct WebRepository {
     }
     
     func getCurrentUserTopTracks(completion: @escaping (Result<TopTracksResponse, Error>) -> Void) {
-        let url = SpotifyEndpoint.getCurrentUserTopTracks(limit: 21).url
+        let url = SpotifyEndpoint.getCurrentUserTopTracks(limit: 49).url
         Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
     }
     
     func getCurrentUserTopArtists(completion: @escaping (Result<TopArtistsResponse, Error>) -> Void) {
-        let url = SpotifyEndpoint.getCurrentUserTopArtists(limit: 21).url
+        let url = SpotifyEndpoint.getCurrentUserTopArtists(limit: 49).url
         Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
     }
 }

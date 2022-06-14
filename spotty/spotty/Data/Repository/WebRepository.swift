@@ -24,4 +24,9 @@ struct WebRepository {
         let url = SpotifyEndpoint.getCurrentUserTopArtists(limit: 49).url
         Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
     }
+    
+    func getCurrentUserPlaylists(completion: @escaping (Result<ItemsResponse<Playlist>, Error>) -> Void) {
+        let url = SpotifyEndpoint.getCurrentUserPlaylists(limit: 49).url
+        Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
+    }
 }

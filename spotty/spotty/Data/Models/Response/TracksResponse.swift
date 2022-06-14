@@ -1,5 +1,5 @@
 //
-//  TopTracksResponse.swift
+//  TracksResponse.swift
 //  spotty
 //
 //  Created by Ivaylo Kalaydzhiev on 13.06.22.
@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct TopTracksResponse: Codable {
+/// Specific object returned by the Spotify API. Needed only for parsing API Responses.
+struct TracksResponse: Codable {
     
     let tracks: [AudioTrack]
     
@@ -16,13 +17,3 @@ struct TopTracksResponse: Codable {
     }
 }
 
-struct AudioTrack: Codable {
-    
-    let album: Album
-    let name: String
-}
-
-struct Album: Codable {
-    
-    let images: [SpotifyImage]
-}

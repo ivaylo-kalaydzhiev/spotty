@@ -8,27 +8,18 @@
 import Foundation
 
 struct UserProfile: Codable {
-
-    let country: String
-    let displayName: String
-    let email: String
-    let externalURLs: [String: String]
+    
     let id: String
-    let product: String
-    let images: [SpotifyImage]
-
+    let spotifyURI: String
+    let email: String?
+    let displayName: String
+    let images: [ImageResponse]?
+    
     private enum CodingKeys: String, CodingKey {
-        case country = "country"
+        case id
+        case spotifyURI = "uri"
+        case email
         case displayName = "display_name"
-        case email = "email"
-        case externalURLs = "external_urls"
-        case id = "id"
-        case product = "product"
-        case images = "images"
+        case images
     }
-}
-
-struct SpotifyImage: Codable {
-
-    let url: String
 }

@@ -7,50 +7,63 @@
 
 import Foundation
 
-struct SpotifyEndpoint {
+enum SpotifyEndpoint {
     
-    let path: String
-    let queryItems: [URLQueryItem]
+    // MARK: - Cases
     
-    var url: URL? {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "api.spotify.com"
-        components.path = path
-        components.queryItems = queryItems
-        
-        return components.url
+    case getCurrentUserProfile
+    case getCurrentUserTopTracks(limit: Int, offset: Int = 0)
+    case getCurrentUserTopArtists(limit: Int, offset: Int = 0)
+    
+    // MARK: - Private properties
+    
+    private var scheme: String {
+        switch self {
+        default:
+            return "https"
+        }
     }
     
-    static func currentUserProfile() -> SpotifyEndpoint {
-        
-        let endpoint = SpotifyEndpoint(
-            path: "/v1/me",
-            queryItems: []
-        )
-        
-        return endpoint
+    private var host: String {
+        switch self {
+        default:
+            return "api.spotify.com"
+        }
     }
     
-    static func top(type: TopItemsType,
-                    return limit: Int,
-                    after offset: Int = 0) -> SpotifyEndpoint {
-        
-        let endpoint = SpotifyEndpoint(
-            path: "/v1/me/top/\(type)",
-            queryItems: [
-                URLQueryItem(name: "time_range", value: "medium_term"),
+    private var path: String {
+        switch self {
+        case .getCurrentUserProfile:
+            return "/v1/me"
+        case .getCurrentUserTopTracks:
+            return "/v1/me/top/tracks"
+        case .getCurrentUserTopArtists:
+            return "/v1/me/top/artists"
+        }
+    }
+    
+    private var queryItems: [URLQueryItem] {
+        switch self {
+        case .getCurrentUserProfile:
+            return []
+        case .getCurrentUserTopTracks(let limit, let offset), .getCurrentUserTopArtists(let limit, let offset):
+            return [
+                URLQueryItem(name: "time_range", value: "long_term"),
                 URLQueryItem(name: "limit", value: String(limit)),
                 URLQueryItem(name: "offset", value: String(offset))
             ]
-        )
-        
-        return endpoint
+        }
     }
-}
-
-enum TopItemsType: String {
     
-    case tracks
-    case artists
+    // MARK: - Exposed properties
+    
+    var url: URL? {
+        var components = URLComponents()
+        components.scheme = self.scheme
+        components.host = self.host
+        components.path = self.path
+        components.queryItems = self.queryItems
+        
+        return components.url
+    }
 }

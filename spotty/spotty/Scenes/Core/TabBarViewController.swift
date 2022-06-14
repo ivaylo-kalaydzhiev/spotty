@@ -52,7 +52,7 @@ class TabBarViewController: UITabBarController {
         super.viewWillAppear(animated)
         
         let repo = WebRepository()
-        repo.getCurrentUserProfile { result in
+        repo.getCurrentUserTopArtists { result in
             switch result {
             case .success(let response):
                 print(response)

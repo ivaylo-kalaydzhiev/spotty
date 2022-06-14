@@ -13,19 +13,27 @@ final class AuthManager {
     /// Singleton instance used to interact with the Manager.
     static let shared = AuthManager()
     
+    // MARK: - Exposed properties
+    
     /// Authorization provider with which the ``AuthManager`` is going to try to authorize.
     var apiDelegate: OAuth2Supporting!
     
     // MARK: - Stored properties
+    
     private var isRefreshingToken = false
     private var refreshBlockStore = [(String) -> Void]()
     
+    // MARK: - Initializers
+    
     private init() {}
     
-    // MARK: - Computed properties
+    // MARK: - Exposed computed properties
+    
     var isSignedIn: Bool {
         return accessToken != nil
     }
+    
+    // MARK: - Private computed properties
     
     private var shouldRefreshToken: Bool {
         guard let expirationDate = accessTokenExpirationDate else { return false }
@@ -60,6 +68,7 @@ final class AuthManager {
     }
     
     // MARK: - Exposed methods
+    
     /// Exchange the Code from the API for an Access Token and cache the response
     /// - Parameters:
     ///   - code: The Code return by the external API as part of the OAuth2 Code flow.
@@ -130,6 +139,7 @@ final class AuthManager {
     }
     
     // MARK: - Private methods
+    
     private func cacheTokens(result: AuthResponse) {
         KeychainManager.save(
             Data(result.accessToken.utf8),
@@ -152,5 +162,4 @@ final class AuthManager {
     }
 }
 
-// TODO: One Repository, that implements multiple protocols.
 // TODO: Create Splash Screen.

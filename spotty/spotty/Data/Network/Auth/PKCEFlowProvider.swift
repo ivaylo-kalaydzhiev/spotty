@@ -14,17 +14,23 @@ final class PKCEFlowProvider {
     /// Singleton instance that provides the needed Code Varifier and Code Challange needed to implement a PKCE Extension Flow
     static let shared = PKCEFlowProvider(count: 32)
     
+    // MARK: - Exposed properties
+    
     /// PKCE Extension Flow Code Verifier
     var codeVerifier: String!
     
     /// PKCE Extension Flow Code Challange
     var codeChallange: String!
     
+    // MARK: - Initiliazers
+    
     private init(count: Int) {
         let octets = generateCryptographicallySecureRandomOctets(count: count)
         codeVerifier = generateCodeVerifier(octets: octets)
         codeChallange = generateChallange(for: codeVerifier)
     }
+    
+    // MARK: - Private methods
     
     /// Generate cryptographically secure random octets, used to create a Code Varifier.
     /// - Parameter count: The number of octets the function will generate. It is strongly recommended to use 32 octets,

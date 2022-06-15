@@ -27,8 +27,8 @@ enum SpotifyEndpoint {
     case getShowEpisodes(showId: String, limit: Int)
     case getPlaylist(playlistId: String)
     case getPlaylistTracks(playlistId: String, limit: Int)
-    case deleteSongsFromPlaylist(playlistId: String, tracks: [AudioTrackRequest], playlistSnapshotId: String)
-    case getTrack(trackId: String)
+    case deleteSongsFromPlaylist(playlistId: String, tracks: [AudioTrackDeleteRequest], playlistSnapshotId: String)
+    case getAudioTrack(trackId: String)
     case getEpisode(episodeId: String)
     
     // MARK: - Private properties
@@ -93,7 +93,7 @@ enum SpotifyEndpoint {
         case .getPlaylistTracks(let playlistId, _),
                 .deleteSongsFromPlaylist(let playlistId, _, _):
             return "/v1/playlists/\(playlistId)/tracks"
-        case .getTrack(let trackId):
+        case .getAudioTrack(let trackId):
             return "/v1/tracks/\(trackId)"
         case .getEpisode(let episodeId):
             return "/v1/episodes/\(episodeId)"
@@ -104,10 +104,9 @@ enum SpotifyEndpoint {
         switch self {
         case .getCurrentUserProfile,
                 .getArtist,
-                .getArtistTopTracks,
                 .getShow,
                 .getPlaylist,
-                .getTrack,
+                .getAudioTrack,
                 .getEpisode:
             return []
         case .getCurrentUserTopTracks(let limit),
@@ -147,6 +146,10 @@ enum SpotifyEndpoint {
             return [
                 URLQueryItem(name: "tracks", value: jsonString),
                 URLQueryItem(name: "snapshot_id", value: snapshotId)
+            ]
+        case .getArtistTopTracks:
+            return [
+                URLQueryItem(name: "market", value: "ES")
             ]
         }
     }

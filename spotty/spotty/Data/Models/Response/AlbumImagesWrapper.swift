@@ -1,5 +1,5 @@
 //
-//  AudioTrackRequest.swift
+//  AlbumRequest.swift
 //  spotty
 //
 //  Created by Ivaylo Kalaydzhiev on 14.06.22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AudioTrackRequest: Codable {
+struct AlbumImagesWrapper: Codable {
     
-    let uri: String
+    let images: [ImageResponse]
 }

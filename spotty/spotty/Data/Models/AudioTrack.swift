@@ -9,7 +9,7 @@ import Foundation
 
 struct AudioTrack: Codable {
     
-    let album: AlbumRequest
+    let album: AlbumImagesWrapper
     let id: String
     let name: String
     let uri: String

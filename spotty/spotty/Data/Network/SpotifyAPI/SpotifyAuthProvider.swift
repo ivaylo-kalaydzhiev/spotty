@@ -53,7 +53,8 @@ final class SpotifyAuthProvider {
                          "%20user-library-modify" +
                          "%20user-library-read" +
                          "%20user-read-email" +
-                         "%20user-top-read")
+                         "%20user-top-read" +
+                         "%20user-read-recently-played")
         ]
         
         return components.url

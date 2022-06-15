@@ -52,12 +52,12 @@ class TabBarViewController: UITabBarController {
         super.viewWillAppear(animated)
         
         let repo = WebRepository()
-        repo.getCurrentUserPlaylists { result in
+        repo.getRecentlyPlayedTracks { result in
             switch result {
             case .success(let response):
                 dump(response)
             case .failure(let error):
-                dump("PROBLEM!!!!!!!!!! \(error.localizedDescription)")
+                dump("PROBLEM!!!!!!!!!! \(error)")
             }
         }
     }

@@ -8,6 +8,8 @@
 import Foundation
 
 // TODO: One Repository, that implements multiple protocols. Maybe name them like Spotify names them in it Docs.
+// TODO: Typealias Result
+// TODO: Use SDK to do Playlist CRUD
 struct WebRepository {
     
     func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
@@ -83,7 +85,7 @@ struct WebRepository {
         let urlRequest = SpotifyEndpoint.getPlaylist(playlistId: playlistId).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
-
+    
     func getPlaylistTracks(playlistId: String = "3cEYpjA9oz9GiPac4AsH4n", completion: @escaping (Result<ItemsResponse<AudioTrackWrapper>, Error>) -> Void) {
         let urlRequest = SpotifyEndpoint.getPlaylistTracks(playlistId: playlistId, limit: 49).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
@@ -98,7 +100,17 @@ struct WebRepository {
         let urlRequest = SpotifyEndpoint.getEpisode(episodeId: episodeId).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
-
+    
+    func createPlaylist(userId: String = "ivailo.s.k",
+                        name: String,
+                        description: String,
+                        completion: @escaping (Result<Playlist, Error>) -> Void) {
+        
+        let urlRequest = SpotifyEndpoint.createPlaylist(userId: userId,
+                                                        name: name,
+                                                        description: description).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
 }
 
 //case searchAllItems(limit: Int, query: String)
@@ -106,6 +118,3 @@ struct WebRepository {
 //case createPlaylist(userId: String, name: String)
 
 //case deleteSongsFromPlaylist(playlistId: String, tracks: [AudioTrackRequest], playlistSnapshotId: String)
-
-//case getTrack(trackId: String)
-//case getEpisode(episodeId: String)

@@ -20,7 +20,7 @@ enum SpotifyEndpoint {
     case getUserSavedShows(limit: Int)
     case searchAllItems(limit: Int, query: String)
     case getFeaturedPlaylists(limit: Int)
-    case createPlaylist(userId: String, name: String)
+    case createPlaylist(userId: String, name: String, description: String)
     case getArtist(artistId: String)
     case getArtistTopTracks(artistId: String)
     case getShow(showId: String)
@@ -78,7 +78,7 @@ enum SpotifyEndpoint {
             return "/v1/search"
         case .getFeaturedPlaylists:
             return "/v1/browse/featured-playlists"
-        case .createPlaylist(let userId, _):
+        case .createPlaylist(let userId, _, _):
             return "/v1/users/\(userId)/playlists"
         case .getArtist(let artistId):
             return "/v1/artists/\(artistId)"
@@ -102,12 +102,13 @@ enum SpotifyEndpoint {
     
     private var queryItems: [URLQueryItem] {
         switch self {
-        case .getCurrentUserProfile,
+        case .getCurrentUserProfile, // TODO: Default return nil
                 .getArtist,
                 .getShow,
                 .getPlaylist,
                 .getAudioTrack,
-                .getEpisode:
+                .getEpisode,
+                .createPlaylist:
             return []
         case .getCurrentUserTopTracks(let limit),
                 .getCurrentUserTopArtists(let limit):
@@ -135,11 +136,6 @@ enum SpotifyEndpoint {
                 URLQueryItem(name: "q", value: query),
                 URLQueryItem(name: "type", value: "artist,playlist,track,show,episode")
             ]
-        case .createPlaylist(let userId, let name):
-            return [
-                URLQueryItem(name: "name", value: name),
-                URLQueryItem(name: "description", value: "Created by: \(userId)")
-            ]
         case .deleteSongsFromPlaylist(_, let tracks, let snapshotId):
             guard let jsonData = try? JSONEncoder().encode(tracks) else { fatalError("Could not edit playlist.") }
             let jsonString = String(data: jsonData, encoding: .utf16)
@@ -151,6 +147,18 @@ enum SpotifyEndpoint {
             return [
                 URLQueryItem(name: "market", value: "ES")
             ]
+        }
+    }
+    
+    private var httpBody: Data? {
+        switch self {
+        case .createPlaylist(_, let name, let description):
+            let requestModel = CreatePlaylistRequest(name: name, description: description)
+            let jsonData = try? JSONEncoder().encode(requestModel)
+            dump(jsonData)
+            return jsonData
+        default:
+            return nil
         }
     }
     
@@ -166,6 +174,7 @@ enum SpotifyEndpoint {
         guard let url = components.url else { fatalError("URL Creation failed") }
         var request = URLRequest(url: url)
         request.httpMethod = self.httpMethod
+        request.httpBody = self.httpBody
         return request
     }
 }

@@ -52,7 +52,7 @@ class TabBarViewController: UITabBarController {
         super.viewWillAppear(animated)
         
         let repo = WebRepository()
-        repo.getEpisode { result in
+        repo.createPlaylist(name: "Babyy playlist babyyy", description: "Ebahti moshtniq playlist") { result in
             switch result {
             case .success(let response):
                 dump(response)

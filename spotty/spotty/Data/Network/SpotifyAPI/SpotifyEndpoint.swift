@@ -31,7 +31,7 @@ enum SpotifyEndpoint {
     case deleteSongsFromPlaylist(playlistId: String, trackURIs: [String], playlistSnapshotId: String)
     case getAudioTrack(trackId: String)
     case getEpisode(episodeId: String)
-    // case addTrackToPlaylist
+    case addTracksToPlaylist(playlistId: String, trackURIs: [String], position: Int?)
     
     // MARK: - Private properties
     
@@ -51,7 +51,8 @@ enum SpotifyEndpoint {
     
     private var httpMethod: String {
         switch self {
-        case .createPlaylist:
+        case .createPlaylist,
+                .addTracksToPlaylist:
             return HTTPMethod.POST.rawValue
         case .deleteSongsFromPlaylist:
             return HTTPMethod.DELETE.rawValue
@@ -99,6 +100,8 @@ enum SpotifyEndpoint {
             return "/v1/tracks/\(trackId)"
         case .getEpisode(let episodeId):
             return "/v1/episodes/\(episodeId)"
+        case .addTracksToPlaylist(let playlistId, _, _):
+            return "/v1/playlists/\(playlistId)/tracks"
         }
     }
     
@@ -110,7 +113,8 @@ enum SpotifyEndpoint {
                 .getPlaylist,
                 .getAudioTrack,
                 .getEpisode,
-                .createPlaylist:
+                .createPlaylist,
+                .deleteSongsFromPlaylist:
             return []
         case .getCurrentUserTopTracks(let limit),
                 .getCurrentUserTopArtists(let limit):
@@ -138,17 +142,20 @@ enum SpotifyEndpoint {
                 URLQueryItem(name: "q", value: query),
                 URLQueryItem(name: "type", value: "artist,playlist,track,show,episode")
             ]
-        case .deleteSongsFromPlaylist(_, let tracks, let snapshotId):
-            guard let jsonData = try? JSONEncoder().encode(tracks) else { fatalError("Could not edit playlist.") }
-            let jsonString = String(data: jsonData, encoding: .utf16)
-            return [
-                URLQueryItem(name: "tracks", value: jsonString),
-                URLQueryItem(name: "snapshot_id", value: snapshotId)
-            ]
         case .getArtistTopTracks:
             return [
                 URLQueryItem(name: "market", value: "ES")
             ]
+        case .addTracksToPlaylist(_, let trackURIs, let position):
+            let uriString = trackURIs.joined(separator: ",")
+            if let position = position {
+                return [
+                    URLQueryItem(name: "uris", value: uriString),
+                    URLQueryItem(name: "position", value: String(position))
+                ]
+            } else {
+                return [ URLQueryItem(name: "uris", value: uriString) ]
+            }
         }
     }
     

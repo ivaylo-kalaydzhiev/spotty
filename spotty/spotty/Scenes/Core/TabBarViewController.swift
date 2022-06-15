@@ -52,7 +52,7 @@ class TabBarViewController: UITabBarController {
         super.viewWillAppear(animated)
         
         let repo = WebRepository()
-        repo.deleteSongsFromPlaylist { result in
+        repo.addTracksToPlaylist { result in
             switch result {
             case .success(let response):
                 dump(response)

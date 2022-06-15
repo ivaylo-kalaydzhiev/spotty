@@ -6,13 +6,14 @@
 //
 
 import Foundation
+typealias RepositoryCompletion<T> = (Result<T, Error>) -> Void
 
 // TODO: One Repository, that implements multiple protocols. Maybe name them like Spotify names them in it Docs.
-// TODO: Typealias Result
-// TODO: Use SDK to do Playlist CRUD
+// TODO: Create SDK to do Playlist CRUD
+
 struct WebRepository {
     
-    func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
+    func getCurrentUserProfile(completion: @escaping RepositoryCompletion<UserProfile>) {
         let urlRequest = SpotifyEndpoint.getCurrentUserProfile.urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
@@ -123,8 +124,19 @@ struct WebRepository {
         
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
+    
+    func addTracksToPlaylist(playlistId: String = "2Ugi1MOIyBezH0e4sARgD8",
+                             trackURIs: [String] = ["spotify:track:5iddrTFG7zJ4g9UkgpPxJv"],
+                             position: Int? = nil,
+                             completion: @escaping (Result<PlaylistChangedResponse, Error>) -> Void) {
+        
+        let urlRequest = SpotifyEndpoint.addTracksToPlaylist(playlistId: playlistId,
+                                                             trackURIs: trackURIs,
+                                                             position: position).urlRequest
+        
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
 }
 
 //case searchAllItems(limit: Int, query: String)
-
-//case deleteSongsFromPlaylist(playlistId: String, tracks: [AudioTrackRequest], playlistSnapshotId: String)

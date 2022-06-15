@@ -10,15 +10,26 @@ import UIKit
 extension UIView {
     
     /// The UI View animates a spring bounce
-    func bounce() {
-        UIView.animate(withDuration: 1,
-                       delay: 0.0,
-                       usingSpringWithDamping: 0.2,
+    func bounce(duration: Double = 1,
+                delay: Double = 0,
+                springDamping: Double = 0.2,
+                widthDiff: Double = 5,
+                heightDiff: Double = 5) {
+        UIView.animate(withDuration: duration,
+                       delay: delay,
+                       usingSpringWithDamping: springDamping,
                        initialSpringVelocity: 0.0,
                        options: .allowUserInteraction,
                        animations: {
-            self.bounds.size.width += 5.0
-            self.bounds.size.height += 5.0
+            
+            let originalWidth = self.bounds.size.width
+            let originalHeight = self.bounds.size.height
+            
+            self.bounds.size.width += widthDiff
+            self.bounds.size.height += heightDiff
+            
+            self.bounds.size.width = originalWidth
+            self.bounds.size.height = originalHeight
         })
     }
 }

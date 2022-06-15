@@ -38,24 +38,26 @@ final class AuthManager {
     private var shouldRefreshToken: Bool {
         guard let expirationDate = accessTokenExpirationDate else { return false }
         let currentDate = Date()
-        let fiveMinutes: TimeInterval = 300
-        return currentDate.addingTimeInterval(fiveMinutes) >= expirationDate
+        let refreshInterval: TimeInterval = 300
+        return currentDate.addingTimeInterval(refreshInterval) >= expirationDate
     }
     
     private var accessToken: String? {
         guard let data = KeychainManager.read(
             service: KeychainManager.Services.accessToken,
-            account: KeychainManager.Accounts.spotify)
+            account: KeychainManager.Accounts.spotify),
+              let accessToken = String(data: data, encoding: .utf8)
         else { return nil }
-        return String(data: data, encoding: .utf8)!
+        return accessToken
     }
     
     private var refreshToken: String? {
         guard let data = KeychainManager.read(
             service: KeychainManager.Services.refreshToken,
-            account: KeychainManager.Accounts.spotify)
+            account: KeychainManager.Accounts.spotify),
+              let refreshToken = String(data: data, encoding: .utf8)
         else { return nil }
-        return String(data: data, encoding: .utf8)!
+        return refreshToken
     }
     
     private var accessTokenExpirationDate: Date? {
@@ -97,10 +99,14 @@ final class AuthManager {
     /// The API Response that needs to be cached is represented by an ``AuthResponse`` model in this application.
     /// It contains multiple properties including Access Token, Refresh Token and Expiration Date
     func refreshTokenIfNeeded(completion: @escaping (Bool) -> Void) {
-        guard !isRefreshingToken, let refreshToken = refreshToken else { return }
+        guard !isRefreshingToken,
+              let refreshToken = refreshToken
+        else { return }
+        
         guard shouldRefreshToken else { completion(true); return }
         
         guard let request = apiDelegate.createTokenRefreshRequest(with: refreshToken) else { return }
+        
         isRefreshingToken = true
         
         Network.performRequest(urlRequest: request) { [weak self] (result: Result<AuthResponse, Error>) in

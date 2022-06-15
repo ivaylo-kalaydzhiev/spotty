@@ -13,7 +13,7 @@ extension UIButton {
     ///  - Parameters:
     ///     - style: One of the styles represented by the `ButtonStyle` enum
     func setCustomStyle(_ style: ButtonStyle) {
-        self.clipsToBounds = style.clipsToBounds
-        self.layer.cornerRadius = style.cornerRadius
+        clipsToBounds = style.clipsToBounds
+        layer.cornerRadius = style.cornerRadius
     }
 }

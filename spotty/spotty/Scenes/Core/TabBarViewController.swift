@@ -55,9 +55,9 @@ class TabBarViewController: UITabBarController {
         repo.getCurrentUserPlaylists { result in
             switch result {
             case .success(let response):
-                print(response)
+                dump(response)
             case .failure(let error):
-                print("PROBLEM!!!!!!!!!! \(error.localizedDescription)")
+                dump("PROBLEM!!!!!!!!!! \(error.localizedDescription)")
             }
         }
     }

@@ -11,22 +11,22 @@ import Foundation
 struct WebRepository {
     
     func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
-        let url = SpotifyEndpoint.getCurrentUserProfile.url
-        Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
+        let urlRequest = SpotifyEndpoint.getCurrentUserProfile.urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
     func getCurrentUserTopTracks(completion: @escaping (Result<ItemsResponse<AudioTrack>, Error>) -> Void) {
-        let url = SpotifyEndpoint.getCurrentUserTopTracks(limit: 49).url
-        Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
+        let urlRequest = SpotifyEndpoint.getCurrentUserTopTracks(limit: 49).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
     func getCurrentUserTopArtists(completion: @escaping (Result<ItemsResponse<Artist>, Error>) -> Void) {
-        let url = SpotifyEndpoint.getCurrentUserTopArtists(limit: 49).url
-        Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
+        let urlRequest = SpotifyEndpoint.getCurrentUserTopArtists(limit: 49).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
     func getCurrentUserPlaylists(completion: @escaping (Result<ItemsResponse<Playlist>, Error>) -> Void) {
-        let url = SpotifyEndpoint.getCurrentUserPlaylists(limit: 49).url
-        Network.performAuthorizedRequest(with: url, httpMethod: .GET, completion: completion)
+        let urlRequest = SpotifyEndpoint.getCurrentUserPlaylists(limit: 49).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
 }

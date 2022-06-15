@@ -47,6 +47,17 @@ enum SpotifyEndpoint {
         }
     }
     
+    private var httpMethod: String {
+        switch self {
+        case .createPlaylist:
+            return HTTPMethod.POST.rawValue
+        case .deleteSongsFromPlaylist:
+            return HTTPMethod.DELETE.rawValue
+        default:
+            return HTTPMethod.GET.rawValue
+        }
+    }
+    
     private var path: String {
         switch self {
         case .getCurrentUserProfile:
@@ -142,14 +153,16 @@ enum SpotifyEndpoint {
     
     // MARK: - Exposed properties
     
-    var url: URL? {
+    var urlRequest: URLRequest {
         var components = URLComponents()
         components.scheme = self.scheme
         components.host = self.host
         components.path = self.path
         components.queryItems = self.queryItems
         
-        return components.url
+        guard let url = components.url else { fatalError("URL Creation failed") }
+        var request = URLRequest(url: url)
+        request.httpMethod = self.httpMethod
+        return request
     }
 }
-

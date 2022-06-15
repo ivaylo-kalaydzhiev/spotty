@@ -23,9 +23,9 @@ struct Network {
             if let data = data {
                 
                 // Delete those two lines
-                let str = String(decoding: data, as: UTF8.self)
-                print("DataString: \(str)")
-                print(response)
+//                let str = String(decoding: data, as: UTF8.self)
+//                print("DataString: \(str)")
+//                print(response)
                 
                 data.parseJSON(completion: completion)
             } else if let error = error {
@@ -35,17 +35,13 @@ struct Network {
         .resume()
     }
     
-    static func performAuthorizedRequest<T: Decodable>(with url: URL?,
-                                                       httpMethod: HTTPMethod,
+    static func performAuthorizedRequest<T: Decodable>(with request: URLRequest,
                                                        completion: @escaping (Result<T, Error>) -> Void) {
         
         AuthManager.shared.withValidToken { token in
-            guard let url = url else { return }
-            var request = URLRequest(url: url)
-            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            request.httpMethod = httpMethod.rawValue
-            
-            performRequest(urlRequest: request, completion: completion)
+            var urlRequest = request
+            urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            performRequest(urlRequest: urlRequest, completion: completion)
         }
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5136E992859E4D600765AC1 /* AudioTrackWrapperRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E982859E4D600765AC1 /* AudioTrackWrapperRequest.swift */; };
 		D51D782B2858A1B700EED4F9 /* AudioTrackRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D782A2858A1B700EED4F9 /* AudioTrackRequest.swift */; };
 		D51D78372858BB1400EED4F9 /* ImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78362858BB1400EED4F9 /* ImageResponse.swift */; };
 		D51D78392858C38500EED4F9 /* ItemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78382858C38500EED4F9 /* ItemsResponse.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D5136E982859E4D600765AC1 /* AudioTrackWrapperRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackWrapperRequest.swift; sourceTree = "<group>"; };
 		D51D782A2858A1B700EED4F9 /* AudioTrackRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackRequest.swift; sourceTree = "<group>"; };
 		D51D78362858BB1400EED4F9 /* ImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResponse.swift; sourceTree = "<group>"; };
 		D51D78382858C38500EED4F9 /* ItemsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsResponse.swift; sourceTree = "<group>"; };
@@ -114,8 +116,9 @@
 		D51D78472858C6D500EED4F9 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				D51D782A2858A1B700EED4F9 /* AudioTrackRequest.swift */,
 				D51D78482858C89900EED4F9 /* AlbumRequest.swift */,
+				D51D782A2858A1B700EED4F9 /* AudioTrackRequest.swift */,
+				D5136E982859E4D600765AC1 /* AudioTrackWrapperRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,
 				D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */,
+				D5136E992859E4D600765AC1 /* AudioTrackWrapperRequest.swift in Sources */,
 				D5EF5A5D28533DFF0079F91B /* AppError.swift in Sources */,
 				D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */,
 				D51D78372858BB1400EED4F9 /* ImageResponse.swift in Sources */,

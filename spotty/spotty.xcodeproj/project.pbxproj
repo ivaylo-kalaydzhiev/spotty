@@ -12,6 +12,7 @@
 		D5136E9D2859F8F700765AC1 /* ShowWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E9C2859F8F700765AC1 /* ShowWrapper.swift */; };
 		D5136E9F2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E9E2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift */; };
 		D5136EA1285A017300765AC1 /* AudioTracksWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136EA0285A017300765AC1 /* AudioTracksWrapper.swift */; };
+		D5136EA3285A0FB300765AC1 /* CreatePlaylistRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136EA2285A0FB300765AC1 /* CreatePlaylistRequest.swift */; };
 		D51D782B2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D782A2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift */; };
 		D51D78372858BB1400EED4F9 /* ImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78362858BB1400EED4F9 /* ImageResponse.swift */; };
 		D51D78392858C38500EED4F9 /* ItemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78382858C38500EED4F9 /* ItemsResponse.swift */; };
@@ -58,6 +59,7 @@
 		D5136E9C2859F8F700765AC1 /* ShowWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowWrapper.swift; sourceTree = "<group>"; };
 		D5136E9E2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistsResponse.swift; sourceTree = "<group>"; };
 		D5136EA0285A017300765AC1 /* AudioTracksWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTracksWrapper.swift; sourceTree = "<group>"; };
+		D5136EA2285A0FB300765AC1 /* CreatePlaylistRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlaylistRequest.swift; sourceTree = "<group>"; };
 		D51D782A2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackDeleteRequest.swift; sourceTree = "<group>"; };
 		D51D78362858BB1400EED4F9 /* ImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResponse.swift; sourceTree = "<group>"; };
 		D51D78382858C38500EED4F9 /* ItemsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsResponse.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				D51D782A2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift */,
+				D5136EA2285A0FB300765AC1 /* CreatePlaylistRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				D5136E992859E4D600765AC1 /* AudioTrackWrapper.swift in Sources */,
 				D5EF5A5D28533DFF0079F91B /* AppError.swift in Sources */,
 				D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */,
+				D5136EA3285A0FB300765AC1 /* CreatePlaylistRequest.swift in Sources */,
 				D51D78372858BB1400EED4F9 /* ImageResponse.swift in Sources */,
 				D51D782B2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift in Sources */,
 				D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */,

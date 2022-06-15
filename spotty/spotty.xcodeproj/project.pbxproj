@@ -13,7 +13,9 @@
 		D5136E9F2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E9E2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift */; };
 		D5136EA1285A017300765AC1 /* AudioTracksWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136EA0285A017300765AC1 /* AudioTracksWrapper.swift */; };
 		D5136EA3285A0FB300765AC1 /* CreatePlaylistRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136EA2285A0FB300765AC1 /* CreatePlaylistRequest.swift */; };
-		D51D782B2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D782A2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift */; };
+		D5136EA5285A176100765AC1 /* RemoveTrackRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136EA4285A176100765AC1 /* RemoveTrackRequest.swift */; };
+		D5136EA7285A194F00765AC1 /* PlaylistChangedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136EA6285A194F00765AC1 /* PlaylistChangedResponse.swift */; };
+		D51D782B2858A1B700EED4F9 /* RemoveAudioTrackFromPlaylistRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D782A2858A1B700EED4F9 /* RemoveAudioTrackFromPlaylistRequest.swift */; };
 		D51D78372858BB1400EED4F9 /* ImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78362858BB1400EED4F9 /* ImageResponse.swift */; };
 		D51D78392858C38500EED4F9 /* ItemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78382858C38500EED4F9 /* ItemsResponse.swift */; };
 		D51D783C2858C46500EED4F9 /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D783B2858C46500EED4F9 /* AudioTrack.swift */; };
@@ -60,7 +62,9 @@
 		D5136E9E2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistsResponse.swift; sourceTree = "<group>"; };
 		D5136EA0285A017300765AC1 /* AudioTracksWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTracksWrapper.swift; sourceTree = "<group>"; };
 		D5136EA2285A0FB300765AC1 /* CreatePlaylistRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlaylistRequest.swift; sourceTree = "<group>"; };
-		D51D782A2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackDeleteRequest.swift; sourceTree = "<group>"; };
+		D5136EA4285A176100765AC1 /* RemoveTrackRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTrackRequest.swift; sourceTree = "<group>"; };
+		D5136EA6285A194F00765AC1 /* PlaylistChangedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistChangedResponse.swift; sourceTree = "<group>"; };
+		D51D782A2858A1B700EED4F9 /* RemoveAudioTrackFromPlaylistRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAudioTrackFromPlaylistRequest.swift; sourceTree = "<group>"; };
 		D51D78362858BB1400EED4F9 /* ImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResponse.swift; sourceTree = "<group>"; };
 		D51D78382858C38500EED4F9 /* ItemsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsResponse.swift; sourceTree = "<group>"; };
 		D51D783B2858C46500EED4F9 /* AudioTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				D5136E982859E4D600765AC1 /* AudioTrackWrapper.swift */,
 				D5136EA0285A017300765AC1 /* AudioTracksWrapper.swift */,
 				D51D78482858C89900EED4F9 /* AlbumImagesWrapper.swift */,
+				D5136EA6285A194F00765AC1 /* PlaylistChangedResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -132,7 +137,8 @@
 		D51D78472858C6D500EED4F9 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				D51D782A2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift */,
+				D5136EA4285A176100765AC1 /* RemoveTrackRequest.swift */,
+				D51D782A2858A1B700EED4F9 /* RemoveAudioTrackFromPlaylistRequest.swift */,
 				D5136EA2285A0FB300765AC1 /* CreatePlaylistRequest.swift */,
 			);
 			path = Request;
@@ -478,8 +484,10 @@
 				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
 				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
 				D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */,
+				D5136EA7285A194F00765AC1 /* PlaylistChangedResponse.swift in Sources */,
 				D5EF5A4B285235AF0079F91B /* ButtonStyle.swift in Sources */,
 				D51D78392858C38500EED4F9 /* ItemsResponse.swift in Sources */,
+				D5136EA5285A176100765AC1 /* RemoveTrackRequest.swift in Sources */,
 				D5136E9F2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift in Sources */,
 				D51D783E2858C48E00EED4F9 /* Album.swift in Sources */,
 				D51D78492858C89900EED4F9 /* AlbumImagesWrapper.swift in Sources */,
@@ -500,7 +508,7 @@
 				D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */,
 				D5136EA3285A0FB300765AC1 /* CreatePlaylistRequest.swift in Sources */,
 				D51D78372858BB1400EED4F9 /* ImageResponse.swift in Sources */,
-				D51D782B2858A1B700EED4F9 /* AudioTrackDeleteRequest.swift in Sources */,
+				D51D782B2858A1B700EED4F9 /* RemoveAudioTrackFromPlaylistRequest.swift in Sources */,
 				D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */,
 				D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */,
 				D51D78402858C4AD00EED4F9 /* Playlist.swift in Sources */,

@@ -111,10 +111,20 @@ struct WebRepository {
                                                         description: description).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
+    
+    func deleteSongsFromPlaylist(playlistId: String = "2Ugi1MOIyBezH0e4sARgD8",
+                                 trackURIs: [String] = ["spotify:track:5iddrTFG7zJ4g9UkgpPxJv"],
+                                 playlistSnapshotId: String = "NCxkYWQwMWY4YzYxMzcwZDNhYzI2ZTMzMjg2M2I0NjY5MzRmODBlODQ2",
+                                 completion: @escaping (Result<PlaylistChangedResponse, Error>) -> Void) {
+        
+        let urlRequest = SpotifyEndpoint.deleteSongsFromPlaylist(playlistId: playlistId,
+                                                                 trackURIs: trackURIs,
+                                                                 playlistSnapshotId: playlistSnapshotId).urlRequest
+        
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
 }
 
 //case searchAllItems(limit: Int, query: String)
-
-//case createPlaylist(userId: String, name: String)
 
 //case deleteSongsFromPlaylist(playlistId: String, tracks: [AudioTrackRequest], playlistSnapshotId: String)

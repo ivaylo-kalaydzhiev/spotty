@@ -30,7 +30,7 @@ struct WebRepository {
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
-    func getRecentlyPlayedTracks(completion: @escaping (Result<ItemsResponse<AudioTrackWrapperRequest>, Error>) -> Void) {
+    func getRecentlyPlayedTracks(completion: @escaping (Result<ItemsResponse<AudioTrackWrapper>, Error>) -> Void) {
         
         let fiveDaysAgo: TimeInterval = -432000
         let date = Date().addingTimeInterval(fiveDaysAgo)
@@ -38,26 +38,72 @@ struct WebRepository {
         let urlRequest = SpotifyEndpoint.getRecentlyPlayedTracks(limit: 49, since: dateAsNumber).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
+    
+    func getUserSavedEpisodes(completion: @escaping (Result<ItemsResponse<EpisodeWrapper>, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getUserSavedEpisodes(limit: 49).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func getUserSavedShows(completion: @escaping (Result<ItemsResponse<ShowWrapper>, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getUserSavedShows(limit: 49).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func searchAllItems(for searchTerm: String, completion: @escaping (Result<ItemsResponse<ShowWrapper>, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.searchAllItems(limit: 10, query: searchTerm).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func getFeaturedPlaylists(completion: @escaping (Result<FeaturedPlaylistsResponse, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getFeaturedPlaylists(limit: 49).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func getArtist(artistId: String = "0EmeFodog0BfCgMzAIvKQp", completion: @escaping (Result<Artist, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getArtist(artistId: artistId).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func getArtistTopTracks(artistId: String = "0EmeFodog0BfCgMzAIvKQp", completion: @escaping (Result<AudioTracksWrapper, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getArtistTopTracks(artistId: artistId).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func getShow(showId: String = "38bS44xjbVVZ3No3ByF1dJ", completion: @escaping (Result<Show, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getShow(showId: showId).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func getShowEpisodes(showId: String = "38bS44xjbVVZ3No3ByF1dJ", completion: @escaping (Result<ItemsResponse<Episode>, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getShowEpisodes(showId: showId, limit: 49).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func getPlaylist(playlistId: String = "3cEYpjA9oz9GiPac4AsH4n", completion: @escaping (Result<Playlist, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getPlaylist(playlistId: playlistId).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+
+    func getPlaylistTracks(playlistId: String = "3cEYpjA9oz9GiPac4AsH4n", completion: @escaping (Result<ItemsResponse<AudioTrackWrapper>, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getPlaylistTracks(playlistId: playlistId, limit: 49).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func getAudioTrack(audioTrackId: String = "11dFghVXANMlKmJXsNCbNl", completion: @escaping (Result<AudioTrack, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getAudioTrack(trackId: audioTrackId).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+    
+    func getEpisode(episodeId: String = "512ojhOuo1ktJprKbVcKyQ", completion: @escaping (Result<Episode, Error>) -> Void) {
+        let urlRequest = SpotifyEndpoint.getEpisode(episodeId: episodeId).urlRequest
+        Network.performAuthorizedRequest(with: urlRequest, completion: completion)
+    }
+
 }
 
-//case getCurrentUserProfile
-//case getCurrentUserTopTracks(limit: Int)
-//case getCurrentUserTopArtists(limit: Int)
-//case getCurrentUserPlaylists(limit: Int)
-//case getRecentlyPlayedTracks(limit: Int, since: Int)
-//case getUserSavedEpisodes(limit: Int)
-//case getUserSavedShows(limit: Int)
 //case searchAllItems(limit: Int, query: String)
-//case getFeaturedPlaylists(limit: Int)
 
 //case createPlaylist(userId: String, name: String)
-
-//case getArtist(artistId: String)
-//case getArtistTopTracks(artistId: String)
-//case getShow(showId: String)
-//case getShowEpisodes(showId: String, limit: Int)
-//case getPlaylist(playlistId: String)
-//case getPlaylistTracks(playlistId: String, limit: Int)
 
 //case deleteSongsFromPlaylist(playlistId: String, tracks: [AudioTrackRequest], playlistSnapshotId: String)
 

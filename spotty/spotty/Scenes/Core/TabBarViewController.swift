@@ -52,7 +52,7 @@ class TabBarViewController: UITabBarController {
         super.viewWillAppear(animated)
         
         let repo = WebRepository()
-        repo.getRecentlyPlayedTracks { result in
+        repo.getEpisode { result in
             switch result {
             case .success(let response):
                 dump(response)

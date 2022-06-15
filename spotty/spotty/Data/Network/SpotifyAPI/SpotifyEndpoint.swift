@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TODO: Cleanup: WHOLE doc - AudioTrack vs Track
 enum SpotifyEndpoint {
     
     // MARK: - Cases
@@ -27,9 +28,10 @@ enum SpotifyEndpoint {
     case getShowEpisodes(showId: String, limit: Int)
     case getPlaylist(playlistId: String)
     case getPlaylistTracks(playlistId: String, limit: Int)
-    case deleteSongsFromPlaylist(playlistId: String, tracks: [AudioTrackDeleteRequest], playlistSnapshotId: String)
+    case deleteSongsFromPlaylist(playlistId: String, trackURIs: [String], playlistSnapshotId: String)
     case getAudioTrack(trackId: String)
     case getEpisode(episodeId: String)
+    // case addTrackToPlaylist
     
     // MARK: - Private properties
     
@@ -155,7 +157,12 @@ enum SpotifyEndpoint {
         case .createPlaylist(_, let name, let description):
             let requestModel = CreatePlaylistRequest(name: name, description: description)
             let jsonData = try? JSONEncoder().encode(requestModel)
-            dump(jsonData)
+            return jsonData
+        case .deleteSongsFromPlaylist(_, let trackURIs, let playlistSnapshotId):
+            let requestModel = RemoveAudioTrackFromPlaylistRequest(
+                tracks: trackURIs.map { RemoveTrackRequest(uri: $0) },
+                snapshotId: playlistSnapshotId)
+            let jsonData = try? JSONEncoder().encode(requestModel)
             return jsonData
         default:
             return nil

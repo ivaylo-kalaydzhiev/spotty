@@ -15,7 +15,7 @@ struct Playlist: Codable {
     let owner: UserProfile
     let snapshotId: String
     let uri: String
-    
+   
     private enum CodingKeys: String, CodingKey {
         case description
         case id

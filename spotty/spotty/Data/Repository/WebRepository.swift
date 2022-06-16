@@ -9,8 +9,6 @@ import Foundation
 typealias Completion<T> = (Result<T, Error>) -> Void
 
 // TODO: One Repository, that implements multiple protocols. Maybe name them like Spotify names them in it Docs.
-// TODO: Create SDK to do Playlist CRUD
-
 struct WebRepository {
     
     func getCurrentUserProfile(completion: @escaping Completion<UserProfile>) {
@@ -52,6 +50,7 @@ struct WebRepository {
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
+    // TODO: Do I want to serach ALL items?
     func searchAllItems(for searchTerm: String,
                         completion: @escaping Completion<ItemsResponse<ShowWrapper>>) {
         let urlRequest = SpotifyEndpoint.searchAllItems(limit: 10, query: searchTerm).urlRequest
@@ -147,23 +146,3 @@ struct WebRepository {
     }
     
 }
-
-//case searchAllItems(limit: Int, query: String)
-
-// Repos
-// PlaylistRepo
-//      - Get Current User Playlists
-//      - Get Featured Playlists
-//      - Get Playlist
-//      - Get Playlist Tracks
-//      - Create Playlist
-//      - Add Items to Playlist
-//      - Reorder Items in Playlist - NOT IMPLEMENTED
-//      - Remove Items from Playlist
-// AudioTracksRepo
-//      - Get Recently Played Tracks
-// ArtistRepo
-// ShowRepository
-// EpisodeRepository
-// ProfileRepository
-//      - Get Current User Profile

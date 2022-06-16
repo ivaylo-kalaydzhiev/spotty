@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct AlbumImagesWrapper: Codable {
+struct AlbumImagesWrapper: Codable, Hashable {
     
+    let uuid = UUID()
     let images: [ImageResponse]
 }

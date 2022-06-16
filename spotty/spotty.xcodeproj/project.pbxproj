@@ -25,6 +25,10 @@
 		D51D78442858C4CD00EED4F9 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78432858C4CD00EED4F9 /* Show.swift */; };
 		D51D78462858C4DA00EED4F9 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78452858C4DA00EED4F9 /* Artist.swift */; };
 		D51D78492858C89900EED4F9 /* AlbumImagesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78482858C89900EED4F9 /* AlbumImagesWrapper.swift */; };
+		D55AA3FC285B622600F95F73 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FB285B622600F95F73 /* Observable.swift */; };
+		D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */; };
+		D574DA00285B2810007F808E /* MediumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574D9FE285B2810007F808E /* MediumCell.swift */; };
+		D574DA04285B28E3007F808E /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */; };
 		D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D082857300700EFA9FB /* WebRepository.swift */; };
 		D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D0A2857303300EFA9FB /* UserProfile.swift */; };
 		D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A04285223950079F91B /* AppDelegate.swift */; };
@@ -74,6 +78,10 @@
 		D51D78432858C4CD00EED4F9 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		D51D78452858C4DA00EED4F9 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		D51D78482858C89900EED4F9 /* AlbumImagesWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImagesWrapper.swift; sourceTree = "<group>"; };
+		D55AA3FB285B622600F95F73 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadFromURL.swift"; sourceTree = "<group>"; };
+		D574D9FE285B2810007F808E /* MediumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCell.swift; sourceTree = "<group>"; };
+		D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfConfiguringCell.swift; path = ../../../../../../../Library/SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		D5C92D082857300700EFA9FB /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		D5C92D0A2857303300EFA9FB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		D5EF5A01285223950079F91B /* spotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +216,7 @@
 				D5EF5A47285235950079F91B /* Extensions */,
 				D5EF5A462852358F0079F91B /* Enums */,
 				D5EF5A6C285379DE0079F91B /* KeychainManager.swift */,
+				D55AA3FB285B622600F95F73 /* Observable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -244,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */,
+				D574D9FE285B2810007F808E /* MediumCell.swift */,
 			);
 			path = MusicScene;
 			sourceTree = "<group>";
@@ -292,6 +302,7 @@
 				D5EF5A21285226BE0079F91B /* MusicScene */,
 				D5EF5A22285226CC0079F91B /* ShowsScene */,
 				D5EF5A23285226DA0079F91B /* PlaylistScene */,
+				D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -372,6 +383,7 @@
 			children = (
 				D5EF5A4E285238A70079F91B /* UIView+Animations.swift */,
 				D5EF5A48285235A50079F91B /* UIButton+setStyle.swift */,
+				D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -500,13 +512,16 @@
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,
 				D5EF5A57285335FB0079F91B /* PKCEFlowProvider.swift in Sources */,
+				D574DA04285B28E3007F808E /* SelfConfiguringCell.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,
 				D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */,
 				D5136E992859E4D600765AC1 /* AudioTrackWrapper.swift in Sources */,
 				D5EF5A5D28533DFF0079F91B /* AppError.swift in Sources */,
+				D55AA3FC285B622600F95F73 /* Observable.swift in Sources */,
 				D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */,
 				D5136EA3285A0FB300765AC1 /* CreatePlaylistRequest.swift in Sources */,
+				D574DA00285B2810007F808E /* MediumCell.swift in Sources */,
 				D51D78372858BB1400EED4F9 /* ImageResponse.swift in Sources */,
 				D51D782B2858A1B700EED4F9 /* RemoveAudioTrackFromPlaylistRequest.swift in Sources */,
 				D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */,
@@ -516,6 +531,7 @@
 				D51D783C2858C46500EED4F9 /* AudioTrack.swift in Sources */,
 				D5EF5A4F285238A70079F91B /* UIView+Animations.swift in Sources */,
 				D5EF5A6B28536AB50079F91B /* OAuth2Supporting.swift in Sources */,
+				D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */,
 				D5EF5A5F28533E300079F91B /* AuthResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

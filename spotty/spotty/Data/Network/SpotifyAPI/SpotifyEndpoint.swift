@@ -94,28 +94,18 @@ enum SpotifyEndpoint {
         case .getPlaylist(let playlistId):
             return "/v1/playlists/\(playlistId)"
         case .getPlaylistTracks(let playlistId, _),
-                .deleteSongsFromPlaylist(let playlistId, _, _):
+                .deleteSongsFromPlaylist(let playlistId, _, _),
+                .addTracksToPlaylist(let playlistId, _, _):
             return "/v1/playlists/\(playlistId)/tracks"
         case .getAudioTrack(let trackId):
             return "/v1/tracks/\(trackId)"
         case .getEpisode(let episodeId):
             return "/v1/episodes/\(episodeId)"
-        case .addTracksToPlaylist(let playlistId, _, _):
-            return "/v1/playlists/\(playlistId)/tracks"
         }
     }
     
     private var queryItems: [URLQueryItem] {
         switch self {
-        case .getCurrentUserProfile, // TODO: Default return nil
-                .getArtist,
-                .getShow,
-                .getPlaylist,
-                .getAudioTrack,
-                .getEpisode,
-                .createPlaylist,
-                .deleteSongsFromPlaylist:
-            return []
         case .getCurrentUserTopTracks(let limit),
                 .getCurrentUserTopArtists(let limit):
             return [
@@ -144,7 +134,7 @@ enum SpotifyEndpoint {
             ]
         case .getArtistTopTracks:
             return [
-                URLQueryItem(name: "market", value: "ES")
+                URLQueryItem(name: "market", value: "BG")
             ]
         case .addTracksToPlaylist(_, let trackURIs, let position):
             let uriString = trackURIs.joined(separator: ",")
@@ -156,6 +146,8 @@ enum SpotifyEndpoint {
             } else {
                 return [ URLQueryItem(name: "uris", value: uriString) ]
             }
+        default:
+            return []
         }
     }
     
@@ -164,14 +156,12 @@ enum SpotifyEndpoint {
         switch self {
         case .createPlaylist(_, let name, let description):
             let requestModel = CreatePlaylistRequest(name: name, description: description)
-            let jsonData = try? JSONEncoder().encode(requestModel)
-            return jsonData
+            return try? JSONEncoder().encode(requestModel)
         case .deleteSongsFromPlaylist(_, let trackURIs, let playlistSnapshotId):
             let requestModel = RemoveAudioTrackFromPlaylistRequest(
                 tracks: trackURIs.map { RemoveTrackRequest(uri: $0) },
                 snapshotId: playlistSnapshotId)
-            let jsonData = try? JSONEncoder().encode(requestModel)
-            return jsonData
+            return try? JSONEncoder().encode(requestModel)
         default:
             return nil
         }

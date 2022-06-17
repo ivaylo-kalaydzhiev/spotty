@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PlaylistChangedResponse: Codable {
+struct PlaylistChangedResponse: Codable, Hashable {
     
     let snapshotId: String
     

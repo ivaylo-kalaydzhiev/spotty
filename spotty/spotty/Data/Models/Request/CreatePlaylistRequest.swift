@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CreatePlaylistRequest: Codable {
+struct CreatePlaylistRequest: Codable, Hashable {
     
     let name: String
     let description: String

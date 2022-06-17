@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserProfile: Codable {
+struct UserProfile: Codable, Hashable {
     
     let id: String
     let spotifyURI: String

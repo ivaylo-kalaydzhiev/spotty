@@ -7,32 +7,27 @@
 
 import UIKit
 
-protocol MusicViewModelProtocol {
+class MusicViewModel {
     
-    var sections: Observable<[AudioTrackSection]> { get }
-    
-    func loadSections()
-}
-
-class MusicViewModel: MusicViewModelProtocol {
-    
-    let sections: Observable<[AudioTrackSection]> = Observable([AudioTrackSection]())
+    let recentlyPlayedTracks: Observable<[AudioTrack]> = Observable([AudioTrack]())
+    let featuredPlaylists: Observable<[Playlist]> = Observable([Playlist]())
     
     private let webRepository = WebRepository()
     
-    func loadSections() {
-        webRepository.getRecentlyPlayedTracks { result in
+    init() {
+        webRepository.getRecentlyPlayedTracks { [weak self] result in
             switch result {
             case .success(let items):
                 let wrappedAudioTracks = items.value
-                let tracks = wrappedAudioTracks.map { $0.track }
-                let section = AudioTrackSection(
-                    id: 1,
-                    type: "recentlyPlayed",
-                    title: "Recently played tracks",
-                    subtitle: "",
-                    items: tracks)
-                self.sections.value?.append(section)
+                self?.recentlyPlayedTracks.value? = wrappedAudioTracks.map { $0.track }
+            case .failure(let error):
+                dump(error.localizedDescription)
+            }
+        }
+        webRepository.getFeaturedPlaylists { [weak self] result in
+            switch result {
+            case .success(let playlistResponse):
+                self?.featuredPlaylists.value? = playlistResponse.playlists.value
             case .failure(let error):
                 dump(error.localizedDescription)
             }

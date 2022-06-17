@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ShowWrapper: Codable {
+struct ShowWrapper: Codable, Hashable {
     
     let show: Show
 }

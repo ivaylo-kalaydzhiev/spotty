@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Episode: Codable {
+struct Episode: Codable, Hashable {
     
     let description: String
     let id: String

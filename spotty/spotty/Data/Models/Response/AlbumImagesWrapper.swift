@@ -9,6 +9,6 @@ import Foundation
 
 struct AlbumImagesWrapper: Codable, Hashable {
     
-    let uuid = UUID()
+    let uuid = UUID() // TODO: Remove!!!
     let images: [ImageResponse]
 }

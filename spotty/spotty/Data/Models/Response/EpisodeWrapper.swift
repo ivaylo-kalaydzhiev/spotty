@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EpisodeWrapper: Codable {
+struct EpisodeWrapper: Codable, Hashable {
     
     let episode: Episode
 }

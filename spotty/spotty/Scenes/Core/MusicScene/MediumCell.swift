@@ -7,55 +7,48 @@
 
 import UIKit
 
-class MediumCell: UICollectionViewCell, SelfConfiguringCell {
+class MediumCell: UICollectionViewCell {
     
-    static var reuseIdentifier = "MediumTableCell"
+    static var reuseIdentifier = "MediumCell"
     
-    let trackTitle = UILabel()
-    let artistsLabel = UILabel()
+    let title = UILabel()
+    let subtitle = UILabel()
     let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // name Style
-        trackTitle.font = UIFont.preferredFont(forTextStyle: .headline)
-        trackTitle.textColor = .label
+        // title Style
+        title.font = UIFont.preferredFont(forTextStyle: .headline)
+        title.textColor = .label
         
         // subtitle Style
-        artistsLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        artistsLabel.textColor = .secondaryLabel
+        subtitle.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        subtitle.textColor = .secondaryLabel
         
         // imageView Style
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = 15
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal) // This says: Don't stretch horizontaly!
         
         // innerStackView
-        let innerStackView = UIStackView(arrangedSubviews: [trackTitle, artistsLabel])
+        let innerStackView = UIStackView(arrangedSubviews: [title, subtitle])
         innerStackView.axis = .vertical
         
-        // stackView Style
-        let stackView = UIStackView(arrangedSubviews: [imageView, innerStackView])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .center
-        stackView.spacing = 10
-        stackView.axis = .horizontal
-        contentView.addSubview(stackView)
+        // outerStackView
+        let outerStackView = UIStackView(arrangedSubviews: [imageView, innerStackView])
+        outerStackView.translatesAutoresizingMaskIntoConstraints = false
+        outerStackView.alignment = .center
+        outerStackView.spacing = 10
+        contentView.addSubview(outerStackView)
         
         // Constraints
+        // TODO: All UI Progrmatically. Add Constraints extension.
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor)
+            outerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            outerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            outerStackView.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
-    }
-    
-    // Observable + ViewModel
-    func configure(with track: AudioTrack) {
-        trackTitle.text = track.name
-        artistsLabel.text = track.artists.map { $0.name }.joined(separator: ", ")
-        imageView.loadFrom(URLAddress: track.album.images[2].url)
     }
     
     required init?(coder: NSCoder) {

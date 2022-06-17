@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AudioTrackWrapper: Codable {
+struct AudioTrackWrapper: Codable, Hashable {
     
     let track: AudioTrack
 }

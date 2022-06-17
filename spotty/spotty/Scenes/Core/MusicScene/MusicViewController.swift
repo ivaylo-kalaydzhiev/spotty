@@ -17,7 +17,8 @@ class MusicViewController: UIViewController {
     enum Section: String, CaseIterable, Hashable {
         
         case featuredPlaylists
-        case recentlyPlayed
+        case recentlyPlayedTracks
+        case recentlyPlayedArtists
     }
     
     override func viewDidLoad() {
@@ -32,14 +33,23 @@ class MusicViewController: UIViewController {
     private func bind() {
         viewModel.featuredPlaylists.bind { [weak self] playlists in
             if let playlists = playlists,
+               let artists = self?.viewModel.recentlyPlayedArtists.value,
                let tracks = self?.viewModel.recentlyPlayedTracks.value  {
-                self?.reloadData(playlists: playlists, tracks: tracks)
+                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
             }
         }
         viewModel.recentlyPlayedTracks.bind { [weak self] tracks in
             if let tracks = tracks,
+               let artists = self?.viewModel.recentlyPlayedArtists.value,
                let playlists = self?.viewModel.featuredPlaylists.value  {
-                self?.reloadData(playlists: playlists, tracks: tracks)
+                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
+            }
+        }
+        viewModel.recentlyPlayedArtists.bind { [weak self] artists in
+            if let artists = artists,
+               let playlists = self?.viewModel.featuredPlaylists.value,
+               let tracks = self?.viewModel.recentlyPlayedTracks.value{
+                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
             }
         }
     }
@@ -76,6 +86,12 @@ class MusicViewController: UIViewController {
                 cell.subtitle.text = track.artists.map { $0.name }.joined(separator: ", ")
                 cell.imageView.loadFrom(URLAddress: track.album.images[2].url)
                 return cell
+            } else if let artist = item as? Artist,
+                      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediumCell.reuseIdentifier, for: indexPath) as? MediumCell {
+                cell.title.text = artist.name
+                cell.subtitle.text = artist.genres?.joined(separator: ", ")
+                cell.imageView.image = UIImage.init(systemName: "gear")
+                return cell
             } else {
                 fatalError("Unknown cell type")
             }
@@ -89,25 +105,28 @@ class MusicViewController: UIViewController {
                 for: indexPath) as? SectionHeader
             else { return nil }
             
-            let sections: [Section] = [.featuredPlaylists, .recentlyPlayed]
+            let sections: [Section] = [.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
             let section = sections[indexPath.section]
             
             switch section {
             case .featuredPlaylists:
                 sectionHeader.title.text = "Spotify Playlists"
-            case .recentlyPlayed:
+            case .recentlyPlayedTracks:
                 sectionHeader.title.text = "Recently played"
+            case .recentlyPlayedArtists:
+                sectionHeader.title.text = "Recent Artists"
             }
             return sectionHeader
         }
     }
     
-    private func reloadData(playlists: [Playlist], tracks: [AudioTrack]) {
+    private func reloadData(playlists: [Playlist], tracks: [AudioTrack], artists: [Artist]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
         
-        snapshot.appendSections([.featuredPlaylists, .recentlyPlayed])
+        snapshot.appendSections([.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists])
         snapshot.appendItems(playlists, toSection: .featuredPlaylists)
-        snapshot.appendItems(tracks, toSection: .recentlyPlayed)
+        snapshot.appendItems(tracks, toSection: .recentlyPlayedTracks)
+        snapshot.appendItems(artists, toSection: .recentlyPlayedArtists)
         
         dataSource?.apply(snapshot)
     }
@@ -119,13 +138,13 @@ extension MusicViewController {
     
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnviroment in
-            let sections: [Section] = [.featuredPlaylists, .recentlyPlayed]
+            let sections: [Section] = [.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
             let section = sections[sectionIndex]
             
             switch section {
             case .featuredPlaylists:
                 return self.createLargeSection()
-            case .recentlyPlayed:
+            case .recentlyPlayedTracks, .recentlyPlayedArtists:
                 return self.createMediumSection()
             }
         }

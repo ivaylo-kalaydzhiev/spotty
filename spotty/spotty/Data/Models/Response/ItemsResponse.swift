@@ -8,7 +8,7 @@
 import Foundation
 
 /// Specific object returned by the Spotify API. Needed only for parsing API Responses.
-struct ItemsResponse<T: Codable>: Codable {
+struct ItemsResponse<T>: Codable, Hashable where T: Hashable, T: Codable {
     
     let value: [T]
     

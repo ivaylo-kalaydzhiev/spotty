@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RemoveTrackRequest: Codable {
+struct RemoveTrackRequest: Codable, Hashable {
     
     let uri: String
 }

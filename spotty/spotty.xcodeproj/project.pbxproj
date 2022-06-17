@@ -32,6 +32,7 @@
 		D574DA04285B28E3007F808E /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */; };
 		D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D082857300700EFA9FB /* WebRepository.swift */; };
 		D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D0A2857303300EFA9FB /* UserProfile.swift */; };
+		D5D40BA6285CA8EA00480B04 /* LargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D40BA5285CA8EA00480B04 /* LargeCell.swift */; };
 		D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A04285223950079F91B /* AppDelegate.swift */; };
 		D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A06285223960079F91B /* SceneDelegate.swift */; };
 		D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A08285223960079F91B /* TabBarViewController.swift */; };
@@ -86,6 +87,7 @@
 		D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfConfiguringCell.swift; path = ../../../../../../../Library/SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		D5C92D082857300700EFA9FB /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		D5C92D0A2857303300EFA9FB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		D5D40BA5285CA8EA00480B04 /* LargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCell.swift; sourceTree = "<group>"; };
 		D5EF5A01285223950079F91B /* spotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EF5A04285223950079F91B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5EF5A06285223960079F91B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				D574D9FE285B2810007F808E /* MediumCell.swift */,
+				D5D40BA5285CA8EA00480B04 /* LargeCell.swift */,
 				D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */,
 				D55AA401285B79C100F95F73 /* MusicViewModel.swift */,
 			);
@@ -532,6 +535,7 @@
 				D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */,
 				D51D78402858C4AD00EED4F9 /* Playlist.swift in Sources */,
 				D5136E9D2859F8F700765AC1 /* ShowWrapper.swift in Sources */,
+				D5D40BA6285CA8EA00480B04 /* LargeCell.swift in Sources */,
 				D51D783C2858C46500EED4F9 /* AudioTrack.swift in Sources */,
 				D5EF5A4F285238A70079F91B /* UIView+Animations.swift in Sources */,
 				D5EF5A6B28536AB50079F91B /* OAuth2Supporting.swift in Sources */,

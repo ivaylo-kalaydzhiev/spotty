@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Codable, Hashable {
     
     let id: String
     let images: [ImageResponse]

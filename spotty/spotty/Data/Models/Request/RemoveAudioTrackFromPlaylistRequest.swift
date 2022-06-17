@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RemoveAudioTrackFromPlaylistRequest: Codable {
+struct RemoveAudioTrackFromPlaylistRequest: Codable, Hashable {
     
     let tracks: [RemoveTrackRequest]
     let snapshotId: String

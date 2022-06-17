@@ -9,8 +9,9 @@ import UIKit
 
 class MusicViewModel {
     
-    let recentlyPlayedTracks: Observable<[AudioTrack]> = Observable([AudioTrack]())
     let featuredPlaylists: Observable<[Playlist]> = Observable([Playlist]())
+    let recentlyPlayedTracks: Observable<[AudioTrack]> = Observable([AudioTrack]())
+    let recentlyPlayedArtists: Observable<[Artist]> = Observable([Artist]())
     
     private let webRepository = WebRepository()
     
@@ -19,7 +20,9 @@ class MusicViewModel {
             switch result {
             case .success(let items):
                 let wrappedAudioTracks = items.value
-                self?.recentlyPlayedTracks.value? = wrappedAudioTracks.map { $0.track }
+                let tracks = wrappedAudioTracks.map { $0.track }
+                self?.recentlyPlayedTracks.value? = tracks
+                self?.recentlyPlayedArtists.value? = tracks.map { $0.artists[0] }
             case .failure(let error):
                 dump(error.localizedDescription)
             }

@@ -9,6 +9,7 @@ import Foundation
 
 struct Artist: Codable, Hashable {
     
+    let uuid = UUID()
     let name: String
     let images: [ImageResponse]?
     let genres: [String]?

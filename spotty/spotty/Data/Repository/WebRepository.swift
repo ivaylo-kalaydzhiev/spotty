@@ -17,17 +17,17 @@ struct WebRepository {
     }
     
     func getCurrentUserTopTracks(completion: @escaping Completion<ItemsResponse<AudioTrack>>) {
-        let urlRequest = SpotifyEndpoint.getCurrentUserTopTracks(limit: 49).urlRequest
+        let urlRequest = SpotifyEndpoint.getCurrentUserTopTracks(limit: 30).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
     func getCurrentUserTopArtists(completion: @escaping Completion<ItemsResponse<Artist>>) {
-        let urlRequest = SpotifyEndpoint.getCurrentUserTopArtists(limit: 49).urlRequest
+        let urlRequest = SpotifyEndpoint.getCurrentUserTopArtists(limit: 30).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
     func getCurrentUserPlaylists(completion: @escaping Completion<ItemsResponse<Playlist>>) {
-        let urlRequest = SpotifyEndpoint.getCurrentUserPlaylists(limit: 49).urlRequest
+        let urlRequest = SpotifyEndpoint.getCurrentUserPlaylists(limit: 30).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
@@ -36,17 +36,17 @@ struct WebRepository {
         let fiveDaysAgo: TimeInterval = -432000
         let date = Date().addingTimeInterval(fiveDaysAgo)
         let dateAsNumber = Int(date.timeIntervalSince1970)
-        let urlRequest = SpotifyEndpoint.getRecentlyPlayedTracks(limit: 49, since: dateAsNumber).urlRequest
+        let urlRequest = SpotifyEndpoint.getRecentlyPlayedTracks(limit: 30, since: dateAsNumber).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
     func getUserSavedEpisodes(completion: @escaping Completion<ItemsResponse<EpisodeWrapper>>) {
-        let urlRequest = SpotifyEndpoint.getUserSavedEpisodes(limit: 49).urlRequest
+        let urlRequest = SpotifyEndpoint.getUserSavedEpisodes(limit: 30).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
     func getUserSavedShows(completion: @escaping Completion<ItemsResponse<ShowWrapper>>) {
-        let urlRequest = SpotifyEndpoint.getUserSavedShows(limit: 49).urlRequest
+        let urlRequest = SpotifyEndpoint.getUserSavedShows(limit: 30).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
@@ -58,7 +58,7 @@ struct WebRepository {
     }
     
     func getFeaturedPlaylists(completion: @escaping Completion<FeaturedPlaylistsResponse>) {
-        let urlRequest = SpotifyEndpoint.getFeaturedPlaylists(limit: 49).urlRequest
+        let urlRequest = SpotifyEndpoint.getFeaturedPlaylists(limit: 30).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
@@ -82,7 +82,7 @@ struct WebRepository {
     
     func getShowEpisodes(showId: String = "38bS44xjbVVZ3No3ByF1dJ",
                          completion: @escaping Completion<ItemsResponse<Episode>>) {
-        let urlRequest = SpotifyEndpoint.getShowEpisodes(showId: showId, limit: 49).urlRequest
+        let urlRequest = SpotifyEndpoint.getShowEpisodes(showId: showId, limit: 30).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     
@@ -94,7 +94,7 @@ struct WebRepository {
     
     func getPlaylistTracks(playlistId: String = "3cEYpjA9oz9GiPac4AsH4n",
                            completion: @escaping Completion<ItemsResponse<AudioTrackWrapper>>) {
-        let urlRequest = SpotifyEndpoint.getPlaylistTracks(playlistId: playlistId, limit: 49).urlRequest
+        let urlRequest = SpotifyEndpoint.getPlaylistTracks(playlistId: playlistId, limit: 30).urlRequest
         Network.performAuthorizedRequest(with: urlRequest, completion: completion)
     }
     

@@ -13,4 +13,5 @@ struct AudioTrack: Codable, Hashable {
     let id: String
     let name: String
     let uri: String
+    let artists: [Artist]
 }

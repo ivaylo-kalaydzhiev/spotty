@@ -27,6 +27,7 @@
 		D51D78492858C89900EED4F9 /* AlbumImagesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78482858C89900EED4F9 /* AlbumImagesWrapper.swift */; };
 		D55AA3FC285B622600F95F73 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FB285B622600F95F73 /* Observable.swift */; };
 		D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */; };
+		D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA401285B79C100F95F73 /* MusicViewModel.swift */; };
 		D574DA00285B2810007F808E /* MediumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574D9FE285B2810007F808E /* MediumCell.swift */; };
 		D574DA04285B28E3007F808E /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */; };
 		D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D082857300700EFA9FB /* WebRepository.swift */; };
@@ -80,6 +81,7 @@
 		D51D78482858C89900EED4F9 /* AlbumImagesWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImagesWrapper.swift; sourceTree = "<group>"; };
 		D55AA3FB285B622600F95F73 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadFromURL.swift"; sourceTree = "<group>"; };
+		D55AA401285B79C100F95F73 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		D574D9FE285B2810007F808E /* MediumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCell.swift; sourceTree = "<group>"; };
 		D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfConfiguringCell.swift; path = ../../../../../../../Library/SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		D5C92D082857300700EFA9FB /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
@@ -252,8 +254,9 @@
 		D5EF5A21285226BE0079F91B /* MusicScene */ = {
 			isa = PBXGroup;
 			children = (
-				D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */,
 				D574D9FE285B2810007F808E /* MediumCell.swift */,
+				D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */,
+				D55AA401285B79C100F95F73 /* MusicViewModel.swift */,
 			);
 			path = MusicScene;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				D5EF5A6128535B5B0079F91B /* Data+parseJSON.swift in Sources */,
 				D5136EA1285A017300765AC1 /* AudioTracksWrapper.swift in Sources */,
 				D51D78462858C4DA00EED4F9 /* Artist.swift in Sources */,
+				D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */,
 				D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */,
 				D5EF5A5B28533DEC0079F91B /* HTTPMethod.swift in Sources */,
 				D51D78422858C4BB00EED4F9 /* Episode.swift in Sources */,

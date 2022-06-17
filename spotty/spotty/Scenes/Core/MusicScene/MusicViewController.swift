@@ -9,43 +9,28 @@ import UIKit
 
 class MusicViewController: UIViewController {
     
-    let webRepository = WebRepository()
+    // ViewModel
+    private var viewModel = MusicViewModel()
     
-    private var sections = [ // Get them from the ViewModel
-        AudioTrackSection(
-            id: 1,
-            type: "recentlyPlayed",
-            title: "Recently Played",
-            subtitle: "",
-            items: nil)
-    ]
-    
+    // Data Source
     private var dataSource: UICollectionViewDiffableDataSource<AudioTrackSection, AudioTrack>?
+
+    // UI Elements
     private var collectionView: UICollectionView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        loadData()
+        bind()
+        viewModel.loadSections()
         createCollectionView()
         registerNibs()
         createDataSource()
-//        reloadData()
     }
     
-    private func loadData() {
-        webRepository.getRecentlyPlayedTracks { result in
-            switch result {
-            case .success(let items):
-                let wrappedAudioTracks = items.value
-                let tracks = wrappedAudioTracks.map { $0.track }
-                self.sections[0].items = tracks
-                self.reloadData()
-            case .failure(let error):
-                dump(error.localizedDescription)
-            }
-        }
+    private func bind() {
+        viewModel.sections.bind { [weak self] _ in self?.reloadData() }
     }
     
     private func createCollectionView() {
@@ -75,7 +60,7 @@ class MusicViewController: UIViewController {
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<AudioTrackSection, AudioTrack>(collectionView: collectionView) {
             collectionView, indexPath, track in
-            switch self.sections[indexPath.section].type {
+            switch self.viewModel.sections.value?[indexPath.section].type {
             default:
                 return self.configure(MediumCell.self, with: track, for: indexPath)
             }
@@ -83,11 +68,13 @@ class MusicViewController: UIViewController {
     }
     
     private func reloadData() {
+        guard let sections = viewModel.sections.value else { fatalError("Oops. ") }
         var snapshot = NSDiffableDataSourceSnapshot<AudioTrackSection, AudioTrack>()
         snapshot.appendSections(sections)
         
-            snapshot.appendItems(sections[0].items!, toSection: sections[0])
-        
+        for section in sections {
+            snapshot.appendItems(section.items!, toSection: section)
+        }
         
         dataSource?.apply(snapshot)
     }
@@ -96,7 +83,7 @@ class MusicViewController: UIViewController {
     
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnviroment in
-            let section = self.sections[sectionIndex]
+            guard let section = self.viewModel.sections.value?[sectionIndex] else { fatalError("Oops. ") }
             
             switch section.type {
             default:

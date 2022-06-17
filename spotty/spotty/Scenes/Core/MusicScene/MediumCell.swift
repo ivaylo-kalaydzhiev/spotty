@@ -11,25 +11,34 @@ class MediumCell: UICollectionViewCell, SelfConfiguringCell {
     
     static var reuseIdentifier = "MediumTableCell"
     
-    let name = UILabel()
+    let trackTitle = UILabel()
+    let artistsLabel = UILabel()
     let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         // name Style
-        name.font = UIFont.preferredFont(forTextStyle: .headline)
-        name.textColor = .label
+        trackTitle.font = UIFont.preferredFont(forTextStyle: .headline)
+        trackTitle.textColor = .label
+        
+        // subtitle Style
+        artistsLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        artistsLabel.textColor = .secondaryLabel
         
         // imageView Style
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal) // This says: Don't stretch horizontaly!
         
+        // innerStackView
+        let innerStackView = UIStackView(arrangedSubviews: [trackTitle, artistsLabel])
+        innerStackView.axis = .vertical
+        
         // stackView Style
-        let stackView = UIStackView(arrangedSubviews: [imageView, name])
+        let stackView = UIStackView(arrangedSubviews: [imageView, innerStackView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        //stackView.alignment = .center
+        stackView.alignment = .center
         stackView.spacing = 10
         stackView.axis = .horizontal
         contentView.addSubview(stackView)
@@ -44,7 +53,8 @@ class MediumCell: UICollectionViewCell, SelfConfiguringCell {
     
     // Observable + ViewModel
     func configure(with track: AudioTrack) {
-        name.text = track.name
+        trackTitle.text = track.name
+        artistsLabel.text = track.artists.map { $0.name }.joined(separator: ", ")
         imageView.loadFrom(URLAddress: track.album.images[2].url)
     }
     

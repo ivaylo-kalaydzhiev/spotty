@@ -16,11 +16,11 @@ class TabBarViewController: UITabBarController {
         let showsVC = ShowsViewController()
         let playlistVC = PlaylistViewController()
         
-        musicVC.title = "Music"
+        //musicVC.title = "Music"
         showsVC.title = "Podcasts"
         playlistVC.title = "Playlists"
         
-        musicVC.navigationItem.largeTitleDisplayMode = .always
+        musicVC.navigationItem.largeTitleDisplayMode = .never
         showsVC.navigationItem.largeTitleDisplayMode = .always
         playlistVC.navigationItem.largeTitleDisplayMode = .always
         

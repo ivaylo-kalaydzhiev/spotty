@@ -18,11 +18,6 @@ class LargeCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // seperator
-        let seperator = UIView(frame: .zero)
-        seperator.translatesAutoresizingMaskIntoConstraints = false
-        seperator.backgroundColor = .quaternaryLabel
-        
         // title Style
         title.font = UIFont.preferredFont(forTextStyle: .title2)
         title.textColor = .label
@@ -37,14 +32,13 @@ class LargeCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         
         // Create, configure and add StackView
-        let stackView = UIStackView(arrangedSubviews: [seperator, title, subtitle, imageView])
+        let stackView = UIStackView(arrangedSubviews: [title, subtitle, imageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         contentView.addSubview(stackView)
         
         // Constraints
         NSLayoutConstraint.activate([
-            seperator.heightAnchor.constraint(equalToConstant: 1),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -52,7 +46,6 @@ class LargeCell: UICollectionViewCell {
         ])
         
         // Very cool and useful !!!
-        stackView.setCustomSpacing(10, after: seperator)
         stackView.setCustomSpacing(10, after: subtitle)
     }
     

@@ -15,10 +15,10 @@ class MusicViewController: UIViewController {
     private let viewModel = MusicViewModel()
     
     enum Section: String, CaseIterable, Hashable {
+        
         case featuredPlaylists
         case recentlyPlayed
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class MusicViewController: UIViewController {
         bind()
     }
     
-    private func bind() { // Bind and fire?
+    private func bind() {
         viewModel.featuredPlaylists.bind { [weak self] playlists in
             if let playlists = playlists,
                let tracks = self?.viewModel.recentlyPlayedTracks.value  {
@@ -55,6 +55,9 @@ class MusicViewController: UIViewController {
     private func registerNibs() {
         collectionView.register(LargeCell.self, forCellWithReuseIdentifier: LargeCell.reuseIdentifier)
         collectionView.register(MediumCell.self, forCellWithReuseIdentifier: MediumCell.reuseIdentifier)
+        collectionView.register(SectionHeader.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: SectionHeader.reuseIdentifier)
     }
     
     private func createDataSource() {
@@ -64,7 +67,6 @@ class MusicViewController: UIViewController {
             if let playlist = item as? Playlist,
                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LargeCell.reuseIdentifier, for: indexPath) as? LargeCell {
                 
-                cell.subtitle.text = playlist.description
                 cell.imageView.loadFrom(URLAddress: playlist.images[0].url)
                 return cell
             } else if let track = item as? AudioTrack,
@@ -77,6 +79,26 @@ class MusicViewController: UIViewController {
             } else {
                 fatalError("Unknown cell type")
             }
+        }
+        
+        // Giving Data to the Header
+        dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: SectionHeader.reuseIdentifier,
+                for: indexPath) as? SectionHeader
+            else { return nil }
+            
+            let sections: [Section] = [.featuredPlaylists, .recentlyPlayed]
+            let section = sections[indexPath.section]
+            
+            switch section {
+            case .featuredPlaylists:
+                sectionHeader.title.text = "Spotify Playlists"
+            case .recentlyPlayed:
+                sectionHeader.title.text = "Recently played"
+            }
+            return sectionHeader
         }
     }
     
@@ -92,9 +114,9 @@ class MusicViewController: UIViewController {
 }
 
 
-// MARK: - Layout
+// MARK: - Compositional Layout
 extension MusicViewController {
-
+    
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnviroment in
             let sections: [Section] = [.featuredPlaylists, .recentlyPlayed]
@@ -113,46 +135,66 @@ extension MusicViewController {
         layout.configuration = config
         return layout
     }
-
+    
     private func createLargeSection() -> NSCollectionLayoutSection {
         // Size, Item, Group, Section
-
+        
         // Item
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
         layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
-
+        
         // Group
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93),
-                                               heightDimension: .estimated(350))
+                                               heightDimension: .fractionalWidth(0.93))
         let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [layoutItem])
-
+        
         // Section
         let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
         layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
-
+        
+        // Header
+        let layoutSectionHeader = createSectionHeader()
+        layoutSection.boundarySupplementaryItems = [layoutSectionHeader]
+        
         return layoutSection
     }
-
+    
     private func createMediumSection() -> NSCollectionLayoutSection {
         // Size, Item, Group, Section
-
+        
         // Item
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalHeight(0.33))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
         layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
-
+        
         // Group
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93),
                                                heightDimension: .fractionalWidth(0.55))
         let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
-
+        
         // Section
         let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
         layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
-
+        
+        // Header
+        let layoutSectionHeader = createSectionHeader()
+        layoutSection.boundarySupplementaryItems = [layoutSectionHeader]
+        
         return layoutSection
+    }
+    
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let layoutSectionHeaderSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.93),
+            heightDimension: .estimated(80))
+        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: layoutSectionHeaderSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
+        
+        return layoutSectionHeader
     }
 }

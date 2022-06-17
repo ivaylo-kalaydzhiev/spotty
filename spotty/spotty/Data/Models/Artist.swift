@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Artist: Codable {
+struct Artist: Codable, Hashable {
     
     let name: String
-    let images: [ImageResponse]
-    let genres: [String]
+    let images: [ImageResponse]?
+    let genres: [String]?
 }

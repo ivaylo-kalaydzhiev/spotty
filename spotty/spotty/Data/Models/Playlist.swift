@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Playlist: Codable, Hashable {
+struct Playlist: Codable, Hashable, BusinessModel {
     
     let description: String?
     let id: String

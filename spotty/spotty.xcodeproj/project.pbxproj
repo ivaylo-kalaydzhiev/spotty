@@ -33,9 +33,11 @@
 		D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57528608417001DFEBC /* LayoutAnchor.swift */; };
 		D54CD57828608491001DFEBC /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57728608491001DFEBC /* UIView+Constraints.swift */; };
 		D54CD57A286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */; };
-		D54CD57D2860882F001DFEBC /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57C2860882F001DFEBC /* SelfConfiguringCell.swift */; };
 		D54CD58428608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58328608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift */; };
 		D54CD58628608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58528608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift */; };
+		D54CD5892860B9DE001DFEBC /* UICollectionView+configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD5882860B9DE001DFEBC /* UICollectionView+configure.swift */; };
+		D54CD58B2860BA0F001DFEBC /* ReuseableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58A2860BA0F001DFEBC /* ReuseableCell.swift */; };
+		D54CD58D2860BA4A001DFEBC /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58C2860BA4A001DFEBC /* BusinessModel.swift */; };
 		D55AA3FC285B622600F95F73 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FB285B622600F95F73 /* Observable.swift */; };
 		D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */; };
 		D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA401285B79C100F95F73 /* MusicViewModel.swift */; };
@@ -99,9 +101,11 @@
 		D54CD57528608417001DFEBC /* LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAnchor.swift; sourceTree = "<group>"; };
 		D54CD57728608491001DFEBC /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+convenienceInit.swift"; sourceTree = "<group>"; };
-		D54CD57C2860882F001DFEBC /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		D54CD58328608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutSection+customSections.swift"; sourceTree = "<group>"; };
 		D54CD58528608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift"; sourceTree = "<group>"; };
+		D54CD5882860B9DE001DFEBC /* UICollectionView+configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+configure.swift"; sourceTree = "<group>"; };
+		D54CD58A2860BA0F001DFEBC /* ReuseableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableCell.swift; sourceTree = "<group>"; };
+		D54CD58C2860BA4A001DFEBC /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		D55AA3FB285B622600F95F73 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadFromURL.swift"; sourceTree = "<group>"; };
 		D55AA401285B79C100F95F73 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
@@ -233,7 +237,7 @@
 		D54CD582286088D6001DFEBC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D54CD57C2860882F001DFEBC /* SelfConfiguringCell.swift */,
+				D54CD58A2860BA0F001DFEBC /* ReuseableCell.swift */,
 				D574D9FE285B2810007F808E /* MediumCell.swift */,
 				D5D40BA5285CA8EA00480B04 /* LargeCell.swift */,
 			);
@@ -427,6 +431,7 @@
 			children = (
 				D51D783A2858C38E00EED4F9 /* Response */,
 				D51D78472858C6D500EED4F9 /* Request */,
+				D54CD58C2860BA4A001DFEBC /* BusinessModel.swift */,
 				D5C92D0A2857303300EFA9FB /* UserProfile.swift */,
 				D51D78452858C4DA00EED4F9 /* Artist.swift */,
 				D51D783B2858C46500EED4F9 /* AudioTrack.swift */,
@@ -470,6 +475,7 @@
 			children = (
 				D5EF5A6028535B5B0079F91B /* Data+parseJSON.swift */,
 				D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */,
+				D54CD5882860B9DE001DFEBC /* UICollectionView+configure.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -587,10 +593,12 @@
 				D5EF5A59285336110079F91B /* SpotifyEndpoint.swift in Sources */,
 				D54CD58428608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift in Sources */,
 				D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */,
+				D54CD5892860B9DE001DFEBC /* UICollectionView+configure.swift in Sources */,
 				D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */,
 				D5EF5A55285335810079F91B /* AuthManager.swift in Sources */,
 				D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */,
 				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
+				D54CD58B2860BA0F001DFEBC /* ReuseableCell.swift in Sources */,
 				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
 				D54CD58628608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift in Sources */,
 				D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */,
@@ -605,6 +613,7 @@
 				D5EF5A6128535B5B0079F91B /* Data+parseJSON.swift in Sources */,
 				D5D40BA8285CBBDB00480B04 /* SectionHeader.swift in Sources */,
 				D5136EA1285A017300765AC1 /* AudioTracksWrapper.swift in Sources */,
+				D54CD58D2860BA4A001DFEBC /* BusinessModel.swift in Sources */,
 				D54CD56D28607059001DFEBC /* LabelStyle.swift in Sources */,
 				D51D78462858C4DA00EED4F9 /* Artist.swift in Sources */,
 				D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */,
@@ -615,7 +624,6 @@
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,
 				D5EF5A57285335FB0079F91B /* PKCEFlowProvider.swift in Sources */,
-				D54CD57D2860882F001DFEBC /* SelfConfiguringCell.swift in Sources */,
 				D54CD57828608491001DFEBC /* UIView+Constraints.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,

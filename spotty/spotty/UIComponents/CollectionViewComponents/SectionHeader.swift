@@ -7,7 +7,12 @@
 
 import UIKit
 
-class SectionHeader: UICollectionReusableView {
+protocol ReuseableHeader {
+    
+    static var reuseIdentifier: String { get }
+}
+
+class SectionHeader: UICollectionReusableView, ReuseableHeader {
     
     static let reuseIdentifier = "SectionHeader"
     

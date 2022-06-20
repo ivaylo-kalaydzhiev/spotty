@@ -18,23 +18,15 @@ class LargeCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // title Style
-        title.font = UIFont.preferredFont(forTextStyle: .title2)
-        title.textColor = .label
-        
-        // subtitle Style
-        subtitle.font = UIFont.preferredFont(forTextStyle: .title2)
-        subtitle.textColor = .secondaryLabel
-        
-        // imageView Style
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 15
-        imageView.contentMode = .scaleAspectFill
+        title.setCustomStyle(.largeCellTitle)
+        subtitle.setCustomStyle(.largeCellSubtitle)
+        imageView.setCustomStyle(.largeCellImage)
         
         // Create, configure and add StackView
         let stackView = UIStackView(arrangedSubviews: [title, subtitle, imageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        stackView.setCustomSpacing(10, after: subtitle)
         contentView.addSubview(stackView)
         
         // Constraints
@@ -45,8 +37,6 @@ class LargeCell: UICollectionViewCell {
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
         
-        // Very cool and useful !!!
-        stackView.setCustomSpacing(10, after: subtitle)
     }
     
     required init?(coder: NSCoder) {

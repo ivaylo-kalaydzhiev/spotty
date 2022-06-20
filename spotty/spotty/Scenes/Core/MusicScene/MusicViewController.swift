@@ -24,9 +24,11 @@ class MusicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup Collection View
         createCollectionView()
         registerNibs()
         createDataSource()
+        
         bind()
     }
     
@@ -88,6 +90,7 @@ class MusicViewController: UIViewController {
                 return cell
             } else if let artist = item as? Artist,
                       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediumCell.reuseIdentifier, for: indexPath) as? MediumCell {
+                
                 cell.title.text = artist.name
                 cell.subtitle.text = artist.genres?.joined(separator: ", ")
                 cell.imageView.image = UIImage.init(systemName: "gear")
@@ -187,7 +190,7 @@ extension MusicViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalHeight(0.33))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: .zero, leading: 5, bottom: .zero, trailing: 5)
         
         // Group
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93),

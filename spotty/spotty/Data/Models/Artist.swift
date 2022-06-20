@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Artist: Codable, Hashable {
+struct Artist: Codable, Hashable, BusinessModel {
     
     let uuid = UUID()
     let name: String

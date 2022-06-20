@@ -1,0 +1,37 @@
+//
+//  UICollectionView+configure.swift
+//  spotty
+//
+//  Created by Ivaylo Kalaydzhiev on 20.06.22.
+//
+
+import UIKit
+
+extension UICollectionView {
+    
+    func configureReuseableCell<T: ReuseableCell, H: BusinessModel>(_ cellType: T.Type,
+                                                                    modelType: H.Type,
+                                                                    item: AnyHashable,
+                                                                    indexPath: IndexPath) -> T {
+        guard let cell = self.dequeueReusableCell(
+            withReuseIdentifier: cellType.reuseIdentifier,
+            for: indexPath) as? T,
+              let model = item as? H
+        else { fatalError("Developer Error!") }
+        
+        cell.configure(with: model)
+        return cell
+    }
+    
+    func configureSupplimentaryView<T: ReuseableHeader>(_ headerType: T.Type,
+                                                        kind: String,
+                                                        indexPath: IndexPath) -> T {
+        guard let sectionHeader = self.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: headerType.reuseIdentifier,
+            for: indexPath) as? T
+        else { fatalError("Developer Error!") }
+        
+        return sectionHeader
+    }
+}

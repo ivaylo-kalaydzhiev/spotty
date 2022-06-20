@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AudioTrack: Codable, Hashable {
+struct AudioTrack: Codable, Hashable, BusinessModel {
     
     let album: AlbumImagesWrapper
     let id: String

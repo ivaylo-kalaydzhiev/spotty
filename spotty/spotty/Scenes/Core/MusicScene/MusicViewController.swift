@@ -14,7 +14,7 @@ class MusicViewController: UIViewController {
     private let sections: [Section] = [.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
     private let viewModel = MusicViewModel()
     
-    enum Section: String, CaseIterable, Hashable {
+    enum Section {
         
         case featuredPlaylists
         case recentlyPlayedTracks
@@ -71,37 +71,39 @@ class MusicViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) {
             collectionView, indexPath, item in
             
-            if let playlist = item as? Playlist,
-               let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LargeCell.reuseIdentifier, for: indexPath) as? LargeCell {
-                
-                cell.imageView.loadFrom(URLAddress: playlist.images[0].url)
-                return cell
-            } else if let track = item as? AudioTrack,
-                      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediumCell.reuseIdentifier, for: indexPath) as? MediumCell {
-                
-                cell.title.text = track.name
-                cell.subtitle.text = track.artists.map { $0.name }.joined(separator: ", ")
-                cell.imageView.loadFrom(URLAddress: track.album.images[2].url)
-                return cell
-            } else if let artist = item as? Artist,
-                      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediumCell.reuseIdentifier, for: indexPath) as? MediumCell {
-                
-                cell.title.text = artist.name
-                cell.subtitle.text = artist.genres?.joined(separator: ", ")
-                cell.imageView.image = UIImage.init(systemName: "gear")
-                return cell
-            } else {
-                fatalError("Unknown cell type")
+            let section = self.sections[indexPath.section]
+            
+            switch section {
+            case .featuredPlaylists:
+                return collectionView.configureReuseableCell(
+                    LargeCell.self,
+                    modelType: Playlist.self,
+                    item: item,
+                    indexPath: indexPath)
+            case .recentlyPlayedTracks:
+                return collectionView.configureReuseableCell(
+                    MediumCell.self,
+                    modelType: AudioTrack.self,
+                    item: item,
+                    indexPath: indexPath)
+            case .recentlyPlayedArtists:
+                return collectionView.configureReuseableCell(
+                    MediumCell.self,
+                    modelType: Artist.self,
+                    item: item,
+                    indexPath: indexPath)
             }
         }
         
-        // Giving Data to the Header
+        addSectionHeader()
+    }
+    
+    private func addSectionHeader() {
         dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: SectionHeader.reuseIdentifier,
-                for: indexPath) as? SectionHeader
-            else { return nil }
+            let sectionHeader = collectionView.configureSupplimentaryView(
+                SectionHeader.self,
+                kind: kind,
+                indexPath: indexPath)
             
             let section = self.sections[indexPath.section]
             
@@ -113,6 +115,7 @@ class MusicViewController: UIViewController {
             case .recentlyPlayedArtists:
                 sectionHeader.title.text = "Recent Artists"
             }
+            
             return sectionHeader
         }
     }
@@ -121,21 +124,21 @@ class MusicViewController: UIViewController {
         viewModel.featuredPlaylists.bind { [weak self] playlists in
             if let playlists = playlists,
                let artists = self?.viewModel.recentlyPlayedArtists.value,
-               let tracks = self?.viewModel.recentlyPlayedTracks.value  {
+               let tracks = self?.viewModel.recentlyPlayedTracks.value {
                 self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
             }
         }
         viewModel.recentlyPlayedTracks.bind { [weak self] tracks in
             if let tracks = tracks,
                let artists = self?.viewModel.recentlyPlayedArtists.value,
-               let playlists = self?.viewModel.featuredPlaylists.value  {
+               let playlists = self?.viewModel.featuredPlaylists.value {
                 self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
             }
         }
         viewModel.recentlyPlayedArtists.bind { [weak self] artists in
             if let artists = artists,
                let playlists = self?.viewModel.featuredPlaylists.value,
-               let tracks = self?.viewModel.recentlyPlayedTracks.value{
+               let tracks = self?.viewModel.recentlyPlayedTracks.value {
                 self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
             }
         }

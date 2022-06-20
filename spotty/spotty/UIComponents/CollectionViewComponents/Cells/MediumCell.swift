@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MediumCell: UICollectionViewCell {
+class MediumCell: UICollectionViewCell, ReuseableCell {
     
     static var reuseIdentifier = "MediumCell"
     
@@ -38,5 +38,19 @@ class MediumCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with model: BusinessModel) {
+        if let track = model as? AudioTrack {
+            title.text = track.name
+            subtitle.text = track.artists.map { $0.name }.joined(separator: ", ")
+            imageView.loadFrom(URLAddress: track.album.images[2].url)
+        } else if let artist = model as? Artist {
+            title.text = artist.name
+            subtitle.text = artist.genres?.joined(separator: ", ")
+            imageView.image = UIImage.init(systemName: "gear")
+        } else {
+            fatalError("Business model unknown")
+        }
     }
 }

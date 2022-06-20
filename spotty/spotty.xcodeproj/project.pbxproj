@@ -34,6 +34,8 @@
 		D54CD57828608491001DFEBC /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57728608491001DFEBC /* UIView+Constraints.swift */; };
 		D54CD57A286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */; };
 		D54CD57D2860882F001DFEBC /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57C2860882F001DFEBC /* SelfConfiguringCell.swift */; };
+		D54CD58428608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58328608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift */; };
+		D54CD58628608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58528608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift */; };
 		D55AA3FC285B622600F95F73 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FB285B622600F95F73 /* Observable.swift */; };
 		D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */; };
 		D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA401285B79C100F95F73 /* MusicViewModel.swift */; };
@@ -98,6 +100,8 @@
 		D54CD57728608491001DFEBC /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+convenienceInit.swift"; sourceTree = "<group>"; };
 		D54CD57C2860882F001DFEBC /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		D54CD58328608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutSection+customSections.swift"; sourceTree = "<group>"; };
+		D54CD58528608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift"; sourceTree = "<group>"; };
 		D55AA3FB285B622600F95F73 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadFromURL.swift"; sourceTree = "<group>"; };
 		D55AA401285B79C100F95F73 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				D5EF5A6228535B720079F91B /* Animation */,
 				D54CD56928606BAC001DFEBC /* CollectionViewComponents */,
 				D54CD57428608405001DFEBC /* Constraints */,
+				D54CD58728608EE5001DFEBC /* Layout */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -233,6 +238,15 @@
 				D5D40BA5285CA8EA00480B04 /* LargeCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		D54CD58728608EE5001DFEBC /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				D54CD58328608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift */,
+				D54CD58528608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		D5EF59F8285223950079F91B = {
@@ -571,12 +585,14 @@
 				D5EF5A6428535B910079F91B /* Network.swift in Sources */,
 				D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */,
 				D5EF5A59285336110079F91B /* SpotifyEndpoint.swift in Sources */,
+				D54CD58428608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift in Sources */,
 				D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */,
 				D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */,
 				D5EF5A55285335810079F91B /* AuthManager.swift in Sources */,
 				D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */,
 				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
 				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
+				D54CD58628608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift in Sources */,
 				D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */,
 				D5136EA7285A194F00765AC1 /* PlaylistChangedResponse.swift in Sources */,
 				D5EF5A4B285235AF0079F91B /* ButtonStyle.swift in Sources */,

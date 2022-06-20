@@ -11,7 +11,7 @@ class MusicViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
-    
+    private let sections: [Section] = [.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
     private let viewModel = MusicViewModel()
     
     enum Section: String, CaseIterable, Hashable {
@@ -23,37 +23,14 @@ class MusicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Setup Collection View
-        createCollectionView()
-        registerNibs()
-        createDataSource()
-        
+        setupCollectionView()
         bind()
     }
     
-    private func bind() {
-        viewModel.featuredPlaylists.bind { [weak self] playlists in
-            if let playlists = playlists,
-               let artists = self?.viewModel.recentlyPlayedArtists.value,
-               let tracks = self?.viewModel.recentlyPlayedTracks.value  {
-                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
-            }
-        }
-        viewModel.recentlyPlayedTracks.bind { [weak self] tracks in
-            if let tracks = tracks,
-               let artists = self?.viewModel.recentlyPlayedArtists.value,
-               let playlists = self?.viewModel.featuredPlaylists.value  {
-                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
-            }
-        }
-        viewModel.recentlyPlayedArtists.bind { [weak self] artists in
-            if let artists = artists,
-               let playlists = self?.viewModel.featuredPlaylists.value,
-               let tracks = self?.viewModel.recentlyPlayedTracks.value{
-                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
-            }
-        }
+    private func setupCollectionView() {
+        createCollectionView()
+        registerNibs()
+        createDataSource()
     }
     
     private func createCollectionView() {
@@ -64,9 +41,27 @@ class MusicViewController: UIViewController {
         view.addSubview(collectionView)
     }
     
+    private func createCompositionalLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnviroment in
+            let section = self.sections[sectionIndex]
+            
+            switch section {
+            case .featuredPlaylists:
+                return NSCollectionLayoutSection.createLargeSection()
+            case .recentlyPlayedTracks, .recentlyPlayedArtists:
+                return NSCollectionLayoutSection.createMediumSection()
+            }
+        }
+        
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+        layout.configuration = config
+        return layout
+    }
+    
     private func registerNibs() {
-        collectionView.register(LargeCell.self, forCellWithReuseIdentifier: LargeCell.reuseIdentifier)
         collectionView.register(MediumCell.self, forCellWithReuseIdentifier: MediumCell.reuseIdentifier)
+        collectionView.register(LargeCell.self, forCellWithReuseIdentifier: LargeCell.reuseIdentifier)
         collectionView.register(SectionHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: SectionHeader.reuseIdentifier)
@@ -108,8 +103,7 @@ class MusicViewController: UIViewController {
                 for: indexPath) as? SectionHeader
             else { return nil }
             
-            let sections: [Section] = [.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
-            let section = sections[indexPath.section]
+            let section = self.sections[indexPath.section]
             
             switch section {
             case .featuredPlaylists:
@@ -123,6 +117,30 @@ class MusicViewController: UIViewController {
         }
     }
     
+    private func bind() {
+        viewModel.featuredPlaylists.bind { [weak self] playlists in
+            if let playlists = playlists,
+               let artists = self?.viewModel.recentlyPlayedArtists.value,
+               let tracks = self?.viewModel.recentlyPlayedTracks.value  {
+                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
+            }
+        }
+        viewModel.recentlyPlayedTracks.bind { [weak self] tracks in
+            if let tracks = tracks,
+               let artists = self?.viewModel.recentlyPlayedArtists.value,
+               let playlists = self?.viewModel.featuredPlaylists.value  {
+                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
+            }
+        }
+        viewModel.recentlyPlayedArtists.bind { [weak self] artists in
+            if let artists = artists,
+               let playlists = self?.viewModel.featuredPlaylists.value,
+               let tracks = self?.viewModel.recentlyPlayedTracks.value{
+                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
+            }
+        }
+    }
+    
     private func reloadData(playlists: [Playlist], tracks: [AudioTrack], artists: [Artist]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
         
@@ -132,91 +150,5 @@ class MusicViewController: UIViewController {
         snapshot.appendItems(artists, toSection: .recentlyPlayedArtists)
         
         dataSource?.apply(snapshot)
-    }
-}
-
-
-// MARK: - Compositional Layout
-extension MusicViewController {
-    
-    private func createCompositionalLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnviroment in
-            let sections: [Section] = [.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
-            let section = sections[sectionIndex]
-            
-            switch section {
-            case .featuredPlaylists:
-                return self.createLargeSection()
-            case .recentlyPlayedTracks, .recentlyPlayedArtists:
-                return self.createMediumSection()
-            }
-        }
-        
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
-        layout.configuration = config
-        return layout
-    }
-    
-    private func createLargeSection() -> NSCollectionLayoutSection {
-        // Size, Item, Group, Section
-        
-        // Item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .fractionalHeight(1))
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
-        
-        // Group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93),
-                                               heightDimension: .fractionalWidth(0.93))
-        let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [layoutItem])
-        
-        // Section
-        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
-        
-        // Header
-        let layoutSectionHeader = createSectionHeader()
-        layoutSection.boundarySupplementaryItems = [layoutSectionHeader]
-        
-        return layoutSection
-    }
-    
-    private func createMediumSection() -> NSCollectionLayoutSection {
-        // Size, Item, Group, Section
-        
-        // Item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .fractionalHeight(0.33))
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: .zero, leading: 5, bottom: .zero, trailing: 5)
-        
-        // Group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93),
-                                               heightDimension: .fractionalWidth(0.55))
-        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
-        
-        // Section
-        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
-        
-        // Header
-        let layoutSectionHeader = createSectionHeader()
-        layoutSection.boundarySupplementaryItems = [layoutSectionHeader]
-        
-        return layoutSection
-    }
-    
-    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.93),
-            heightDimension: .estimated(80))
-        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: layoutSectionHeaderSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top)
-        
-        return layoutSectionHeader
     }
 }

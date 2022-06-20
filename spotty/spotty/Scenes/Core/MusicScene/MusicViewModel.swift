@@ -35,5 +35,6 @@ class MusicViewModel {
                 dump(error.localizedDescription)
             }
         }
+        // TODO: Get pictures for the artists. Then, you can display them in the VC.
     }
 }

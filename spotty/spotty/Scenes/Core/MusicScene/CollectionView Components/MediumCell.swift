@@ -18,18 +18,10 @@ class MediumCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // title Style
-        title.font = UIFont.preferredFont(forTextStyle: .headline)
-        title.textColor = .label
-        
-        // subtitle Style
-        subtitle.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        subtitle.textColor = .secondaryLabel
-        
-        // imageView Style
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 15
-        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal) // This says: Don't stretch horizontaly!
+        title.setCustomStyle(.mediumCellTitle)
+        subtitle.setCustomStyle(.mediumCellSubtitle)
+        imageView.setCustomStyle(.mediumCellImage)
+        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         // innerStackView
         let innerStackView = UIStackView(arrangedSubviews: [title, subtitle])

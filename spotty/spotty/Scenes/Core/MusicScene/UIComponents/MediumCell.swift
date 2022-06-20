@@ -32,15 +32,8 @@ class MediumCell: UICollectionViewCell {
         outerStackView.translatesAutoresizingMaskIntoConstraints = false
         outerStackView.alignment = .center
         outerStackView.spacing = 10
-        contentView.addSubview(outerStackView)
         
-        // Constraints
-        // TODO: All UI Progrmatically. Add Constraints extension.
-        NSLayoutConstraint.activate([
-            outerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            outerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            outerStackView.topAnchor.constraint(equalTo: contentView.topAnchor)
-        ])
+        contentView.addSubview(outerStackView, anchors: [.leading(0), .trailing(0), .top(0)])
     }
     
     required init?(coder: NSCoder) {

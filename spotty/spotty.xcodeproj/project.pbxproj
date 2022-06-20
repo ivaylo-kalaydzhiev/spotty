@@ -33,11 +33,11 @@
 		D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57528608417001DFEBC /* LayoutAnchor.swift */; };
 		D54CD57828608491001DFEBC /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57728608491001DFEBC /* UIView+Constraints.swift */; };
 		D54CD57A286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */; };
+		D54CD57D2860882F001DFEBC /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57C2860882F001DFEBC /* SelfConfiguringCell.swift */; };
 		D55AA3FC285B622600F95F73 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FB285B622600F95F73 /* Observable.swift */; };
 		D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */; };
 		D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA401285B79C100F95F73 /* MusicViewModel.swift */; };
 		D574DA00285B2810007F808E /* MediumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574D9FE285B2810007F808E /* MediumCell.swift */; };
-		D574DA04285B28E3007F808E /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */; };
 		D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D082857300700EFA9FB /* WebRepository.swift */; };
 		D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D0A2857303300EFA9FB /* UserProfile.swift */; };
 		D5D40BA6285CA8EA00480B04 /* LargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D40BA5285CA8EA00480B04 /* LargeCell.swift */; };
@@ -97,11 +97,11 @@
 		D54CD57528608417001DFEBC /* LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAnchor.swift; sourceTree = "<group>"; };
 		D54CD57728608491001DFEBC /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+convenienceInit.swift"; sourceTree = "<group>"; };
+		D54CD57C2860882F001DFEBC /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		D55AA3FB285B622600F95F73 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadFromURL.swift"; sourceTree = "<group>"; };
 		D55AA401285B79C100F95F73 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		D574D9FE285B2810007F808E /* MediumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCell.swift; sourceTree = "<group>"; };
-		D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfConfiguringCell.swift; path = ../../../../../../../Library/SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		D5C92D082857300700EFA9FB /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		D5C92D0A2857303300EFA9FB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		D5D40BA5285CA8EA00480B04 /* LargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCell.swift; sourceTree = "<group>"; };
@@ -174,15 +174,14 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		D54CD56928606BAC001DFEBC /* UIComponents */ = {
+		D54CD56928606BAC001DFEBC /* CollectionViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				D54CD582286088D6001DFEBC /* Cells */,
 				D54CD5722860814E001DFEBC /* Seperator.swift */,
 				D5D40BA7285CBBDB00480B04 /* SectionHeader.swift */,
-				D574D9FE285B2810007F808E /* MediumCell.swift */,
-				D5D40BA5285CA8EA00480B04 /* LargeCell.swift */,
 			);
-			path = UIComponents;
+			path = CollectionViewComponents;
 			sourceTree = "<group>";
 		};
 		D54CD57428608405001DFEBC /* Constraints */ = {
@@ -193,6 +192,47 @@
 				D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */,
 			);
 			path = Constraints;
+			sourceTree = "<group>";
+		};
+		D54CD57B286087F8001DFEBC /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				D5EF5A6928536A190079F91B /* Styling */,
+				D5EF5A6228535B720079F91B /* Animation */,
+				D54CD56928606BAC001DFEBC /* CollectionViewComponents */,
+				D54CD57428608405001DFEBC /* Constraints */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		D54CD580286088A2001DFEBC /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				D5EF5A4A285235AF0079F91B /* ButtonStyle.swift */,
+				D54CD56C28607059001DFEBC /* LabelStyle.swift */,
+				D54CD56A2860704F001DFEBC /* ImageStyle.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		D54CD581286088AC001DFEBC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D5EF5A48285235A50079F91B /* UIButton+setStyle.swift */,
+				D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */,
+				D54CD57028607D94001DFEBC /* UIImageView+setStyle.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D54CD582286088D6001DFEBC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D54CD57C2860882F001DFEBC /* SelfConfiguringCell.swift */,
+				D574D9FE285B2810007F808E /* MediumCell.swift */,
+				D5D40BA5285CA8EA00480B04 /* LargeCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		D5EF59F8285223950079F91B = {
@@ -215,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				D5EF5A18285224230079F91B /* Application */,
+				D54CD57B286087F8001DFEBC /* UIComponents */,
 				D5EF5A1A285224940079F91B /* Scenes */,
 				D5EF5A1D285226570079F91B /* Data */,
 				D5EF5A1C2852258D0079F91B /* Utils */,
@@ -295,8 +336,6 @@
 		D5EF5A21285226BE0079F91B /* MusicScene */ = {
 			isa = PBXGroup;
 			children = (
-				D54CD57428608405001DFEBC /* Constraints */,
-				D54CD56928606BAC001DFEBC /* UIComponents */,
 				D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */,
 				D55AA401285B79C100F95F73 /* MusicViewModel.swift */,
 			);
@@ -347,7 +386,6 @@
 				D5EF5A21285226BE0079F91B /* MusicScene */,
 				D5EF5A22285226CC0079F91B /* ShowsScene */,
 				D5EF5A23285226DA0079F91B /* PlaylistScene */,
-				D574DA03285B28E3007F808E /* SelfConfiguringCell.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -407,7 +445,6 @@
 		D5EF5A462852358F0079F91B /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				D5EF5A6928536A190079F91B /* Styles */,
 				D5EF5A5C28533DFF0079F91B /* AppError.swift */,
 				D5EF5A5A28533DEC0079F91B /* HTTPMethod.swift */,
 			);
@@ -417,22 +454,18 @@
 		D5EF5A47285235950079F91B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D5EF5A6228535B720079F91B /* UI */,
 				D5EF5A6028535B5B0079F91B /* Data+parseJSON.swift */,
+				D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D5EF5A6228535B720079F91B /* UI */ = {
+		D5EF5A6228535B720079F91B /* Animation */ = {
 			isa = PBXGroup;
 			children = (
 				D5EF5A4E285238A70079F91B /* UIView+Animations.swift */,
-				D5EF5A48285235A50079F91B /* UIButton+setStyle.swift */,
-				D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */,
-				D54CD57028607D94001DFEBC /* UIImageView+setStyle.swift */,
-				D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */,
 			);
-			path = UI;
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		D5EF5A67285362670079F91B /* Auth */ = {
@@ -454,14 +487,13 @@
 			path = SpotifyAPI;
 			sourceTree = "<group>";
 		};
-		D5EF5A6928536A190079F91B /* Styles */ = {
+		D5EF5A6928536A190079F91B /* Styling */ = {
 			isa = PBXGroup;
 			children = (
-				D5EF5A4A285235AF0079F91B /* ButtonStyle.swift */,
-				D54CD56C28607059001DFEBC /* LabelStyle.swift */,
-				D54CD56A2860704F001DFEBC /* ImageStyle.swift */,
+				D54CD581286088AC001DFEBC /* Extensions */,
+				D54CD580286088A2001DFEBC /* Enums */,
 			);
-			path = Styles;
+			path = Styling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -567,8 +599,8 @@
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,
 				D5EF5A57285335FB0079F91B /* PKCEFlowProvider.swift in Sources */,
+				D54CD57D2860882F001DFEBC /* SelfConfiguringCell.swift in Sources */,
 				D54CD57828608491001DFEBC /* UIView+Constraints.swift in Sources */,
-				D574DA04285B28E3007F808E /* SelfConfiguringCell.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,
 				D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */,

@@ -29,6 +29,10 @@
 		D54CD56D28607059001DFEBC /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD56C28607059001DFEBC /* LabelStyle.swift */; };
 		D54CD56F286072C1001DFEBC /* UILabel+setStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */; };
 		D54CD57128607D94001DFEBC /* UIImageView+setStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57028607D94001DFEBC /* UIImageView+setStyle.swift */; };
+		D54CD5732860814E001DFEBC /* Seperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD5722860814E001DFEBC /* Seperator.swift */; };
+		D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57528608417001DFEBC /* LayoutAnchor.swift */; };
+		D54CD57828608491001DFEBC /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD57728608491001DFEBC /* UIView+Constraints.swift */; };
+		D54CD57A286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */; };
 		D55AA3FC285B622600F95F73 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FB285B622600F95F73 /* Observable.swift */; };
 		D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */; };
 		D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA401285B79C100F95F73 /* MusicViewModel.swift */; };
@@ -89,6 +93,10 @@
 		D54CD56C28607059001DFEBC /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
 		D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+setStyle.swift"; sourceTree = "<group>"; };
 		D54CD57028607D94001DFEBC /* UIImageView+setStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+setStyle.swift"; sourceTree = "<group>"; };
+		D54CD5722860814E001DFEBC /* Seperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seperator.swift; sourceTree = "<group>"; };
+		D54CD57528608417001DFEBC /* LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAnchor.swift; sourceTree = "<group>"; };
+		D54CD57728608491001DFEBC /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+convenienceInit.swift"; sourceTree = "<group>"; };
 		D55AA3FB285B622600F95F73 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadFromURL.swift"; sourceTree = "<group>"; };
 		D55AA401285B79C100F95F73 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
@@ -166,14 +174,25 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		D54CD56928606BAC001DFEBC /* CollectionView Components */ = {
+		D54CD56928606BAC001DFEBC /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				D54CD5722860814E001DFEBC /* Seperator.swift */,
 				D5D40BA7285CBBDB00480B04 /* SectionHeader.swift */,
 				D574D9FE285B2810007F808E /* MediumCell.swift */,
 				D5D40BA5285CA8EA00480B04 /* LargeCell.swift */,
 			);
-			path = "CollectionView Components";
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		D54CD57428608405001DFEBC /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				D54CD57528608417001DFEBC /* LayoutAnchor.swift */,
+				D54CD57728608491001DFEBC /* UIView+Constraints.swift */,
+				D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */,
+			);
+			path = Constraints;
 			sourceTree = "<group>";
 		};
 		D5EF59F8285223950079F91B = {
@@ -276,7 +295,8 @@
 		D5EF5A21285226BE0079F91B /* MusicScene */ = {
 			isa = PBXGroup;
 			children = (
-				D54CD56928606BAC001DFEBC /* CollectionView Components */,
+				D54CD57428608405001DFEBC /* Constraints */,
+				D54CD56928606BAC001DFEBC /* UIComponents */,
 				D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */,
 				D55AA401285B79C100F95F73 /* MusicViewModel.swift */,
 			);
@@ -520,6 +540,7 @@
 				D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */,
 				D5EF5A59285336110079F91B /* SpotifyEndpoint.swift in Sources */,
 				D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */,
+				D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */,
 				D5EF5A55285335810079F91B /* AuthManager.swift in Sources */,
 				D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */,
 				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
@@ -546,17 +567,20 @@
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,
 				D5EF5A57285335FB0079F91B /* PKCEFlowProvider.swift in Sources */,
+				D54CD57828608491001DFEBC /* UIView+Constraints.swift in Sources */,
 				D574DA04285B28E3007F808E /* SelfConfiguringCell.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,
 				D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */,
 				D5136E992859E4D600765AC1 /* AudioTrackWrapper.swift in Sources */,
 				D5EF5A5D28533DFF0079F91B /* AppError.swift in Sources */,
+				D54CD57A286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift in Sources */,
 				D55AA3FC285B622600F95F73 /* Observable.swift in Sources */,
 				D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */,
 				D5136EA3285A0FB300765AC1 /* CreatePlaylistRequest.swift in Sources */,
 				D574DA00285B2810007F808E /* MediumCell.swift in Sources */,
 				D51D78372858BB1400EED4F9 /* ImageResponse.swift in Sources */,
+				D54CD5732860814E001DFEBC /* Seperator.swift in Sources */,
 				D51D782B2858A1B700EED4F9 /* RemoveAudioTrackFromPlaylistRequest.swift in Sources */,
 				D54CD57128607D94001DFEBC /* UIImageView+setStyle.swift in Sources */,
 				D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */,

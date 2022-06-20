@@ -22,21 +22,11 @@ class LargeCell: UICollectionViewCell {
         subtitle.setCustomStyle(.largeCellSubtitle)
         imageView.setCustomStyle(.largeCellImage)
         
-        // Create, configure and add StackView
         let stackView = UIStackView(arrangedSubviews: [title, subtitle, imageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.setCustomSpacing(10, after: subtitle)
-        contentView.addSubview(stackView)
-        
-        // Constraints
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor)
-        ])
-        
+        contentView.addSubview(stackView, anchors: [.leading(0), .trailing(0), .bottom(0), .top(0)])
     }
     
     required init?(coder: NSCoder) {

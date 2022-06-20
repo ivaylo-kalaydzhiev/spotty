@@ -33,28 +33,7 @@ class SectionHeader: UICollectionReusableView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.setCustomSpacing(10, after: seperator)
-        addSubview(stackView)
-
-        NSLayoutConstraint.activate([
-            seperator.heightAnchor.constraint(equalToConstant: 1),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
-        ])
-    }
-}
-
-class Seperator: UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
         
-        translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .quaternaryLabel
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        addSubview(stackView, anchors: [.leading(0), .trailing(0), .bottom(-10), .top(0)])
     }
 }

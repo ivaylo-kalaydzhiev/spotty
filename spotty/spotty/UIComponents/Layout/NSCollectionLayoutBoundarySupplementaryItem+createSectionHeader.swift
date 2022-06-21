@@ -9,7 +9,7 @@ import UIKit
 
 extension NSCollectionLayoutBoundarySupplementaryItem {
     
-    static func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+    static func createSectionHeaderLayout() -> NSCollectionLayoutBoundarySupplementaryItem {
         let layoutSectionHeaderSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.93),
             heightDimension: .estimated(80))

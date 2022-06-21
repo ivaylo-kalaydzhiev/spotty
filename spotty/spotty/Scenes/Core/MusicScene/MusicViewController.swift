@@ -59,7 +59,10 @@ class MusicViewController: UIViewController {
             collectionView, indexPath, item in
             
             let section = self.sections[indexPath.section]
-            return self.makeConfiguredCell(for: section, collectionView: collectionView, item: item, indexPath: indexPath)
+            return self.makeConfiguredCell(for: section,
+                                           collectionView: collectionView,
+                                           item: item,
+                                           indexPath: indexPath)
         }
         
         addSectionHeader()
@@ -149,10 +152,10 @@ fileprivate enum Section {
     var collectionLayout: NSCollectionLayoutSection {
         switch self {
         case .featuredPlaylists:
-            return NSCollectionLayoutSection.createLargeSection()
+            return NSCollectionLayoutSection.createFeaturedSectionLayout()
         case .recentlyPlayedTracks,
                 .recentlyPlayedArtists:
-            return NSCollectionLayoutSection.createMediumSection()
+            return NSCollectionLayoutSection.createHorizontalGroupsOfThreeLayout()
         }
     }
     

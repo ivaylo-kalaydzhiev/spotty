@@ -21,7 +21,7 @@ enum ImageStyle {
     var cornerRadius: CGFloat {
         switch self {
         case .mediumCellImage, .largeCellImage:
-            return 15
+            return 10
         }
     }
     

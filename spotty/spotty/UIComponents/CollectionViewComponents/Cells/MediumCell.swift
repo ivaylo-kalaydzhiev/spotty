@@ -31,9 +31,9 @@ class MediumCell: UICollectionViewCell, ReuseableCell {
     
     func setup() {
         title.setCustomStyle(.mediumCellTitle)
-        subtitle.setCustomStyle(.mediumCellSubtitle) // allow multiline
+        subtitle.setCustomStyle(.mediumCellSubtitle)
         imageView.setCustomStyle(.mediumCellImage)
-        imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        imageView.activate(anchors: [.height(65), .width(65)])
         
         // innerStackView
         let innerStackView = UIStackView(arrangedSubviews: [title, subtitle])
@@ -52,7 +52,7 @@ class MediumCell: UICollectionViewCell, ReuseableCell {
         if let track = model as? AudioTrack {
             title.text = track.name
             subtitle.text = track.artists.map { $0.name }.joined(separator: ", ")
-            imageView.loadFrom(URLAddress: track.album.images[2].url)
+            imageView.loadFrom(URLAddress: track.album.images[0].url)
         } else if let artist = model as? Artist {
             title.text = artist.name
             subtitle.text = artist.genres?.joined(separator: ", ")
@@ -60,7 +60,7 @@ class MediumCell: UICollectionViewCell, ReuseableCell {
         } else if let episode = model as? Episode {
             title.text = episode.name
             subtitle.text = episode.description
-            imageView.loadFrom(URLAddress: episode.images[2].url)
+            imageView.loadFrom(URLAddress: episode.images[0].url)
         } else {
             fatalError("Business model unknown")
         }

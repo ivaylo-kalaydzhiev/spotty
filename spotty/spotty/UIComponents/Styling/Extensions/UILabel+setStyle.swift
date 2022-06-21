@@ -15,5 +15,6 @@ extension UILabel {
     func setCustomStyle(_ style: LabelStyle) {
         font = style.font
         textColor = style.textColor
+        numberOfLines = style.numberOfLines
     }
 }

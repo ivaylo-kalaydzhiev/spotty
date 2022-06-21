@@ -39,4 +39,13 @@ enum LabelStyle {
             return .secondaryLabel
         }
     }
+    
+    var numberOfLines: Int {
+        switch self {
+        case .mediumCellSubtitle:
+            return 2
+        default:
+            return 1
+        }
+    }
 }

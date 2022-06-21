@@ -26,7 +26,7 @@ class ShowsViewController: UIViewController {
         createDataSource()
     }
     
-    private func createCollectionView() { // TODO: Extract as Factory compomemnt maybe.
+    private func createCollectionView() { // TODO: Extract as Factory component maybe.
         let compositionalLayout = createCompositionalLayout()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: compositionalLayout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -59,7 +59,10 @@ class ShowsViewController: UIViewController {
             collectionView, indexPath, item in
             
             let section = self.sections[indexPath.section]
-            return self.makeConfiguredCell(for: section, collectionView: collectionView, item: item, indexPath: indexPath)
+            return self.makeConfiguredCell(for: section,
+                                           collectionView: collectionView,
+                                           item: item,
+                                           indexPath: indexPath)
         }
         
         addSectionHeader()
@@ -132,9 +135,9 @@ fileprivate enum Section {
     var collectionLayout: NSCollectionLayoutSection {
         switch self {
         case .savedShows:
-            return NSCollectionLayoutSection.createLargeSection()
+            return NSCollectionLayoutSection.createFeaturedSectionLayout()
         case .savedEpisodes:
-            return NSCollectionLayoutSection.createMediumSection() // TODO: Need different Layout.
+            return NSCollectionLayoutSection.createVerticalLayout()
         }
     }
     

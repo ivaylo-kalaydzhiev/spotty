@@ -82,4 +82,24 @@ extension NSCollectionLayoutSection {
         
         return layoutSection
     }
+    
+    static func createPlaylistLayout() -> NSCollectionLayoutSection {
+        // Size, Item, Group, Section
+        
+        // Item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .absolute(100))
+        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20)
+        
+        // Group
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .estimated(100))
+        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
+        
+        // Section
+        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+        
+        return layoutSection
+    }
 }

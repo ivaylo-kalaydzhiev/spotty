@@ -9,17 +9,29 @@ import UIKit
 
 class MediumCell: UICollectionViewCell, ReuseableCell {
     
-    static var reuseIdentifier = "MediumCell"
+    static var reuseIdentifier = "MediumCell" // TODO: Make as extension to UICollectionView String(describing: self)
     
     let title = UILabel()
     let subtitle = UILabel()
     let imageView = UIImageView()
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup() {
         title.setCustomStyle(.mediumCellTitle)
-        subtitle.setCustomStyle(.mediumCellSubtitle)
+        subtitle.setCustomStyle(.mediumCellSubtitle) // allow multiline
         imageView.setCustomStyle(.mediumCellImage)
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
@@ -36,10 +48,6 @@ class MediumCell: UICollectionViewCell, ReuseableCell {
         contentView.addSubview(outerStackView, anchors: [.leading(0), .trailing(0), .top(0)])
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func configure(with model: BusinessModel) {
         if let track = model as? AudioTrack {
             title.text = track.name
@@ -49,6 +57,10 @@ class MediumCell: UICollectionViewCell, ReuseableCell {
             title.text = artist.name
             subtitle.text = artist.genres?.joined(separator: ", ")
             imageView.image = UIImage.init(systemName: "gear")
+        } else if let episode = model as? Episode {
+            title.text = episode.name
+            subtitle.text = episode.description
+            imageView.loadFrom(URLAddress: episode.images[2].url)
         } else {
             fatalError("Business model unknown")
         }

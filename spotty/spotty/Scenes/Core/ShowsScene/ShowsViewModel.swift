@@ -13,9 +13,11 @@ class ShowsViewModel {
     let savedShows: Observable<[Show]> = Observable([Show]())
     let savedEpisodes: Observable<[Episode]> = Observable([Episode]())
     
-    private let webRepository = WebRepository()
+    private let webRepository: WebRepository
     
-    init() {
+    init(webRepository: WebRepository = WebRepository()) {
+        self.webRepository = webRepository
+        
         webRepository.getUserSavedShows { [weak self] result in
             switch result {
             case .success(let items):

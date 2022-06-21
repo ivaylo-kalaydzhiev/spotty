@@ -37,6 +37,8 @@ class LargeCell: UICollectionViewCell, ReuseableCell {
     func configure(with model: BusinessModel) {
         if let playlist = model as? Playlist {
             imageView.loadFrom(URLAddress: playlist.images[0].url)
+        } else if let show = model as? Show {
+            imageView.loadFrom(URLAddress: show.images[0].url)
         } else {
             fatalError("Business model unknown")
         }

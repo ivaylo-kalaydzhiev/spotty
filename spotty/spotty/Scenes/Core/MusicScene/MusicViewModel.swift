@@ -10,13 +10,15 @@ import UIKit
 // TODO: Create protocol
 class MusicViewModel {
     
-    let featuredPlaylists: Observable<[Playlist]> = Observable([Playlist]())
-    let recentlyPlayedTracks: Observable<[AudioTrack]> = Observable([AudioTrack]())
-    let recentlyPlayedArtists: Observable<[Artist]> = Observable([Artist]())
+    let featuredPlaylists = Observable([Playlist]())
+    let recentlyPlayedTracks = Observable([AudioTrack]())
+    let recentlyPlayedArtists = Observable([Artist]())
     
-    private let webRepository = WebRepository()
+    private let webRepository: WebRepository
     
-    init() {
+    init(webRepository: WebRepository = WebRepository()) {
+        self.webRepository = webRepository
+        
         webRepository.getRecentlyPlayedTracks { [weak self] result in
             switch result {
             case .success(let items):

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Show: Codable, Hashable {
+struct Show: Codable, Hashable, BusinessModel {
     
     let description: String
     let id: String

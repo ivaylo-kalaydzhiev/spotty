@@ -59,10 +59,36 @@ class MusicViewController: UIViewController {
             collectionView, indexPath, item in
             
             let section = self.sections[indexPath.section]
-            return section.cell(collectionView: collectionView, item: item, indexPath: indexPath)
+            return self.makeConfiguredCell(for: section, collectionView: collectionView, item: item, indexPath: indexPath)
         }
         
         addSectionHeader()
+    }
+    
+    private func makeConfiguredCell(for section: Section,
+                                    collectionView: UICollectionView,
+                                    item: AnyHashable,
+                                    indexPath: IndexPath) -> UICollectionViewCell {
+        switch section {
+        case .featuredPlaylists:
+            return collectionView.configureReuseableCell(
+                LargeCell.self,
+                modelType: Playlist.self,
+                item: item,
+                indexPath: indexPath)
+        case .recentlyPlayedTracks:
+            return collectionView.configureReuseableCell(
+                MediumCell.self,
+                modelType: AudioTrack.self,
+                item: item,
+                indexPath: indexPath)
+        case .recentlyPlayedArtists:
+            return collectionView.configureReuseableCell(
+                MediumCell.self,
+                modelType: Artist.self,
+                item: item,
+                indexPath: indexPath)
+        }
     }
     
     private func addSectionHeader() {
@@ -79,21 +105,21 @@ class MusicViewController: UIViewController {
     }
     
     private func bind() {
-        viewModel.featuredPlaylists.bind { [weak self] playlists in
+        viewModel.featuredPlaylists.bindAndFire { [weak self] playlists in
             if let playlists = playlists,
                let artists = self?.viewModel.recentlyPlayedArtists.value,
                let tracks = self?.viewModel.recentlyPlayedTracks.value {
                 self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
             }
         }
-        viewModel.recentlyPlayedTracks.bind { [weak self] tracks in
+        viewModel.recentlyPlayedTracks.bindAndFire { [weak self] tracks in
             if let tracks = tracks,
                let artists = self?.viewModel.recentlyPlayedArtists.value,
                let playlists = self?.viewModel.featuredPlaylists.value {
                 self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
             }
         }
-        viewModel.recentlyPlayedArtists.bind { [weak self] artists in
+        viewModel.recentlyPlayedArtists.bindAndFire { [weak self] artists in
             if let artists = artists,
                let playlists = self?.viewModel.featuredPlaylists.value,
                let tracks = self?.viewModel.recentlyPlayedTracks.value {
@@ -105,7 +131,7 @@ class MusicViewController: UIViewController {
     private func reloadData(playlists: [Playlist], tracks: [AudioTrack], artists: [Artist]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
         
-        snapshot.appendSections([.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists])
+        snapshot.appendSections(sections)
         snapshot.appendItems(playlists, toSection: .featuredPlaylists)
         snapshot.appendItems(tracks, toSection: .recentlyPlayedTracks)
         snapshot.appendItems(artists, toSection: .recentlyPlayedArtists)
@@ -138,29 +164,6 @@ fileprivate enum Section {
             return "Recently played"
         case .recentlyPlayedArtists:
             return "Recent Artists"
-        }
-    }
-    
-    func cell(collectionView: UICollectionView, item: AnyHashable, indexPath: IndexPath) -> UICollectionViewCell {
-        switch self {
-        case .featuredPlaylists:
-            return collectionView.configureReuseableCell(
-                LargeCell.self,
-                modelType: Playlist.self,
-                item: item,
-                indexPath: indexPath)
-        case .recentlyPlayedTracks:
-            return collectionView.configureReuseableCell(
-                MediumCell.self,
-                modelType: AudioTrack.self,
-                item: item,
-                indexPath: indexPath)
-        case .recentlyPlayedArtists:
-            return collectionView.configureReuseableCell(
-                MediumCell.self,
-                modelType: Artist.self,
-                item: item,
-                indexPath: indexPath)
         }
     }
 }

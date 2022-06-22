@@ -20,7 +20,7 @@ class ShowsViewModel: ShowsViewModelProtocol {
     
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository()) {
+    init(webRepository: WebRepository = WebRepository()) { // TODO: Extract start()
         self.webRepository = webRepository
         
         webRepository.getUserSavedShows { [weak self] result in

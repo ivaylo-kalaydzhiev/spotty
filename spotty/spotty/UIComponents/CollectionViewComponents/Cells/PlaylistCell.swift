@@ -29,13 +29,7 @@ class PlaylistCell: UICollectionViewCell, ReuseableCell {
     }
     
     func setup() {
-        
-        if self.traitCollection.userInterfaceStyle == .dark {
-            contentView.backgroundColor = .secondarySystemBackground
-        } else {
-            contentView.backgroundColor = .systemBackground
-        }
-        
+        contentView.backgroundColor = UIColor.AppColor.foreground
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 10
         

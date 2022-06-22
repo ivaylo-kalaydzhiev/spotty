@@ -32,13 +32,7 @@ class PlaylistViewController: UIViewController {
         let compositionalLayout = createCompositionalLayout()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: compositionalLayout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        if self.traitCollection.userInterfaceStyle == .dark {
-            collectionView.backgroundColor = .systemBackground
-        } else {
-            collectionView.backgroundColor = .secondarySystemBackground
-        }
-        
+        collectionView.backgroundColor = UIColor.AppColor.background
         view.addSubview(collectionView)
     }
     

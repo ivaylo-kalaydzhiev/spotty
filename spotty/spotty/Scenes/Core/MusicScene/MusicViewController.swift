@@ -111,25 +111,22 @@ class MusicViewController: UIViewController {
     
     private func bind() {
         viewModel.featuredPlaylists.bindAndFire { [weak self] playlists in
-            if let playlists = playlists,
-               let artists = self?.viewModel.recentlyPlayedArtists.value,
-               let tracks = self?.viewModel.recentlyPlayedTracks.value {
-                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
-            }
+            guard let playlists = playlists,
+                  let artists = self?.viewModel.recentlyPlayedArtists.value,
+                  let tracks = self?.viewModel.recentlyPlayedTracks.value else { return }
+            self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
         }
         viewModel.recentlyPlayedTracks.bindAndFire { [weak self] tracks in
-            if let tracks = tracks,
-               let artists = self?.viewModel.recentlyPlayedArtists.value,
-               let playlists = self?.viewModel.featuredPlaylists.value {
-                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
-            }
+            guard let tracks = tracks,
+                  let artists = self?.viewModel.recentlyPlayedArtists.value,
+                  let playlists = self?.viewModel.featuredPlaylists.value else { return }
+            self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
         }
         viewModel.recentlyPlayedArtists.bindAndFire { [weak self] artists in
-            if let artists = artists,
-               let playlists = self?.viewModel.featuredPlaylists.value,
-               let tracks = self?.viewModel.recentlyPlayedTracks.value {
-                self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
-            }
+            guard let artists = artists,
+                  let playlists = self?.viewModel.featuredPlaylists.value,
+                  let tracks = self?.viewModel.recentlyPlayedTracks.value else { return }
+            self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
         }
     }
     

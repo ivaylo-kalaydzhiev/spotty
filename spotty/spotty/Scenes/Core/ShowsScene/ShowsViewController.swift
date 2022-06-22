@@ -104,16 +104,14 @@ class ShowsViewController: UIViewController {
     
     private func bind() {
         viewModel.savedShows.bindAndFire { [weak self] shows in
-            if let shows = shows,
-               let episodes = self?.viewModel.savedEpisodes.value {
-                self?.reloadData(shows: shows, episodes: episodes)
-            }
+            guard let shows = shows,
+                  let episodes = self?.viewModel.savedEpisodes.value else { return }
+            self?.reloadData(shows: shows, episodes: episodes)
         }
         viewModel.savedEpisodes.bindAndFire { [weak self] episodes in
-            if let episodes = episodes,
-               let shows = self?.viewModel.savedShows.value {
-                self?.reloadData(shows: shows, episodes: episodes)
-            }
+            guard  let episodes = episodes,
+                   let shows = self?.viewModel.savedShows.value else { return }
+            self?.reloadData(shows: shows, episodes: episodes)
         }
     }
     

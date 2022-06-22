@@ -145,6 +145,15 @@ class MusicViewController: UIViewController {
     }
 }
 
+extension MusicViewController {
+    
+    static func create(viewModel: MusicViewModelProtocol) -> UIViewController {
+        let viewController = MusicViewController()
+        viewController.viewModel = viewModel
+        return viewController
+    }
+}
+
 fileprivate enum Section {
     
     case featuredPlaylists

@@ -1,5 +1,5 @@
 //
-//  PlaylistDetailViewController.swift
+//  DetailViewController.swift
 //  spotty
 //
 //  Created by Ivaylo Kalaydzhiev on 22.06.22.
@@ -7,49 +7,73 @@
 
 import UIKit
 
-class PlaylistDetailViewController: UIViewController {
+protocol DetailViewModeProtocol { // TODO: New file
+    
+    var imageSource: Observable<UIImage> { get }
+    var title: Observable<String> { get }
+    var items: Observable<[AudioTrack]> { get }
+}
 
+class DetailViewController: UIViewController {
+    
+    private var imageView: UIImageView!
+    private var titleLabel: UILabel!
     private var collectionView: UICollectionView!
-    private var playlistCoverImageView: UIImageView!
+    private var dismissButton: UIButton!
+    
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
     private let sections = [Section.items]
     
-    private var viewModel: PlaylistDetailViewModelProtocol! = PlaylistDetailViewModel() // TODO: What create function?
+    private var viewModel: DetailViewModeProtocol! = PlaylistDetailViewModel() // TODO: What create function?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .systemBackground
         setupUI()
         bind()
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    override var prefersStatusBarHidden: Bool { true }
     
     private func setupUI() {
         createImageView()
+        createLabel()
         createCollectionView()
         registerNibs()
         createDataSource()
     }
     
     private func createImageView() {
-        guard let playlist = viewModel.playlist.value else { return }
-        playlistCoverImageView = UIImageView()
-        playlistCoverImageView.loadFrom(URLAddress: playlist.images[0].url)
-        view.addSubview(playlistCoverImageView, anchors: [.top(0), .leading(0), .trailing(0), .height(view.bounds.width)]) // might explode
+        guard let image = viewModel.imageSource.value else { return }
+        imageView = UIImageView(image: image)
+        view.addSubview(imageView, anchors: [.top(0), .leading(0), .trailing(0), .height(view.bounds.width)])
+        createDismissButton()
+    }
+    
+    private func createDismissButton() {
+        let button = UIButton()
+        button.tintColor = .init(white: 1, alpha: 0.7)
+        button.setBackgroundImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        view.addSubview(button, anchors: [.top(20), .trailing(-20), .height(35), .width(35)])
+    }
+    
+    private func createLabel() {
+        guard let title = viewModel.title.value else { return }
+        titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.setCustomStyle(.detailViewTitle)
+        view.addSubview(titleLabel, anchors: [.top(view.bounds.width + 10), .leading(20)])
     }
     
     private func createCollectionView() { // TODO: Extract as Factory component maybe.
         collectionView = UICollectionView(frame: CGRect(x: 0,
-                                                        y: view.bounds.width,
+                                                        y: view.bounds.width + 60,
                                                         width: view.bounds.width,
                                                         height: view.bounds.height),
                                           collectionViewLayout: createCompositionalLayout())
         
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = UIColor.AppColor.background
+        collectionView.backgroundColor = .systemBackground
         view.addSubview(collectionView)
     }
     
@@ -74,10 +98,11 @@ class PlaylistDetailViewController: UIViewController {
             collectionView, indexPath, item in
             
             let section = self.sections[indexPath.section]
-            return self.makeConfiguredCell(for: section,
-                                           collectionView: collectionView,
-                                           item: item,
-                                           indexPath: indexPath)
+            return self.makeConfiguredCell(
+                for: section,
+                collectionView: collectionView,
+                item: item,
+                indexPath: indexPath)
         }
     }
     
@@ -89,26 +114,29 @@ class PlaylistDetailViewController: UIViewController {
         case .items:
             return collectionView.configureReuseableCell(
                 ItemCell.self,
-                modelType: AudioTrack.self,
+                modelType: AudioTrack.self, // What to do here?
                 item: item,
                 indexPath: indexPath)
         }
     }
     
     private func bind() {
-        viewModel.tracks.bindAndFire { [weak self] tracks in
-            if let tracks = tracks { self?.reloadData(tracks: tracks) }
+        viewModel.imageSource.bindAndFire { [weak self] image in
+            if let image = image { self?.imageView.image = image }
         }
-        viewModel.playlist.bindAndFire { [weak self] playlist in
-            if let playlist = playlist { self?.playlistCoverImageView.loadFrom(URLAddress: playlist.images[0].url) }
+        viewModel.title.bindAndFire { [weak self] title in
+            if let title = title { self?.titleLabel.text = title }
+        }
+        viewModel.items.bindAndFire { [weak self] items in
+            if let items = items { self?.reloadData(items: items) }
         }
     }
     
-    private func reloadData(tracks: [AudioTrack]) { // TODO: Try with BusinessModel
+    private func reloadData(items: [AudioTrack]) { // TODO: Try with BusinessModel
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
         
         snapshot.appendSections(sections)
-        snapshot.appendItems(tracks, toSection: .items)
+        snapshot.appendItems(items, toSection: .items)
         
         dataSource?.apply(snapshot)
     }

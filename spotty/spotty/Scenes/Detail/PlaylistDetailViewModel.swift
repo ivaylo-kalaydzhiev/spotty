@@ -7,17 +7,11 @@
 
 import UIKit
 
-protocol PlaylistDetailViewModelProtocol {
+class PlaylistDetailViewModel: DetailViewModeProtocol {
     
-    var playlist: Observable<Playlist> { get }
-    var tracks: Observable<[AudioTrack]> { get }
-}
-
-class PlaylistDetailViewModel: PlaylistDetailViewModelProtocol {
-    
-    // TODO: Below is crazy
-    let playlist = Observable(Playlist(description: nil, id: "fake", images: [ImageResponse(url: "", height: nil, width: nil)], owner: UserProfile(id: "", spotifyURI: "", email: "", displayName: "", images: nil), snapshotId: "", uri: ""))
-    let tracks = Observable([AudioTrack]())
+    var imageSource = Observable(UIImage())
+    var title = Observable("Tracks")
+    var items = Observable([AudioTrack]())
     
     private let webRepository: WebRepository
     
@@ -28,7 +22,7 @@ class PlaylistDetailViewModel: PlaylistDetailViewModelProtocol {
         webRepository.getPlaylist { result in
             switch result {
             case .success(let playlist):
-                self.playlist.value = playlist
+                self.imageSource.value = UIImage.getImage(from: playlist.images[0].url)
             case .failure(let error):
                 dump(error.localizedDescription)
             }
@@ -38,7 +32,7 @@ class PlaylistDetailViewModel: PlaylistDetailViewModelProtocol {
             case .success(let tracks):
                 let wrappedTracks = tracks.value
                 let unwrappedTracks = wrappedTracks.map { $0.track }
-                self.tracks.value = unwrappedTracks
+                self.items.value = unwrappedTracks
             case .failure(let error):
                 dump(error.localizedDescription)
             }

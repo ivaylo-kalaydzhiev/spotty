@@ -56,7 +56,8 @@ class PlaylistViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) {
             collectionView, indexPath, item in
             
-            let section = self.sections[indexPath.section]
+            guard let section = self.sections[safeAt: indexPath.section] else { return UICollectionViewCell() }
+            
             return self.makeConfiguredCell(for: section,
                                            collectionView: collectionView,
                                            item: item,

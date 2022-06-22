@@ -30,6 +30,8 @@
 		D53E29392861CFFA003E1BEB /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E29382861CFF9003E1BEB /* PlaylistViewModel.swift */; };
 		D53E293D2861D2A9003E1BEB /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E293C2861D2A9003E1BEB /* PlaylistCell.swift */; };
 		D5496DF228631DEF004A30A3 /* UIColor+appColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF128631DEF004A30A3 /* UIColor+appColors.swift */; };
+		D5496DF428632D21004A30A3 /* PlaylistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF328632D21004A30A3 /* PlaylistDetailViewController.swift */; };
+		D5496DF628632D2F004A30A3 /* PlaylistDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */; };
 		D54CD56B2860704F001DFEBC /* ImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD56A2860704F001DFEBC /* ImageStyle.swift */; };
 		D54CD56D28607059001DFEBC /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD56C28607059001DFEBC /* LabelStyle.swift */; };
 		D54CD56F286072C1001DFEBC /* UILabel+setStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */; };
@@ -104,6 +106,8 @@
 		D53E29382861CFF9003E1BEB /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
 		D53E293C2861D2A9003E1BEB /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		D5496DF128631DEF004A30A3 /* UIColor+appColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+appColors.swift"; sourceTree = "<group>"; };
+		D5496DF328632D21004A30A3 /* PlaylistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailViewController.swift; sourceTree = "<group>"; };
+		D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailViewModel.swift; sourceTree = "<group>"; };
 		D54CD56A2860704F001DFEBC /* ImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyle.swift; sourceTree = "<group>"; };
 		D54CD56C28607059001DFEBC /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
 		D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+setStyle.swift"; sourceTree = "<group>"; };
@@ -428,6 +432,8 @@
 		D5EF5A262852281F0079F91B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				D5496DF328632D21004A30A3 /* PlaylistDetailViewController.swift */,
+				D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -674,6 +680,7 @@
 				D54CD58428608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift in Sources */,
 				D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */,
 				D54CD5892860B9DE001DFEBC /* UICollectionView+configure.swift in Sources */,
+				D5496DF628632D2F004A30A3 /* PlaylistDetailViewModel.swift in Sources */,
 				D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */,
 				D5EF5A55285335810079F91B /* AuthManager.swift in Sources */,
 				D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */,
@@ -695,6 +702,7 @@
 				D5496DF228631DEF004A30A3 /* UIColor+appColors.swift in Sources */,
 				D5D40BA8285CBBDB00480B04 /* SectionHeader.swift in Sources */,
 				D5136EA1285A017300765AC1 /* AudioTracksWrapper.swift in Sources */,
+				D5496DF428632D21004A30A3 /* PlaylistDetailViewController.swift in Sources */,
 				D54CD58D2860BA4A001DFEBC /* BusinessModel.swift in Sources */,
 				D54CD56D28607059001DFEBC /* LabelStyle.swift in Sources */,
 				D51D78462858C4DA00EED4F9 /* Artist.swift in Sources */,

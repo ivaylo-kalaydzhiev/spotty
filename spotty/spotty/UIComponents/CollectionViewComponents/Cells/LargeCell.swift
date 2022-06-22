@@ -9,7 +9,6 @@ import UIKit
 
 class LargeCell: UICollectionViewCell, ReuseableCell {
     
-    
     static var reuseIdentifier = "LargeCell"
     
     let title = UILabel()

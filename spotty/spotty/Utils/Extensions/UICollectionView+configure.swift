@@ -17,7 +17,7 @@ extension UICollectionView {
             withReuseIdentifier: cellType.reuseIdentifier,
             for: indexPath) as? T,
               let model = item as? H
-        else { fatalError("Developer Error!") }
+        else { return UICollectionViewCell() as! T }
         
         cell.configure(with: model)
         return cell
@@ -30,7 +30,7 @@ extension UICollectionView {
             ofKind: kind,
             withReuseIdentifier: headerType.reuseIdentifier,
             for: indexPath) as? T
-        else { fatalError("Developer Error!") }
+        else { return UICollectionReusableView() as! T }
         
         return sectionHeader
     }

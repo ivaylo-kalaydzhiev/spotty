@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SFBaseKit
 
 class MusicViewController: UIViewController {
     
@@ -59,7 +60,7 @@ class MusicViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) {
             collectionView, indexPath, item in
             
-            let section = self.sections[indexPath.section]
+            guard let section = self.sections[safeAt: indexPath.section] else { fatalError("Section out of bounds.") }
             return self.makeConfiguredCell(for: section,
                                            collectionView: collectionView,
                                            item: item,

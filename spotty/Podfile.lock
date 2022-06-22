@@ -1,0 +1,16 @@
+PODS:
+  - SFBaseKit (2.1.3)
+
+DEPENDENCIES:
+  - SFBaseKit (~> 2.1.0)
+
+SPEC REPOS:
+  trunk:
+    - SFBaseKit
+
+SPEC CHECKSUMS:
+  SFBaseKit: c505e7208a3f594bdc411a054d6e2c59ed9b1dcf
+
+PODFILE CHECKSUM: 5f81b368a54577ed2f6494b5d44918b9bafca09b
+
+COCOAPODS: 1.11.3

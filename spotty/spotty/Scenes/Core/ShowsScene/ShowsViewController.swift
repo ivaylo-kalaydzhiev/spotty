@@ -31,7 +31,7 @@ class ShowsViewController: UIViewController {
         let compositionalLayout = createCompositionalLayout()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: compositionalLayout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = UIColor.AppColor.background
+        collectionView.backgroundColor = UIColor.background
         view.addSubview(collectionView)
     }
     

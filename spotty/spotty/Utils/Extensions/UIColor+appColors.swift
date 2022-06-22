@@ -9,9 +9,6 @@ import UIKit
 
 extension UIColor {
     
-    struct AppColor {
-        
-        static let background = UIColor(named: "myBackground")
-        static let foreground = UIColor(named: "myForeground")
-    }
+    static let background = UIColor(named: "myBackground")
+    static let foreground = UIColor(named: "myForeground")
 }

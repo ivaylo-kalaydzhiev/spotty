@@ -15,8 +15,8 @@ protocol ShowsViewModelProtocol {
 
 class ShowsViewModel: ShowsViewModelProtocol {
     
-    let savedShows: Observable<[Show]> = Observable([Show]())
-    let savedEpisodes: Observable<[Episode]> = Observable([Episode]())
+    let savedShows = Observable([Show]())
+    let savedEpisodes = Observable([Episode]())
     
     private let webRepository: WebRepository
     

@@ -12,7 +12,7 @@ class MusicViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
-    private let sections: [Section] = [.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
+    private let sections = [Section.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
     
     private var viewModel: MusicViewModelProtocol! = MusicViewModel() // TODO: What create function?
     
@@ -113,19 +113,22 @@ class MusicViewController: UIViewController {
         viewModel.featuredPlaylists.bindAndFire { [weak self] playlists in
             guard let playlists = playlists,
                   let artists = self?.viewModel.recentlyPlayedArtists.value,
-                  let tracks = self?.viewModel.recentlyPlayedTracks.value else { return }
+                  let tracks = self?.viewModel.recentlyPlayedTracks.value
+            else { return }
             self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
         }
         viewModel.recentlyPlayedTracks.bindAndFire { [weak self] tracks in
             guard let tracks = tracks,
                   let artists = self?.viewModel.recentlyPlayedArtists.value,
-                  let playlists = self?.viewModel.featuredPlaylists.value else { return }
+                  let playlists = self?.viewModel.featuredPlaylists.value
+            else { return }
             self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
         }
         viewModel.recentlyPlayedArtists.bindAndFire { [weak self] artists in
             guard let artists = artists,
                   let playlists = self?.viewModel.featuredPlaylists.value,
-                  let tracks = self?.viewModel.recentlyPlayedTracks.value else { return }
+                  let tracks = self?.viewModel.recentlyPlayedTracks.value
+            else { return }
             self?.reloadData(playlists: playlists, tracks: tracks, artists: artists)
         }
     }
@@ -153,7 +156,7 @@ fileprivate enum Section {
         case .featuredPlaylists:
             return NSCollectionLayoutSection.createFeaturedSectionLayout()
         case .recentlyPlayedTracks,
-                .recentlyPlayedArtists:
+             .recentlyPlayedArtists:
             return NSCollectionLayoutSection.createHorizontalGroupsOfThreeLayout()
         }
     }

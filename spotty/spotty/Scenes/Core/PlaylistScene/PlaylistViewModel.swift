@@ -14,7 +14,7 @@ protocol PlaylistViewModelProtocol {
 
 class PlaylistViewModel: PlaylistViewModelProtocol {
     
-    let playlists: Observable<[Playlist]> = Observable([Playlist]())
+    let playlists = Observable([Playlist]())
     
     private let webRepository: WebRepository
     

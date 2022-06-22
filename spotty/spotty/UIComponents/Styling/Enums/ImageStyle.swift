@@ -12,11 +12,7 @@ enum ImageStyle {
     case mediumCellImage
     case largeCellImage
     
-    var clipsToBounds: Bool {
-        switch self {
-        default: return true
-        }
-    }
+    var clipsToBounds: Bool { true }
     
     var cornerRadius: CGFloat {
         switch self {

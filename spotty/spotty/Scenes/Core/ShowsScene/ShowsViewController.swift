@@ -11,7 +11,7 @@ class ShowsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
-    private let sections: [Section] = [.savedShows, .savedEpisodes]
+    private let sections = [Section.savedShows, .savedEpisodes]
     
     private var viewModel: ShowsViewModelProtocol! = ShowsViewModel() // TODO: What create function?
     
@@ -105,12 +105,14 @@ class ShowsViewController: UIViewController {
     private func bind() {
         viewModel.savedShows.bindAndFire { [weak self] shows in
             guard let shows = shows,
-                  let episodes = self?.viewModel.savedEpisodes.value else { return }
+                  let episodes = self?.viewModel.savedEpisodes.value
+            else { return }
             self?.reloadData(shows: shows, episodes: episodes)
         }
         viewModel.savedEpisodes.bindAndFire { [weak self] episodes in
             guard  let episodes = episodes,
-                   let shows = self?.viewModel.savedShows.value else { return }
+                   let shows = self?.viewModel.savedShows.value
+            else { return }
             self?.reloadData(shows: shows, episodes: episodes)
         }
     }

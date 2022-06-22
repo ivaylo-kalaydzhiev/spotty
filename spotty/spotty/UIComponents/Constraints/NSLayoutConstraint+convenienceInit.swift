@@ -9,6 +9,11 @@ import UIKit
 
 extension NSLayoutConstraint {
     
+    /// More easily create an ``NSLayoutConstraint``
+    /// - Parameters:
+    ///   - from: The View you want to constraint.
+    ///   - item: The View to which tou want to constraint.
+    ///   - anchor: ``LayoutAnchor`` describing the relation between the two Views.
     convenience init(from: UIView,
                      to item: UIView?,
                      anchor: LayoutAnchor) {

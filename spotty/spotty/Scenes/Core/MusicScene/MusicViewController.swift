@@ -12,7 +12,8 @@ class MusicViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
     private let sections: [Section] = [.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
-    private let viewModel = MusicViewModel()
+    
+    private var viewModel: MusicViewModelProtocol! = MusicViewModel() // TODO: What create function?
     
     override func viewDidLoad() {
         super.viewDidLoad()

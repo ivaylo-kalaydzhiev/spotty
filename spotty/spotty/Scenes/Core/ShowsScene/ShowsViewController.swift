@@ -12,7 +12,8 @@ class ShowsViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
     private let sections: [Section] = [.savedShows, .savedEpisodes]
-    private let viewModel = ShowsViewModel()
+    
+    private var viewModel: ShowsViewModelProtocol! = ShowsViewModel() // TODO: What create function?
     
     override func viewDidLoad() {
         super.viewDidLoad()

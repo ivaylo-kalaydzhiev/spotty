@@ -12,7 +12,8 @@ class PlaylistViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
     private let sections: [Section] = [.playlists]
-    private let viewModel = PlayilstViewModel()
+    
+    private var viewModel: PlaylistViewModelProtocol! = PlaylistViewModel() // TODO: What create function?
     
     override func viewDidLoad() {
         super.viewDidLoad()

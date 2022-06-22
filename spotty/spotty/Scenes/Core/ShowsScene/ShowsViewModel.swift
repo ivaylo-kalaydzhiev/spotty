@@ -7,8 +7,13 @@
 
 import UIKit
 
-// TODO: Create protocol
-class ShowsViewModel {
+protocol ShowsViewModelProtocol {
+    
+    var savedShows: Observable<[Show]> { get }
+    var savedEpisodes: Observable<[Episode]> { get }
+}
+
+class ShowsViewModel: ShowsViewModelProtocol {
     
     let savedShows: Observable<[Show]> = Observable([Show]())
     let savedEpisodes: Observable<[Episode]> = Observable([Episode]())

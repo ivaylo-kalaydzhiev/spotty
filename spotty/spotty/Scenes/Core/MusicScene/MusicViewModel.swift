@@ -7,8 +7,14 @@
 
 import UIKit
 
-// TODO: Create protocol
-class MusicViewModel {
+protocol MusicViewModelProtocol {
+    
+    var featuredPlaylists: Observable<[Playlist]> { get }
+    var recentlyPlayedTracks: Observable<[AudioTrack]> { get }
+    var recentlyPlayedArtists: Observable<[Artist]> { get }
+}
+
+class MusicViewModel: MusicViewModelProtocol {
     
     let featuredPlaylists = Observable([Playlist]())
     let recentlyPlayedTracks = Observable([AudioTrack]())

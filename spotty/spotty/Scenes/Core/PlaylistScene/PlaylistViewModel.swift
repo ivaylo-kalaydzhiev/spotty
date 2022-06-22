@@ -7,8 +7,12 @@
 
 import UIKit
 
-// TODO: Create protocol
-class PlayilstViewModel {
+protocol PlaylistViewModelProtocol {
+    
+    var playlists: Observable<[Playlist]> { get }
+}
+
+class PlaylistViewModel: PlaylistViewModelProtocol {
     
     let playlists: Observable<[Playlist]> = Observable([Playlist]())
     

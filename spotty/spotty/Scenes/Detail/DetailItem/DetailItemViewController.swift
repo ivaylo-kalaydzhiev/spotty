@@ -14,7 +14,7 @@ class DetailItemViewController: UIViewController {
     private var descriptionLabel: UILabel!
     private var dismissButton: UIButton!
     
-    private var viewModel: DetailItemViewModelProtocol! // TODO: Create func
+    private var viewModel: DetailItemViewModelProtocol! = AudioTrackDetailViewModel() // TODO: Create func
     
     override func viewDidLoad() {
         super.viewDidLoad()

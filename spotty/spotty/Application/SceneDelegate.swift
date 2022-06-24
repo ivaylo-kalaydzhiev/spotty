@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window.rootViewController = AuthManager.shared.isSignedIn
 //            ? TabBarViewController()
 //            : UINavigationController(rootViewController: WelcomeViewController())
-        window.rootViewController = DetailListViewController()
+        window.rootViewController = DetailItemViewController()
         window.makeKeyAndVisible()
         self.window = window
     }

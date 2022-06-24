@@ -30,7 +30,7 @@ class MusicViewController: UIViewController {
     
     private func createCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
-        collectionView.setCustomStyle(style: .music)
+        collectionView.setCustomStyle(style: .main)
         view.addSubview(collectionView)
     }
     
@@ -166,7 +166,7 @@ extension UICollectionView {
 
 enum CollectionViewStyle {
     
-    case music
+    case main
     
     var autoresizingMask: UIView.AutoresizingMask {
         return [.flexibleWidth, .flexibleHeight]

@@ -11,114 +11,89 @@ class ShowsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
-    private let sections = [Section.savedShows, .savedEpisodes]
     
     private var viewModel: ShowsViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
+        setupUI()
         bind()
     }
     
-    private func setupCollectionView() {
+    private func setupUI() {
         createCollectionView()
         registerNibs()
         createDataSource()
+        createSectionHeader()
     }
     
-    private func createCollectionView() { // TODO: Extract as Factory component maybe.
+    private func createCollectionView() {
         let compositionalLayout = createCompositionalLayout()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: compositionalLayout)
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = UIColor.background
+        collectionView.setCustomStyle(style: .main)
         view.addSubview(collectionView)
     }
     
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnviroment in
-            let section = self.sections[sectionIndex]
-            return section.collectionLayout
+            return Section.init(rawValue: sectionIndex)?.collectionLayout
         }
         
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
-        layout.configuration = config
-        return layout
+        return layout.configured()
     }
     
     private func registerNibs() {
-        collectionView.register(MediumCell.self, forCellWithReuseIdentifier: MediumCell.reuseIdentifier)
-        collectionView.register(LargeCell.self, forCellWithReuseIdentifier: LargeCell.reuseIdentifier)
+        collectionView.register(MediumCell.self,
+                                forCellWithReuseIdentifier: MediumCell.reuseIdentifier)
+        collectionView.register(LargeCell.self,
+                                forCellWithReuseIdentifier: LargeCell.reuseIdentifier)
         collectionView.register(SectionHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: SectionHeader.reuseIdentifier)
     }
     
-    private func createDataSource() {
+    private func createDataSource() { // TODO: A lot of methods are the same, might inherit
         dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) {
             collectionView, indexPath, item in
             
-            let section = self.sections[indexPath.section]
-            return self.makeConfiguredCell(for: section,
-                                           collectionView: collectionView,
-                                           item: item,
-                                           indexPath: indexPath)
-        }
-        
-        addSectionHeader()
-    }
-    
-    private func makeConfiguredCell(for section: Section,
-                                    collectionView: UICollectionView,
-                                    item: AnyHashable,
-                                    indexPath: IndexPath) -> UICollectionViewCell {
-        switch section {
-        case .savedShows:
-            return collectionView.configuredReuseableCell(
-                LargeCell.self,
-                item: item,
-                indexPath: indexPath)
-        case .savedEpisodes:
-            return collectionView.configuredReuseableCell(
-                MediumCell.self,
-                item: item,
-                indexPath: indexPath)
-        }
-    }
-    
-    private func addSectionHeader() {
-        dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
-            let sectionHeader = collectionView.configuredSupplimentaryView(
-                SectionHeader.self,
-                kind: kind,
-                indexPath: indexPath)
+            guard let section = Section.init(rawValue: indexPath.section),
+                  let cell = collectionView.configuredReuseableCell(
+                    section.cellTypeReuseIdentifier,
+                    item: item,
+                    indexPath: indexPath) as? UICollectionViewCell
+            else { fatalError("Failed to create Reuseable Cell") }
             
-            let section = self.sections[indexPath.section]
-            sectionHeader.title.text = section.title
+            return cell
+        }
+    }
+    
+    private func createSectionHeader() {
+        dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard let section = Section.init(rawValue: indexPath.section),
+                  let sectionHeader = collectionView.configuredSupplimentaryView(
+                    section.headerReuseIdentifier,
+                    title: section.title,
+                    kind: kind,
+                    indexPath: indexPath) as? UICollectionReusableView
+            else { fatalError("Failed to create Header") }
+            
             return sectionHeader
         }
     }
     
     private func bind() {
-        viewModel.savedShows.bindAndFire { [weak self] shows in
-            guard let shows = shows,
-                  let episodes = self?.viewModel.savedEpisodes.value
-            else { return }
-            self?.reloadData(shows: shows, episodes: episodes)
-        }
-        viewModel.savedEpisodes.bindAndFire { [weak self] episodes in
-            guard  let episodes = episodes,
-                   let shows = self?.viewModel.savedShows.value
-            else { return }
-            self?.reloadData(shows: shows, episodes: episodes)
-        }
+        viewModel.savedShows.bindAndFire { [weak self] _ in self?.reloadData() }
+        viewModel.savedEpisodes.bindAndFire { [weak self] _ in self?.reloadData() }
     }
     
-    private func reloadData(shows: [Show], episodes: [Episode]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+    private func reloadData() {
+        guard let shows = viewModel.savedShows.value,
+              let episodes = viewModel.savedEpisodes.value
+        else { return }
         
-        snapshot.appendSections(sections)
+        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+        snapshot.appendSections(Section.allCases)
+        
         snapshot.appendItems(shows, toSection: .savedShows)
         snapshot.appendItems(episodes, toSection: .savedEpisodes)
         
@@ -137,7 +112,7 @@ extension ShowsViewController {
     }
 }
 
-fileprivate enum Section {
+fileprivate enum Section: Int, CaseIterable {
     
     case savedShows
     case savedEpisodes
@@ -158,5 +133,18 @@ fileprivate enum Section {
         case .savedEpisodes:
             return "Saved Episodes"
         }
+    }
+    
+    var cellTypeReuseIdentifier: String {
+        switch self {
+        case .savedShows:
+            return LargeCell.reuseIdentifier
+        case .savedEpisodes:
+            return MediumCell.reuseIdentifier
+        }
+    }
+    
+    var headerReuseIdentifier: String {
+        return SectionHeader.reuseIdentifier
     }
 }

@@ -90,6 +90,9 @@
 		D5FC63D52865E2F600718E3C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D42865E2F600718E3C /* Constant.swift */; };
 		D5FC63D72865E4FF00718E3C /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */; };
 		D5FC63D92865E77B00718E3C /* UINavigatioController+factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */; };
+		D5FC63DB2866076500718E3C /* UICollectionView+setStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DA2866076500718E3C /* UICollectionView+setStyle.swift */; };
+		D5FC63DD2866077300718E3C /* CollectionViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */; };
+		D5FC63DF286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -180,6 +183,9 @@
 		D5FC63D42865E2F600718E3C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
 		D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigatioController+factory.swift"; sourceTree = "<group>"; };
+		D5FC63DA2866076500718E3C /* UICollectionView+setStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+setStyle.swift"; sourceTree = "<group>"; };
+		D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewStyle.swift; sourceTree = "<group>"; };
+		D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCompositionalLayout+configured.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +282,7 @@
 				D5EF5A4A285235AF0079F91B /* ButtonStyle.swift */,
 				D54CD56C28607059001DFEBC /* LabelStyle.swift */,
 				D54CD56A2860704F001DFEBC /* ImageStyle.swift */,
+				D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -286,6 +293,7 @@
 				D5EF5A48285235A50079F91B /* UIButton+setStyle.swift */,
 				D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */,
 				D54CD57028607D94001DFEBC /* UIImageView+setStyle.swift */,
+				D5FC63DA2866076500718E3C /* UICollectionView+setStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -544,6 +552,7 @@
 				D5496DF128631DEF004A30A3 /* UIColor+appColors.swift */,
 				D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */,
 				D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */,
+				D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -749,7 +758,9 @@
 				D51D78392858C38500EED4F9 /* ItemsResponse.swift in Sources */,
 				D5136EA5285A176100765AC1 /* RemoveTrackRequest.swift in Sources */,
 				D5136E9F2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift in Sources */,
+				D5FC63DB2866076500718E3C /* UICollectionView+setStyle.swift in Sources */,
 				D51D783E2858C48E00EED4F9 /* Album.swift in Sources */,
+				D5FC63DD2866077300718E3C /* CollectionViewStyle.swift in Sources */,
 				D53E293728619EA9003E1BEB /* ShowsViewModel.swift in Sources */,
 				D51D78492858C89900EED4F9 /* AlbumImagesWrapper.swift in Sources */,
 				D5EF5A6128535B5B0079F91B /* Data+parseJSON.swift in Sources */,
@@ -775,6 +786,7 @@
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,
 				D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */,
+				D5FC63DF286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift in Sources */,
 				D5136E992859E4D600765AC1 /* AudioTrackWrapper.swift in Sources */,
 				D5EF5A5D28533DFF0079F91B /* AppError.swift in Sources */,
 				D54CD57A286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift in Sources */,

@@ -90,25 +90,14 @@ class DetailListViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) {
             collectionView, indexPath, item in
             
-            let section = self.sections[indexPath.section]
-            return self.makeConfiguredCell(
-                for: section,
-                collectionView: collectionView,
-                item: item,
-                indexPath: indexPath)
-        }
-    }
-    
-    private func makeConfiguredCell(for section: Section,
-                                    collectionView: UICollectionView,
-                                    item: AnyHashable,
-                                    indexPath: IndexPath) -> UICollectionViewCell {
-        switch section {
-        case .items:
-            return collectionView.configuredReuseableCell(
-                ItemCell.self,
-                item: item,
-                indexPath: indexPath)
+            guard let section = Section.init(rawValue: indexPath.section),
+                  let cell = collectionView.configuredReuseableCell(
+                    section.cellTypeReuseIdentifier,
+                    item: item,
+                    indexPath: indexPath) as? UICollectionViewCell
+            else { fatalError("Failed to create Reuseable Cell") }
+            
+            return cell
         }
     }
     
@@ -134,7 +123,7 @@ class DetailListViewController: UIViewController {
     }
 }
 
-fileprivate enum Section {
+fileprivate enum Section: Int, CaseIterable {
     
     case items
     
@@ -143,5 +132,9 @@ fileprivate enum Section {
         case .items:
             return NSCollectionLayoutSection.createDetailViewItemsLayout()
         }
+    }
+    
+    var cellTypeReuseIdentifier: String {
+        return ItemCell.reuseIdentifier
     }
 }

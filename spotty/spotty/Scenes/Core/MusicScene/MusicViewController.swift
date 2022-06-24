@@ -155,34 +155,3 @@ fileprivate enum Section: Int, CaseIterable {
         return SectionHeader.reuseIdentifier
     }
 }
-
-extension UICollectionView {
-    
-    func setCustomStyle(style: CollectionViewStyle) {
-        autoresizingMask = style.autoresizingMask
-        backgroundColor = style.backgroundColor
-    }
-}
-
-enum CollectionViewStyle {
-    
-    case main
-    
-    var autoresizingMask: UIView.AutoresizingMask {
-        return [.flexibleWidth, .flexibleHeight]
-    }
-    
-    var backgroundColor: UIColor? {
-        return UIColor.background
-    }
-}
-
-extension UICollectionViewCompositionalLayout {
-    
-    func configured() -> UICollectionViewCompositionalLayout {
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
-        self.configuration = config
-        return self
-    }
-}

@@ -7,45 +7,38 @@
 
 import UIKit
 
-class PlaylistViewController: UIViewController {
-
+class PlaylistViewController: UIViewController { // TODO: Refactor with TableView, this is crazy.
+    
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
-    private let sections = [Section.playlists]
     
-    private var viewModel: PlaylistViewModelProtocol! = PlaylistViewModel() // TODO: What create function?
+    private var viewModel: PlaylistViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupCollectionView()
+        setupUI()
         bind()
     }
     
-    private func setupCollectionView() {
+    private func setupUI() {
         createCollectionView()
         registerNibs()
         createDataSource()
     }
     
-    private func createCollectionView() { // TODO: Extract as Factory component maybe.
+    private func createCollectionView() {
         let compositionalLayout = createCompositionalLayout()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: compositionalLayout)
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = UIColor.background
+        collectionView.setCustomStyle(style: .main)
         view.addSubview(collectionView)
     }
     
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnviroment in
-            let section = self.sections[sectionIndex]
-            return section.collectionLayout
+            return Section.init(rawValue: sectionIndex)?.collectionLayout
         }
         
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
-        layout.configuration = config
-        return layout
+        return layout.configured()
     }
     
     private func registerNibs() {
@@ -56,38 +49,27 @@ class PlaylistViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) {
             collectionView, indexPath, item in
             
-            guard let section = self.sections[safeAt: indexPath.section] else { return UICollectionViewCell() }
+            guard let section = Section.init(rawValue: indexPath.section),
+                  let cell = collectionView.configuredReuseableCell(
+                    section.cellTypeReuseIdentifier,
+                    item: item,
+                    indexPath: indexPath) as? UICollectionViewCell
+            else { fatalError("Failed to create Reuseable Cell") }
             
-            return self.makeConfiguredCell(for: section,
-                                           collectionView: collectionView,
-                                           item: item,
-                                           indexPath: indexPath)
-        }
-    }
-    
-    private func makeConfiguredCell(for section: Section,
-                                    collectionView: UICollectionView,
-                                    item: AnyHashable,
-                                    indexPath: IndexPath) -> UICollectionViewCell {
-        switch section {
-        case .playlists:
-            return collectionView.configuredReuseableCell(
-                PlaylistCell.self,
-                item: item,
-                indexPath: indexPath)
+            return cell
         }
     }
     
     private func bind() {
-        viewModel.playlists.bindAndFire { [weak self] playlists in
-            if let playlists = playlists { self?.reloadData(playlists: playlists) }
-        }
+        viewModel.playlists.bindAndFire { [weak self] _ in self?.reloadData() }
     }
     
-    private func reloadData(playlists: [Playlist]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+    private func reloadData() {
+        guard let playlists = viewModel.playlists.value else { return }
         
-        snapshot.appendSections(sections)
+        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+        snapshot.appendSections(Section.allCases)
+        
         snapshot.appendItems(playlists, toSection: .playlists)
         
         dataSource?.apply(snapshot)
@@ -105,14 +87,15 @@ extension PlaylistViewController {
     }
 }
 
-fileprivate enum Section {
+fileprivate enum Section: Int, CaseIterable {
     
     case playlists
     
     var collectionLayout: NSCollectionLayoutSection {
-        switch self {
-        case .playlists:
-            return NSCollectionLayoutSection.createPlaylistLayout()
-        }
+        return NSCollectionLayoutSection.createPlaylistLayout()
+    }
+    
+    var cellTypeReuseIdentifier: String {
+        return PlaylistCell.reuseIdentifier
     }
 }

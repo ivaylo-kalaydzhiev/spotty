@@ -7,6 +7,9 @@
 
 import UIKit
 
+fileprivate typealias CollectionViewDataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>
+fileprivate typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
+
 class PlaylistViewController: UIViewController { // TODO: Refactor with TableView, this is crazy.
     
     private var collectionView: UICollectionView!

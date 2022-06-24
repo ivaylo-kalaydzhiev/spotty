@@ -8,10 +8,14 @@
 import UIKit
 import SFBaseKit
 
+// TODO: Make public and you'll have solved a LOT of problems.
+fileprivate typealias CollectionViewDataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>
+fileprivate typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
+
 class MusicViewController: UIViewController {
     
     private var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
+    private var dataSource: CollectionViewDataSource?
     
     private var viewModel: MusicViewModelProtocol!
     
@@ -52,7 +56,7 @@ class MusicViewController: UIViewController {
     }
     
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) {
+        dataSource = CollectionViewDataSource(collectionView: collectionView) {
             collectionView, indexPath, item in
             
             guard let section = Section.init(rawValue: indexPath.section),
@@ -92,7 +96,7 @@ class MusicViewController: UIViewController {
               let artists = viewModel.recentlyPlayedArtists.value
         else { return }
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+        var snapshot = Snapshot()
         snapshot.appendSections(Section.allCases)
         
         snapshot.appendItems(playlists, toSection: .featuredPlaylists)

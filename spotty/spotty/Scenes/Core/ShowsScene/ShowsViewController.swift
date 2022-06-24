@@ -7,10 +7,13 @@
 
 import UIKit
 
+fileprivate typealias CollectionViewDataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>
+fileprivate typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
+
 class ShowsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
+    private var dataSource: CollectionViewDataSource?
     
     private var viewModel: ShowsViewModelProtocol!
     
@@ -35,7 +38,7 @@ class ShowsViewController: UIViewController {
     }
     
     private func createCompositionalLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnviroment in
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
             return Section.init(rawValue: sectionIndex)?.collectionLayout
         }
         
@@ -53,7 +56,7 @@ class ShowsViewController: UIViewController {
     }
     
     private func createDataSource() { // TODO: A lot of methods are the same, might inherit
-        dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) {
+        dataSource = CollectionViewDataSource(collectionView: collectionView) {
             collectionView, indexPath, item in
             
             guard let section = Section.init(rawValue: indexPath.section),
@@ -91,7 +94,7 @@ class ShowsViewController: UIViewController {
               let episodes = viewModel.savedEpisodes.value
         else { return }
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+        var snapshot = Snapshot()
         snapshot.appendSections(Section.allCases)
         
         snapshot.appendItems(shows, toSection: .savedShows)

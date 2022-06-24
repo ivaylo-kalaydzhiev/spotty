@@ -14,7 +14,7 @@ class DetailItemViewController: UIViewController {
     private var descriptionLabel: UILabel!
     private var dismissButton: UIButton!
     
-    private var viewModel: DetailItemViewModelProtocol! = AudioTrackDetailViewModel() // TODO: Create func
+    private var viewModel: DetailItemViewModelProtocol! = EpisodeDetailViewModel() // TODO: Create func
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +27,11 @@ class DetailItemViewController: UIViewController {
     
     private func setupUI() {
         createImageView()
-        createTitleLabel()
-        createDescriptionLabel()
+        createText()
     }
     
     private func createImageView() {
-        guard let image = viewModel.imageSource.value else { return }
-        imageView = UIImageView(image: image)
+        imageView = UIImageView()
         view.addSubview(imageView, anchors: [.top(0), .leading(0), .trailing(0), .height(view.bounds.width)])
         createDismissButton()
     }
@@ -45,22 +43,21 @@ class DetailItemViewController: UIViewController {
         view.addSubview(button, anchors: [.top(20), .trailing(-20), .height(35), .width(35)])
     }
     
-    private func createTitleLabel() {
-        guard let title = viewModel.title.value else { return }
+    private func createText() {
         titleLabel = UILabel()
-        titleLabel.text = title
         titleLabel.setCustomStyle(.detailViewTitle)
-        view.addSubview(titleLabel, anchors: [.top(view.bounds.width + 10), .leading(20)])
-    }
-    
-    private func createDescriptionLabel() {
-        guard let description = viewModel.description.value else { return }
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.numberOfLines = 2
+        
         descriptionLabel = UILabel()
-        descriptionLabel.text = description
-        descriptionLabel.setCustomStyle(.detailViewTitle)
-        descriptionLabel.numberOfLines = 100
+        descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .justified
-        view.addSubview(titleLabel, anchors: [.top(view.bounds.width + 50), .leading(20)])
+        
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        
+        view.addSubview(stackView, anchors: [.top(view.bounds.width + 10), .leading(20), .trailing(-20)])
     }
     
     private func bind() {
@@ -71,7 +68,7 @@ class DetailItemViewController: UIViewController {
             if let title = title { self?.titleLabel.text = title }
         }
         viewModel.description.bindAndFire { [weak self] description in
-            if let description = description { self?.titleLabel.text = description }
+            if let description = description { self?.descriptionLabel.text = description }
         }
     }
 }
@@ -84,3 +81,4 @@ extension DetailItemViewController {
         return viewController
     }
 }
+

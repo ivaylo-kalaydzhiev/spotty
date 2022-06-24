@@ -84,6 +84,9 @@
 		D5FC63C72865ABCC00718E3C /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */; };
 		D5FC63CB2865B4D100718E3C /* DetailItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63CA2865B4D100718E3C /* DetailItemViewController.swift */; };
 		D5FC63CD2865B5DE00718E3C /* DetailItemViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63CC2865B5DE00718E3C /* DetailItemViewModelProtocol.swift */; };
+		D5FC63CF2865B73D00718E3C /* AudioTrackDetailViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63CE2865B73D00718E3C /* AudioTrackDetailViewMode.swift */; };
+		D5FC63D12865B74B00718E3C /* EpisodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D02865B74B00718E3C /* EpisodeDetailViewModel.swift */; };
+		D5FC63D32865B75600718E3C /* ArtistDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D22865B75600718E3C /* ArtistDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +171,9 @@
 		D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
 		D5FC63CA2865B4D100718E3C /* DetailItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemViewController.swift; sourceTree = "<group>"; };
 		D5FC63CC2865B5DE00718E3C /* DetailItemViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemViewModelProtocol.swift; sourceTree = "<group>"; };
+		D5FC63CE2865B73D00718E3C /* AudioTrackDetailViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackDetailViewMode.swift; sourceTree = "<group>"; };
+		D5FC63D02865B74B00718E3C /* EpisodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewModel.swift; sourceTree = "<group>"; };
+		D5FC63D22865B75600718E3C /* ArtistDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -576,6 +582,7 @@
 				D5FC63C42865AB8B00718E3C /* DetailListViewModelProtocol.swift */,
 				D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */,
 				D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */,
+				D5FC63D22865B75600718E3C /* ArtistDetailViewModel.swift */,
 			);
 			path = DetailList;
 			sourceTree = "<group>";
@@ -585,6 +592,8 @@
 			children = (
 				D5FC63CA2865B4D100718E3C /* DetailItemViewController.swift */,
 				D5FC63CC2865B5DE00718E3C /* DetailItemViewModelProtocol.swift */,
+				D5FC63CE2865B73D00718E3C /* AudioTrackDetailViewMode.swift */,
+				D5FC63D02865B74B00718E3C /* EpisodeDetailViewModel.swift */,
 			);
 			path = DetailItem;
 			sourceTree = "<group>";
@@ -705,6 +714,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5FC63CF2865B73D00718E3C /* AudioTrackDetailViewMode.swift in Sources */,
 				D5EF5A6428535B910079F91B /* Network.swift in Sources */,
 				D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */,
 				D5EF5A59285336110079F91B /* SpotifyEndpoint.swift in Sources */,
@@ -715,6 +725,7 @@
 				D5496DF628632D2F004A30A3 /* PlaylistDetailViewModel.swift in Sources */,
 				D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */,
 				D5EF5A55285335810079F91B /* AuthManager.swift in Sources */,
+				D5FC63D12865B74B00718E3C /* EpisodeDetailViewModel.swift in Sources */,
 				D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */,
 				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
 				D54CD58B2860BA0F001DFEBC /* ReuseableCell.swift in Sources */,
@@ -745,6 +756,7 @@
 				D5EF5A5B28533DEC0079F91B /* HTTPMethod.swift in Sources */,
 				D51D78422858C4BB00EED4F9 /* Episode.swift in Sources */,
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
+				D5FC63D32865B75600718E3C /* ArtistDetailViewModel.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,
 				D5FC63CB2865B4D100718E3C /* DetailItemViewController.swift in Sources */,
 				D5EF5A57285335FB0079F91B /* PKCEFlowProvider.swift in Sources */,

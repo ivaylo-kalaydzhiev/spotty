@@ -17,7 +17,7 @@ class DetailListViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
     private let sections = [Section.items]
     
-    private var viewModel: some DetailListViewModelProtocol = ShowDetailViewModel()
+    private var viewModel: some DetailListViewModelProtocol = ArtistDetailViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

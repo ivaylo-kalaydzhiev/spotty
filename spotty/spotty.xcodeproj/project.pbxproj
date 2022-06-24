@@ -82,6 +82,8 @@
 		D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6C285379DE0079F91B /* KeychainManager.swift */; };
 		D5FC63C52865AB8B00718E3C /* DetailListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63C42865AB8B00718E3C /* DetailListViewModelProtocol.swift */; };
 		D5FC63C72865ABCC00718E3C /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */; };
+		D5FC63CB2865B4D100718E3C /* DetailItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63CA2865B4D100718E3C /* DetailItemViewController.swift */; };
+		D5FC63CD2865B5DE00718E3C /* DetailItemViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63CC2865B5DE00718E3C /* DetailItemViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +166,8 @@
 		D5EF5A6C285379DE0079F91B /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		D5FC63C42865AB8B00718E3C /* DetailListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewModelProtocol.swift; sourceTree = "<group>"; };
 		D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
+		D5FC63CA2865B4D100718E3C /* DetailItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemViewController.swift; sourceTree = "<group>"; };
+		D5FC63CC2865B5DE00718E3C /* DetailItemViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +443,7 @@
 		D5EF5A262852281F0079F91B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				D5FC63C92865B4A000718E3C /* DetailItem */,
 				D5FC63C82865B48500718E3C /* DetailList */,
 			);
 			path = Detail;
@@ -573,6 +578,15 @@
 				D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */,
 			);
 			path = DetailList;
+			sourceTree = "<group>";
+		};
+		D5FC63C92865B4A000718E3C /* DetailItem */ = {
+			isa = PBXGroup;
+			children = (
+				D5FC63CA2865B4D100718E3C /* DetailItemViewController.swift */,
+				D5FC63CC2865B5DE00718E3C /* DetailItemViewModelProtocol.swift */,
+			);
+			path = DetailItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,6 +746,7 @@
 				D51D78422858C4BB00EED4F9 /* Episode.swift in Sources */,
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,
+				D5FC63CB2865B4D100718E3C /* DetailItemViewController.swift in Sources */,
 				D5EF5A57285335FB0079F91B /* PKCEFlowProvider.swift in Sources */,
 				D54CD57828608491001DFEBC /* UIView+Constraints.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
@@ -758,6 +773,7 @@
 				D51D783C2858C46500EED4F9 /* AudioTrack.swift in Sources */,
 				D5EF5A4F285238A70079F91B /* UIView+Animations.swift in Sources */,
 				D5EF5A6B28536AB50079F91B /* OAuth2Supporting.swift in Sources */,
+				D5FC63CD2865B5DE00718E3C /* DetailItemViewModelProtocol.swift in Sources */,
 				D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */,
 				D5EF5A5F28533E300079F91B /* AuthResponse.swift in Sources */,
 				D53E293D2861D2A9003E1BEB /* PlaylistCell.swift in Sources */,

@@ -16,6 +16,6 @@ enum CollectionViewStyle {
     }
     
     var backgroundColor: UIColor? {
-        return UIColor.background
+        return .systemBackground
     }
 }

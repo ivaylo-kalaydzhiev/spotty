@@ -7,20 +7,20 @@
 
 import UIKit
 
-class PlaylistCell: UICollectionViewCell, ReuseableCell {
+class PlaylistCell: UITableViewCell, ReuseableCell {
     
     static var reuseIdentifier = "PlaylistCell" // TODO: Make as extension to UICollectionView String(describing: self)
     
     let descriptionLabel = UILabel()
-    let imageView = UIImageView()
+    let image = UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
     
@@ -29,27 +29,27 @@ class PlaylistCell: UICollectionViewCell, ReuseableCell {
     }
     
     func setup() {
-        contentView.backgroundColor = UIColor.foreground
+        contentView.backgroundColor = .systemBackground
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 10
         
         descriptionLabel.setCustomStyle(.playlistDescription)
-        imageView.setCustomStyle(.mediumCellImage)
-        imageView.activate(anchors: [.height(90), .width(90)])
+        image.setCustomStyle(.mediumCellImage)
+        image.activate(anchors: [.height(90), .width(90)])
         
         // stackView
-        let stackView = UIStackView(arrangedSubviews: [imageView, descriptionLabel])
+        let stackView = UIStackView(arrangedSubviews: [image, descriptionLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .center
         stackView.spacing = 10
         
-        contentView.addSubview(stackView, anchors: [.leading(0), .trailing(0), .top(0), .bottom(0)])
+        contentView.addSubview(stackView, anchors: [.leading(10), .trailing(-10), .top(10), .bottom(-10)])
     }
     
     func configure(with model: BusinessModel) {
         if let playlist = model as? Playlist {
             descriptionLabel.text = playlist.description
-            imageView.loadFrom(URLAddress: playlist.images[0].url)
+            image.loadFrom(URLAddress: playlist.images[0].url)
         } else {
             fatalError("Business model unknown")
         }

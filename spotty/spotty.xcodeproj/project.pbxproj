@@ -93,6 +93,7 @@
 		D5FC63DB2866076500718E3C /* UICollectionView+setStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DA2866076500718E3C /* UICollectionView+setStyle.swift */; };
 		D5FC63DD2866077300718E3C /* CollectionViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */; };
 		D5FC63DF286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */; };
+		D5FC63E12869AC7A00718E3C /* UITableView+configured.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63E02869AC7A00718E3C /* UITableView+configured.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +187,7 @@
 		D5FC63DA2866076500718E3C /* UICollectionView+setStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+setStyle.swift"; sourceTree = "<group>"; };
 		D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewStyle.swift; sourceTree = "<group>"; };
 		D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCompositionalLayout+configured.swift"; sourceTree = "<group>"; };
+		D5FC63E02869AC7A00718E3C /* UITableView+configured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+configured.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -553,6 +555,7 @@
 				D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */,
 				D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */,
 				D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */,
+				D5FC63E02869AC7A00718E3C /* UITableView+configured.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */,
 				D5EF5A5B28533DEC0079F91B /* HTTPMethod.swift in Sources */,
 				D51D78422858C4BB00EED4F9 /* Episode.swift in Sources */,
+				D5FC63E12869AC7A00718E3C /* UITableView+configured.swift in Sources */,
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D5FC63D32865B75600718E3C /* ArtistDetailViewModel.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,

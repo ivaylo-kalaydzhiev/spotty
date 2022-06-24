@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlaylistDetailViewModel: DetailViewModeProtocol {
+class PlaylistDetailViewModel: DetailListViewModelProtocol {
     
     typealias ItemType = AudioTrack
     

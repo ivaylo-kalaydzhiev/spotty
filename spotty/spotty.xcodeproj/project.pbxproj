@@ -30,7 +30,7 @@
 		D53E29392861CFFA003E1BEB /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E29382861CFF9003E1BEB /* PlaylistViewModel.swift */; };
 		D53E293D2861D2A9003E1BEB /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E293C2861D2A9003E1BEB /* PlaylistCell.swift */; };
 		D5496DF228631DEF004A30A3 /* UIColor+appColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF128631DEF004A30A3 /* UIColor+appColors.swift */; };
-		D5496DF428632D21004A30A3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF328632D21004A30A3 /* DetailViewController.swift */; };
+		D5496DF428632D21004A30A3 /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF328632D21004A30A3 /* DetailListViewController.swift */; };
 		D5496DF628632D2F004A30A3 /* PlaylistDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */; };
 		D5496DF8286340CC004A30A3 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF7286340CC004A30A3 /* ItemCell.swift */; };
 		D54CD56B2860704F001DFEBC /* ImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD56A2860704F001DFEBC /* ImageStyle.swift */; };
@@ -80,6 +80,8 @@
 		D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6528535C450079F91B /* SpotifyAuthProvider.swift */; };
 		D5EF5A6B28536AB50079F91B /* OAuth2Supporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6A28536AB50079F91B /* OAuth2Supporting.swift */; };
 		D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6C285379DE0079F91B /* KeychainManager.swift */; };
+		D5FC63C52865AB8B00718E3C /* DetailListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63C42865AB8B00718E3C /* DetailListViewModelProtocol.swift */; };
+		D5FC63C72865ABCC00718E3C /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,7 +110,7 @@
 		D53E29382861CFF9003E1BEB /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
 		D53E293C2861D2A9003E1BEB /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		D5496DF128631DEF004A30A3 /* UIColor+appColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+appColors.swift"; sourceTree = "<group>"; };
-		D5496DF328632D21004A30A3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D5496DF328632D21004A30A3 /* DetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
 		D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailViewModel.swift; sourceTree = "<group>"; };
 		D5496DF7286340CC004A30A3 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		D54CD56A2860704F001DFEBC /* ImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyle.swift; sourceTree = "<group>"; };
@@ -160,6 +162,8 @@
 		D5EF5A6528535C450079F91B /* SpotifyAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuthProvider.swift; sourceTree = "<group>"; };
 		D5EF5A6A28536AB50079F91B /* OAuth2Supporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Supporting.swift; sourceTree = "<group>"; };
 		D5EF5A6C285379DE0079F91B /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		D5FC63C42865AB8B00718E3C /* DetailListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewModelProtocol.swift; sourceTree = "<group>"; };
+		D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -435,8 +439,7 @@
 		D5EF5A262852281F0079F91B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				D5496DF328632D21004A30A3 /* DetailViewController.swift */,
-				D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */,
+				D5FC63C82865B48500718E3C /* DetailList */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -561,6 +564,17 @@
 			path = Styling;
 			sourceTree = "<group>";
 		};
+		D5FC63C82865B48500718E3C /* DetailList */ = {
+			isa = PBXGroup;
+			children = (
+				D5496DF328632D21004A30A3 /* DetailListViewController.swift */,
+				D5FC63C42865AB8B00718E3C /* DetailListViewModelProtocol.swift */,
+				D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */,
+				D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */,
+			);
+			path = DetailList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -682,6 +696,7 @@
 				D5EF5A59285336110079F91B /* SpotifyEndpoint.swift in Sources */,
 				D54CD58428608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift in Sources */,
 				D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */,
+				D5FC63C52865AB8B00718E3C /* DetailListViewModelProtocol.swift in Sources */,
 				D54CD5892860B9DE001DFEBC /* UICollectionView+configure.swift in Sources */,
 				D5496DF628632D2F004A30A3 /* PlaylistDetailViewModel.swift in Sources */,
 				D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */,
@@ -705,9 +720,10 @@
 				D5496DF228631DEF004A30A3 /* UIColor+appColors.swift in Sources */,
 				D5D40BA8285CBBDB00480B04 /* SectionHeader.swift in Sources */,
 				D5136EA1285A017300765AC1 /* AudioTracksWrapper.swift in Sources */,
-				D5496DF428632D21004A30A3 /* DetailViewController.swift in Sources */,
+				D5496DF428632D21004A30A3 /* DetailListViewController.swift in Sources */,
 				D54CD58D2860BA4A001DFEBC /* BusinessModel.swift in Sources */,
 				D54CD56D28607059001DFEBC /* LabelStyle.swift in Sources */,
+				D5FC63C72865ABCC00718E3C /* ShowDetailViewModel.swift in Sources */,
 				D51D78462858C4DA00EED4F9 /* Artist.swift in Sources */,
 				D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */,
 				D54CD56B2860704F001DFEBC /* ImageStyle.swift in Sources */,

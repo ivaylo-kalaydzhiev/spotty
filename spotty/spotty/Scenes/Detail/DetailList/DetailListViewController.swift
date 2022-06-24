@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  DetailListViewController.swift
 //  spotty
 //
 //  Created by Ivaylo Kalaydzhiev on 22.06.22.
@@ -7,15 +7,7 @@
 
 import UIKit
 
-protocol DetailViewModeProtocol { // TODO: New file
-    associatedtype ItemType: Hashable
-    
-    var imageSource: Observable<UIImage> { get }
-    var title: Observable<String> { get }
-    var items: Observable<[ItemType]> { get }
-}
-
-class DetailViewController: UIViewController {
+class DetailListViewController: UIViewController {
     
     private var imageView: UIImageView!
     private var titleLabel: UILabel!
@@ -25,7 +17,7 @@ class DetailViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
     private let sections = [Section.items]
     
-    private var viewModel: some DetailViewModeProtocol = PlaylistDetailViewModel() // TODO: What create function?
+    private var viewModel: some DetailListViewModelProtocol = ShowDetailViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +107,6 @@ class DetailViewController: UIViewController {
         case .items:
             return collectionView.configureReuseableCell(
                 ItemCell.self,
-                modelType: AudioTrack.self, // What to do here?
                 item: item,
                 indexPath: indexPath)
         }

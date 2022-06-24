@@ -78,19 +78,16 @@ class MusicViewController: UIViewController {
         case .featuredPlaylists:
             return collectionView.configureReuseableCell(
                 LargeCell.self,
-                modelType: Playlist.self,
                 item: item,
                 indexPath: indexPath)
         case .recentlyPlayedTracks:
             return collectionView.configureReuseableCell(
                 MediumCell.self,
-                modelType: AudioTrack.self,
                 item: item,
                 indexPath: indexPath)
         case .recentlyPlayedArtists:
             return collectionView.configureReuseableCell(
                 MediumCell.self,
-                modelType: Artist.self,
                 item: item,
                 indexPath: indexPath)
         }

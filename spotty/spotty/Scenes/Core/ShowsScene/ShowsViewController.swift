@@ -77,13 +77,11 @@ class ShowsViewController: UIViewController {
         case .savedShows:
             return collectionView.configureReuseableCell(
                 LargeCell.self,
-                modelType: Show.self,
                 item: item,
                 indexPath: indexPath)
         case .savedEpisodes:
             return collectionView.configureReuseableCell(
                 MediumCell.self,
-                modelType: Episode.self,
                 item: item,
                 indexPath: indexPath)
         }

@@ -9,14 +9,13 @@ import UIKit
 
 extension UICollectionView {
     
-    func configureReuseableCell<T: ReuseableCell, H: BusinessModel>(_ cellType: T.Type,
-                                                                    modelType: H.Type,
-                                                                    item: AnyHashable,
-                                                                    indexPath: IndexPath) -> T {
+    func configureReuseableCell<T: ReuseableCell>(_ cellType: T.Type,
+                                                  item: AnyHashable,
+                                                  indexPath: IndexPath) -> T {
         guard let cell = self.dequeueReusableCell(
             withReuseIdentifier: cellType.reuseIdentifier,
             for: indexPath) as? T,
-              let model = item as? H
+              let model = item as? BusinessModel
         else { fatalError() }
         
         cell.configure(with: model)

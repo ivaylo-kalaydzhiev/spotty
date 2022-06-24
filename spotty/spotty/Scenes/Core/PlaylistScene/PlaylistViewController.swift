@@ -73,7 +73,6 @@ class PlaylistViewController: UIViewController {
         case .playlists:
             return collectionView.configureReuseableCell(
                 PlaylistCell.self,
-                modelType: Playlist.self,
                 item: item,
                 indexPath: indexPath)
         }

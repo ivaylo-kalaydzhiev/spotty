@@ -10,6 +10,7 @@ import Foundation
 struct Episode: Codable, Hashable, BusinessModel {
     
     let description: String
+    let htmlDescription: String
     let id: String
     let images: [ImageResponse]
     let name: String
@@ -18,6 +19,7 @@ struct Episode: Codable, Hashable, BusinessModel {
     
     private enum CodingKeys: String, CodingKey {
         case description
+        case htmlDescription = "html_description"
         case id
         case images
         case name

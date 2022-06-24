@@ -24,7 +24,7 @@ class EpisodeDetailViewModel: DetailItemViewModelProtocol {
             case .success(let episode):
                 self.imageSource.value = UIImage.getImage(from: episode.images[0].url)
                 self.title.value = episode.name
-                self.description.value = episode.description
+                self.description.value = episode.htmlDescription
             case .failure(let error):
                 dump(error.localizedDescription)
             }

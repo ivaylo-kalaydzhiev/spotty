@@ -9,9 +9,11 @@ import UIKit
 
 class PlaylistDetailViewModel: DetailViewModeProtocol {
     
+    typealias ItemType = AudioTrack
+    
     var imageSource = Observable(UIImage())
     var title = Observable("Tracks")
-    var items = Observable([AudioTrack]())
+    var items = Observable([ItemType]())
     
     private let webRepository: WebRepository
     

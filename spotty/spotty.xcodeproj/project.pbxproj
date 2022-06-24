@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		062D6B2CE62B62ED1CB7849E /* Pods_spotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FC8D91DCDF42136064D554 /* Pods_spotty.framework */; };
+		B83B80D8E83D80822EEE25D2 /* Pods_spotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEA5F8DC257E8632CE4806 /* Pods_spotty.framework */; };
 		D5136E992859E4D600765AC1 /* AudioTrackWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E982859E4D600765AC1 /* AudioTrackWrapper.swift */; };
 		D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E9A2859F6E100765AC1 /* EpisodeWrapper.swift */; };
 		D5136E9D2859F8F700765AC1 /* ShowWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E9C2859F8F700765AC1 /* ShowWrapper.swift */; };
@@ -83,8 +83,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F100F7669C15A56E30D036F /* Pods-spotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotty.debug.xcconfig"; path = "Target Support Files/Pods-spotty/Pods-spotty.debug.xcconfig"; sourceTree = "<group>"; };
-		A19439769ACA148F06747EE9 /* Pods-spotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotty.release.xcconfig"; path = "Target Support Files/Pods-spotty/Pods-spotty.release.xcconfig"; sourceTree = "<group>"; };
+		6AEEA5F8DC257E8632CE4806 /* Pods_spotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		733A4BC3C42E55175156C59F /* Pods-spotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotty.release.xcconfig"; path = "Target Support Files/Pods-spotty/Pods-spotty.release.xcconfig"; sourceTree = "<group>"; };
+		C077F220CFA67725098DD5FD /* Pods-spotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotty.debug.xcconfig"; path = "Target Support Files/Pods-spotty/Pods-spotty.debug.xcconfig"; sourceTree = "<group>"; };
 		D5136E982859E4D600765AC1 /* AudioTrackWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackWrapper.swift; sourceTree = "<group>"; };
 		D5136E9A2859F6E100765AC1 /* EpisodeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeWrapper.swift; sourceTree = "<group>"; };
 		D5136E9C2859F8F700765AC1 /* ShowWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowWrapper.swift; sourceTree = "<group>"; };
@@ -159,7 +160,6 @@
 		D5EF5A6528535C450079F91B /* SpotifyAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuthProvider.swift; sourceTree = "<group>"; };
 		D5EF5A6A28536AB50079F91B /* OAuth2Supporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Supporting.swift; sourceTree = "<group>"; };
 		D5EF5A6C285379DE0079F91B /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
-		E5FC8D91DCDF42136064D554 /* Pods_spotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,17 +167,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				062D6B2CE62B62ED1CB7849E /* Pods_spotty.framework in Frameworks */,
+				B83B80D8E83D80822EEE25D2 /* Pods_spotty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3CD9BECD5E427CCF8E4D6F65 /* Frameworks */ = {
+		24C77FC0CB957B6B9F191053 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E5FC8D91DCDF42136064D554 /* Pods_spotty.framework */,
+				6AEEA5F8DC257E8632CE4806 /* Pods_spotty.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -185,8 +185,8 @@
 		C6545238720E86C6D09B27EE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9F100F7669C15A56E30D036F /* Pods-spotty.debug.xcconfig */,
-				A19439769ACA148F06747EE9 /* Pods-spotty.release.xcconfig */,
+				C077F220CFA67725098DD5FD /* Pods-spotty.debug.xcconfig */,
+				733A4BC3C42E55175156C59F /* Pods-spotty.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -297,7 +297,7 @@
 				D5EF5A03285223950079F91B /* spotty */,
 				D5EF5A02285223950079F91B /* Products */,
 				C6545238720E86C6D09B27EE /* Pods */,
-				3CD9BECD5E427CCF8E4D6F65 /* Frameworks */,
+				24C77FC0CB957B6B9F191053 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -568,11 +568,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5EF5A15285223980079F91B /* Build configuration list for PBXNativeTarget "spotty" */;
 			buildPhases = (
-				61ED9D1F56B418DFDBDBFDE1 /* [CP] Check Pods Manifest.lock */,
+				08CBFB78CBAB9EFBEA6E430F /* [CP] Check Pods Manifest.lock */,
 				D5EF59FD285223950079F91B /* Sources */,
 				D5EF59FE285223950079F91B /* Frameworks */,
 				D5EF59FF285223950079F91B /* Resources */,
-				17642476DEB405E21159ED45 /* [CP] Embed Pods Frameworks */,
+				E12FCF105DC3134ED58F24C6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -631,24 +631,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17642476DEB405E21159ED45 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		61ED9D1F56B418DFDBDBFDE1 /* [CP] Check Pods Manifest.lock */ = {
+		08CBFB78CBAB9EFBEA6E430F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -668,6 +651,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E12FCF105DC3134ED58F24C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -878,7 +878,7 @@
 		};
 		D5EF5A16285223980079F91B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F100F7669C15A56E30D036F /* Pods-spotty.debug.xcconfig */;
+			baseConfigurationReference = C077F220CFA67725098DD5FD /* Pods-spotty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -907,7 +907,7 @@
 		};
 		D5EF5A17285223980079F91B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A19439769ACA148F06747EE9 /* Pods-spotty.release.xcconfig */;
+			baseConfigurationReference = 733A4BC3C42E55175156C59F /* Pods-spotty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

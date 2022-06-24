@@ -8,10 +8,11 @@
 import UIKit
 
 protocol DetailViewModeProtocol { // TODO: New file
+    associatedtype ItemType: Hashable
     
     var imageSource: Observable<UIImage> { get }
     var title: Observable<String> { get }
-    var items: Observable<[AudioTrack]> { get }
+    var items: Observable<[ItemType]> { get }
 }
 
 class DetailViewController: UIViewController {
@@ -24,7 +25,7 @@ class DetailViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
     private let sections = [Section.items]
     
-    private var viewModel: DetailViewModeProtocol! = PlaylistDetailViewModel() // TODO: What create function?
+    private var viewModel: some DetailViewModeProtocol = PlaylistDetailViewModel() // TODO: What create function?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +133,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    private func reloadData(items: [AudioTrack]) { // TODO: Try with BusinessModel
+    private func reloadData(items: [AnyHashable]) { // TODO: Try with BusinessModel
         var snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
         
         snapshot.appendSections(sections)

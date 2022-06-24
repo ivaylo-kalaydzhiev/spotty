@@ -87,6 +87,9 @@
 		D5FC63CF2865B73D00718E3C /* AudioTrackDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63CE2865B73D00718E3C /* AudioTrackDetailViewModel.swift */; };
 		D5FC63D12865B74B00718E3C /* EpisodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D02865B74B00718E3C /* EpisodeDetailViewModel.swift */; };
 		D5FC63D32865B75600718E3C /* ArtistDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D22865B75600718E3C /* ArtistDetailViewModel.swift */; };
+		D5FC63D52865E2F600718E3C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D42865E2F600718E3C /* Constant.swift */; };
+		D5FC63D72865E4FF00718E3C /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */; };
+		D5FC63D92865E77B00718E3C /* UINavigatioController+factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +177,9 @@
 		D5FC63CE2865B73D00718E3C /* AudioTrackDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackDetailViewModel.swift; sourceTree = "<group>"; };
 		D5FC63D02865B74B00718E3C /* EpisodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewModel.swift; sourceTree = "<group>"; };
 		D5FC63D22865B75600718E3C /* ArtistDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewModel.swift; sourceTree = "<group>"; };
+		D5FC63D42865E2F600718E3C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
+		D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigatioController+factory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +379,7 @@
 				D5EF5A462852358F0079F91B /* Enums */,
 				D5EF5A6C285379DE0079F91B /* KeychainManager.swift */,
 				D55AA3FB285B622600F95F73 /* Observable.swift */,
+				D5FC63D42865E2F600718E3C /* Constant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -535,6 +542,8 @@
 				D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */,
 				D54CD5882860B9DE001DFEBC /* UICollectionView+configure.swift */,
 				D5496DF128631DEF004A30A3 /* UIColor+appColors.swift */,
+				D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */,
+				D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -731,9 +740,11 @@
 				D54CD58B2860BA0F001DFEBC /* ReuseableCell.swift in Sources */,
 				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
 				D54CD58628608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift in Sources */,
+				D5FC63D52865E2F600718E3C /* Constant.swift in Sources */,
 				D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */,
 				D5136EA7285A194F00765AC1 /* PlaylistChangedResponse.swift in Sources */,
 				D5EF5A4B285235AF0079F91B /* ButtonStyle.swift in Sources */,
+				D5FC63D72865E4FF00718E3C /* UIImage+AppImages.swift in Sources */,
 				D54CD56F286072C1001DFEBC /* UILabel+setStyle.swift in Sources */,
 				D51D78392858C38500EED4F9 /* ItemsResponse.swift in Sources */,
 				D5136EA5285A176100765AC1 /* RemoveTrackRequest.swift in Sources */,
@@ -789,6 +800,7 @@
 				D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */,
 				D5EF5A5F28533E300079F91B /* AuthResponse.swift in Sources */,
 				D53E293D2861D2A9003E1BEB /* PlaylistCell.swift in Sources */,
+				D5FC63D92865E77B00718E3C /* UINavigatioController+factory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

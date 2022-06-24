@@ -14,7 +14,7 @@ class MusicViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
     private let sections = [Section.featuredPlaylists, .recentlyPlayedTracks, .recentlyPlayedArtists]
     
-    private var viewModel: MusicViewModelProtocol! = MusicViewModel() // TODO: What create function?
+    private var viewModel: MusicViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,8 +144,10 @@ class MusicViewController: UIViewController {
 
 extension MusicViewController {
     
-    static func create(viewModel: MusicViewModelProtocol) -> UIViewController {
+    static func create(viewModel: MusicViewModelProtocol = MusicViewModel()) -> UIViewController {
         let viewController = MusicViewController()
+        viewController.title = Constant.SceneTitle.music
+        viewController.navigationItem.largeTitleDisplayMode = .always
         viewController.viewModel = viewModel
         return viewController
     }

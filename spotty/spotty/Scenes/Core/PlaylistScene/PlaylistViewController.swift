@@ -94,6 +94,17 @@ class PlaylistViewController: UIViewController {
     }
 }
 
+extension PlaylistViewController {
+    
+    static func create(viewModel: PlaylistViewModelProtocol = PlaylistViewModel()) -> UIViewController {
+        let viewController = PlaylistViewController()
+        viewController.viewModel = viewModel
+        viewController.title = Constant.SceneTitle.playlist
+        viewController.navigationItem.largeTitleDisplayMode = .always
+        return viewController
+    }
+}
+
 fileprivate enum Section {
     
     case playlists

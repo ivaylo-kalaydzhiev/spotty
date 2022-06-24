@@ -13,7 +13,7 @@ class ShowsViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
     private let sections = [Section.savedShows, .savedEpisodes]
     
-    private var viewModel: ShowsViewModelProtocol! = ShowsViewModel() // TODO: What create function?
+    private var viewModel: ShowsViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +123,17 @@ class ShowsViewController: UIViewController {
         snapshot.appendItems(episodes, toSection: .savedEpisodes)
         
         dataSource?.apply(snapshot)
+    }
+}
+
+extension ShowsViewController { // TODO: Protocol for VCs that can create themselves?
+    
+    static func create(viewModel: ShowsViewModelProtocol = ShowsViewModel()) -> UIViewController {
+        let viewController = ShowsViewController()
+        viewController.title = Constant.SceneTitle.show
+        viewController.navigationItem.largeTitleDisplayMode = .always
+        viewController.viewModel = viewModel
+        return viewController
     }
 }
 

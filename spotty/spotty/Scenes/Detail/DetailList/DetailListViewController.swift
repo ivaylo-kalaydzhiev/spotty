@@ -105,7 +105,7 @@ class DetailListViewController: UIViewController {
                                     indexPath: IndexPath) -> UICollectionViewCell {
         switch section {
         case .items:
-            return collectionView.configureReuseableCell(
+            return collectionView.configuredReuseableCell(
                 ItemCell.self,
                 item: item,
                 indexPath: indexPath)

@@ -71,7 +71,7 @@ class PlaylistViewController: UIViewController {
                                     indexPath: IndexPath) -> UICollectionViewCell {
         switch section {
         case .playlists:
-            return collectionView.configureReuseableCell(
+            return collectionView.configuredReuseableCell(
                 PlaylistCell.self,
                 item: item,
                 indexPath: indexPath)

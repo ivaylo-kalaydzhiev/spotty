@@ -9,12 +9,12 @@ import UIKit
 
 extension UICollectionView {
     
-    func configureReuseableCell<T: ReuseableCell>(_ cellType: T.Type,
-                                                  item: AnyHashable,
-                                                  indexPath: IndexPath) -> T {
+    func configuredReuseableCell(_ reuseIdentifier: String,
+                                 item: AnyHashable,
+                                 indexPath: IndexPath) -> ReuseableCell {
         guard let cell = self.dequeueReusableCell(
-            withReuseIdentifier: cellType.reuseIdentifier,
-            for: indexPath) as? T,
+            withReuseIdentifier: reuseIdentifier,
+            for: indexPath) as? ReuseableCell,
               let model = item as? BusinessModel
         else { fatalError() }
         
@@ -22,14 +22,16 @@ extension UICollectionView {
         return cell
     }
     
-    func configureSupplimentaryView<T: ReuseableHeader>(_ headerType: T.Type,
-                                                        kind: String,
-                                                        indexPath: IndexPath) -> T {
+    func configuredSupplimentaryView(_ reuseIdentifier: String,
+                                     title: String,
+                                     kind: String,
+                                     indexPath: IndexPath) -> ReuseableHeader {
         guard let sectionHeader = self.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: headerType.reuseIdentifier,
-            for: indexPath) as? T
+            withReuseIdentifier: reuseIdentifier,
+            for: indexPath) as? ReuseableHeader
         else { fatalError() }
+        sectionHeader.title.text = title
         
         return sectionHeader
     }

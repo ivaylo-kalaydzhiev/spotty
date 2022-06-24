@@ -75,12 +75,12 @@ class ShowsViewController: UIViewController {
                                     indexPath: IndexPath) -> UICollectionViewCell {
         switch section {
         case .savedShows:
-            return collectionView.configureReuseableCell(
+            return collectionView.configuredReuseableCell(
                 LargeCell.self,
                 item: item,
                 indexPath: indexPath)
         case .savedEpisodes:
-            return collectionView.configureReuseableCell(
+            return collectionView.configuredReuseableCell(
                 MediumCell.self,
                 item: item,
                 indexPath: indexPath)
@@ -89,7 +89,7 @@ class ShowsViewController: UIViewController {
     
     private func addSectionHeader() {
         dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
-            let sectionHeader = collectionView.configureSupplimentaryView(
+            let sectionHeader = collectionView.configuredSupplimentaryView(
                 SectionHeader.self,
                 kind: kind,
                 indexPath: indexPath)
@@ -126,7 +126,7 @@ class ShowsViewController: UIViewController {
     }
 }
 
-extension ShowsViewController { // TODO: Protocol for VCs that can create themselves?
+extension ShowsViewController {
     
     static func create(viewModel: ShowsViewModelProtocol = ShowsViewModel()) -> UIViewController {
         let viewController = ShowsViewController()

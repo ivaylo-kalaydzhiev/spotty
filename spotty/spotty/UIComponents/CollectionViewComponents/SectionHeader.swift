@@ -10,6 +10,7 @@ import UIKit
 protocol ReuseableHeader {
     
     static var reuseIdentifier: String { get }
+    var title: UILabel { get }
 }
 
 class SectionHeader: UICollectionReusableView, ReuseableHeader {

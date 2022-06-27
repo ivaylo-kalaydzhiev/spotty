@@ -5,37 +5,34 @@
 //  Created by Ivaylo Kalaydzhiev on 24.06.22.
 //
 
-import UIKit
+import Foundation
 
 class ArtistDetailViewModel: DetailListViewModelProtocol {
     
-    typealias ItemType = AudioTrack
-    
-    var imageSource = Observable(UIImage())
+    var imageURL = Observable("")
     var title = Observable("Episodes")
-    var items = Observable([ItemType]())
+    var items: Observable<[BusinessModel]> = Observable([AudioTrack]())
     
     private let webRepository: WebRepository
     
-    // TODO: Make it work with real data
     init(webRepository: WebRepository = WebRepository()) {
         self.webRepository = webRepository
         
-        webRepository.getArtist { result in
+        webRepository.getArtist { [weak self] result in
             switch result {
             case .success(let artist):
                 guard let images = artist.images,
                       let imageModel = images[safeAt: 0] else { return }
-                self.imageSource.value = UIImage.getImage(from: imageModel.url)
+                self?.imageURL.value = imageModel.url
             case .failure(let error):
                 dump(error.localizedDescription)
             }
         }
-        webRepository.getArtistTopTracks { result in
+        webRepository.getArtistTopTracks { [weak self] result in
             switch result {
             case .success(let tracks):
                 let unwrappedAudioTracks = tracks.tracks
-                self.items.value = unwrappedAudioTracks
+                self?.items.value = unwrappedAudioTracks
             case .failure(let error):
                 dump(error.localizedDescription)
             }

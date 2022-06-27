@@ -8,21 +8,21 @@
 import UIKit
 
 /// The cell used for Detail View of Artist, Playlist and Show. It displayes Items: AudioTrack or Episode
-class ItemCell: UICollectionViewCell, ReuseableCell {
+class ItemCell: UITableViewCell, ReuseableCell {
     
-    static var reuseIdentifier = "ItemCell" // TODO: Make as extension to UICollectionView String(describing: self)
+    static var reuseIdentifier = "ItemCell"
     
     let title = UILabel()
     let subtitle = UILabel()
-    let imageView = UIImageView()
+    let image = UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
     
@@ -31,32 +31,37 @@ class ItemCell: UICollectionViewCell, ReuseableCell {
     }
     
     func setup() {
+        
+        contentView.backgroundColor = .systemBackground
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 10
+        
         title.setCustomStyle(.mediumCellTitle)
         subtitle.setCustomStyle(.mediumCellSubtitle)
-        imageView.setCustomStyle(.mediumCellImage)
-        imageView.activate(anchors: [.height(70), .width(70)])
+        image.setCustomStyle(.mediumCellImage)
+        image.activate(anchors: [.height(70), .width(70)])
         
         // innerStackView
         let innerStackView = UIStackView(arrangedSubviews: [title, subtitle])
         innerStackView.axis = .vertical
         
         // outerStackView
-        let outerStackView = UIStackView(arrangedSubviews: [imageView, innerStackView])
+        let outerStackView = UIStackView(arrangedSubviews: [image, innerStackView])
         outerStackView.translatesAutoresizingMaskIntoConstraints = false
         outerStackView.alignment = .center
         outerStackView.spacing = 10
         
-        contentView.addSubview(outerStackView, anchors: [.leading(0), .trailing(0), .top(0)])
+        contentView.addSubview(outerStackView, anchors: [.leading(10), .trailing(-10), .top(10), .bottom(-10)])
     }
     
     func configure(with model: BusinessModel) {
         if let track = model as? AudioTrack {
             title.text = track.name
-            imageView.loadFrom(URLAddress: track.album.images[0].url)
+            image.loadFrom(URLAddress: track.album.images[0].url)
         } else if let episode = model as? Episode {
             title.text = episode.name
             subtitle.text = episode.description
-            imageView.loadFrom(URLAddress: episode.images[0].url)
+            image.loadFrom(URLAddress: episode.images[0].url)
         } else {
             fatalError("Business model unknown")
         }

@@ -8,7 +8,7 @@
 import UIKit
 import SFBaseKit
 
-// TODO: Make public and you'll have solved a LOT of problems.
+// TODO: Fix Section and SectionItem types
 fileprivate typealias CollectionViewDataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>
 fileprivate typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
 

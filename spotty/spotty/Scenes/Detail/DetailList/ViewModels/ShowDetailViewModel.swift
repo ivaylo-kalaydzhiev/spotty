@@ -5,34 +5,31 @@
 //  Created by Ivaylo Kalaydzhiev on 24.06.22.
 //
 
-import UIKit
+import Foundation
 
 class ShowDetailViewModel: DetailListViewModelProtocol {
     
-    typealias ItemType = Episode
-    
-    var imageSource = Observable(UIImage())
+    var imageURL = Observable("")
     var title = Observable("Episodes")
-    var items = Observable([ItemType]())
+    var items: Observable<[BusinessModel]> = Observable([Episode]())
     
     private let webRepository: WebRepository
     
-    // TODO: Make it work with real data
     init(webRepository: WebRepository = WebRepository()) {
         self.webRepository = webRepository
         
-        webRepository.getShow { result in
+        webRepository.getShow { [weak self] result in
             switch result {
             case .success(let show):
-                self.imageSource.value = UIImage.getImage(from: show.images[0].url)
+                self?.imageURL.value = show.images[0].url
             case .failure(let error):
                 dump(error.localizedDescription)
             }
         }
-        webRepository.getShowEpisodes { result in
+        webRepository.getShowEpisodes { [weak self] result in
             switch result {
             case .success(let episodes):
-                self.items.value = episodes.value
+                self?.items.value = episodes.value
             case .failure(let error):
                 dump(error.localizedDescription)
             }

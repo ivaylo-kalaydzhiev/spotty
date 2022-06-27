@@ -5,12 +5,11 @@
 //  Created by Ivaylo Kalaydzhiev on 24.06.22.
 //
 
-import UIKit
+import Foundation
 
 protocol DetailListViewModelProtocol {
-    associatedtype ItemType: Hashable
     
-    var imageSource: Observable<UIImage> { get }
+    var imageURL: Observable<String> { get }
     var title: Observable<String> { get }
-    var items: Observable<[ItemType]> { get }
+    var items: Observable<[BusinessModel]> { get }
 }

@@ -94,6 +94,7 @@
 		D5FC63DD2866077300718E3C /* CollectionViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */; };
 		D5FC63DF286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */; };
 		D5FC63E12869AC7A00718E3C /* UITableView+configured.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63E02869AC7A00718E3C /* UITableView+configured.swift */; };
+		D5FC63E32869AD9E00718E3C /* String+createHTMLAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63E22869AD9E00718E3C /* String+createHTMLAttributedString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,6 +189,7 @@
 		D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewStyle.swift; sourceTree = "<group>"; };
 		D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCompositionalLayout+configured.swift"; sourceTree = "<group>"; };
 		D5FC63E02869AC7A00718E3C /* UITableView+configured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+configured.swift"; sourceTree = "<group>"; };
+		D5FC63E22869AD9E00718E3C /* String+createHTMLAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+createHTMLAttributedString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -556,6 +558,7 @@
 				D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */,
 				D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */,
 				D5FC63E02869AC7A00718E3C /* UITableView+configured.swift */,
+				D5FC63E22869AD9E00718E3C /* String+createHTMLAttributedString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				D54CD58D2860BA4A001DFEBC /* BusinessModel.swift in Sources */,
 				D54CD56D28607059001DFEBC /* LabelStyle.swift in Sources */,
 				D5FC63C72865ABCC00718E3C /* ShowDetailViewModel.swift in Sources */,
+				D5FC63E32869AD9E00718E3C /* String+createHTMLAttributedString.swift in Sources */,
 				D51D78462858C4DA00EED4F9 /* Artist.swift in Sources */,
 				D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */,
 				D54CD56B2860704F001DFEBC /* ImageStyle.swift in Sources */,

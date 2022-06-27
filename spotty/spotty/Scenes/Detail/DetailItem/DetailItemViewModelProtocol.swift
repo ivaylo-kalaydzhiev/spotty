@@ -5,11 +5,11 @@
 //  Created by Ivaylo Kalaydzhiev on 24.06.22.
 //
 
-import UIKit
+import Foundation
 
 protocol DetailItemViewModelProtocol {
     
-    var imageSource: Observable<UIImage> { get }
+    var imageURL: Observable<String> { get }
     var title: Observable<String> { get }
     var description: Observable<String> { get }
 }

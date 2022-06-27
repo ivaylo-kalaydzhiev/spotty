@@ -14,7 +14,7 @@ class DetailItemViewController: UIViewController {
     private var descriptionTextView: UITextView!
     private var dismissButton: UIButton!
     
-    private var viewModel: DetailItemViewModelProtocol! = EpisodeDetailViewModel() // TODO: Create func
+    private var viewModel: DetailItemViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,16 +38,13 @@ class DetailItemViewController: UIViewController {
     
     private func createDismissButton() {
         let button = UIButton()
-        button.tintColor = .init(white: 1, alpha: 0.7)
-        button.setBackgroundImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        button.setCustomStyle(.dismiss)
         view.addSubview(button, anchors: [.top(20), .trailing(-20), .height(35), .width(35)])
     }
     
     private func createText() {
         titleLabel = UILabel()
-        titleLabel.setCustomStyle(.detailViewTitle)
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.numberOfLines = 2
+        titleLabel.setCustomStyle(.detailItemTitle)
         
         descriptionTextView = UITextView()
         
@@ -59,58 +56,24 @@ class DetailItemViewController: UIViewController {
     }
     
     private func bind() {
-        viewModel.imageSource.bindAndFire { [weak self] image in
-            if let image = image { self?.imageView.image = image }
+        viewModel.imageURL.bindAndFire { [weak self] imageURL in
+            if let imageURL = imageURL { self?.imageView.loadFrom(URLAddress: imageURL) }
         }
         viewModel.title.bindAndFire { [weak self] title in
             if let title = title { self?.titleLabel.text = title }
         }
         viewModel.description.bindAndFire { [weak self] description in
-            if let description = description { self?.descriptionTextView.attributedText = description.htmlAttributedString() }
+            guard let description = description else { return }
+            self?.descriptionTextView.attributedText = description.createHTMLAttributedString()
         }
     }
 }
 
 extension DetailItemViewController {
     
-    static func create(viewModel: DetailItemViewModelProtocol) -> UIViewController {
+    static func create(viewModel: DetailItemViewModelProtocol = EpisodeDetailViewModel()) -> UIViewController {
         let viewController = DetailItemViewController()
         viewController.viewModel = viewModel
         return viewController
-    }
-}
-
-extension String {
-    func htmlAttributedString() -> NSAttributedString? {
-        let htmlTemplate = """
-        <!doctype html>
-        <html>
-          <head>
-            <style>
-              body {
-                font-family: -apple-system;
-                font-size: 14px;
-              }
-            </style>
-          </head>
-          <body>
-            \(self)
-          </body>
-        </html>
-        """
-
-        guard let data = htmlTemplate.data(using: .utf8) else {
-            return nil
-        }
-
-        guard let attributedString = try? NSAttributedString(
-            data: data,
-            options: [.documentType: NSAttributedString.DocumentType.html],
-            documentAttributes: nil
-            ) else {
-            return nil
-        }
-
-        return attributedString
     }
 }

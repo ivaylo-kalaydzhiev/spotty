@@ -22,7 +22,7 @@ class MusicViewModel: MusicViewModelProtocol {
     
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository()) {
+    init(webRepository: WebRepository = WebRepository()) { // TODO: Extract start()
         self.webRepository = webRepository
         
         webRepository.getRecentlyPlayedTracks { [weak self] result in

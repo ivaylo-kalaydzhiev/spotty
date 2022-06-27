@@ -21,15 +21,3 @@ extension UIImageView {
         }
     }
 }
-
-extension UIImage { // TODO: Separate in other file
-    
-    static func getImage(from URLAddress: String) -> UIImage? {
-        guard let url = URL(string: URLAddress),
-              let imageData = try? Data(contentsOf: url),
-              let loadedImage = UIImage(data: imageData)
-        else { return nil }
-        
-        return loadedImage
-    }
-}

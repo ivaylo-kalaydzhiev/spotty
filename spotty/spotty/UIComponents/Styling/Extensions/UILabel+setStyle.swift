@@ -16,5 +16,6 @@ extension UILabel {
         font = style.font
         textColor = style.textColor
         numberOfLines = style.numberOfLines
+        adjustsFontSizeToFitWidth = style.adjustsFontSizeToFitWidth
     }
 }

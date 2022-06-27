@@ -29,9 +29,10 @@ class MusicViewModel: MusicViewModelProtocol {
             switch result {
             case .success(let items):
                 let wrappedAudioTracks = items.value
-                let tracks = wrappedAudioTracks.map { $0.track }
+                let tracksWithDuplicates = wrappedAudioTracks.map { $0.track }
+                let tracks = tracksWithDuplicates.uniqued()
                 self?.recentlyPlayedTracks.value? = tracks
-                self?.recentlyPlayedArtists.value? = tracks.map { $0.artists[0] }
+                self?.recentlyPlayedArtists.value? = tracks.map { $0.artists[0] }.uniqued()
             case .failure(let error):
                 dump(error.localizedDescription)
             }

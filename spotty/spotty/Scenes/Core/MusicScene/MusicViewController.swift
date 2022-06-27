@@ -123,10 +123,10 @@ fileprivate enum Section: Int, CaseIterable {
     var collectionLayout: NSCollectionLayoutSection {
         switch self {
         case .featuredPlaylists:
-            return NSCollectionLayoutSection.createFeaturedSectionLayout()
+            return NSCollectionLayoutSection.featuredSectionLayout
         case .recentlyPlayedTracks,
                 .recentlyPlayedArtists:
-            return NSCollectionLayoutSection.createHorizontalGroupsOfThreeLayout()
+            return NSCollectionLayoutSection.horizontalGroupsOfThreeLayout
         }
     }
     

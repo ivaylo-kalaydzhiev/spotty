@@ -9,7 +9,7 @@ import UIKit
 
 extension NSCollectionLayoutSection {
     
-    static func createFeaturedSectionLayout() -> NSCollectionLayoutSection {
+    static var featuredSectionLayout: NSCollectionLayoutSection {
         // Size, Item, Group, Section
         
         // Item
@@ -34,7 +34,7 @@ extension NSCollectionLayoutSection {
         return layoutSection
     }
     
-    static func createHorizontalGroupsOfThreeLayout() -> NSCollectionLayoutSection {
+    static var horizontalGroupsOfThreeLayout: NSCollectionLayoutSection {
         // Size, Item, Group, Section
         
         // Item
@@ -59,67 +59,27 @@ extension NSCollectionLayoutSection {
         return layoutSection
     }
     
-    static func createVerticalLayout() -> NSCollectionLayoutSection {
+    static var verticalLayout: NSCollectionLayoutSection {
         // Size, Item, Group, Section
-        
+
         // Item
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .estimated(75))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
         layoutItem.contentInsets = NSDirectionalEdgeInsets(top: .zero, leading: 20, bottom: .zero, trailing: 20)
-        
+
         // Group
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                heightDimension: .estimated(100))
         let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
-        
+
         // Section
         let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        
+
         // Header
         let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem.createSectionHeaderLayout()
         layoutSection.boundarySupplementaryItems = [layoutSectionHeader]
-        
-        return layoutSection
-    }
-    
-    static func createPlaylistLayout() -> NSCollectionLayoutSection {
-        // Size, Item, Group, Section
-        
-        // Item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .absolute(100))
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20)
-        
-        // Group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .estimated(100))
-        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
-        
-        // Section
-        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        
-        return layoutSection
-    }
-    
-    static func createDetailViewItemsLayout() -> NSCollectionLayoutSection {
-        // Size, Item, Group, Section
-        
-        // Item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .absolute(80)) // change
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20) // change top and bottom
-        
-        // Group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .estimated(100))
-        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [layoutItem])
-        
-        // Section
-        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        
+
         return layoutSection
     }
 }

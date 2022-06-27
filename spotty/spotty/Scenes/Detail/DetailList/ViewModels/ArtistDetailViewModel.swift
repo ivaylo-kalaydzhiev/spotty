@@ -10,7 +10,7 @@ import Foundation
 class ArtistDetailViewModel: DetailListViewModelProtocol {
     
     var imageURL = Observable("")
-    var title = Observable("Episodes")
+    var title = Observable("Top Tracks")
     var items: Observable<[BusinessModel]> = Observable([AudioTrack]())
     
     private let webRepository: WebRepository

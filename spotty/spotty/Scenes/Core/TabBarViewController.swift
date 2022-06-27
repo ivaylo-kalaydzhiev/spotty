@@ -11,10 +11,10 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUp()
+        setupUI()
     }
     
-    private func setUp() {
+    private func setupUI() {
         let musicNavigation = UINavigationController.createReadyForTabBar(
             viewController: MusicViewController.create(),
             title: Constant.SceneTitle.music,

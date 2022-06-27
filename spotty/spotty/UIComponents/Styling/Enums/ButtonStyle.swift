@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// An Enum of custom `UIButton` styles to use troughout the app
+/// An Enum of custom ``UIButton`` styles to use troughout the app
 enum ButtonStyle {
     
     case logIn

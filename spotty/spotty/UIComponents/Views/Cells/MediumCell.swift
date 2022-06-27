@@ -7,9 +7,7 @@
 
 import UIKit
 
-class MediumCell: UICollectionViewCell, ReuseableCell {
-    
-    static var reuseIdentifier = "MediumCell" // TODO: Make as extension to UICollectionView String(describing: self)
+class MediumCell: UICollectionViewCell, SelfConfiguringCell {
     
     let title = UILabel()
     let subtitle = UILabel()

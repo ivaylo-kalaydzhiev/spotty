@@ -10,9 +10,9 @@ import UIKit
 
 extension UIImageView {
     
-    /// This function sets a custom UI Style for any `UIImageView`
+    /// This function sets a custom UI Style for any ``UIImageView``
     ///  - Parameters:
-    ///     - style: One of the styles represented by the `ImageStyle` enum
+    ///     - style: One of the styles represented by the ``ImageStyle`` enum
     func setCustomStyle(_ style: ImageStyle) {
         clipsToBounds = style.clipsToBounds
         layer.cornerRadius = style.cornerRadius

@@ -68,7 +68,7 @@ class DetailListViewController: UIViewController {
     }
     
     private func registerNibs() {
-        tableView.register(ItemCell.self, forCellReuseIdentifier: ItemCell.reuseIdentifier)
+        tableView.register(ItemCell.self)
     }
     
     private func createDataSource() {

@@ -35,7 +35,7 @@ class PlaylistViewController: UIViewController {
     }
     
     private func registerNibs() {
-        tableView.register(PlaylistCell.self, forCellReuseIdentifier: PlaylistCell.reuseIdentifier)
+        tableView.register(PlaylistCell.self)
     }
     
     private func createDataSource() {

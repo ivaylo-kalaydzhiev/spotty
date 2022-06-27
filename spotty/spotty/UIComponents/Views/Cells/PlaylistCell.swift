@@ -7,9 +7,7 @@
 
 import UIKit
 
-class PlaylistCell: UITableViewCell, ReuseableCell {
-    
-    static var reuseIdentifier = "PlaylistCell" // TODO: Make as extension to UICollectionView String(describing: self)
+class PlaylistCell: UITableViewCell, SelfConfiguringCell {
     
     let descriptionLabel = UILabel()
     let image = UIImageView()

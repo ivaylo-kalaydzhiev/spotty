@@ -7,15 +7,12 @@
 
 import UIKit
 
-protocol ReuseableHeader {
+protocol SelfConfiguringHeader {
     
-    static var reuseIdentifier: String { get }
-    var title: UILabel { get }
+    func configure(title: String)
 }
 
-class SectionHeader: UICollectionReusableView, ReuseableHeader {
-    
-    static let reuseIdentifier = "SectionHeader"
+class SectionHeader: UICollectionReusableView, SelfConfiguringHeader {
     
     let title = UILabel()
     let subtitle = UILabel()
@@ -41,5 +38,9 @@ class SectionHeader: UICollectionReusableView, ReuseableHeader {
         stackView.setCustomSpacing(10, after: seperator)
         
         addSubview(stackView, anchors: [.leading(0), .trailing(0), .bottom(-10), .top(0)])
+    }
+    
+    func configure(title: String) {
+        self.title.text = title
     }
 }

@@ -7,9 +7,7 @@
 
 import UIKit
 
-class LargeCell: UICollectionViewCell, ReuseableCell {
-    
-    static var reuseIdentifier = "LargeCell"
+class LargeCell: UICollectionViewCell, SelfConfiguringCell {
     
     let title = UILabel()
     let subtitle = UILabel()

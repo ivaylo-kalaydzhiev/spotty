@@ -46,13 +46,9 @@ class ShowsViewController: UIViewController {
     }
     
     private func registerNibs() {
-        collectionView.register(MediumCell.self,
-                                forCellWithReuseIdentifier: MediumCell.reuseIdentifier)
-        collectionView.register(LargeCell.self,
-                                forCellWithReuseIdentifier: LargeCell.reuseIdentifier)
-        collectionView.register(SectionHeader.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: SectionHeader.reuseIdentifier)
+        collectionView.register(MediumCell.self)
+        collectionView.register(LargeCell.self)
+        collectionView.register(SectionHeader.self)
     }
     
     private func createDataSource() { // TODO: A lot of methods are the same, might inherit
@@ -148,6 +144,6 @@ fileprivate enum Section: Int, CaseIterable {
     }
     
     var headerReuseIdentifier: String {
-        return SectionHeader.reuseIdentifier
+        return SectionHeader.identifier
     }
 }

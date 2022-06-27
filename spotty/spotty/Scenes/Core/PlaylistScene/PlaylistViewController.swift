@@ -35,7 +35,7 @@ class PlaylistViewController: UIViewController {
     }
     
     private func registerNibs() {
-        tableView.register(PlaylistCell.self)
+        tableView.register(TableLargeCell.self)
     }
     
     private func createDataSource() {
@@ -82,6 +82,6 @@ fileprivate enum Section: Int, CaseIterable {
     case playlists
     
     var cellTypeReuseIdentifier: String {
-        return PlaylistCell.reuseIdentifier
+        return TableLargeCell.reuseIdentifier
     }
 }

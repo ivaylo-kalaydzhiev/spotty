@@ -46,8 +46,8 @@ class MusicViewController: UIViewController {
     }
     
     private func registerNibs() {
-        collectionView.register(MediumCell.self)
-        collectionView.register(LargeCell.self)
+        collectionView.register(CollectionMediumCell.self)
+        collectionView.register(CollectionLargeCell.self)
         collectionView.register(SectionHeader.self)
     }
     
@@ -144,10 +144,10 @@ fileprivate enum Section: Int, CaseIterable {
     var cellTypeReuseIdentifier: String {
         switch self {
         case .featuredPlaylists:
-            return LargeCell.reuseIdentifier
+            return CollectionLargeCell.reuseIdentifier
         case .recentlyPlayedTracks,
                 .recentlyPlayedArtists:
-            return MediumCell.reuseIdentifier
+            return CollectionMediumCell.reuseIdentifier
         }
     }
     

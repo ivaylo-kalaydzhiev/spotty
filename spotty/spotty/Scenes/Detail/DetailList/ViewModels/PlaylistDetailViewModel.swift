@@ -21,7 +21,7 @@ class PlaylistDetailViewModel: DetailListViewModelProtocol {
         webRepository.getPlaylist { [weak self] result in
             switch result {
             case .success(let playlist):
-                self?.imageURL.value = playlist.images[0].url
+                self?.imageURL.value = playlist.imageURL
             case .failure(let error):
                 dump(error.localizedDescription)
             }

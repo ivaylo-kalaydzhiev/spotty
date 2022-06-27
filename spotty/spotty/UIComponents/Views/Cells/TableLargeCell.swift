@@ -1,5 +1,5 @@
 //
-//  PlaylistCell.swift
+//  TableLargeCell.swift
 //  spotty
 //
 //  Created by Ivaylo Kalaydzhiev on 21.06.22.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class PlaylistCell: UITableViewCell, SelfConfiguringCell {
+class TableLargeCell: UITableViewCell, SelfConfiguringCell {
     
-    let descriptionLabel = UILabel()
-    let image = UIImageView()
+    private let descriptionLabel = UILabel()
+    private let image = UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,16 +26,11 @@ class PlaylistCell: UITableViewCell, SelfConfiguringCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup() {
-        contentView.backgroundColor = .systemBackground
-        contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = 10
-        
+    private func setup() {
         descriptionLabel.setCustomStyle(.playlistDescription)
         image.setCustomStyle(.mediumCellImage)
         image.activate(anchors: [.height(90), .width(90)])
         
-        // stackView
         let stackView = UIStackView(arrangedSubviews: [image, descriptionLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .center
@@ -47,7 +42,7 @@ class PlaylistCell: UITableViewCell, SelfConfiguringCell {
     func configure(with model: BusinessModel) {
         if let playlist = model as? Playlist {
             descriptionLabel.text = playlist.description
-            image.loadFrom(URLAddress: playlist.images[0].url)
+            image.loadFrom(URLAddress: playlist.imageURL)
         } else {
             fatalError("Business model unknown")
         }

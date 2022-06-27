@@ -68,7 +68,7 @@ class DetailListViewController: UIViewController {
     }
     
     private func registerNibs() {
-        tableView.register(ItemCell.self)
+        tableView.register(TableMediumCell.self)
     }
     
     private func createDataSource() {
@@ -121,6 +121,6 @@ fileprivate enum Section: Int, CaseIterable {
     case items
     
     var cellTypeReuseIdentifier: String {
-        return ItemCell.reuseIdentifier
+        return TableMediumCell.reuseIdentifier
     }
 }

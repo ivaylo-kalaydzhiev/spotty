@@ -21,7 +21,7 @@ class EpisodeDetailViewModel: DetailItemViewModelProtocol {
         webRepository.getEpisode { [weak self] result in
             switch result {
             case .success(let episode):
-                self?.imageURL.value = episode.images[0].url
+                self?.imageURL.value = episode.imageURL
                 self?.title.value = episode.name
                 self?.description.value = episode.htmlDescription
             case .failure(let error):

@@ -21,7 +21,7 @@ class AudioTrackDetailViewModel: DetailItemViewModelProtocol {
         webRepository.getAudioTrack { [weak self] result in
             switch result {
             case .success(let track):
-                self?.imageURL.value = track.album.images[0].url
+                self?.imageURL.value = track.album.imageURL
                 self?.title.value = track.name
                 // TODO: Description should be lyrics https://developer.musixmatch.com/
             case .failure(let error):

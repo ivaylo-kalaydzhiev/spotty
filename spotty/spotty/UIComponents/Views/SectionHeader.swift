@@ -14,8 +14,8 @@ protocol SelfConfiguringHeader {
 
 class SectionHeader: UICollectionReusableView, SelfConfiguringHeader {
     
-    let title = UILabel()
-    let subtitle = UILabel()
+    private let title = UILabel()
+    private let subtitle = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

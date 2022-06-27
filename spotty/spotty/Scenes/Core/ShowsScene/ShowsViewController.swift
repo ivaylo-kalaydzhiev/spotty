@@ -46,12 +46,12 @@ class ShowsViewController: UIViewController {
     }
     
     private func registerNibs() {
-        collectionView.register(MediumCell.self)
-        collectionView.register(LargeCell.self)
+        collectionView.register(CollectionMediumCell.self)
+        collectionView.register(CollectionLargeCell.self)
         collectionView.register(SectionHeader.self)
     }
     
-    private func createDataSource() { // TODO: A lot of methods are the same, might inherit
+    private func createDataSource() {
         dataSource = CollectionViewDataSource(collectionView: collectionView) {
             collectionView, indexPath, item in
             
@@ -137,9 +137,9 @@ fileprivate enum Section: Int, CaseIterable {
     var cellTypeReuseIdentifier: String {
         switch self {
         case .savedShows:
-            return LargeCell.reuseIdentifier
+            return CollectionLargeCell.reuseIdentifier
         case .savedEpisodes:
-            return MediumCell.reuseIdentifier
+            return CollectionMediumCell.reuseIdentifier
         }
     }
     

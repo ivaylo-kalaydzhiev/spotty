@@ -8,8 +8,7 @@
 import UIKit
 
 extension UINavigationController {
-    
-    // TODO: Documentation
+
     static func createReadyForTabBar(viewController: UIViewController,
                                      title: String,
                                      image: UIImage?,

@@ -21,7 +21,7 @@ class ShowDetailViewModel: DetailListViewModelProtocol {
         webRepository.getShow { [weak self] result in
             switch result {
             case .success(let show):
-                self?.imageURL.value = show.images[0].url
+                self?.imageURL.value = show.imageURL
             case .failure(let error):
                 dump(error.localizedDescription)
             }

@@ -15,5 +15,6 @@ extension UIImage {
         static let headphones = UIImage(systemName: "headphones")
         static let musicNoteList = UIImage(systemName: "music.note.list")
         static let xMarkCircle = UIImage(systemName: "xmark.circle.fill")
+        static let gear = UIImage(systemName: "gear")
     }
 }

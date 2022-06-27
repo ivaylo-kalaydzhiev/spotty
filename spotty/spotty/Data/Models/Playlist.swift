@@ -11,7 +11,7 @@ struct Playlist: Codable, Hashable, BusinessModel {
     
     let description: String?
     let id: String
-    let images: [ImageResponse]
+    private let images: [ImageResponse]
     let owner: UserProfile
     let snapshotId: String
     let uri: String
@@ -23,5 +23,10 @@ struct Playlist: Codable, Hashable, BusinessModel {
         case owner
         case snapshotId = "snapshot_id"
         case uri
+    }
+    
+    var imageURL: String {
+        guard let image = images[safeAt: 0] else { return "" }
+        return image.url
     }
 }

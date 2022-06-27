@@ -8,8 +8,6 @@
 import Foundation
 typealias Completion<T> = (Result<T, Error>) -> Void
 
-
-
 // TODO: One Repository, that implements multiple protocols. Maybe name them like Spotify names them in it Docs.
 struct WebRepository {
     

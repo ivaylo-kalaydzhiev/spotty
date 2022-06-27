@@ -11,6 +11,7 @@ enum ImageStyle {
     
     case mediumCellImage
     case largeCellImage
+    case circular
     
     var clipsToBounds: Bool { true }
     
@@ -18,6 +19,8 @@ enum ImageStyle {
         switch self {
         case .mediumCellImage, .largeCellImage:
             return 10
+        case .circular:
+            return 50
         }
     }
     

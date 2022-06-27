@@ -6,7 +6,6 @@
 //
 
 import UIKit
-// TODO: This should really be just enum + extenson for style
 
 extension UICollectionViewCompositionalLayout {
     

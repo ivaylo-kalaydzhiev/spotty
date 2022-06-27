@@ -12,6 +12,8 @@ protocol MusicViewModelProtocol {
     var featuredPlaylists: Observable<[Playlist]> { get }
     var recentlyPlayedTracks: Observable<[AudioTrack]> { get }
     var recentlyPlayedArtists: Observable<[Artist]> { get }
+    
+    func didSelectItem(at index: Int)
 }
 
 class MusicViewModel: MusicViewModelProtocol {
@@ -59,5 +61,15 @@ class MusicViewModel: MusicViewModelProtocol {
                 }
             }
         }
+    }
+    
+    func didSelectItem(at index: Int) {
+        guard let playlists = featuredPlaylists.value,
+              let playlist = playlists[safeAt: index]
+        else { return }
+        
+        // Display DetailListViewController with needed playlist.
+        let viewModel = PlaylistDetailViewModel(playlist: playlist)
+        let viewController = DetailListViewController()
     }
 }

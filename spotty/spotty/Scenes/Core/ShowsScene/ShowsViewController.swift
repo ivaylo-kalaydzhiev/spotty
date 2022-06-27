@@ -119,9 +119,9 @@ fileprivate enum Section: Int, CaseIterable {
     var collectionLayout: NSCollectionLayoutSection {
         switch self {
         case .savedShows:
-            return NSCollectionLayoutSection.featuredSectionLayout
+            return .featuredSectionLayout
         case .savedEpisodes:
-            return NSCollectionLayoutSection.verticalLayout
+            return .verticalLayout
         }
     }
     

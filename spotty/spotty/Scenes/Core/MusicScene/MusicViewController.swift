@@ -23,6 +23,8 @@ class MusicViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         bind()
+        
+        collectionView.delegate = self
     }
     
     private func setupUI() {
@@ -48,13 +50,12 @@ class MusicViewController: UIViewController {
     private func registerNibs() {
         collectionView.register(CollectionMediumCell.self)
         collectionView.register(CollectionLargeCell.self)
+        collectionView.register(CollectionCircularCell.self)
         collectionView.register(SectionHeader.self)
     }
     
     private func createDataSource() {
-        dataSource = CollectionViewDataSource(collectionView: collectionView) {
-            collectionView, indexPath, item in
-            
+        dataSource = CollectionViewDataSource(collectionView: collectionView) { collectionView, indexPath, item in
             guard let section = Section.init(rawValue: indexPath.section),
                   let cell = collectionView.configuredReuseableCell(
                     section.cellTypeReuseIdentifier,
@@ -103,6 +104,14 @@ class MusicViewController: UIViewController {
     }
 }
 
+extension MusicViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectItem(at: indexPath.item)
+    }
+    
+}
+
 extension MusicViewController {
     
     static func create(viewModel: MusicViewModelProtocol = MusicViewModel()) -> UIViewController {
@@ -123,10 +132,11 @@ fileprivate enum Section: Int, CaseIterable {
     var collectionLayout: NSCollectionLayoutSection {
         switch self {
         case .featuredPlaylists:
-            return NSCollectionLayoutSection.featuredSectionLayout
-        case .recentlyPlayedTracks,
-                .recentlyPlayedArtists:
-            return NSCollectionLayoutSection.horizontalGroupsOfThreeLayout
+            return .featuredSectionLayout
+        case .recentlyPlayedTracks:
+            return .horizontalGroupsOfThreeLayout
+        case .recentlyPlayedArtists:
+            return .horizontalCirclesLayout
         }
     }
     
@@ -145,9 +155,10 @@ fileprivate enum Section: Int, CaseIterable {
         switch self {
         case .featuredPlaylists:
             return CollectionLargeCell.reuseIdentifier
-        case .recentlyPlayedTracks,
-                .recentlyPlayedArtists:
+        case .recentlyPlayedTracks:
             return CollectionMediumCell.reuseIdentifier
+        case .recentlyPlayedArtists:
+            return CollectionCircularCell.reuseIdentifier
         }
     }
     

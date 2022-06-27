@@ -82,4 +82,29 @@ extension NSCollectionLayoutSection {
 
         return layoutSection
     }
+    
+    static var horizontalCirclesLayout: NSCollectionLayoutSection {
+        // Size, Item, Group, Section
+        
+        // Item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.33),
+                                              heightDimension: .fractionalWidth(0.40))
+        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: .zero, leading: .zero, bottom: .zero, trailing: .zero)
+        
+        // Group
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93),
+                                               heightDimension: .fractionalWidth(0.40))
+        let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [layoutItem])
+        
+        // Section
+        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+        layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
+        
+        // Header
+        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem.createSectionHeaderLayout()
+        layoutSection.boundarySupplementaryItems = [layoutSectionHeader]
+        
+        return layoutSection
+    }
 }

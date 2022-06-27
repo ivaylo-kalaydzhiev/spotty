@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    
     func createHTMLAttributedString() -> NSAttributedString? {
         let htmlTemplate = """
         <!doctype html>

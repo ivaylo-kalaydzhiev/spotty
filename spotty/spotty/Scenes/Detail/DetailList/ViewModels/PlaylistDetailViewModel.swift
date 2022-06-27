@@ -15,18 +15,25 @@ class PlaylistDetailViewModel: DetailListViewModelProtocol {
     
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository()) {
+    init(webRepository: WebRepository = WebRepository(), playlist: Playlist) {
         self.webRepository = webRepository
-        
-        webRepository.getPlaylist { [weak self] result in
+        configure(with: playlist)
+    }
+    
+    private func configure(with playlist: Playlist) {
+        webRepository.getPlaylist(playlistId: playlist.id) { [weak self] result in
             switch result {
             case .success(let playlist):
                 self?.imageURL.value = playlist.imageURL
+                self?.setTracks(id: playlist.id)
             case .failure(let error):
                 dump(error.localizedDescription)
             }
         }
-        webRepository.getPlaylistTracks { [weak self] result in
+    }
+    
+    private func setTracks(id: String) {
+        webRepository.getPlaylistTracks(playlistId: id) { [weak self] result in
             switch result {
             case .success(let tracks):
                 let wrappedTracks = tracks.value

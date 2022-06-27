@@ -52,7 +52,7 @@ class CollectionMediumCell: UICollectionViewCell, SelfConfiguringCell {
         } else if let artist = model as? Artist {
             title.text = artist.name
             subtitle.text = artist.genres?.joined(separator: ", ")
-            imageView.image = UIImage.System.gear
+            imageView.loadFrom(URLAddress: artist.imageURL)
         } else if let episode = model as? Episode {
             title.text = episode.name
             subtitle.text = episode.description

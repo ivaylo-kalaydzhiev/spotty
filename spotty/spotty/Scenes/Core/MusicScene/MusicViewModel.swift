@@ -32,7 +32,8 @@ class MusicViewModel: MusicViewModelProtocol {
                 let tracksWithDuplicates = wrappedAudioTracks.map { $0.track }
                 let tracks = tracksWithDuplicates.uniqued()
                 self?.recentlyPlayedTracks.value? = tracks
-                self?.recentlyPlayedArtists.value? = tracks.map { $0.artists[0] }.uniqued()
+                let artistWithoutImages = tracks.map { $0.artists[0] }.uniqued()
+                self?.getArtistModelsWithImages(artists: artistWithoutImages)
             case .failure(let error):
                 dump(error.localizedDescription)
             }
@@ -45,6 +46,18 @@ class MusicViewModel: MusicViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
-        // TODO: Get pictures for the artists. Then, you can display them in the VC.
+    }
+    
+    private func getArtistModelsWithImages(artists: [Artist]) {
+        for artist in artists {
+            webRepository.getArtist(artistId: artist.id) { [weak self] result in
+                switch result {
+                case .success(let artist):
+                    self?.recentlyPlayedArtists.value?.append(artist)
+                case .failure(let error):
+                    dump(error.localizedDescription)
+                }
+            }
+        }
     }
 }

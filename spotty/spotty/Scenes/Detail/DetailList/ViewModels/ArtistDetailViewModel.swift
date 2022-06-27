@@ -21,9 +21,7 @@ class ArtistDetailViewModel: DetailListViewModelProtocol {
         webRepository.getArtist { [weak self] result in
             switch result {
             case .success(let artist):
-                guard let images = artist.images,
-                      let imageModel = images[safeAt: 0] else { return }
-                self?.imageURL.value = imageModel.url
+                self?.imageURL.value = artist.imageURL
             case .failure(let error):
                 dump(error.localizedDescription)
             }

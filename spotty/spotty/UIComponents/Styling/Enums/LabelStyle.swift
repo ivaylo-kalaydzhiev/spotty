@@ -38,16 +38,24 @@ enum LabelStyle {
     
     var textColor: UIColor {
         switch self {
-        case .sectionHeaderTitle, .mediumCellTitle, .largeCellTitle, .playlistDescription, .detailViewTitle, .detailItemTitle:
+        case .sectionHeaderTitle,
+             .mediumCellTitle,
+             .largeCellTitle,
+             .playlistDescription,
+             .detailViewTitle,
+             .detailItemTitle:
             return .label
-        case .sectionHeaderSubtitle, .mediumCellSubtitle, .largeCellSubtitle:
+        case .sectionHeaderSubtitle,
+             .mediumCellSubtitle,
+             .largeCellSubtitle:
             return .secondaryLabel
         }
     }
     
     var numberOfLines: Int {
         switch self {
-        case .mediumCellSubtitle, .detailItemTitle:
+        case .mediumCellSubtitle,
+             .detailItemTitle:
             return 2
         case .playlistDescription:
             return 4

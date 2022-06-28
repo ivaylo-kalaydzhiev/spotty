@@ -21,6 +21,7 @@ class MusicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .always
         setupUI()
         bind()
     }
@@ -107,9 +108,8 @@ extension MusicViewController {
     
     static func create(viewModel: MusicViewModelProtocol = MusicViewModel()) -> UIViewController {
         let viewController = MusicViewController()
-        viewController.title = Constant.SceneTitle.music
-        viewController.navigationItem.largeTitleDisplayMode = .always
         viewController.viewModel = viewModel
+        viewController.title = viewModel.title
         return viewController
     }
 }
@@ -125,7 +125,7 @@ fileprivate enum Section: Int, CaseIterable {
         case .featuredPlaylists:
             return NSCollectionLayoutSection.featuredSectionLayout
         case .recentlyPlayedTracks,
-                .recentlyPlayedArtists:
+             .recentlyPlayedArtists:
             return NSCollectionLayoutSection.horizontalGroupsOfThreeLayout
         }
     }
@@ -146,7 +146,7 @@ fileprivate enum Section: Int, CaseIterable {
         case .featuredPlaylists:
             return CollectionLargeCell.reuseIdentifier
         case .recentlyPlayedTracks,
-                .recentlyPlayedArtists:
+             .recentlyPlayedArtists:
             return CollectionMediumCell.reuseIdentifier
         }
     }

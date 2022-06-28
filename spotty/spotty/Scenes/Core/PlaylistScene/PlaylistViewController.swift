@@ -19,6 +19,7 @@ class PlaylistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .always
         setupUI()
         bind()
     }
@@ -71,8 +72,7 @@ extension PlaylistViewController {
     static func create(viewModel: PlaylistViewModelProtocol = PlaylistViewModel()) -> UIViewController {
         let viewController = PlaylistViewController()
         viewController.viewModel = viewModel
-        viewController.title = Constant.SceneTitle.playlist
-        viewController.navigationItem.largeTitleDisplayMode = .always
+        viewController.title = viewModel.title
         return viewController
     }
 }

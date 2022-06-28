@@ -13,7 +13,6 @@ struct AlbumImagesWrapper: Codable, Hashable {
     private let images: [ImageResponse]
     
     var imageURL: String {
-        guard let image = images[safeAt: 0] else { return "" }
-        return image.url
+        images[safeAt: 0]?.url ?? ""        
     }
 }

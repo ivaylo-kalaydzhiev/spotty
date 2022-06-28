@@ -19,6 +19,7 @@ class ShowsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .always
         setupUI()
         bind()
     }
@@ -104,9 +105,8 @@ extension ShowsViewController {
     
     static func create(viewModel: ShowsViewModelProtocol = ShowsViewModel()) -> UIViewController {
         let viewController = ShowsViewController()
-        viewController.title = Constant.SceneTitle.show
-        viewController.navigationItem.largeTitleDisplayMode = .always
         viewController.viewModel = viewModel
+        viewController.title = viewModel.title
         return viewController
     }
 }

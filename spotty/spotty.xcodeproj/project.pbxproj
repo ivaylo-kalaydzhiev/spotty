@@ -99,6 +99,10 @@
 		D5FC63EC2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63EB2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift */; };
 		D5FC63EE2869DA5B00718E3C /* Sequence+uniqued.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63ED2869DA5B00718E3C /* Sequence+uniqued.swift */; };
 		D5FC63F02869E0A200718E3C /* CollectionCircularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63EF2869E0A100718E3C /* CollectionCircularCell.swift */; };
+		D5FC63FA286B095D00718E3C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63F8286B095D00718E3C /* SplashViewController.swift */; };
+		D5FC63FB286B095D00718E3C /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5FC63F9286B095D00718E3C /* SplashViewController.xib */; };
+		D5FC63FD286B098A00718E3C /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63FC286B098A00718E3C /* SplashViewModel.swift */; };
+		D5FC63FF286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63FE286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,6 +202,10 @@
 		D5FC63EB2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+reuseIdentifier.swift"; sourceTree = "<group>"; };
 		D5FC63ED2869DA5B00718E3C /* Sequence+uniqued.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+uniqued.swift"; sourceTree = "<group>"; };
 		D5FC63EF2869E0A100718E3C /* CollectionCircularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCircularCell.swift; sourceTree = "<group>"; };
+		D5FC63F8286B095D00718E3C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		D5FC63F9286B095D00718E3C /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		D5FC63FC286B098A00718E3C /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		D5FC63FE286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelCoordinatorDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +383,7 @@
 		D5EF5A1A285224940079F91B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D5FC63F7286B092A00718E3C /* SplashScene */,
 				D5EF5A282852289A0079F91B /* Login */,
 				D5EF5A272852287C0079F91B /* Core */,
 				D5EF5A29285228AC0079F91B /* Other */,
@@ -658,6 +667,17 @@
 			path = CellConveniences;
 			sourceTree = "<group>";
 		};
+		D5FC63F7286B092A00718E3C /* SplashScene */ = {
+			isa = PBXGroup;
+			children = (
+				D5FC63F8286B095D00718E3C /* SplashViewController.swift */,
+				D5FC63F9286B095D00718E3C /* SplashViewController.xib */,
+				D5FC63FC286B098A00718E3C /* SplashViewModel.swift */,
+				D5FC63FE286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift */,
+			);
+			path = SplashScene;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -721,6 +741,7 @@
 				D5EF5A53285239A70079F91B /* AuthViewController.xib in Resources */,
 				D5EF5A11285223980079F91B /* LaunchScreen.storyboard in Resources */,
 				D5EF5A0E285223980079F91B /* Assets.xcassets in Resources */,
+				D5FC63FB286B095D00718E3C /* SplashViewController.xib in Resources */,
 				D5EF5A3C285230350079F91B /* WelcomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,6 +810,7 @@
 				D5FC63D12865B74B00718E3C /* EpisodeDetailViewModel.swift in Sources */,
 				D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */,
 				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
+				D5FC63FD286B098A00718E3C /* SplashViewModel.swift in Sources */,
 				D54CD58B2860BA0F001DFEBC /* SelfConfiguringCell.swift in Sources */,
 				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
 				D54CD58628608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift in Sources */,
@@ -824,6 +846,7 @@
 				D5FC63E12869AC7A00718E3C /* UITableView+register.swift in Sources */,
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
 				D5FC63D32865B75600718E3C /* ArtistDetailViewModel.swift in Sources */,
+				D5FC63FF286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,
 				D5FC63CB2865B4D100718E3C /* DetailItemViewController.swift in Sources */,
 				D5EF5A57285335FB0079F91B /* PKCEFlowProvider.swift in Sources */,
@@ -861,6 +884,7 @@
 				D5FC63EC2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift in Sources */,
 				D53E293D2861D2A9003E1BEB /* TableLargeCell.swift in Sources */,
 				D5FC63D92865E77B00718E3C /* UINavigatioController+factory.swift in Sources */,
+				D5FC63FA286B095D00718E3C /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

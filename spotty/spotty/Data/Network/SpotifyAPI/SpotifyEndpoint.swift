@@ -151,7 +151,6 @@ enum SpotifyEndpoint {
         }
     }
     
-    // TODO: Refactor
     private var httpBody: Data? {
         switch self {
         case .createPlaylist(_, let name, let description):

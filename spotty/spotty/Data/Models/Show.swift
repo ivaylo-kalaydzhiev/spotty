@@ -11,7 +11,12 @@ struct Show: Codable, Hashable, BusinessModel {
     
     let description: String
     let id: String
-    let images: [ImageResponse]
     let uri: String
     let episodes: ItemsResponse<Episode>?
+    private let images: [ImageResponse]
+    
+    var imageURL: String {
+        guard let image = images[safeAt: 0] else { return "" }
+        return image.url
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  MediumCell.swift
+//  CollectionMediumCell.swift
 //  spotty
 //
 //  Created by Ivaylo Kalaydzhiev on 16.06.22.
@@ -7,13 +7,11 @@
 
 import UIKit
 
-class MediumCell: UICollectionViewCell, ReuseableCell {
+class CollectionMediumCell: UICollectionViewCell, SelfConfiguringCell {
     
-    static var reuseIdentifier = "MediumCell" // TODO: Make as extension to UICollectionView String(describing: self)
-    
-    let title = UILabel()
-    let subtitle = UILabel()
-    let imageView = UIImageView()
+    private let title = UILabel()
+    private let subtitle = UILabel()
+    private let imageView = UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,17 +27,15 @@ class MediumCell: UICollectionViewCell, ReuseableCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup() {
+    private func setup() {
         title.setCustomStyle(.mediumCellTitle)
         subtitle.setCustomStyle(.mediumCellSubtitle)
         imageView.setCustomStyle(.mediumCellImage)
         imageView.activate(anchors: [.height(65), .width(65)])
         
-        // innerStackView
         let innerStackView = UIStackView(arrangedSubviews: [title, subtitle])
         innerStackView.axis = .vertical
         
-        // outerStackView
         let outerStackView = UIStackView(arrangedSubviews: [imageView, innerStackView])
         outerStackView.translatesAutoresizingMaskIntoConstraints = false
         outerStackView.alignment = .center
@@ -52,15 +48,15 @@ class MediumCell: UICollectionViewCell, ReuseableCell {
         if let track = model as? AudioTrack {
             title.text = track.name
             subtitle.text = track.artists.map { $0.name }.joined(separator: ", ")
-            imageView.loadFrom(URLAddress: track.album.images[0].url)
+            imageView.loadFrom(URLAddress: track.album.imageURL)
         } else if let artist = model as? Artist {
             title.text = artist.name
             subtitle.text = artist.genres?.joined(separator: ", ")
-            imageView.image = UIImage.init(systemName: "gear")
+            imageView.image = UIImage.System.gear
         } else if let episode = model as? Episode {
             title.text = episode.name
             subtitle.text = episode.description
-            imageView.loadFrom(URLAddress: episode.images[0].url)
+            imageView.loadFrom(URLAddress: episode.imageURL)
         } else {
             fatalError("Business model unknown")
         }

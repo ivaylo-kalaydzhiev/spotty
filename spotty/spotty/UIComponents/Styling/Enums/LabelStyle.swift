@@ -16,6 +16,8 @@ enum LabelStyle {
     case largeCellTitle
     case largeCellSubtitle
     case playlistDescription
+    case detailViewTitle
+    case detailItemTitle
     
     var font: UIFont? {
         switch self {
@@ -29,26 +31,43 @@ enum LabelStyle {
             return .preferredFont(forTextStyle: .subheadline)
         case .largeCellTitle, .largeCellSubtitle:
             return .preferredFont(forTextStyle: .title2)
+        case .detailViewTitle, .detailItemTitle:
+            return UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 35, weight: .bold))
         }
     }
     
     var textColor: UIColor {
         switch self {
-        case .sectionHeaderTitle, .mediumCellTitle, .largeCellTitle, .playlistDescription:
+        case .sectionHeaderTitle,
+             .mediumCellTitle,
+             .largeCellTitle,
+             .playlistDescription,
+             .detailViewTitle,
+             .detailItemTitle:
             return .label
-        case .sectionHeaderSubtitle, .mediumCellSubtitle, .largeCellSubtitle:
+        case .sectionHeaderSubtitle,
+             .mediumCellSubtitle,
+             .largeCellSubtitle:
             return .secondaryLabel
         }
     }
     
     var numberOfLines: Int {
         switch self {
-        case .mediumCellSubtitle:
+        case .mediumCellSubtitle,
+             .detailItemTitle:
             return 2
         case .playlistDescription:
             return 4
         default:
             return 1
+        }
+    }
+    
+    var adjustsFontSizeToFitWidth: Bool {
+        switch self {
+        case .detailItemTitle: return true
+        default: return false
         }
     }
 }

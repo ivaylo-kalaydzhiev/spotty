@@ -9,11 +9,13 @@ import UIKit
 
 protocol PlaylistViewModelProtocol {
     
+    var title: String { get }
     var playlists: Observable<[Playlist]> { get }
 }
 
 class PlaylistViewModel: PlaylistViewModelProtocol {
     
+    let title = Constant.SceneTitle.playlist
     let playlists = Observable([Playlist]())
     
     private let webRepository: WebRepository

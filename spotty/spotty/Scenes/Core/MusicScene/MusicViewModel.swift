@@ -9,6 +9,7 @@ import UIKit
 
 protocol MusicViewModelProtocol {
     
+    var title: String { get }
     var featuredPlaylists: Observable<[Playlist]> { get }
     var recentlyPlayedTracks: Observable<[AudioTrack]> { get }
     var recentlyPlayedArtists: Observable<[Artist]> { get }
@@ -16,13 +17,14 @@ protocol MusicViewModelProtocol {
 
 class MusicViewModel: MusicViewModelProtocol {
     
+    let title = Constant.SceneTitle.music
     let featuredPlaylists = Observable([Playlist]())
     let recentlyPlayedTracks = Observable([AudioTrack]())
     let recentlyPlayedArtists = Observable([Artist]())
     
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository()) {
+    init(webRepository: WebRepository = WebRepository()) { // TODO: Extract start()
         self.webRepository = webRepository
         
         webRepository.getRecentlyPlayedTracks { [weak self] result in

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		062D6B2CE62B62ED1CB7849E /* Pods_spotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FC8D91DCDF42136064D554 /* Pods_spotty.framework */; };
+		B83B80D8E83D80822EEE25D2 /* Pods_spotty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEA5F8DC257E8632CE4806 /* Pods_spotty.framework */; };
 		D5136E992859E4D600765AC1 /* AudioTrackWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E982859E4D600765AC1 /* AudioTrackWrapper.swift */; };
 		D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E9A2859F6E100765AC1 /* EpisodeWrapper.swift */; };
 		D5136E9D2859F8F700765AC1 /* ShowWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5136E9C2859F8F700765AC1 /* ShowWrapper.swift */; };
@@ -28,8 +28,11 @@
 		D51D78492858C89900EED4F9 /* AlbumImagesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D78482858C89900EED4F9 /* AlbumImagesWrapper.swift */; };
 		D53E293728619EA9003E1BEB /* ShowsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E293628619EA9003E1BEB /* ShowsViewModel.swift */; };
 		D53E29392861CFFA003E1BEB /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E29382861CFF9003E1BEB /* PlaylistViewModel.swift */; };
-		D53E293D2861D2A9003E1BEB /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E293C2861D2A9003E1BEB /* PlaylistCell.swift */; };
+		D53E293D2861D2A9003E1BEB /* TableLargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E293C2861D2A9003E1BEB /* TableLargeCell.swift */; };
 		D5496DF228631DEF004A30A3 /* UIColor+appColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF128631DEF004A30A3 /* UIColor+appColors.swift */; };
+		D5496DF428632D21004A30A3 /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF328632D21004A30A3 /* DetailListViewController.swift */; };
+		D5496DF628632D2F004A30A3 /* PlaylistDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */; };
+		D5496DF8286340CC004A30A3 /* TableMediumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5496DF7286340CC004A30A3 /* TableMediumCell.swift */; };
 		D54CD56B2860704F001DFEBC /* ImageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD56A2860704F001DFEBC /* ImageStyle.swift */; };
 		D54CD56D28607059001DFEBC /* LabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD56C28607059001DFEBC /* LabelStyle.swift */; };
 		D54CD56F286072C1001DFEBC /* UILabel+setStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */; };
@@ -40,16 +43,16 @@
 		D54CD57A286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */; };
 		D54CD58428608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58328608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift */; };
 		D54CD58628608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58528608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift */; };
-		D54CD5892860B9DE001DFEBC /* UICollectionView+configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD5882860B9DE001DFEBC /* UICollectionView+configure.swift */; };
-		D54CD58B2860BA0F001DFEBC /* ReuseableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58A2860BA0F001DFEBC /* ReuseableCell.swift */; };
+		D54CD5892860B9DE001DFEBC /* UICollectionView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD5882860B9DE001DFEBC /* UICollectionView+register.swift */; };
+		D54CD58B2860BA0F001DFEBC /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58A2860BA0F001DFEBC /* SelfConfiguringCell.swift */; };
 		D54CD58D2860BA4A001DFEBC /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CD58C2860BA4A001DFEBC /* BusinessModel.swift */; };
 		D55AA3FC285B622600F95F73 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FB285B622600F95F73 /* Observable.swift */; };
 		D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */; };
 		D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA401285B79C100F95F73 /* MusicViewModel.swift */; };
-		D574DA00285B2810007F808E /* MediumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574D9FE285B2810007F808E /* MediumCell.swift */; };
+		D574DA00285B2810007F808E /* CollectionMediumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574D9FE285B2810007F808E /* CollectionMediumCell.swift */; };
 		D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D082857300700EFA9FB /* WebRepository.swift */; };
 		D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D0A2857303300EFA9FB /* UserProfile.swift */; };
-		D5D40BA6285CA8EA00480B04 /* LargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D40BA5285CA8EA00480B04 /* LargeCell.swift */; };
+		D5D40BA6285CA8EA00480B04 /* CollectionLargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D40BA5285CA8EA00480B04 /* CollectionLargeCell.swift */; };
 		D5D40BA8285CBBDB00480B04 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D40BA7285CBBDB00480B04 /* SectionHeader.swift */; };
 		D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A04285223950079F91B /* AppDelegate.swift */; };
 		D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A06285223960079F91B /* SceneDelegate.swift */; };
@@ -77,11 +80,30 @@
 		D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6528535C450079F91B /* SpotifyAuthProvider.swift */; };
 		D5EF5A6B28536AB50079F91B /* OAuth2Supporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6A28536AB50079F91B /* OAuth2Supporting.swift */; };
 		D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A6C285379DE0079F91B /* KeychainManager.swift */; };
+		D5FC63C52865AB8B00718E3C /* DetailListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63C42865AB8B00718E3C /* DetailListViewModelProtocol.swift */; };
+		D5FC63C72865ABCC00718E3C /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */; };
+		D5FC63CB2865B4D100718E3C /* DetailItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63CA2865B4D100718E3C /* DetailItemViewController.swift */; };
+		D5FC63CD2865B5DE00718E3C /* DetailItemViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63CC2865B5DE00718E3C /* DetailItemViewModelProtocol.swift */; };
+		D5FC63CF2865B73D00718E3C /* AudioTrackDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63CE2865B73D00718E3C /* AudioTrackDetailViewModel.swift */; };
+		D5FC63D12865B74B00718E3C /* EpisodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D02865B74B00718E3C /* EpisodeDetailViewModel.swift */; };
+		D5FC63D32865B75600718E3C /* ArtistDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D22865B75600718E3C /* ArtistDetailViewModel.swift */; };
+		D5FC63D52865E2F600718E3C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D42865E2F600718E3C /* Constant.swift */; };
+		D5FC63D72865E4FF00718E3C /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */; };
+		D5FC63D92865E77B00718E3C /* UINavigatioController+factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */; };
+		D5FC63DB2866076500718E3C /* UICollectionView+setStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DA2866076500718E3C /* UICollectionView+setStyle.swift */; };
+		D5FC63DD2866077300718E3C /* CollectionViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */; };
+		D5FC63DF286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */; };
+		D5FC63E12869AC7A00718E3C /* UITableView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63E02869AC7A00718E3C /* UITableView+register.swift */; };
+		D5FC63E32869AD9E00718E3C /* String+createHTMLAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63E22869AD9E00718E3C /* String+createHTMLAttributedString.swift */; };
+		D5FC63E82869C90800718E3C /* UITableViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63E72869C90800718E3C /* UITableViewCell+reuseIdentifier.swift */; };
+		D5FC63EA2869C92900718E3C /* UICollectionViewCell+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63E92869C92900718E3C /* UICollectionViewCell+reuseIdentifier.swift */; };
+		D5FC63EC2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63EB2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F100F7669C15A56E30D036F /* Pods-spotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotty.debug.xcconfig"; path = "Target Support Files/Pods-spotty/Pods-spotty.debug.xcconfig"; sourceTree = "<group>"; };
-		A19439769ACA148F06747EE9 /* Pods-spotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotty.release.xcconfig"; path = "Target Support Files/Pods-spotty/Pods-spotty.release.xcconfig"; sourceTree = "<group>"; };
+		6AEEA5F8DC257E8632CE4806 /* Pods_spotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		733A4BC3C42E55175156C59F /* Pods-spotty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotty.release.xcconfig"; path = "Target Support Files/Pods-spotty/Pods-spotty.release.xcconfig"; sourceTree = "<group>"; };
+		C077F220CFA67725098DD5FD /* Pods-spotty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotty.debug.xcconfig"; path = "Target Support Files/Pods-spotty/Pods-spotty.debug.xcconfig"; sourceTree = "<group>"; };
 		D5136E982859E4D600765AC1 /* AudioTrackWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackWrapper.swift; sourceTree = "<group>"; };
 		D5136E9A2859F6E100765AC1 /* EpisodeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeWrapper.swift; sourceTree = "<group>"; };
 		D5136E9C2859F8F700765AC1 /* ShowWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowWrapper.swift; sourceTree = "<group>"; };
@@ -102,8 +124,11 @@
 		D51D78482858C89900EED4F9 /* AlbumImagesWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImagesWrapper.swift; sourceTree = "<group>"; };
 		D53E293628619EA9003E1BEB /* ShowsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewModel.swift; sourceTree = "<group>"; };
 		D53E29382861CFF9003E1BEB /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
-		D53E293C2861D2A9003E1BEB /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
+		D53E293C2861D2A9003E1BEB /* TableLargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableLargeCell.swift; sourceTree = "<group>"; };
 		D5496DF128631DEF004A30A3 /* UIColor+appColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+appColors.swift"; sourceTree = "<group>"; };
+		D5496DF328632D21004A30A3 /* DetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
+		D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailViewModel.swift; sourceTree = "<group>"; };
+		D5496DF7286340CC004A30A3 /* TableMediumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableMediumCell.swift; sourceTree = "<group>"; };
 		D54CD56A2860704F001DFEBC /* ImageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyle.swift; sourceTree = "<group>"; };
 		D54CD56C28607059001DFEBC /* LabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStyle.swift; sourceTree = "<group>"; };
 		D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+setStyle.swift"; sourceTree = "<group>"; };
@@ -114,16 +139,16 @@
 		D54CD579286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+convenienceInit.swift"; sourceTree = "<group>"; };
 		D54CD58328608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutSection+customSections.swift"; sourceTree = "<group>"; };
 		D54CD58528608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift"; sourceTree = "<group>"; };
-		D54CD5882860B9DE001DFEBC /* UICollectionView+configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+configure.swift"; sourceTree = "<group>"; };
-		D54CD58A2860BA0F001DFEBC /* ReuseableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableCell.swift; sourceTree = "<group>"; };
+		D54CD5882860B9DE001DFEBC /* UICollectionView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+register.swift"; sourceTree = "<group>"; };
+		D54CD58A2860BA0F001DFEBC /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		D54CD58C2860BA4A001DFEBC /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		D55AA3FB285B622600F95F73 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadFromURL.swift"; sourceTree = "<group>"; };
 		D55AA401285B79C100F95F73 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
-		D574D9FE285B2810007F808E /* MediumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCell.swift; sourceTree = "<group>"; };
+		D574D9FE285B2810007F808E /* CollectionMediumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionMediumCell.swift; sourceTree = "<group>"; };
 		D5C92D082857300700EFA9FB /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		D5C92D0A2857303300EFA9FB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		D5D40BA5285CA8EA00480B04 /* LargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCell.swift; sourceTree = "<group>"; };
+		D5D40BA5285CA8EA00480B04 /* CollectionLargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionLargeCell.swift; sourceTree = "<group>"; };
 		D5D40BA7285CBBDB00480B04 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		D5EF5A01285223950079F91B /* spotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EF5A04285223950079F91B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,7 +178,24 @@
 		D5EF5A6528535C450079F91B /* SpotifyAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuthProvider.swift; sourceTree = "<group>"; };
 		D5EF5A6A28536AB50079F91B /* OAuth2Supporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Supporting.swift; sourceTree = "<group>"; };
 		D5EF5A6C285379DE0079F91B /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
-		E5FC8D91DCDF42136064D554 /* Pods_spotty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spotty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5FC63C42865AB8B00718E3C /* DetailListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewModelProtocol.swift; sourceTree = "<group>"; };
+		D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
+		D5FC63CA2865B4D100718E3C /* DetailItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemViewController.swift; sourceTree = "<group>"; };
+		D5FC63CC2865B5DE00718E3C /* DetailItemViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemViewModelProtocol.swift; sourceTree = "<group>"; };
+		D5FC63CE2865B73D00718E3C /* AudioTrackDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackDetailViewModel.swift; sourceTree = "<group>"; };
+		D5FC63D02865B74B00718E3C /* EpisodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewModel.swift; sourceTree = "<group>"; };
+		D5FC63D22865B75600718E3C /* ArtistDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewModel.swift; sourceTree = "<group>"; };
+		D5FC63D42865E2F600718E3C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
+		D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigatioController+factory.swift"; sourceTree = "<group>"; };
+		D5FC63DA2866076500718E3C /* UICollectionView+setStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+setStyle.swift"; sourceTree = "<group>"; };
+		D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewStyle.swift; sourceTree = "<group>"; };
+		D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCompositionalLayout+configured.swift"; sourceTree = "<group>"; };
+		D5FC63E02869AC7A00718E3C /* UITableView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+register.swift"; sourceTree = "<group>"; };
+		D5FC63E22869AD9E00718E3C /* String+createHTMLAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+createHTMLAttributedString.swift"; sourceTree = "<group>"; };
+		D5FC63E72869C90800718E3C /* UITableViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
+		D5FC63E92869C92900718E3C /* UICollectionViewCell+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+reuseIdentifier.swift"; sourceTree = "<group>"; };
+		D5FC63EB2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+reuseIdentifier.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,17 +203,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				062D6B2CE62B62ED1CB7849E /* Pods_spotty.framework in Frameworks */,
+				B83B80D8E83D80822EEE25D2 /* Pods_spotty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3CD9BECD5E427CCF8E4D6F65 /* Frameworks */ = {
+		24C77FC0CB957B6B9F191053 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E5FC8D91DCDF42136064D554 /* Pods_spotty.framework */,
+				6AEEA5F8DC257E8632CE4806 /* Pods_spotty.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,8 +221,8 @@
 		C6545238720E86C6D09B27EE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9F100F7669C15A56E30D036F /* Pods-spotty.debug.xcconfig */,
-				A19439769ACA148F06747EE9 /* Pods-spotty.release.xcconfig */,
+				C077F220CFA67725098DD5FD /* Pods-spotty.debug.xcconfig */,
+				733A4BC3C42E55175156C59F /* Pods-spotty.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -212,14 +254,14 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		D54CD56928606BAC001DFEBC /* CollectionViewComponents */ = {
+		D54CD56928606BAC001DFEBC /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				D54CD582286088D6001DFEBC /* Cells */,
 				D54CD5722860814E001DFEBC /* Seperator.swift */,
 				D5D40BA7285CBBDB00480B04 /* SectionHeader.swift */,
 			);
-			path = CollectionViewComponents;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D54CD57428608405001DFEBC /* Constraints */ = {
@@ -237,7 +279,7 @@
 			children = (
 				D5EF5A6928536A190079F91B /* Styling */,
 				D5EF5A6228535B720079F91B /* Animation */,
-				D54CD56928606BAC001DFEBC /* CollectionViewComponents */,
+				D54CD56928606BAC001DFEBC /* Views */,
 				D54CD57428608405001DFEBC /* Constraints */,
 				D54CD58728608EE5001DFEBC /* Layout */,
 			);
@@ -250,6 +292,7 @@
 				D5EF5A4A285235AF0079F91B /* ButtonStyle.swift */,
 				D54CD56C28607059001DFEBC /* LabelStyle.swift */,
 				D54CD56A2860704F001DFEBC /* ImageStyle.swift */,
+				D5FC63DC2866077300718E3C /* CollectionViewStyle.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -260,6 +303,7 @@
 				D5EF5A48285235A50079F91B /* UIButton+setStyle.swift */,
 				D54CD56E286072C1001DFEBC /* UILabel+setStyle.swift */,
 				D54CD57028607D94001DFEBC /* UIImageView+setStyle.swift */,
+				D5FC63DA2866076500718E3C /* UICollectionView+setStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -267,10 +311,11 @@
 		D54CD582286088D6001DFEBC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D54CD58A2860BA0F001DFEBC /* ReuseableCell.swift */,
-				D574D9FE285B2810007F808E /* MediumCell.swift */,
-				D53E293C2861D2A9003E1BEB /* PlaylistCell.swift */,
-				D5D40BA5285CA8EA00480B04 /* LargeCell.swift */,
+				D54CD58A2860BA0F001DFEBC /* SelfConfiguringCell.swift */,
+				D574D9FE285B2810007F808E /* CollectionMediumCell.swift */,
+				D5D40BA5285CA8EA00480B04 /* CollectionLargeCell.swift */,
+				D5496DF7286340CC004A30A3 /* TableMediumCell.swift */,
+				D53E293C2861D2A9003E1BEB /* TableLargeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -290,7 +335,7 @@
 				D5EF5A03285223950079F91B /* spotty */,
 				D5EF5A02285223950079F91B /* Products */,
 				C6545238720E86C6D09B27EE /* Pods */,
-				3CD9BECD5E427CCF8E4D6F65 /* Frameworks */,
+				24C77FC0CB957B6B9F191053 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -352,6 +397,7 @@
 				D5EF5A462852358F0079F91B /* Enums */,
 				D5EF5A6C285379DE0079F91B /* KeychainManager.swift */,
 				D55AA3FB285B622600F95F73 /* Observable.swift */,
+				D5FC63D42865E2F600718E3C /* Constant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -428,6 +474,8 @@
 		D5EF5A262852281F0079F91B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				D5FC63C92865B4A000718E3C /* DetailItem */,
+				D5FC63C82865B48500718E3C /* DetailList */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -510,8 +558,12 @@
 			children = (
 				D5EF5A6028535B5B0079F91B /* Data+parseJSON.swift */,
 				D55AA3FD285B65D900F95F73 /* UIImageView+loadFromURL.swift */,
-				D54CD5882860B9DE001DFEBC /* UICollectionView+configure.swift */,
 				D5496DF128631DEF004A30A3 /* UIColor+appColors.swift */,
+				D5FC63D62865E4FF00718E3C /* UIImage+AppImages.swift */,
+				D5FC63D82865E77B00718E3C /* UINavigatioController+factory.swift */,
+				D5FC63DE286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift */,
+				D5FC63E22869AD9E00718E3C /* String+createHTMLAttributedString.swift */,
+				D5FC63E62869C8B200718E3C /* CellConveniences */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -552,6 +604,57 @@
 			path = Styling;
 			sourceTree = "<group>";
 		};
+		D5FC63C82865B48500718E3C /* DetailList */ = {
+			isa = PBXGroup;
+			children = (
+				D5496DF328632D21004A30A3 /* DetailListViewController.swift */,
+				D5FC63E52869C12B00718E3C /* ViewModels */,
+			);
+			path = DetailList;
+			sourceTree = "<group>";
+		};
+		D5FC63C92865B4A000718E3C /* DetailItem */ = {
+			isa = PBXGroup;
+			children = (
+				D5FC63CA2865B4D100718E3C /* DetailItemViewController.swift */,
+				D5FC63E42869C11F00718E3C /* ViewModels */,
+			);
+			path = DetailItem;
+			sourceTree = "<group>";
+		};
+		D5FC63E42869C11F00718E3C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D5FC63CC2865B5DE00718E3C /* DetailItemViewModelProtocol.swift */,
+				D5FC63CE2865B73D00718E3C /* AudioTrackDetailViewModel.swift */,
+				D5FC63D02865B74B00718E3C /* EpisodeDetailViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D5FC63E52869C12B00718E3C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D5FC63C42865AB8B00718E3C /* DetailListViewModelProtocol.swift */,
+				D5496DF528632D2F004A30A3 /* PlaylistDetailViewModel.swift */,
+				D5FC63C62865ABCC00718E3C /* ShowDetailViewModel.swift */,
+				D5FC63D22865B75600718E3C /* ArtistDetailViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D5FC63E62869C8B200718E3C /* CellConveniences */ = {
+			isa = PBXGroup;
+			children = (
+				D54CD5882860B9DE001DFEBC /* UICollectionView+register.swift */,
+				D5FC63E02869AC7A00718E3C /* UITableView+register.swift */,
+				D5FC63E72869C90800718E3C /* UITableViewCell+reuseIdentifier.swift */,
+				D5FC63E92869C92900718E3C /* UICollectionViewCell+reuseIdentifier.swift */,
+				D5FC63EB2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift */,
+			);
+			path = CellConveniences;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -559,11 +662,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5EF5A15285223980079F91B /* Build configuration list for PBXNativeTarget "spotty" */;
 			buildPhases = (
-				61ED9D1F56B418DFDBDBFDE1 /* [CP] Check Pods Manifest.lock */,
+				08CBFB78CBAB9EFBEA6E430F /* [CP] Check Pods Manifest.lock */,
 				D5EF59FD285223950079F91B /* Sources */,
 				D5EF59FE285223950079F91B /* Frameworks */,
 				D5EF59FF285223950079F91B /* Resources */,
-				17642476DEB405E21159ED45 /* [CP] Embed Pods Frameworks */,
+				E12FCF105DC3134ED58F24C6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -622,24 +725,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17642476DEB405E21159ED45 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		61ED9D1F56B418DFDBDBFDE1 /* [CP] Check Pods Manifest.lock */ = {
+		08CBFB78CBAB9EFBEA6E430F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -661,6 +747,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E12FCF105DC3134ED58F24C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotty/Pods-spotty-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -668,48 +771,64 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5FC63CF2865B73D00718E3C /* AudioTrackDetailViewModel.swift in Sources */,
 				D5EF5A6428535B910079F91B /* Network.swift in Sources */,
 				D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */,
 				D5EF5A59285336110079F91B /* SpotifyEndpoint.swift in Sources */,
 				D54CD58428608E87001DFEBC /* NSCollectionLayoutSection+customSections.swift in Sources */,
 				D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */,
-				D54CD5892860B9DE001DFEBC /* UICollectionView+configure.swift in Sources */,
+				D5FC63C52865AB8B00718E3C /* DetailListViewModelProtocol.swift in Sources */,
+				D54CD5892860B9DE001DFEBC /* UICollectionView+register.swift in Sources */,
+				D5496DF628632D2F004A30A3 /* PlaylistDetailViewModel.swift in Sources */,
 				D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */,
 				D5EF5A55285335810079F91B /* AuthManager.swift in Sources */,
+				D5FC63D12865B74B00718E3C /* EpisodeDetailViewModel.swift in Sources */,
 				D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */,
 				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
-				D54CD58B2860BA0F001DFEBC /* ReuseableCell.swift in Sources */,
+				D54CD58B2860BA0F001DFEBC /* SelfConfiguringCell.swift in Sources */,
 				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
 				D54CD58628608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift in Sources */,
+				D5FC63D52865E2F600718E3C /* Constant.swift in Sources */,
 				D5EF5A3228522BE40079F91B /* PlaylistViewController.swift in Sources */,
 				D5136EA7285A194F00765AC1 /* PlaylistChangedResponse.swift in Sources */,
 				D5EF5A4B285235AF0079F91B /* ButtonStyle.swift in Sources */,
+				D5FC63D72865E4FF00718E3C /* UIImage+AppImages.swift in Sources */,
 				D54CD56F286072C1001DFEBC /* UILabel+setStyle.swift in Sources */,
 				D51D78392858C38500EED4F9 /* ItemsResponse.swift in Sources */,
+				D5FC63EA2869C92900718E3C /* UICollectionViewCell+reuseIdentifier.swift in Sources */,
 				D5136EA5285A176100765AC1 /* RemoveTrackRequest.swift in Sources */,
 				D5136E9F2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift in Sources */,
+				D5FC63DB2866076500718E3C /* UICollectionView+setStyle.swift in Sources */,
 				D51D783E2858C48E00EED4F9 /* Album.swift in Sources */,
+				D5FC63DD2866077300718E3C /* CollectionViewStyle.swift in Sources */,
 				D53E293728619EA9003E1BEB /* ShowsViewModel.swift in Sources */,
 				D51D78492858C89900EED4F9 /* AlbumImagesWrapper.swift in Sources */,
 				D5EF5A6128535B5B0079F91B /* Data+parseJSON.swift in Sources */,
 				D5496DF228631DEF004A30A3 /* UIColor+appColors.swift in Sources */,
 				D5D40BA8285CBBDB00480B04 /* SectionHeader.swift in Sources */,
 				D5136EA1285A017300765AC1 /* AudioTracksWrapper.swift in Sources */,
+				D5496DF428632D21004A30A3 /* DetailListViewController.swift in Sources */,
 				D54CD58D2860BA4A001DFEBC /* BusinessModel.swift in Sources */,
 				D54CD56D28607059001DFEBC /* LabelStyle.swift in Sources */,
+				D5FC63C72865ABCC00718E3C /* ShowDetailViewModel.swift in Sources */,
+				D5FC63E32869AD9E00718E3C /* String+createHTMLAttributedString.swift in Sources */,
 				D51D78462858C4DA00EED4F9 /* Artist.swift in Sources */,
 				D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */,
 				D54CD56B2860704F001DFEBC /* ImageStyle.swift in Sources */,
 				D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */,
 				D5EF5A5B28533DEC0079F91B /* HTTPMethod.swift in Sources */,
 				D51D78422858C4BB00EED4F9 /* Episode.swift in Sources */,
+				D5FC63E12869AC7A00718E3C /* UITableView+register.swift in Sources */,
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
+				D5FC63D32865B75600718E3C /* ArtistDetailViewModel.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,
+				D5FC63CB2865B4D100718E3C /* DetailItemViewController.swift in Sources */,
 				D5EF5A57285335FB0079F91B /* PKCEFlowProvider.swift in Sources */,
 				D54CD57828608491001DFEBC /* UIView+Constraints.swift in Sources */,
 				D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */,
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,
 				D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */,
+				D5FC63DF286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift in Sources */,
 				D5136E992859E4D600765AC1 /* AudioTrackWrapper.swift in Sources */,
 				D5EF5A5D28533DFF0079F91B /* AppError.swift in Sources */,
 				D54CD57A286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift in Sources */,
@@ -717,22 +836,27 @@
 				D53E29392861CFFA003E1BEB /* PlaylistViewModel.swift in Sources */,
 				D5EF5A6D285379DE0079F91B /* KeychainManager.swift in Sources */,
 				D5136EA3285A0FB300765AC1 /* CreatePlaylistRequest.swift in Sources */,
-				D574DA00285B2810007F808E /* MediumCell.swift in Sources */,
+				D574DA00285B2810007F808E /* CollectionMediumCell.swift in Sources */,
 				D51D78372858BB1400EED4F9 /* ImageResponse.swift in Sources */,
 				D54CD5732860814E001DFEBC /* Seperator.swift in Sources */,
 				D51D782B2858A1B700EED4F9 /* RemoveAudioTrackFromPlaylistRequest.swift in Sources */,
 				D54CD57128607D94001DFEBC /* UIImageView+setStyle.swift in Sources */,
+				D5FC63E82869C90800718E3C /* UITableViewCell+reuseIdentifier.swift in Sources */,
+				D5496DF8286340CC004A30A3 /* TableMediumCell.swift in Sources */,
 				D5EF5A3B285230350079F91B /* WelcomeViewController.swift in Sources */,
 				D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */,
 				D51D78402858C4AD00EED4F9 /* Playlist.swift in Sources */,
 				D5136E9D2859F8F700765AC1 /* ShowWrapper.swift in Sources */,
-				D5D40BA6285CA8EA00480B04 /* LargeCell.swift in Sources */,
+				D5D40BA6285CA8EA00480B04 /* CollectionLargeCell.swift in Sources */,
 				D51D783C2858C46500EED4F9 /* AudioTrack.swift in Sources */,
 				D5EF5A4F285238A70079F91B /* UIView+Animations.swift in Sources */,
 				D5EF5A6B28536AB50079F91B /* OAuth2Supporting.swift in Sources */,
+				D5FC63CD2865B5DE00718E3C /* DetailItemViewModelProtocol.swift in Sources */,
 				D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */,
 				D5EF5A5F28533E300079F91B /* AuthResponse.swift in Sources */,
-				D53E293D2861D2A9003E1BEB /* PlaylistCell.swift in Sources */,
+				D5FC63EC2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift in Sources */,
+				D53E293D2861D2A9003E1BEB /* TableLargeCell.swift in Sources */,
+				D5FC63D92865E77B00718E3C /* UINavigatioController+factory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,7 +990,7 @@
 		};
 		D5EF5A16285223980079F91B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F100F7669C15A56E30D036F /* Pods-spotty.debug.xcconfig */;
+			baseConfigurationReference = C077F220CFA67725098DD5FD /* Pods-spotty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -895,7 +1019,7 @@
 		};
 		D5EF5A17285223980079F91B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A19439769ACA148F06747EE9 /* Pods-spotty.release.xcconfig */;
+			baseConfigurationReference = 733A4BC3C42E55175156C59F /* Pods-spotty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

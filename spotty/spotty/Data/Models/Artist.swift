@@ -9,7 +9,7 @@ import Foundation
 
 struct Artist: Codable, Hashable, BusinessModel {
     
-    let uuid = UUID()
+    let uuid = UUID() // TODO: Deal with it and remove it.
     let name: String
     let images: [ImageResponse]?
     let genres: [String]?

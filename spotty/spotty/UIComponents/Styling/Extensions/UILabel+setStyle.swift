@@ -9,12 +9,13 @@ import UIKit
 
 extension UILabel {
     
-    /// This function sets a custom UI Style for any `UILabel`
+    /// This function sets a custom UI Style for any ``UILabel``
     ///  - Parameters:
-    ///     - style: One of the styles represented by the `LabelStyle` enum
+    ///     - style: One of the styles represented by the ``LabelStyle`` enum
     func setCustomStyle(_ style: LabelStyle) {
         font = style.font
         textColor = style.textColor
         numberOfLines = style.numberOfLines
+        adjustsFontSizeToFitWidth = style.adjustsFontSizeToFitWidth
     }
 }

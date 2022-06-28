@@ -10,5 +10,9 @@ import Foundation
 struct AlbumImagesWrapper: Codable, Hashable {
     
     let uuid = UUID() // TODO: Remove!!!
-    let images: [ImageResponse]
+    private let images: [ImageResponse]
+    
+    var imageURL: String {
+        images[safeAt: 0]?.url ?? ""        
+    }
 }

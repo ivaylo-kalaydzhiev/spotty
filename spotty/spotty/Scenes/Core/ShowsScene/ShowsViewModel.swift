@@ -9,18 +9,20 @@ import UIKit
 
 protocol ShowsViewModelProtocol {
     
+    var title: String { get }
     var savedShows: Observable<[Show]> { get }
     var savedEpisodes: Observable<[Episode]> { get }
 }
 
 class ShowsViewModel: ShowsViewModelProtocol {
     
+    let title = Constant.SceneTitle.show
     let savedShows = Observable([Show]())
     let savedEpisodes = Observable([Episode]())
     
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository()) { // TODO: Extract start()
+    init(webRepository: WebRepository = WebRepository()) {
         self.webRepository = webRepository
         
         webRepository.getUserSavedShows { [weak self] result in

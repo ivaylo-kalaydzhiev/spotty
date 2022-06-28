@@ -16,12 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = AuthManager.shared.isSignedIn
-            ? TabBarViewController()
-            : UINavigationController(rootViewController: WelcomeViewController())
-//        window.rootViewController = DetailListViewController.create()
-        window.makeKeyAndVisible()
-        self.window = window
+        
+        // Initialize the window and the AppCoordinator
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.windowScene = windowScene
+        
+        if let window = window {
+            appCoordinator = AppCoordinator(window: window)
+            appCoordinator?.start()
+        }
     }
 }

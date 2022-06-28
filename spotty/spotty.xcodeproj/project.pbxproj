@@ -103,6 +103,7 @@
 		D5FC63FB286B095D00718E3C /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5FC63F9286B095D00718E3C /* SplashViewController.xib */; };
 		D5FC63FD286B098A00718E3C /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63FC286B098A00718E3C /* SplashViewModel.swift */; };
 		D5FC63FF286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63FE286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift */; };
+		D5FC6401286B0C8500718E3C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6400286B0C8500718E3C /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -206,6 +207,7 @@
 		D5FC63F9286B095D00718E3C /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		D5FC63FC286B098A00718E3C /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		D5FC63FE286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelCoordinatorDelegate.swift; sourceTree = "<group>"; };
+		D5FC6400286B0C8500718E3C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +378,7 @@
 			children = (
 				D5EF5A04285223950079F91B /* AppDelegate.swift */,
 				D5EF5A06285223960079F91B /* SceneDelegate.swift */,
+				D5FC6400286B0C8500718E3C /* AppCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				D54CD58D2860BA4A001DFEBC /* BusinessModel.swift in Sources */,
 				D54CD56D28607059001DFEBC /* LabelStyle.swift in Sources */,
 				D5FC63C72865ABCC00718E3C /* ShowDetailViewModel.swift in Sources */,
+				D5FC6401286B0C8500718E3C /* AppCoordinator.swift in Sources */,
 				D5FC63E32869AD9E00718E3C /* String+createHTMLAttributedString.swift in Sources */,
 				D51D78462858C4DA00EED4F9 /* Artist.swift in Sources */,
 				D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */,

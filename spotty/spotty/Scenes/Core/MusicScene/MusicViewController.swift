@@ -24,7 +24,7 @@ class MusicViewController: UIViewController {
         setupUI()
         bind()
         
-//        collectionView.delegate = self
+        collectionView.delegate = self
     }
     
     private func setupUI() {
@@ -104,13 +104,21 @@ class MusicViewController: UIViewController {
     }
 }
 
-//extension MusicViewController: UICollectionViewDelegate {
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        viewModel.didSelectItem(at: indexPath.item)
-//    }
-//
-//}
+extension MusicViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch Section.init(rawValue: indexPath.section) {
+        case .featuredPlaylists:
+            viewModel.didSelectPlaylist(at: indexPath.item)
+        case .recentlyPlayedTracks:
+            viewModel.didSelectAudioTrack(at: indexPath.item)
+        case .recentlyPlayedArtists:
+            viewModel.didSelectArtist(at: indexPath.item)
+        default:
+            fatalError()
+        }
+    }
+}
 
 extension MusicViewController {
     

@@ -15,10 +15,10 @@ class AudioTrackDetailViewModel: DetailItemViewModelProtocol {
     
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository()) {
+    init(webRepository: WebRepository = WebRepository(), of audioTrack: AudioTrack) {
         self.webRepository = webRepository
         
-        webRepository.getAudioTrack { [weak self] result in
+        webRepository.getAudioTrack(audioTrackId: audioTrack.id) { [weak self] result in
             switch result {
             case .success(let track):
                 self?.imageURL.value = track.album.imageURL

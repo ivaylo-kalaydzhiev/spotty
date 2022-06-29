@@ -15,18 +15,25 @@ class ShowDetailViewModel: DetailListViewModelProtocol {
     
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository()) {
+    init(webRepository: WebRepository = WebRepository(), of show: Show) {
         self.webRepository = webRepository
-        
-        webRepository.getShow { [weak self] result in
+        configure(with: show)
+    }
+    
+    func configure(with show: Show) {
+        webRepository.getShow(showId: show.id) { [weak self] result in
             switch result {
             case .success(let show):
                 self?.imageURL.value = show.imageURL
+                self?.setEpisodes(id: show.id)
             case .failure(let error):
                 dump(error.localizedDescription)
             }
         }
-        webRepository.getShowEpisodes { [weak self] result in
+    }
+    
+    private func setEpisodes(id: String) {
+        webRepository.getShowEpisodes(showId: id) { [weak self] result in
             switch result {
             case .success(let episodes):
                 self?.items.value = episodes.value

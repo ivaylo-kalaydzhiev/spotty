@@ -9,6 +9,9 @@ import Foundation
 
 protocol MusicViewModelCoordinatorDelegate: AnyObject {
     
-    /// Navigate to ``WelcomeViewController`` or ``TabBarViewController`` .
-    func start()
+    /// Navigate to ``DetailListViewController``
+    func displayDetailListView(with model: BusinessModel)
+    
+    /// Navigate to ``DetailItemViewController``
+    func displayDetailItemView(with model: BusinessModel)
 }

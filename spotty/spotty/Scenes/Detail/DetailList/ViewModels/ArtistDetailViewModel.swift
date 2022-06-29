@@ -15,18 +15,25 @@ class ArtistDetailViewModel: DetailListViewModelProtocol {
     
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository()) {
+    init(webRepository: WebRepository = WebRepository(), of artist: Artist) {
         self.webRepository = webRepository
-        
-        webRepository.getArtist { [weak self] result in
+        configure(with: artist)
+    }
+    
+    func configure(with artist: Artist) {
+        webRepository.getArtist(artistId: artist.id) { [weak self] result in
             switch result {
             case .success(let artist):
                 self?.imageURL.value = artist.imageURL
+                self?.setTracks(id: artist.id)
             case .failure(let error):
                 dump(error.localizedDescription)
             }
         }
-        webRepository.getArtistTopTracks { [weak self] result in
+    }
+    
+    private func setTracks(id: String) {
+        webRepository.getArtistTopTracks(artistId: id) { [weak self] result in
             switch result {
             case .success(let tracks):
                 let unwrappedAudioTracks = tracks.tracks

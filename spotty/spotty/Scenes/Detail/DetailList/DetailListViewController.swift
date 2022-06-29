@@ -109,7 +109,7 @@ class DetailListViewController: UIViewController {
 
 extension DetailListViewController {
     
-    static func create(viewModel: DetailListViewModelProtocol = ShowDetailViewModel()) -> UIViewController {
+    static func create(viewModel: DetailListViewModelProtocol) -> UIViewController {
         let viewController = DetailListViewController()
         viewController.viewModel = viewModel
         return viewController

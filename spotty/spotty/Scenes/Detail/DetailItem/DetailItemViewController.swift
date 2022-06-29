@@ -71,7 +71,7 @@ class DetailItemViewController: UIViewController {
 
 extension DetailItemViewController {
     
-    static func create(viewModel: DetailItemViewModelProtocol = EpisodeDetailViewModel()) -> UIViewController {
+    static func create(viewModel: DetailItemViewModelProtocol) -> UIViewController {
         let viewController = DetailItemViewController()
         viewController.viewModel = viewModel
         return viewController

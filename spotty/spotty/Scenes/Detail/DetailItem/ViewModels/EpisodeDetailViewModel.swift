@@ -8,17 +8,20 @@
 import Foundation
 
 class EpisodeDetailViewModel: DetailItemViewModelProtocol {
-
+    
     var imageURL = Observable("")
     var title = Observable("")
     var description = Observable("")
     
     private let webRepository: WebRepository
-        
-    init(webRepository: WebRepository = WebRepository()) {
+    
+    init(webRepository: WebRepository = WebRepository(), of episode: Episode) {
         self.webRepository = webRepository
-        
-        webRepository.getEpisode { [weak self] result in
+        configure(with: episode)
+    }
+    
+    private func configure(with episode: Episode) {
+        webRepository.getEpisode(episodeId: episode.id) { [weak self] result in
             switch result {
             case .success(let episode):
                 self?.imageURL.value = episode.imageURL

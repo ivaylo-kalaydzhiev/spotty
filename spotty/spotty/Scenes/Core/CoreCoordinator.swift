@@ -19,8 +19,6 @@ class CoreCoordinator: Coordinator {
     
     // MARK: - Exposed Functions
     override func start() {
-        let tabBarController = UITabBarController()
-        
         let musicNavigation = UINavigationController.createReadyForTabBar(
             viewController: MusicViewController.create(),
             title: Constant.SceneTitle.music,
@@ -37,14 +35,18 @@ class CoreCoordinator: Coordinator {
         let musicCoordinator = MusicCoordinator(navigationController: musicNavigation)
         let showsCoordinator = ShowsCoordinator(navigationController: playlistNavigation)
         let playlistCoordinator = PlaylistCoordinator(navigationController: showsNavigation)
+        musicCoordinator.start()
+        showsCoordinator.start()
+        playlistCoordinator.start()
         
+        addChildCoordinators([musicCoordinator, showsCoordinator, playlistCoordinator])
+
+        let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
             musicCoordinator.navigationController,
             showsCoordinator.navigationController,
             playlistCoordinator.navigationController
         ]
-        
-        addChildCoordinators([musicCoordinator, showsCoordinator, playlistCoordinator])
         
         navigationController.pushViewController(tabBarController, animated: true)
     }

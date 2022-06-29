@@ -15,7 +15,7 @@ class PlaylistDetailViewModel: DetailListViewModelProtocol {
     
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository(), playlist: Playlist) {
+    init(webRepository: WebRepository = WebRepository(), of playlist: Playlist) {
         self.webRepository = webRepository
         configure(with: playlist)
     }

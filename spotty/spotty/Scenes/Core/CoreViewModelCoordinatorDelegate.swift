@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MusicViewModelCoordinatorDelegate: AnyObject {
+protocol CoreViewModelCoordinatorDelegate: AnyObject {
     
     /// Navigate to ``DetailListViewController``
     func displayDetailListView(with model: BusinessModel)

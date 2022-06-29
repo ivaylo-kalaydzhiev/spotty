@@ -16,6 +16,8 @@ class PlaylistViewModel: PlaylistViewModelProtocol {
     
     let playlists = Observable([Playlist]())
     
+    weak var delegate: CoreViewModelCoordinatorDelegate?
+    
     private let webRepository: WebRepository
     
     init(webRepository: WebRepository = WebRepository()) {

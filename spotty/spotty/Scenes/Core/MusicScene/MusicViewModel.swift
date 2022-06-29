@@ -24,7 +24,7 @@ class MusicViewModel: MusicViewModelProtocol {
     let recentlyPlayedTracks = Observable([AudioTrack]())
     let recentlyPlayedArtists = Observable([Artist]())
     
-    weak var delegate: MusicViewModelCoordinatorDelegate?
+    weak var delegate: CoreViewModelCoordinatorDelegate?
 
     private let webRepository: WebRepository
     

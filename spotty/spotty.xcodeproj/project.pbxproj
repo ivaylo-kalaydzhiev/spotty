@@ -104,6 +104,11 @@
 		D5FC63FD286B098A00718E3C /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63FC286B098A00718E3C /* SplashViewModel.swift */; };
 		D5FC63FF286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC63FE286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift */; };
 		D5FC6401286B0C8500718E3C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6400286B0C8500718E3C /* AppCoordinator.swift */; };
+		D5FC6405286B0EC700718E3C /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6404286B0EC700718E3C /* LoginCoordinator.swift */; };
+		D5FC6407286B104100718E3C /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6406286B104100718E3C /* WelcomeViewModel.swift */; };
+		D5FC6409286B105600718E3C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6408286B105600718E3C /* AuthViewModel.swift */; };
+		D5FC640B286B10A300718E3C /* WelcomeViewModelCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC640A286B10A300718E3C /* WelcomeViewModelCoordinatorDelegate.swift */; };
+		D5FC640D286B329100718E3C /* AuthViewModelCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC640C286B329100718E3C /* AuthViewModelCoordinatorDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -208,6 +213,11 @@
 		D5FC63FC286B098A00718E3C /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		D5FC63FE286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		D5FC6400286B0C8500718E3C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		D5FC6404286B0EC700718E3C /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		D5FC6406286B104100718E3C /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		D5FC6408286B105600718E3C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		D5FC640A286B10A300718E3C /* WelcomeViewModelCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModelCoordinatorDelegate.swift; sourceTree = "<group>"; };
+		D5FC640C286B329100718E3C /* AuthViewModelCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelCoordinatorDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -432,6 +442,8 @@
 			children = (
 				D5EF5A39285230350079F91B /* WelcomeViewController.swift */,
 				D5EF5A3A285230350079F91B /* WelcomeViewController.xib */,
+				D5FC6406286B104100718E3C /* WelcomeViewModel.swift */,
+				D5FC640A286B10A300718E3C /* WelcomeViewModelCoordinatorDelegate.swift */,
 			);
 			path = WelcomeScene;
 			sourceTree = "<group>";
@@ -441,6 +453,8 @@
 			children = (
 				D5EF5A50285239A70079F91B /* AuthViewController.swift */,
 				D5EF5A51285239A70079F91B /* AuthViewController.xib */,
+				D5FC6408286B105600718E3C /* AuthViewModel.swift */,
+				D5FC640C286B329100718E3C /* AuthViewModelCoordinatorDelegate.swift */,
 			);
 			path = AuthScene;
 			sourceTree = "<group>";
@@ -509,6 +523,7 @@
 		D5EF5A282852289A0079F91B /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				D5FC6404286B0EC700718E3C /* LoginCoordinator.swift */,
 				D5EF5A1F2852269A0079F91B /* WelcomeScene */,
 				D5EF5A20285226AD0079F91B /* AuthScene */,
 			);
@@ -799,6 +814,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5FC63CF2865B73D00718E3C /* AudioTrackDetailViewModel.swift in Sources */,
+				D5FC640B286B10A300718E3C /* WelcomeViewModelCoordinatorDelegate.swift in Sources */,
 				D5EF5A6428535B910079F91B /* Network.swift in Sources */,
 				D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */,
 				D5EF5A59285336110079F91B /* SpotifyEndpoint.swift in Sources */,
@@ -806,6 +822,7 @@
 				D5EF5A52285239A70079F91B /* AuthViewController.swift in Sources */,
 				D5FC63C52865AB8B00718E3C /* DetailListViewModelProtocol.swift in Sources */,
 				D54CD5892860B9DE001DFEBC /* UICollectionView+register.swift in Sources */,
+				D5FC6409286B105600718E3C /* AuthViewModel.swift in Sources */,
 				D5FC63F02869E0A200718E3C /* CollectionCircularCell.swift in Sources */,
 				D5496DF628632D2F004A30A3 /* PlaylistDetailViewModel.swift in Sources */,
 				D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */,
@@ -826,6 +843,7 @@
 				D51D78392858C38500EED4F9 /* ItemsResponse.swift in Sources */,
 				D5FC63EA2869C92900718E3C /* UICollectionViewCell+reuseIdentifier.swift in Sources */,
 				D5136EA5285A176100765AC1 /* RemoveTrackRequest.swift in Sources */,
+				D5FC640D286B329100718E3C /* AuthViewModelCoordinatorDelegate.swift in Sources */,
 				D5136E9F2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift in Sources */,
 				D5FC63DB2866076500718E3C /* UICollectionView+setStyle.swift in Sources */,
 				D51D783E2858C48E00EED4F9 /* Album.swift in Sources */,
@@ -884,10 +902,12 @@
 				D5EF5A6B28536AB50079F91B /* OAuth2Supporting.swift in Sources */,
 				D5FC63CD2865B5DE00718E3C /* DetailItemViewModelProtocol.swift in Sources */,
 				D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */,
+				D5FC6405286B0EC700718E3C /* LoginCoordinator.swift in Sources */,
 				D5EF5A5F28533E300079F91B /* AuthResponse.swift in Sources */,
 				D5FC63EC2869C96300718E3C /* UICollectionReusableView+reuseIdentifier.swift in Sources */,
 				D53E293D2861D2A9003E1BEB /* TableLargeCell.swift in Sources */,
 				D5FC63D92865E77B00718E3C /* UINavigatioController+factory.swift in Sources */,
+				D5FC6407286B104100718E3C /* WelcomeViewModel.swift in Sources */,
 				D5FC63FA286B095D00718E3C /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

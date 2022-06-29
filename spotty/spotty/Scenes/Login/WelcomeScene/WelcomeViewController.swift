@@ -9,45 +9,25 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    private var viewModel: WelcomeViewModelProtocol!
+    
     @IBOutlet weak private var logInButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         logInButton.setCustomStyle(.logIn)
     }
     
     @IBAction private func didTapLogInButton() {
-        let authVC = AuthViewController()
-        authVC.completeCodeForTokenExchange = { [weak self] exchangeSucceeded in
-            DispatchQueue.main.async { self?.handleLogIn(exchangeSucceeded) }
-        }
-        navigationController?.pushViewController(authVC, animated: true)
+        viewModel.didTapButton()
     }
+}
+
+extension WelcomeViewController {
     
-    /// Handles the Login attmept result.
-    /// - Parameter logInSuccess: Indication whether the Login attempt was successfull.
-    ///
-    /// This method updates the UI and should only ever be called from the Main Thread.
-    private func handleLogIn(_ logInSuccess: Bool) {
-        guard logInSuccess else {
-            displayUnsuccessfullLoginAlert()
-            return
-        }
-        
-        let mainAppTabBarVC = TabBarViewController()
-        mainAppTabBarVC.modalPresentationStyle = .fullScreen
-        present(mainAppTabBarVC, animated: true)
-    }
-    
-    /// Displayes an Alert indicating that the Login attempt was not successfull.
-    ///
-    /// This method updates the UI and should only ever be called from the Main Thread.
-    private func displayUnsuccessfullLoginAlert() {
-        let alert = UIAlertController(title: "Error",
-                                      message: "Unsuccessfull log in attempt.",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-        present(alert, animated: true)
+    static func create(viewModel: WelcomeViewModelProtocol) -> UIViewController {
+        let viewController = WelcomeViewController()
+        viewController.viewModel = viewModel
+        return viewController
     }
 }

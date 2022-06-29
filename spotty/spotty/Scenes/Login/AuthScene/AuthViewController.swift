@@ -10,19 +10,25 @@ import WebKit
 
 class AuthViewController: UIViewController {
     
-    @IBOutlet private weak var webView: WKWebView!
+    private var viewModel: AuthViewModelProtocol!
     
-    /// Called right after the Auth Manager has attempted to exchange Code for an Access Token.
-    ///
-    /// This property must be set in order to complete Code for Access Token exchange successfully.
-    var completeCodeForTokenExchange: ((Bool) -> Void)?
+    @IBOutlet private weak var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webView.navigationDelegate = self
         guard let url = SpotifyAuthProvider.shared.signInURL else { return }
+        webView.navigationDelegate = self
         webView.load(URLRequest(url: url))
+    }
+    
+    private func displayUnsuccessfullLoginAlert() {
+        let alert = UIAlertController(
+            title: "Error",
+            message: "Unsuccessfull log in attempt.",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(alert, animated: true)
     }
 }
 
@@ -34,7 +40,20 @@ extension AuthViewController: WKNavigationDelegate {
         guard let code = component?.queryItems?.first(where: {$0.name == "code"})?.value else { return }
         
         AuthManager.shared.exchangeCodeForAccessToken(code: code) { [weak self] exchangeSucceeded in
-            self?.completeCodeForTokenExchange?(exchangeSucceeded)
+            if exchangeSucceeded {
+                self?.viewModel.handleSuccessfullLogin()
+            } else {
+                DispatchQueue.main.async { self?.displayUnsuccessfullLoginAlert() }
+            }
         }
+    }
+}
+
+extension AuthViewController {
+    
+    static func create(viewModel: AuthViewModelProtocol) -> UIViewController {
+        let viewController = AuthViewController()
+        viewController.viewModel = viewModel
+        return viewController
     }
 }

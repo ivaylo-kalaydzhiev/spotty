@@ -7,9 +7,7 @@
 
 import SFBaseKit
 
-protocol SplashViewModelProtocol: CoordinatableViewModel {
-    
-}
+protocol SplashViewModelProtocol: CoordinatableViewModel {}
 
 class SplashViewModel: SplashViewModelProtocol {
     

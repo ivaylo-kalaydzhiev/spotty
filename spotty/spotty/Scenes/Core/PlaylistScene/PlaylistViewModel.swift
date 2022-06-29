@@ -10,6 +10,8 @@ import UIKit
 protocol PlaylistViewModelProtocol {
     
     var playlists: Observable<[Playlist]> { get }
+    
+    func didSelectPlaylist(at index: Int)
 }
 
 class PlaylistViewModel: PlaylistViewModelProtocol {
@@ -32,5 +34,10 @@ class PlaylistViewModel: PlaylistViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
+    }
+    
+    func didSelectPlaylist(at index: Int) {
+        guard let playlist = playlists.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailListView(with: playlist)
     }
 }

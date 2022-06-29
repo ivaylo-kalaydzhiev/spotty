@@ -21,6 +21,8 @@ class PlaylistViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         bind()
+        
+        tableView.delegate = self
     }
     
     private func setupUI() {
@@ -63,6 +65,13 @@ class PlaylistViewController: UIViewController {
         snapshot.appendSections(Section.allCases)
         snapshot.appendItems(playlists, toSection: .playlists)
         dataSource?.apply(snapshot)
+    }
+}
+
+extension PlaylistViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectPlaylist(at: indexPath.item)
     }
 }
 

@@ -24,7 +24,7 @@ class CoreCoordinator: Coordinator {
         let showsViewModel = ShowsViewModel()
         showsViewModel.delegate = self
         let playlistViewModel = PlaylistViewModel()
-        musicViewModel.delegate = self
+        playlistViewModel.delegate = self
         
         let musicNavigation = UINavigationController.createReadyForTabBar(
             viewController: MusicViewController.create(viewModel: musicViewModel),

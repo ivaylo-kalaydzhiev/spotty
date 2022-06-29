@@ -21,6 +21,8 @@ class ShowsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         bind()
+        
+        collectionView.delegate = self
     }
     
     private func setupUI() {
@@ -97,6 +99,20 @@ class ShowsViewController: UIViewController {
         snapshot.appendItems(episodes, toSection: .savedEpisodes)
         
         dataSource?.apply(snapshot)
+    }
+}
+
+extension ShowsViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch Section.init(rawValue: indexPath.section) {
+        case .savedShows:
+            viewModel.didSelectShow(at: indexPath.item)
+        case .savedEpisodes:
+            viewModel.didSelectEpisode(at: indexPath.item)
+        default:
+            fatalError()
+        }
     }
 }
 

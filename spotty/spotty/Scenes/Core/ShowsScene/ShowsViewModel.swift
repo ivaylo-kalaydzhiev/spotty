@@ -11,6 +11,9 @@ protocol ShowsViewModelProtocol {
     
     var savedShows: Observable<[Show]> { get }
     var savedEpisodes: Observable<[Episode]> { get }
+    
+    func didSelectShow(at index: Int)
+    func didSelectEpisode(at index: Int)
 }
 
 class ShowsViewModel: ShowsViewModelProtocol {
@@ -45,5 +48,15 @@ class ShowsViewModel: ShowsViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
+    }
+    
+    func didSelectShow(at index: Int) {
+        guard let show = savedShows.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailListView(with: show)
+    }
+    
+    func didSelectEpisode(at index: Int) {
+        guard let episode = savedEpisodes.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailItemView(with: episode)
     }
 }

@@ -13,6 +13,8 @@ class EpisodeDetailViewModel: DetailItemViewModelProtocol {
     var title = Observable("")
     var description = Observable("")
     
+    weak var delegate: CoreViewModelCoordinatorDelegate?
+    
     private let webRepository: WebRepository
     
     init(webRepository: WebRepository = WebRepository(), of episode: Episode) {
@@ -31,5 +33,9 @@ class EpisodeDetailViewModel: DetailItemViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
+    }
+    
+    func dismissView() {
+        delegate?.dismissDetailView()
     }
 }

@@ -13,6 +13,8 @@ class AudioTrackDetailViewModel: DetailItemViewModelProtocol {
     var title = Observable("")
     var description = Observable("")
     
+    weak var delegate: CoreViewModelCoordinatorDelegate?
+    
     private let webRepository: WebRepository
     
     init(webRepository: WebRepository = WebRepository(), of audioTrack: AudioTrack) {
@@ -28,5 +30,9 @@ class AudioTrackDetailViewModel: DetailItemViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
+    }
+    
+    func dismissView() {
+        delegate?.dismissDetailView()
     }
 }

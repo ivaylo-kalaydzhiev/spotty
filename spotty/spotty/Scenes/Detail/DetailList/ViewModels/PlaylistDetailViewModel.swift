@@ -13,6 +13,8 @@ class PlaylistDetailViewModel: DetailListViewModelProtocol {
     var title = Observable("Tracks")
     var items: Observable<[BusinessModel]> = Observable([AudioTrack]())
     
+    weak var delegate: CoreViewModelCoordinatorDelegate?
+    
     private let webRepository: WebRepository
     
     init(webRepository: WebRepository = WebRepository(), of playlist: Playlist) {
@@ -43,5 +45,9 @@ class PlaylistDetailViewModel: DetailListViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
+    }
+    
+    func dismissView() {
+        delegate?.dismissDetailView()
     }
 }

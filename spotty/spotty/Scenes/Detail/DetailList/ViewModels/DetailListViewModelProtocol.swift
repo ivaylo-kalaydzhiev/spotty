@@ -12,4 +12,6 @@ protocol DetailListViewModelProtocol {
     var imageURL: Observable<String> { get }
     var title: Observable<String> { get }
     var items: Observable<[BusinessModel]> { get }
+    
+    func dismissView()
 }

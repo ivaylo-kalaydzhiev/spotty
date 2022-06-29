@@ -38,7 +38,7 @@ class CoreCoordinator: Coordinator {
             viewController: PlaylistViewController.create(viewModel: playlistViewModel),
             title: Constant.SceneTitle.playlist,
             image: UIImage.System.musicNoteList)
-
+        
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
             musicNavigation,
@@ -50,26 +50,45 @@ class CoreCoordinator: Coordinator {
     }
     
     private func displayDetailList(with model: BusinessModel) {
-        let viewModel: DetailListViewModelProtocol
-        if let playlist = model as? Playlist { viewModel = PlaylistDetailViewModel(of: playlist) }
-        else if let show = model as? Show { viewModel = ShowDetailViewModel(of: show) }
-        else if let artist = model as? Artist { viewModel = ArtistDetailViewModel(of: artist) }
-        else { fatalError() }
+        let viewController: UIViewController
+        if let playlist = model as? Playlist {
+            let viewModel = PlaylistDetailViewModel(of: playlist)
+            viewModel.delegate = self
+            viewController = DetailListViewController.create(viewModel: viewModel)
+        } else if let show = model as? Show {
+            let viewModel = ShowDetailViewModel(of: show)
+            viewModel.delegate = self
+            viewController = DetailListViewController.create(viewModel: viewModel)
+        } else if let artist = model as? Artist {
+            let viewModel = ArtistDetailViewModel(of: artist)
+            viewModel.delegate = self
+            viewController = DetailListViewController.create(viewModel: viewModel)
+        } else {
+            fatalError()
+        }
         
-        // viewModel.delegate = self
-        let viewController = DetailListViewController.create(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
     
     private func displayDetailItem(with model: BusinessModel) {
-        let viewModel: DetailItemViewModelProtocol
-        if let audioTrack = model as? AudioTrack { viewModel = AudioTrackDetailViewModel(of: audioTrack) }
-        else if let episode = model as? Episode { viewModel = EpisodeDetailViewModel(of: episode) }
-        else { fatalError() }
+        let viewController: UIViewController
+        if let audioTrack = model as? AudioTrack {
+            let viewModel = AudioTrackDetailViewModel(of: audioTrack)
+            viewModel.delegate = self
+            viewController = DetailItemViewController.create(viewModel: viewModel)
+        } else if let episode = model as? Episode {
+            let viewModel = EpisodeDetailViewModel(of: episode)
+            viewModel.delegate = self
+            viewController = DetailItemViewController.create(viewModel: viewModel)
+        } else {
+            fatalError()
+        }
         
-//        viewModel.delegate = self
-        let viewController = DetailItemViewController.create(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    private func dismissDetail() {
+        navigationController.popViewController(animated: true)
     }
 }
 
@@ -82,4 +101,9 @@ extension CoreCoordinator: CoreViewModelCoordinatorDelegate {
     func displayDetailItemView(with model: BusinessModel) {
         displayDetailItem(with: model)
     }
+    
+    func dismissDetailView() {
+        dismissDetail()
+    }
+    
 }

@@ -47,8 +47,13 @@ class DetailListViewController: UIViewController {
     
     private func createDismissButton() {
         let button = UIButton()
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         button.setCustomStyle(.dismiss)
         view.addSubview(button, anchors: [.top(20), .trailing(-20), .height(35), .width(35)])
+    }
+    
+    @objc private func didTapButton() {
+        viewModel.dismissView()
     }
     
     private func createLabel() {

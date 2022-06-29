@@ -13,6 +13,8 @@ class ShowDetailViewModel: DetailListViewModelProtocol {
     var title = Observable("Episodes")
     var items: Observable<[BusinessModel]> = Observable([Episode]())
     
+    weak var delegate: CoreViewModelCoordinatorDelegate?
+    
     private let webRepository: WebRepository
     
     init(webRepository: WebRepository = WebRepository(), of show: Show) {
@@ -41,5 +43,9 @@ class ShowDetailViewModel: DetailListViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
+    }
+    
+    func dismissView() {
+        delegate?.dismissDetailView()
     }
 }

@@ -37,14 +37,13 @@ class LoginCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    private func startCore() {
-        let viewController = TabBarViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        navigationController.pushViewController(viewController, animated: true)
+    private func startCoreScene() {
+        let coreCoordinator = CoreCoordinator(navigationController: navigationController)
+        addChildCoordinator(coreCoordinator)
+        coreCoordinator.start()
     }
 }
 
-// MARK: - CategoryViewModelCoordinatorDelegate
 extension LoginCoordinator: WelcomeViewModelCoordinatorDelegate {
     
     func didFinishWelcomeScene() {
@@ -55,6 +54,6 @@ extension LoginCoordinator: WelcomeViewModelCoordinatorDelegate {
 extension LoginCoordinator: AuthViewModelCoordinatorDelegate {
     
     func didFinishAuthScene() {
-        startCore()
+        startCoreScene()
     }
 }

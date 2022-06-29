@@ -10,9 +10,8 @@ import WebKit
 
 class AuthViewController: UIViewController {
     
-    private var viewModel: AuthViewModelProtocol!
-    
     @IBOutlet private weak var webView: WKWebView!
+    private var viewModel: AuthViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()

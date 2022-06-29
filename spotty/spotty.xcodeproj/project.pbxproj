@@ -55,7 +55,6 @@
 		D5D40BA8285CBBDB00480B04 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D40BA7285CBBDB00480B04 /* SectionHeader.swift */; };
 		D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A04285223950079F91B /* AppDelegate.swift */; };
 		D5EF5A07285223960079F91B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A06285223960079F91B /* SceneDelegate.swift */; };
-		D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A08285223960079F91B /* TabBarViewController.swift */; };
 		D5EF5A0E285223980079F91B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5EF5A0D285223980079F91B /* Assets.xcassets */; };
 		D5EF5A11285223980079F91B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5EF5A0F285223980079F91B /* LaunchScreen.storyboard */; };
 		D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */; };
@@ -109,6 +108,11 @@
 		D5FC6409286B105600718E3C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6408286B105600718E3C /* AuthViewModel.swift */; };
 		D5FC640B286B10A300718E3C /* WelcomeViewModelCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC640A286B10A300718E3C /* WelcomeViewModelCoordinatorDelegate.swift */; };
 		D5FC640D286B329100718E3C /* AuthViewModelCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC640C286B329100718E3C /* AuthViewModelCoordinatorDelegate.swift */; };
+		D5FC640F286C76BC00718E3C /* CoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC640E286C76BC00718E3C /* CoreCoordinator.swift */; };
+		D5FC6411286C79EC00718E3C /* MusicCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6410286C79EC00718E3C /* MusicCoordinator.swift */; };
+		D5FC6413286C79F800718E3C /* ShowsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6412286C79F800718E3C /* ShowsCoordinator.swift */; };
+		D5FC6415286C7A0100718E3C /* PlaylistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6414286C7A0100718E3C /* PlaylistCoordinator.swift */; };
+		D5FC6417286C7F9400718E3C /* MusicViewModelCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6416286C7F9400718E3C /* MusicViewModelCoordinatorDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,7 +167,6 @@
 		D5EF5A01285223950079F91B /* spotty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EF5A04285223950079F91B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5EF5A06285223960079F91B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D5EF5A08285223960079F91B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D5EF5A0D285223980079F91B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5EF5A10285223980079F91B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5EF5A12285223980079F91B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -218,6 +221,11 @@
 		D5FC6408286B105600718E3C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		D5FC640A286B10A300718E3C /* WelcomeViewModelCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModelCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		D5FC640C286B329100718E3C /* AuthViewModelCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelCoordinatorDelegate.swift; sourceTree = "<group>"; };
+		D5FC640E286C76BC00718E3C /* CoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCoordinator.swift; sourceTree = "<group>"; };
+		D5FC6410286C79EC00718E3C /* MusicCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCoordinator.swift; sourceTree = "<group>"; };
+		D5FC6412286C79F800718E3C /* ShowsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsCoordinator.swift; sourceTree = "<group>"; };
+		D5FC6414286C7A0100718E3C /* PlaylistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCoordinator.swift; sourceTree = "<group>"; };
+		D5FC6416286C7F9400718E3C /* MusicViewModelCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModelCoordinatorDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +472,8 @@
 			children = (
 				D5EF5A2D28522BCC0079F91B /* MusicViewController.swift */,
 				D55AA401285B79C100F95F73 /* MusicViewModel.swift */,
+				D5FC6410286C79EC00718E3C /* MusicCoordinator.swift */,
+				D5FC6416286C7F9400718E3C /* MusicViewModelCoordinatorDelegate.swift */,
 			);
 			path = MusicScene;
 			sourceTree = "<group>";
@@ -473,6 +483,7 @@
 			children = (
 				D5EF5A2F28522BDA0079F91B /* ShowsViewController.swift */,
 				D53E293628619EA9003E1BEB /* ShowsViewModel.swift */,
+				D5FC6412286C79F800718E3C /* ShowsCoordinator.swift */,
 			);
 			path = ShowsScene;
 			sourceTree = "<group>";
@@ -482,6 +493,7 @@
 			children = (
 				D5EF5A3128522BE40079F91B /* PlaylistViewController.swift */,
 				D53E29382861CFF9003E1BEB /* PlaylistViewModel.swift */,
+				D5FC6414286C7A0100718E3C /* PlaylistCoordinator.swift */,
 			);
 			path = PlaylistScene;
 			sourceTree = "<group>";
@@ -512,7 +524,7 @@
 		D5EF5A272852287C0079F91B /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				D5EF5A08285223960079F91B /* TabBarViewController.swift */,
+				D5FC640E286C76BC00718E3C /* CoreCoordinator.swift */,
 				D5EF5A21285226BE0079F91B /* MusicScene */,
 				D5EF5A22285226CC0079F91B /* ShowsScene */,
 				D5EF5A23285226DA0079F91B /* PlaylistScene */,
@@ -823,6 +835,7 @@
 				D5FC63C52865AB8B00718E3C /* DetailListViewModelProtocol.swift in Sources */,
 				D54CD5892860B9DE001DFEBC /* UICollectionView+register.swift in Sources */,
 				D5FC6409286B105600718E3C /* AuthViewModel.swift in Sources */,
+				D5FC6415286C7A0100718E3C /* PlaylistCoordinator.swift in Sources */,
 				D5FC63F02869E0A200718E3C /* CollectionCircularCell.swift in Sources */,
 				D5496DF628632D2F004A30A3 /* PlaylistDetailViewModel.swift in Sources */,
 				D54CD57628608417001DFEBC /* LayoutAnchor.swift in Sources */,
@@ -831,6 +844,7 @@
 				D5136E9B2859F6E100765AC1 /* EpisodeWrapper.swift in Sources */,
 				D5EF5A2E28522BCC0079F91B /* MusicViewController.swift in Sources */,
 				D5FC63FD286B098A00718E3C /* SplashViewModel.swift in Sources */,
+				D5FC6417286C7F9400718E3C /* MusicViewModelCoordinatorDelegate.swift in Sources */,
 				D54CD58B2860BA0F001DFEBC /* SelfConfiguringCell.swift in Sources */,
 				D5EF5A3028522BDA0079F91B /* ShowsViewController.swift in Sources */,
 				D54CD58628608EB1001DFEBC /* NSCollectionLayoutBoundarySupplementaryItem+createSectionHeader.swift in Sources */,
@@ -842,6 +856,7 @@
 				D54CD56F286072C1001DFEBC /* UILabel+setStyle.swift in Sources */,
 				D51D78392858C38500EED4F9 /* ItemsResponse.swift in Sources */,
 				D5FC63EA2869C92900718E3C /* UICollectionViewCell+reuseIdentifier.swift in Sources */,
+				D5FC6413286C79F800718E3C /* ShowsCoordinator.swift in Sources */,
 				D5136EA5285A176100765AC1 /* RemoveTrackRequest.swift in Sources */,
 				D5FC640D286B329100718E3C /* AuthViewModelCoordinatorDelegate.swift in Sources */,
 				D5136E9F2859FC6300765AC1 /* FeaturedPlaylistsResponse.swift in Sources */,
@@ -862,11 +877,11 @@
 				D51D78462858C4DA00EED4F9 /* Artist.swift in Sources */,
 				D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */,
 				D54CD56B2860704F001DFEBC /* ImageStyle.swift in Sources */,
-				D5EF5A09285223960079F91B /* TabBarViewController.swift in Sources */,
 				D5EF5A5B28533DEC0079F91B /* HTTPMethod.swift in Sources */,
 				D51D78422858C4BB00EED4F9 /* Episode.swift in Sources */,
 				D5FC63E12869AC7A00718E3C /* UITableView+register.swift in Sources */,
 				D5EF5A05285223950079F91B /* AppDelegate.swift in Sources */,
+				D5FC6411286C79EC00718E3C /* MusicCoordinator.swift in Sources */,
 				D5FC63D32865B75600718E3C /* ArtistDetailViewModel.swift in Sources */,
 				D5FC63FF286B09A800718E3C /* SplashViewModelCoordinatorDelegate.swift in Sources */,
 				D51D78442858C4CD00EED4F9 /* Show.swift in Sources */,
@@ -877,6 +892,7 @@
 				D5EF5A49285235A50079F91B /* UIButton+setStyle.swift in Sources */,
 				D5EF5A6628535C450079F91B /* SpotifyAuthProvider.swift in Sources */,
 				D5FC63DF286607E300718E3C /* UICollectionViewCompositionalLayout+configured.swift in Sources */,
+				D5FC640F286C76BC00718E3C /* CoreCoordinator.swift in Sources */,
 				D5136E992859E4D600765AC1 /* AudioTrackWrapper.swift in Sources */,
 				D5EF5A5D28533DFF0079F91B /* AppError.swift in Sources */,
 				D54CD57A286084BB001DFEBC /* NSLayoutConstraint+convenienceInit.swift in Sources */,

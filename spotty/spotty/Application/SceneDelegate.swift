@@ -5,11 +5,12 @@
 //  Created by Ivaylo Kalaydzhiev on 9.06.22.
 //
 
-import UIKit
+import SFBaseKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var appCoordinator: Coordinator?
     
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,

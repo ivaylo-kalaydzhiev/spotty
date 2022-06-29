@@ -27,6 +27,8 @@ class DetailListViewController: UIViewController {
         view.backgroundColor = .systemBackground
         setupUI()
         bind()
+        
+        tableView.delegate = self
     }
     
     override var prefersStatusBarHidden: Bool { true }
@@ -109,6 +111,13 @@ class DetailListViewController: UIViewController {
         snapshot.appendSections(Section.allCases)
         snapshot.appendItems(models, toSection: .items)
         dataSource?.apply(snapshot)
+    }
+}
+
+extension DetailListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectItem(at: indexPath.item)
     }
 }
 

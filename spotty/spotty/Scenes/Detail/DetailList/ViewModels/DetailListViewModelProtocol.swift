@@ -14,4 +14,5 @@ protocol DetailListViewModelProtocol {
     var items: Observable<[BusinessModel]> { get }
     
     func dismissView()
+    func didSelectItem(at index: Int)
 }

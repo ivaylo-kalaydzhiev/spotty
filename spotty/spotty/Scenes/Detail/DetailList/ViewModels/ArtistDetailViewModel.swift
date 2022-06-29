@@ -49,4 +49,9 @@ class ArtistDetailViewModel: DetailListViewModelProtocol {
     func dismissView() {
         delegate?.dismissDetailView()
     }
+    
+    func didSelectItem(at index: Int) {
+        guard let audioTrack = items.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailItemView(with: audioTrack)
+    }
 }

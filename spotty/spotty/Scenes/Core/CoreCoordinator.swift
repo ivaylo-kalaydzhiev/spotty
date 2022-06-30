@@ -105,5 +105,4 @@ extension CoreCoordinator: CoreViewModelCoordinatorDelegate {
     func dismissDetailView() {
         dismissDetail()
     }
-    
 }

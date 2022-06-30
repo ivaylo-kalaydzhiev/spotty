@@ -40,7 +40,7 @@ extension AuthViewController: WKNavigationDelegate {
         
         AuthManager.shared.exchangeCodeForAccessToken(code: code) { [weak self] exchangeSucceeded in
             if exchangeSucceeded {
-                self?.viewModel.handleSuccessfullLogin()
+                DispatchQueue.main.async { self?.viewModel.handleSuccessfullLogin() }
             } else {
                 DispatchQueue.main.async { self?.displayUnsuccessfullLoginAlert() }
             }

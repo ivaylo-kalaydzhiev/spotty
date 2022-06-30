@@ -50,7 +50,6 @@
 		D55AA402285B79C100F95F73 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55AA401285B79C100F95F73 /* MusicViewModel.swift */; };
 		D564DDEE286D843B0086FCB5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564DDED286D843B0086FCB5 /* ProfileViewController.swift */; };
 		D564DDF0286D844A0086FCB5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564DDEF286D844A0086FCB5 /* ProfileViewModel.swift */; };
-		D564DDF2286D84590086FCB5 /* ProfileViewModelCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564DDF1286D84590086FCB5 /* ProfileViewModelCoordinatorDelegate.swift */; };
 		D574DA00285B2810007F808E /* CollectionMediumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574D9FE285B2810007F808E /* CollectionMediumCell.swift */; };
 		D5C92D092857300700EFA9FB /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D082857300700EFA9FB /* WebRepository.swift */; };
 		D5C92D0B2857303300EFA9FB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C92D0A2857303300EFA9FB /* UserProfile.swift */; };
@@ -161,7 +160,6 @@
 		D55AA401285B79C100F95F73 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		D564DDED286D843B0086FCB5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D564DDEF286D844A0086FCB5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		D564DDF1286D84590086FCB5 /* ProfileViewModelCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		D574D9FE285B2810007F808E /* CollectionMediumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionMediumCell.swift; sourceTree = "<group>"; };
 		D5C92D082857300700EFA9FB /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		D5C92D0A2857303300EFA9FB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -499,7 +497,6 @@
 			children = (
 				D564DDED286D843B0086FCB5 /* ProfileViewController.swift */,
 				D564DDEF286D844A0086FCB5 /* ProfileViewModel.swift */,
-				D564DDF1286D84590086FCB5 /* ProfileViewModelCoordinatorDelegate.swift */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -914,7 +911,6 @@
 				D5FC63EE2869DA5B00718E3C /* Sequence+uniqued.swift in Sources */,
 				D51D783C2858C46500EED4F9 /* AudioTrack.swift in Sources */,
 				D5EF5A4F285238A70079F91B /* UIView+Animations.swift in Sources */,
-				D564DDF2286D84590086FCB5 /* ProfileViewModelCoordinatorDelegate.swift in Sources */,
 				D5EF5A6B28536AB50079F91B /* OAuth2Supporting.swift in Sources */,
 				D5FC63CD2865B5DE00718E3C /* DetailItemViewModelProtocol.swift in Sources */,
 				D55AA3FE285B65D900F95F73 /* UIImageView+loadFromURL.swift in Sources */,

@@ -15,6 +15,6 @@ protocol CoreViewModelCoordinatorDelegate: AnyObject {
     /// Navigate to ``DetailItemViewController``
     func displayDetailItemView(with model: BusinessModel)
     
-    /// Pop Detail View
-    func dismissDetailView()
+    /// Pop View
+    func dismissView()
 }

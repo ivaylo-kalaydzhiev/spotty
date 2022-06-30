@@ -33,6 +33,6 @@ class AudioTrackDetailViewModel: DetailItemViewModelProtocol {
     }
     
     func dismissView() {
-        delegate?.dismissDetailView()
+        delegate?.dismissView()
     }
 }

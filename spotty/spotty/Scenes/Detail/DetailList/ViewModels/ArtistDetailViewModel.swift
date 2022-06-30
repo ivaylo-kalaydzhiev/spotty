@@ -47,7 +47,7 @@ class ArtistDetailViewModel: DetailListViewModelProtocol {
     }
     
     func dismissView() {
-        delegate?.dismissDetailView()
+        delegate?.dismissView()
     }
     
     func didSelectItem(at index: Int) {

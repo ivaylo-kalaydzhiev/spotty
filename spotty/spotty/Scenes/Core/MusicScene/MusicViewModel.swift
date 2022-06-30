@@ -16,6 +16,7 @@ protocol MusicViewModelProtocol {
     func didSelectPlaylist(at index: Int)
     func didSelectAudioTrack(at index: Int)
     func didSelectArtist(at index: Int)
+    func didTapProfileButton()
 }
 
 class MusicViewModel: MusicViewModelProtocol {
@@ -80,5 +81,9 @@ class MusicViewModel: MusicViewModelProtocol {
     func didSelectArtist(at index: Int) {
         guard let artist = recentlyPlayedArtists.value?[safeAt: index] else { fatalError() }
         delegate?.displayDetailListView(with: artist)
+    }
+    
+    func didTapProfileButton() {
+        delegate?.displayProfileScene()
     }
 }

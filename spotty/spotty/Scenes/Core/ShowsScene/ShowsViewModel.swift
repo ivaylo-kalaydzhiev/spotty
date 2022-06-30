@@ -14,6 +14,7 @@ protocol ShowsViewModelProtocol {
     
     func didSelectShow(at index: Int)
     func didSelectEpisode(at index: Int)
+    func didTapProfileButton()
 }
 
 class ShowsViewModel: ShowsViewModelProtocol {
@@ -58,5 +59,9 @@ class ShowsViewModel: ShowsViewModelProtocol {
     func didSelectEpisode(at index: Int) {
         guard let episode = savedEpisodes.value?[safeAt: index] else { fatalError() }
         delegate?.displayDetailItemView(with: episode)
+    }
+    
+    func didTapProfileButton() {
+        delegate?.displayProfileScene()
     }
 }

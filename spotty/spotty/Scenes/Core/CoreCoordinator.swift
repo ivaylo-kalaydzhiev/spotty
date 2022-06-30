@@ -90,6 +90,13 @@ class CoreCoordinator: Coordinator {
     private func dismissDetail() {
         navigationController.popViewController(animated: true)
     }
+    
+    private func displayProfile() {
+        let viewModel = ProfileViewModel()
+        viewModel.delegate = self
+        let viewController = ProfileViewController.create(viewModel: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }
 
 extension CoreCoordinator: CoreViewModelCoordinatorDelegate {
@@ -104,5 +111,9 @@ extension CoreCoordinator: CoreViewModelCoordinatorDelegate {
     
     func dismissView() {
         dismissDetail()
+    }
+    
+    func displayProfileScene() {
+        displayProfile()
     }
 }

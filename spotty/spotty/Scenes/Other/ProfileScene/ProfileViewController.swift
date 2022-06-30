@@ -11,7 +11,7 @@ fileprivate typealias CollectionViewDataSource = UICollectionViewDiffableDataSou
 fileprivate typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>
 
 class ProfileViewController: UIViewController {
-
+    
     private var imageView: UIImageView!
     private var dismissButton: UIButton!
     private var collectionView: UICollectionView!
@@ -56,7 +56,13 @@ class ProfileViewController: UIViewController {
     }
     
     private func createCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
+        collectionView = UICollectionView(
+            frame: CGRect(
+                x: 0,
+                y: view.bounds.width,
+                width: view.bounds.width,
+                height: view.bounds.height),
+            collectionViewLayout: createCompositionalLayout())
         collectionView.setCustomStyle(style: .main)
         view.addSubview(collectionView)
     }
@@ -102,8 +108,11 @@ class ProfileViewController: UIViewController {
     }
     
     private func bind() {
+        viewModel.profileImageURL.bindAndFire { [weak self] imageURL in
+            if let imageURL = imageURL { self?.imageView.loadFrom(URLAddress: imageURL) }
+        }
         viewModel.tracks.bindAndFire { [weak self] _ in self?.reloadData() }
-        viewModel.artists.bindAndFire { [weak self] _ in self?.reloadData() }        
+        viewModel.artists.bindAndFire { [weak self] _ in self?.reloadData() }
     }
     
     private func reloadData() {
@@ -157,13 +166,13 @@ fileprivate enum Section: Int, CaseIterable {
             return .horizontalCirclesLayout
         }
     }
-
+    
     var title: String {
         switch self {
         case .tracks:
-            return "Tracks on repeat"
+            return "Top Tracks"
         case .artists:
-            return "Artists on repeat"
+            return "Top Artists"
         }
     }
     

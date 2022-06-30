@@ -13,7 +13,9 @@ struct UserProfile: Codable, Hashable {
     let spotifyURI: String
     let email: String?
     let displayName: String
-    let images: [ImageResponse]?
+    private let images: [ImageResponse]?
+    
+    var imageURL: String { images?[safeAt: 0]?.url ?? "" }
     
     private enum CodingKeys: String, CodingKey {
         case id

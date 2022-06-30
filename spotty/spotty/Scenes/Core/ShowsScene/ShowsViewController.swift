@@ -26,10 +26,23 @@ class ShowsViewController: UIViewController {
     }
     
     private func setupUI() {
+        createProfileButton()
         createCollectionView()
         registerNibs()
         createDataSource()
         createSectionHeader()
+    }
+    
+    private func createProfileButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "person.crop.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapProfileButton))
+    }
+    
+    @objc private func didTapProfileButton() {
+         viewModel.didTapProfileButton()
     }
     
     private func createCollectionView() {

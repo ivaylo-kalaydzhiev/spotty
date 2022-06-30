@@ -17,4 +17,7 @@ protocol CoreViewModelCoordinatorDelegate: AnyObject {
     
     /// Pop View
     func dismissView()
+    
+    /// Navigate to ``ProfileViewController``
+    func displayProfileScene()
 }

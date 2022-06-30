@@ -9,6 +9,7 @@ import Foundation
 
 protocol ProfileViewModelProtocol {
     
+    var profileImageURL: Observable<String> { get }
     var tracks: Observable<[AudioTrack]> { get }
     var artists: Observable<[Artist]> { get }
     
@@ -19,6 +20,7 @@ protocol ProfileViewModelProtocol {
 
 class ProfileViewModel: ProfileViewModelProtocol {
 
+    let profileImageURL = Observable("")
     let tracks = Observable([AudioTrack]())
     let artists = Observable([Artist]())
     
@@ -28,6 +30,15 @@ class ProfileViewModel: ProfileViewModelProtocol {
     
     init(webRepository: WebRepository = WebRepository()) {
         self.webRepository = webRepository
+        
+        webRepository.getCurrentUserProfile { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.profileImageURL.value = user.imageURL
+            case .failure(let error):
+                dump(error.localizedDescription)
+            }
+        }
         
         webRepository.getCurrentUserTopTracks { [weak self] result in
             switch result {
@@ -55,7 +66,7 @@ class ProfileViewModel: ProfileViewModelProtocol {
     
     func didSelectArtist(at index: Int) {
         guard let artist = artists.value?[safeAt: index] else { fatalError() }
-        delegate?.displayDetailItemView(with: artist)
+        delegate?.displayDetailListView(with: artist)
     }
     
     func dismissView() {

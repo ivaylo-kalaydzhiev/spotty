@@ -26,9 +26,22 @@ class PlaylistViewController: UIViewController {
     }
     
     private func setupUI() {
+        createProfileButton()
         createTableView()
         registerNibs()
         createDataSource()
+    }
+    
+    private func createProfileButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "person.crop.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapProfileButton))
+    }
+    
+    @objc private func didTapProfileButton() {
+         viewModel.didTapProfileButton()
     }
     
     private func createTableView() {

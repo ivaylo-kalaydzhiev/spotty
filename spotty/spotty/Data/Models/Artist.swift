@@ -11,8 +11,8 @@ struct Artist: Codable, Hashable, BusinessModel {
     
     let id: String
     let name: String
-    private let images: [ImageResponse]?
     let genres: [String]?
+    private let images: [ImageResponse]?
     
     var imageURL: String {
         guard let images = images,

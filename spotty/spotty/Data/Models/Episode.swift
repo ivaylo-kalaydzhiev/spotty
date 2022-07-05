@@ -12,10 +12,12 @@ struct Episode: Codable, Hashable, BusinessModel {
     let description: String
     let htmlDescription: String
     let id: String
-    private let images: [ImageResponse]
     let name: String
     let releaseDate: String
     let uri: String
+    private let images: [ImageResponse]
+    
+    var imageURL: String { images[safeAt: 0]?.url ?? "" }
     
     private enum CodingKeys: String, CodingKey {
         case description
@@ -25,11 +27,5 @@ struct Episode: Codable, Hashable, BusinessModel {
         case name
         case releaseDate = "release_date"
         case uri
-    }
-    
-    
-    var imageURL: String {
-        guard let image = images[safeAt: 0] else { return "" }
-        return image.url
     }
 }

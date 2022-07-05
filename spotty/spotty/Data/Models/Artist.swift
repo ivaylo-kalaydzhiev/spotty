@@ -14,11 +14,5 @@ struct Artist: Codable, Hashable, BusinessModel {
     let genres: [String]?
     private let images: [ImageResponse]?
     
-    var imageURL: String {
-        guard let images = images,
-              let image = images[safeAt: 0]
-        else { return "" }
-        
-        return image.url
-    }
+    var imageURL: String { images?[safeAt: 0]?.url ?? "" }
 }

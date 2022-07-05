@@ -24,10 +24,12 @@ class MusicViewController: UIViewController {
         setupUI()
         bind()
         
+        navigationItem.largeTitleDisplayMode = .always
         collectionView.delegate = self
     }
     
     private func setupUI() {
+        title = viewModel.screenTitle
         createProfileButton()
         createCollectionView()
         registerNibs()
@@ -135,10 +137,8 @@ extension MusicViewController: UICollectionViewDelegate {
 
 extension MusicViewController {
     
-    static func create(viewModel: MusicViewModelProtocol = MusicViewModel()) -> UIViewController {
+    static func create(viewModel: MusicViewModelProtocol) -> UIViewController {
         let viewController = MusicViewController()
-        viewController.title = Constant.SceneTitle.music
-        viewController.navigationItem.largeTitleDisplayMode = .always
         viewController.viewModel = viewModel
         return viewController
     }

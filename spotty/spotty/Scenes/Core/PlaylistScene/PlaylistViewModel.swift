@@ -10,6 +10,7 @@ import UIKit
 protocol PlaylistViewModelProtocol {
     
     var playlists: Observable<[Playlist]> { get }
+    var screenTitle: String { get }
     
     func didSelectPlaylist(at index: Int)
     func didTapProfileButton()
@@ -18,6 +19,7 @@ protocol PlaylistViewModelProtocol {
 class PlaylistViewModel: PlaylistViewModelProtocol {
     
     let playlists = Observable([Playlist]())
+    let screenTitle = Constant.SceneTitle.playlist
     
     weak var delegate: CoreViewModelCoordinatorDelegate?
     

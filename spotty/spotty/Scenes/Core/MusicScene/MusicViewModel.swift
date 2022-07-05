@@ -12,6 +12,7 @@ protocol MusicViewModelProtocol {
     var featuredPlaylists: Observable<[Playlist]> { get }
     var recentlyPlayedTracks: Observable<[AudioTrack]> { get }
     var recentlyPlayedArtists: Observable<[Artist]> { get }
+    var screenTitle: String { get }
     
     func didSelectPlaylist(at index: Int)
     func didSelectAudioTrack(at index: Int)
@@ -24,6 +25,7 @@ class MusicViewModel: MusicViewModelProtocol {
     let featuredPlaylists = Observable([Playlist]())
     let recentlyPlayedTracks = Observable([AudioTrack]())
     let recentlyPlayedArtists = Observable([Artist]())
+    let screenTitle = Constant.SceneTitle.music
     
     weak var delegate: CoreViewModelCoordinatorDelegate?
 

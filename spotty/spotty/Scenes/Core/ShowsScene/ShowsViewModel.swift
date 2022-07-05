@@ -11,6 +11,7 @@ protocol ShowsViewModelProtocol {
     
     var savedShows: Observable<[Show]> { get }
     var savedEpisodes: Observable<[Episode]> { get }
+    var screenTitle: String { get }
     
     func didSelectShow(at index: Int)
     func didSelectEpisode(at index: Int)
@@ -21,6 +22,7 @@ class ShowsViewModel: ShowsViewModelProtocol {
     
     let savedShows = Observable([Show]())
     let savedEpisodes = Observable([Episode]())
+    let screenTitle = Constant.SceneTitle.show
     
     weak var delegate: CoreViewModelCoordinatorDelegate?
     

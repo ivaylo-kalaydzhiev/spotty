@@ -22,10 +22,12 @@ class PlaylistViewController: UIViewController {
         setupUI()
         bind()
         
+        navigationItem.largeTitleDisplayMode = .always
         tableView.delegate = self
     }
     
     private func setupUI() {
+        title = viewModel.screenTitle
         createProfileButton()
         createTableView()
         registerNibs()
@@ -90,11 +92,9 @@ extension PlaylistViewController: UITableViewDelegate {
 
 extension PlaylistViewController {
     
-    static func create(viewModel: PlaylistViewModelProtocol = PlaylistViewModel()) -> UIViewController {
+    static func create(viewModel: PlaylistViewModelProtocol) -> UIViewController {
         let viewController = PlaylistViewController()
         viewController.viewModel = viewModel
-        viewController.title = Constant.SceneTitle.playlist
-        viewController.navigationItem.largeTitleDisplayMode = .always
         return viewController
     }
 }

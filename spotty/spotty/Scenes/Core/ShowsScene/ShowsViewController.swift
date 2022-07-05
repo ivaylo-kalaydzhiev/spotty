@@ -22,10 +22,12 @@ class ShowsViewController: UIViewController {
         setupUI()
         bind()
         
+        navigationItem.largeTitleDisplayMode = .always
         collectionView.delegate = self
     }
     
     private func setupUI() {
+        title = viewModel.screenTitle
         createProfileButton()
         createCollectionView()
         registerNibs()
@@ -131,10 +133,8 @@ extension ShowsViewController: UICollectionViewDelegate {
 
 extension ShowsViewController {
     
-    static func create(viewModel: ShowsViewModelProtocol = ShowsViewModel()) -> UIViewController {
+    static func create(viewModel: ShowsViewModelProtocol) -> UIViewController {
         let viewController = ShowsViewController()
-        viewController.title = Constant.SceneTitle.show
-        viewController.navigationItem.largeTitleDisplayMode = .always
         viewController.viewModel = viewModel
         return viewController
     }

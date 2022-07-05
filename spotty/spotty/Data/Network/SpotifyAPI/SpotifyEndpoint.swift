@@ -51,8 +51,7 @@ enum SpotifyEndpoint {
     
     private var httpMethod: String {
         switch self {
-        case .createPlaylist,
-                .addTracksToPlaylist:
+        case .createPlaylist, .addTracksToPlaylist:
             return HTTPMethod.POST.rawValue
         case .deleteSongsFromPlaylist:
             return HTTPMethod.DELETE.rawValue
@@ -107,17 +106,17 @@ enum SpotifyEndpoint {
     private var queryItems: [URLQueryItem] {
         switch self {
         case .getCurrentUserTopTracks(let limit),
-                .getCurrentUserTopArtists(let limit):
+             .getCurrentUserTopArtists(let limit):
             return [
                 URLQueryItem(name: "time_range", value: "long_term"),
                 URLQueryItem(name: "limit", value: String(limit))
             ]
         case .getCurrentUserPlaylists(let limit),
-                .getUserSavedEpisodes(let limit),
-                .getUserSavedShows(let limit),
-                .getFeaturedPlaylists(let limit),
-                .getShowEpisodes(_, let limit),
-                .getPlaylistTracks(_, let limit):
+             .getUserSavedEpisodes(let limit),
+             .getUserSavedShows(let limit),
+             .getFeaturedPlaylists(let limit),
+             .getShowEpisodes(_, let limit),
+             .getPlaylistTracks(_, let limit):
             return [
                 URLQueryItem(name: "limit", value: String(limit))
             ]

@@ -21,8 +21,17 @@ class ArtistDetailViewModel: DetailListViewModelProtocol {
         self.webRepository = webRepository
         configure(with: artist)
     }
+
+    func dismissView() {
+        delegate?.dismissView()
+    }
     
-    func configure(with artist: Artist) {
+    func didSelectItem(at index: Int) {
+        guard let audioTrack = items.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailItemView(with: audioTrack)
+    }
+
+    private func configure(with artist: Artist) {
         webRepository.getArtist(artistId: artist.id) { [weak self] result in
             switch result {
             case .success(let artist):
@@ -44,14 +53,5 @@ class ArtistDetailViewModel: DetailListViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
-    }
-    
-    func dismissView() {
-        delegate?.dismissView()
-    }
-    
-    func didSelectItem(at index: Int) {
-        guard let audioTrack = items.value?[safeAt: index] else { fatalError() }
-        delegate?.displayDetailItemView(with: audioTrack)
     }
 }

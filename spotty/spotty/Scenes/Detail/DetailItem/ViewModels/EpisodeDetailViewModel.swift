@@ -22,6 +22,10 @@ class EpisodeDetailViewModel: DetailItemViewModelProtocol {
         configure(with: episode)
     }
     
+    func dismissView() {
+        delegate?.dismissView()
+    }
+    
     private func configure(with episode: Episode) {
         webRepository.getEpisode(episodeId: episode.id) { [weak self] result in
             switch result {
@@ -33,9 +37,5 @@ class EpisodeDetailViewModel: DetailItemViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
-    }
-    
-    func dismissView() {
-        delegate?.dismissView()
     }
 }

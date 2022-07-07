@@ -19,7 +19,14 @@ class AudioTrackDetailViewModel: DetailItemViewModelProtocol {
     
     init(webRepository: WebRepository = WebRepository(), of audioTrack: AudioTrack) {
         self.webRepository = webRepository
-        
+        configure(with: audioTrack)
+    }
+    
+    func dismissView() {
+        delegate?.dismissView()
+    }
+    
+    private func configure(with audioTrack: AudioTrack) {
         webRepository.getAudioTrack(audioTrackId: audioTrack.id) { [weak self] result in
             switch result {
             case .success(let track):
@@ -30,9 +37,5 @@ class AudioTrackDetailViewModel: DetailItemViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
-    }
-    
-    func dismissView() {
-        delegate?.dismissView()
     }
 }

@@ -22,7 +22,16 @@ class ShowDetailViewModel: DetailListViewModelProtocol {
         configure(with: show)
     }
     
-    func configure(with show: Show) {
+    func dismissView() {
+        delegate?.dismissView()
+    }
+    
+    func didSelectItem(at index: Int) {
+        guard let episode = items.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailItemView(with: episode)
+    }
+    
+    private func configure(with show: Show) {
         webRepository.getShow(showId: show.id) { [weak self] result in
             switch result {
             case .success(let show):
@@ -43,14 +52,5 @@ class ShowDetailViewModel: DetailListViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
-    }
-    
-    func dismissView() {
-        delegate?.dismissView()
-    }
-    
-    func didSelectItem(at index: Int) {
-        guard let episode = items.value?[safeAt: index] else { fatalError() }
-        delegate?.displayDetailItemView(with: episode)
     }
 }

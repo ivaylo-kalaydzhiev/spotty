@@ -22,6 +22,15 @@ class PlaylistDetailViewModel: DetailListViewModelProtocol {
         configure(with: playlist)
     }
     
+    func dismissView() {
+        delegate?.dismissView()
+    }
+    
+    func didSelectItem(at index: Int) {
+        guard let audioTrack = items.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailItemView(with: audioTrack)
+    }
+    
     private func configure(with playlist: Playlist) {
         webRepository.getPlaylist(playlistId: playlist.id) { [weak self] result in
             switch result {
@@ -45,14 +54,5 @@ class PlaylistDetailViewModel: DetailListViewModelProtocol {
                 dump(error.localizedDescription)
             }
         }
-    }
-    
-    func dismissView() {
-        delegate?.dismissView()
-    }
-    
-    func didSelectItem(at index: Int) {
-        guard let audioTrack = items.value?[safeAt: index] else { fatalError() }
-        delegate?.displayDetailItemView(with: audioTrack)
     }
 }

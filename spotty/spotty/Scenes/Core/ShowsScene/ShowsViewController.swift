@@ -19,6 +19,7 @@ class ShowsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.start()
         setupUI()
         bind()
         

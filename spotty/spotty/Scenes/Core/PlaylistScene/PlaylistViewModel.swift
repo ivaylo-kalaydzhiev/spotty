@@ -5,9 +5,9 @@
 //  Created by Ivaylo Kalaydzhiev on 21.06.22.
 //
 
-import UIKit
+import SFBaseKit
 
-protocol PlaylistViewModelProtocol {
+protocol PlaylistViewModelProtocol: CoordinatableViewModel {
     
     var playlists: Observable<[Playlist]> { get }
     var screenTitle: String { get }
@@ -27,7 +27,18 @@ class PlaylistViewModel: PlaylistViewModelProtocol {
     
     init(webRepository: WebRepository = WebRepository()) {
         self.webRepository = webRepository
-        
+    }
+    
+    func didSelectPlaylist(at index: Int) {
+        guard let playlist = playlists.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailListView(with: playlist)
+    }
+    
+    func didTapProfileButton() {
+        delegate?.displayProfileScene()
+    }
+    
+    private func loadCurrentUserPlaylists() {
         webRepository.getCurrentUserPlaylists { [weak self] result in
             switch result {
             case .success(let items):
@@ -38,13 +49,11 @@ class PlaylistViewModel: PlaylistViewModelProtocol {
             }
         }
     }
+}
+
+extension PlaylistViewModel {
     
-    func didSelectPlaylist(at index: Int) {
-        guard let playlist = playlists.value?[safeAt: index] else { fatalError() }
-        delegate?.displayDetailListView(with: playlist)
-    }
-    
-    func didTapProfileButton() {
-        delegate?.displayProfileScene()
+    func start() {
+        loadCurrentUserPlaylists()
     }
 }

@@ -14,6 +14,7 @@ fileprivate typealias Snapshot = NSDiffableDataSourceSnapshot<Section, AnyHashab
 
 class MusicViewController: UIViewController {
     
+    private var searchBar: UISearchBar!
     private var collectionView: UICollectionView!
     private var dataSource: CollectionViewDataSource?
     
@@ -21,6 +22,7 @@ class MusicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.start()
         setupUI()
         bind()
         
@@ -31,10 +33,17 @@ class MusicViewController: UIViewController {
     private func setupUI() {
         title = viewModel.screenTitle
         createProfileButton()
+        createSearchBar()
         createCollectionView()
         registerNibs()
         createDataSource()
         createSectionHeader()
+    }
+    
+    private func createSearchBar() {
+        searchBar = UISearchBar()
+        view.addSubview(searchBar)
+        searchBar.activate(anchors: [])
     }
     
     private func createProfileButton() {

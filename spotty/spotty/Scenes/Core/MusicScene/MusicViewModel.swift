@@ -5,9 +5,9 @@
 //  Created by Ivaylo Kalaydzhiev on 16.06.22.
 //
 
-import UIKit
+import SFBaseKit
 
-protocol MusicViewModelProtocol {
+protocol MusicViewModelProtocol: CoordinatableViewModel {
     
     var featuredPlaylists: Observable<[Playlist]> { get }
     var recentlyPlayedTracks: Observable<[AudioTrack]> { get }
@@ -31,9 +31,30 @@ class MusicViewModel: MusicViewModelProtocol {
 
     private let webRepository: WebRepository
     
-    init(webRepository: WebRepository = WebRepository()) { // TODO: Extract start()
+    init(webRepository: WebRepository = WebRepository()) {
         self.webRepository = webRepository
-        
+    } //TODO: Remove default value
+    
+    func didSelectPlaylist(at index: Int) {
+        guard let playlist = featuredPlaylists.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailListView(with: playlist)
+    }
+    
+    func didSelectAudioTrack(at index: Int) {
+        guard let audioTrack = recentlyPlayedTracks.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailItemView(with: audioTrack)
+    }
+    
+    func didSelectArtist(at index: Int) {
+        guard let artist = recentlyPlayedArtists.value?[safeAt: index] else { fatalError() }
+        delegate?.displayDetailListView(with: artist)
+    }
+    
+    func didTapProfileButton() {
+        delegate?.displayProfileScene()
+    }
+    
+    private func loadRecentlyPlayedTracks() {
         webRepository.getRecentlyPlayedTracks { [weak self] result in
             switch result {
             case .success(let items):
@@ -43,14 +64,6 @@ class MusicViewModel: MusicViewModelProtocol {
                 self?.recentlyPlayedTracks.value? = tracks
                 let artistWithoutImages = tracks.map { $0.artists[0] }.uniqued()
                 self?.getArtistModelsWithImages(artists: artistWithoutImages)
-            case .failure(let error):
-                dump(error.localizedDescription)
-            }
-        }
-        webRepository.getFeaturedPlaylists { [weak self] result in
-            switch result {
-            case .success(let playlistResponse):
-                self?.featuredPlaylists.value? = playlistResponse.playlists.value
             case .failure(let error):
                 dump(error.localizedDescription)
             }
@@ -70,22 +83,22 @@ class MusicViewModel: MusicViewModelProtocol {
         }
     }
     
-    func didSelectPlaylist(at index: Int) {
-        guard let playlist = featuredPlaylists.value?[safeAt: index] else { fatalError() }
-        delegate?.displayDetailListView(with: playlist)
+    private func loadFeaturedPlaylists() {
+        webRepository.getFeaturedPlaylists { [weak self] result in
+            switch result {
+            case .success(let playlistResponse):
+                self?.featuredPlaylists.value? = playlistResponse.playlists.value
+            case .failure(let error):
+                dump(error.localizedDescription)
+            }
+        }
     }
+}
+
+extension MusicViewModel {
     
-    func didSelectAudioTrack(at index: Int) {
-        guard let audioTrack = recentlyPlayedTracks.value?[safeAt: index] else { fatalError() }
-        delegate?.displayDetailItemView(with: audioTrack)
-    }
-    
-    func didSelectArtist(at index: Int) {
-        guard let artist = recentlyPlayedArtists.value?[safeAt: index] else { fatalError() }
-        delegate?.displayDetailListView(with: artist)
-    }
-    
-    func didTapProfileButton() {
-        delegate?.displayProfileScene()
+    func start() {
+        loadRecentlyPlayedTracks()
+        loadFeaturedPlaylists()
     }
 }

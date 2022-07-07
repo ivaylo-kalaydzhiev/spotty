@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        viewModel.start()
         setupUI()
         bind()
         
